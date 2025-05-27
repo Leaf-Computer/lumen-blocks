@@ -1,7 +1,20 @@
 use dioxus::prelude::*;
-use dioxus_blocks::components::button::{Button, ButtonVariant, ButtonSize, IconButton};
+use dioxus_blocks::components::button::{Button, ButtonVariant, ButtonSize};
+use log;
 
 fn main() {
+    // Initialize logger for debug builds
+    #[cfg(debug_assertions)]
+    {
+        // This simple configuration will print to stderr
+        // For a real app, consider using env_logger or another implementation
+        let _ = env_logger::builder()
+            .filter_level(log::LevelFilter::Debug)
+            .try_init();
+        
+        log::info!("Logger initialized in debug mode");
+    }
+    
     dioxus::launch(ButtonExample);
 }
 
@@ -142,33 +155,38 @@ rsx! {
         div {
             h3 { "Icon Buttons" }
             div { style: "display: flex; flex-wrap: wrap; gap: 10px; align-items: center;",
-                IconButton {
+                Button {
                     variant: use_signal(|| ButtonVariant::Primary),
-                    aria_label: "Add item".to_string(),
+                    is_icon_button: use_signal(|| true),
+                    aria_label: Some("Add item".to_string()),
                     span { "+" }
                 }
                     
-                IconButton {
+                Button {
                     variant: use_signal(|| ButtonVariant::Secondary),
-                    aria_label: "Edit item".to_string(),
+                    is_icon_button: use_signal(|| true),
+                    aria_label: Some("Edit item".to_string()),
                     span { "✏️" }
                 }
                     
-                IconButton {
+                Button {
                     variant: use_signal(|| ButtonVariant::Outline),
-                    aria_label: "Delete item".to_string(),
+                    is_icon_button: use_signal(|| true),
+                    aria_label: Some("Delete item".to_string()),
                     span { "🗑️" }
                 }
                     
-                IconButton {
+                Button {
                     variant: use_signal(|| ButtonVariant::Ghost),
-                    aria_label: "Search".to_string(),
+                    is_icon_button: use_signal(|| true),
+                    aria_label: Some("Search".to_string()),
                     span { "🔍" }
                 }
                     
-                IconButton {
+                Button {
                     variant: use_signal(|| ButtonVariant::Destructive),
-                    aria_label: "Close".to_string(),
+                    is_icon_button: use_signal(|| true),
+                    aria_label: Some("Close".to_string()),
                     span { "❌" }
                 }
             }

@@ -1,5 +1,8 @@
 use dioxus_lib::prelude::*;
 
+// Re-export log crate for use in components
+pub use log;
+
 pub mod components;
 
 /// Generate a runtime-unique id.
