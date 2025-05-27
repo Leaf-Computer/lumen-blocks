@@ -124,15 +124,15 @@ pub fn Button(props: ButtonProps) -> Element {
         ButtonVariant::Secondary => "bg-secondary text-secondary-foreground hover:bg-secondary/80 border-transparent focus:ring-ring",
         ButtonVariant::Outline => "bg-background text-foreground hover:bg-muted border-border focus:ring-ring",
         ButtonVariant::Ghost => "bg-transparent text-foreground hover:bg-muted border-transparent focus:ring-ring",
-        ButtonVariant::Link => "bg-transparent text-primary underline-offset-4 hover:underline border-transparent p-0 shadow-none focus:ring-ring",
-        ButtonVariant::Destructive => "bg-destructive text-primary-foreground hover:bg-destructive/90 border-transparent focus:ring-ring",
+        ButtonVariant::Link => "bg-transparent text-primary underline-offset-4 underline border-transparent p-0 shadow-none focus:ring-ring",
+        ButtonVariant::Destructive => "bg-destructive text-primary-foreground dark:text-foreground hover:bg-destructive/90 border-transparent focus:ring-ring",
     };
 
     // Determine size classes
     let size_classes = match (props.size)() {
-        ButtonSize::Small => "text-xs px-2.5 py-1.5",
-        ButtonSize::Medium => "text-sm px-4 py-2",
-        ButtonSize::Large => "text-base px-6 py-3",
+        ButtonSize::Small => "text-xs px-2.5 py-1",
+        ButtonSize::Medium => "text-sm px-4 py-1.5",
+        ButtonSize::Large => "text-base px-6 py-2",
     };
 
     // Determine width classes
@@ -298,8 +298,8 @@ pub fn IconButton(props: IconButtonProps) -> Element {
         ButtonVariant::Secondary => "bg-secondary text-secondary-foreground hover:bg-secondary/80 border-transparent focus:ring-ring",
         ButtonVariant::Outline => "bg-background text-foreground hover:bg-muted border-border focus:ring-ring",
         ButtonVariant::Ghost => "bg-transparent text-foreground hover:bg-muted border-transparent focus:ring-ring",
-        ButtonVariant::Link => "bg-transparent text-primary underline-offset-4 hover:underline border-transparent p-0 shadow-none focus:ring-ring",
-        ButtonVariant::Destructive => "bg-destructive text-primary-foreground hover:bg-destructive/90 border-transparent focus:ring-ring",
+        ButtonVariant::Link => "bg-transparent text-primary underline-offset-4 underline border-transparent p-0 shadow-none focus:ring-ring",
+        ButtonVariant::Destructive => "bg-destructive text-foreground hover:bg-destructive/90 border-transparent focus:ring-ring",
     };
 
     // Determine size classes for icon button (square aspect ratio)
