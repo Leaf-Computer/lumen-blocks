@@ -15,3 +15,6 @@ dioxus-lib.workspace = true
 dioxus-time = "=0.1.0-alpha.1"
 dioxus-primitives = { git = "https://github.com/DioxusLabs/components", package = "dioxus-primitives", branch = "main"}
 tracing.workspace = true
+
+[dev-dependencies]
+dioxus.workspace = true

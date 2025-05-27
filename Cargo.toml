@@ -1,6 +1,6 @@
 [workspace]
 resolver = "3"
-members = ["blocks", "preview"]
+members = ["blocks"]
 
 [workspace.dependencies]
 dioxus-blocks = { path = "blocks" }

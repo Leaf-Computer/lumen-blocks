@@ -1,31 +1,6 @@
 use dioxus_lib::prelude::*;
 
-pub mod accordion;
-pub mod aspect_ratio;
-pub mod avatar;
-pub mod calendar;
-pub mod checkbox;
-pub mod collapsible;
-pub mod context_menu;
-pub mod dialog;
-pub mod dropdown_menu;
-pub mod hover_card;
-pub mod label;
-pub mod menubar;
-mod portal;
-pub mod progress;
-pub mod radio_group;
-pub mod scroll_area;
-pub mod select;
-pub mod separator;
-pub mod slider;
-pub mod switch;
-pub mod tabs;
-pub mod toast;
-pub mod toggle;
-pub mod toggle_group;
-pub mod toolbar;
-pub mod tooltip;
+pub mod components;
 
 /// Generate a runtime-unique id.
 fn use_unique_id() -> Signal<String> {
