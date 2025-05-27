@@ -120,12 +120,12 @@ pub fn Button(props: ButtonProps) -> Element {
 
     // Determine base classes for button based on variant
     let variant_classes = match (props.variant)() {
-        ButtonVariant::Primary => "bg-blue-600 hover:bg-blue-700 text-white border-transparent focus:ring-blue-500",
-        ButtonVariant::Secondary => "bg-gray-200 hover:bg-gray-300 text-gray-900 border-transparent focus:ring-gray-500",
-        ButtonVariant::Outline => "bg-transparent hover:bg-gray-100 text-gray-900 border-gray-300 focus:ring-gray-500",
-        ButtonVariant::Ghost => "bg-transparent hover:bg-gray-100 text-gray-700 border-transparent focus:ring-gray-500",
-        ButtonVariant::Link => "bg-transparent text-blue-600 hover:underline border-transparent p-0 shadow-none focus:ring-blue-500",
-        ButtonVariant::Destructive => "bg-red-600 hover:bg-red-700 text-white border-transparent focus:ring-red-500",
+        ButtonVariant::Primary => "bg-primary text-primary-foreground hover:bg-primary/90 border-transparent focus:ring-ring",
+        ButtonVariant::Secondary => "bg-secondary text-secondary-foreground hover:bg-secondary/80 border-transparent focus:ring-ring",
+        ButtonVariant::Outline => "bg-background text-foreground hover:bg-muted border-border focus:ring-ring",
+        ButtonVariant::Ghost => "bg-transparent text-foreground hover:bg-muted border-transparent focus:ring-ring",
+        ButtonVariant::Link => "bg-transparent text-primary underline-offset-4 hover:underline border-transparent p-0 shadow-none focus:ring-ring",
+        ButtonVariant::Destructive => "bg-destructive text-primary-foreground hover:bg-destructive/90 border-transparent focus:ring-ring",
     };
 
     // Determine size classes
@@ -294,12 +294,12 @@ pub fn IconButton(props: IconButtonProps) -> Element {
 
     // Determine base classes for button based on variant
     let variant_classes = match (props.variant)() {
-        ButtonVariant::Primary => "bg-blue-600 hover:bg-blue-700 text-white border-transparent focus:ring-blue-500",
-        ButtonVariant::Secondary => "bg-gray-200 hover:bg-gray-300 text-gray-900 border-transparent focus:ring-gray-500",
-        ButtonVariant::Outline => "bg-transparent hover:bg-gray-100 text-gray-900 border-gray-300 focus:ring-gray-500",
-        ButtonVariant::Ghost => "bg-transparent hover:bg-gray-100 text-gray-700 border-transparent focus:ring-gray-500",
-        ButtonVariant::Link => "bg-transparent text-blue-600 hover:underline border-transparent p-0 shadow-none focus:ring-blue-500",
-        ButtonVariant::Destructive => "bg-red-600 hover:bg-red-700 text-white border-transparent focus:ring-red-500",
+        ButtonVariant::Primary => "bg-primary text-primary-foreground hover:bg-primary/90 border-transparent focus:ring-ring",
+        ButtonVariant::Secondary => "bg-secondary text-secondary-foreground hover:bg-secondary/80 border-transparent focus:ring-ring",
+        ButtonVariant::Outline => "bg-background text-foreground hover:bg-muted border-border focus:ring-ring",
+        ButtonVariant::Ghost => "bg-transparent text-foreground hover:bg-muted border-transparent focus:ring-ring",
+        ButtonVariant::Link => "bg-transparent text-primary underline-offset-4 hover:underline border-transparent p-0 shadow-none focus:ring-ring",
+        ButtonVariant::Destructive => "bg-destructive text-primary-foreground hover:bg-destructive/90 border-transparent focus:ring-ring",
     };
 
     // Determine size classes for icon button (square aspect ratio)
