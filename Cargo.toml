@@ -1,0 +1,22 @@
+[workspace]
+resolver = "3"
+members = ["blocks", "preview"]
+
+[workspace.dependencies]
+dioxus-blocks = { path = "blocks" }
+
+dioxus = "0.6"
+dioxus-lib = "0.6"
+tracing = { version = "0.1", features = ["std"] }
+
+[profile]
+
+[profile.wasm-dev]
+inherits = "dev"
+opt-level = 1
+
+[profile.server-dev]
+inherits = "dev"
+
+[profile.android-dev]
+inherits = "dev"

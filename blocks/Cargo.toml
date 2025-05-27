@@ -1,0 +1,17 @@
+[package]
+name = "dioxus-blocks"
+version = "0.0.1"
+edition = "2024"
+readme = "../README.md"
+keywords = ["gui", "dioxus", "components", "primitives"]
+categories = ["gui", "wasm"]
+authors = ["Daniel D’Aquino <daniel@daquino.me>"]
+license = "MIT"
+homepage = "https://dioxuslabs.com"
+repository = "https://github.com/DioxusLabs/components"
+
+[dependencies]
+dioxus-lib.workspace = true
+dioxus-time = "=0.1.0-alpha.1"
+dioxus-primitives = { git = "https://github.com/DioxusLabs/components", package = "dioxus-primitives", branch = "main"}
+tracing.workspace = true
