@@ -8,6 +8,6 @@ dioxus.workspace = true
 dioxus-blocks.workspace = true
 
 [features]
-default = ["desktop"]
+default = ["web"]
 web = ["dioxus/web"]
 desktop = ["dioxus/desktop"]
