@@ -1,6 +1,7 @@
 use dioxus::prelude::*;
 use dioxus_blocks::components::button::{Button, ButtonVariant, ButtonSize};
 use log;
+use lucide_dioxus::{ArrowLeft, ArrowRight, RefreshCw, Plus, Pencil, Trash, Search, X};
 
 fn main() {
     // Initialize logger for debug builds
@@ -120,21 +121,14 @@ rsx! {
             div { style: "display: flex; flex-wrap: wrap; gap: 10px; align-items: center;",
                 Button {
                     variant: use_signal(|| ButtonVariant::Primary),
-                    icon_left: rsx! { span { "👈" } },
+                    icon_left: rsx! { ArrowLeft { size: 16, color: "currentColor" } },
                     "Left Icon"
                 }
                     
                 Button {
                     variant: use_signal(|| ButtonVariant::Primary),
-                    icon_right: rsx! { span { "👉" } },
+                    icon_right: rsx! { ArrowRight { size: 16, color: "currentColor" } },
                     "Right Icon"
-                }
-                    
-                Button {
-                    variant: use_signal(|| ButtonVariant::Primary),
-                    icon_left: rsx! { span { "🔄" } },
-                    icon_right: rsx! { span { "🔄" } },
-                    "Both Icons"
                 }
             }
         }
@@ -159,35 +153,35 @@ rsx! {
                     variant: use_signal(|| ButtonVariant::Primary),
                     is_icon_button: use_signal(|| true),
                     aria_label: Some("Add item".to_string()),
-                    span { "+" }
+                    Plus { size: 20, color: "currentColor" }
                 }
                     
                 Button {
                     variant: use_signal(|| ButtonVariant::Secondary),
                     is_icon_button: use_signal(|| true),
                     aria_label: Some("Edit item".to_string()),
-                    span { "✏️" }
+                    Pencil { size: 20, color: "currentColor" }
                 }
                     
                 Button {
                     variant: use_signal(|| ButtonVariant::Outline),
                     is_icon_button: use_signal(|| true),
                     aria_label: Some("Delete item".to_string()),
-                    span { "🗑️" }
+                    Trash { size: 20, color: "currentColor" }
                 }
                     
                 Button {
                     variant: use_signal(|| ButtonVariant::Ghost),
                     is_icon_button: use_signal(|| true),
                     aria_label: Some("Search".to_string()),
-                    span { "🔍" }
+                    Search { size: 20, color: "currentColor" }
                 }
                     
                 Button {
                     variant: use_signal(|| ButtonVariant::Destructive),
                     is_icon_button: use_signal(|| true),
                     aria_label: Some("Close".to_string()),
-                    span { "❌" }
+                    X { size: 20, color: "currentColor" }
                 }
             }
         }
