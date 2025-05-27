@@ -30,11 +30,11 @@ let toggle_loading = move |_| {
 };
     
 rsx! {
-    div { class: "button-example", style: "padding: 20px; display: flex; flex-direction: column; gap: 20px;",
+    div { class: "button-example p-5 flex flex-col gap-5",
         // Button variants
         div {
             h3 { "Button Variants" }
-            div { style: "display: flex; flex-wrap: wrap; gap: 10px; align-items: center;",
+            div { class: "flex flex-wrap gap-2.5 items-center",
                 Button {
                     variant: use_signal(|| ButtonVariant::Primary),
                     "Primary"
@@ -70,7 +70,7 @@ rsx! {
         // Button sizes
         div {
             h3 { "Button Sizes" }
-            div { style: "display: flex; flex-wrap: wrap; gap: 10px; align-items: center;",
+            div { class: "flex flex-wrap gap-2.5 items-center",
                 Button {
                     variant: use_signal(|| ButtonVariant::Primary),
                     size: use_signal(|| ButtonSize::Small),
@@ -94,7 +94,7 @@ rsx! {
         // Button states
         div {
             h3 { "Button States" }
-            div { style: "display: flex; flex-wrap: wrap; gap: 10px; align-items: center;",
+            div { class: "flex flex-wrap gap-2.5 items-center",
                 Button {
                     variant: use_signal(|| ButtonVariant::Primary),
                     disabled: use_signal(|| true),
@@ -118,7 +118,7 @@ rsx! {
         // Buttons with icons
         div {
             h3 { "Buttons with Icons" }
-            div { style: "display: flex; flex-wrap: wrap; gap: 10px; align-items: center;",
+            div { class: "flex flex-wrap gap-2.5 items-center",
                 Button {
                     variant: use_signal(|| ButtonVariant::Primary),
                     icon_left: rsx! { ArrowLeft { size: 16, color: "currentColor" } },
@@ -136,7 +136,7 @@ rsx! {
         // Full width button
         div {
             h3 { "Full Width Button" }
-            div { style: "width: 100%;",
+            div { class: "w-full",
                 Button {
                     variant: use_signal(|| ButtonVariant::Primary),
                     full_width: use_signal(|| true),
@@ -148,7 +148,7 @@ rsx! {
         // Icon buttons
         div {
             h3 { "Icon Buttons" }
-            div { style: "display: flex; flex-wrap: wrap; gap: 10px; align-items: center;",
+            div { class: "flex flex-wrap gap-2.5 items-center",
                 Button {
                     variant: use_signal(|| ButtonVariant::Primary),
                     is_icon_button: use_signal(|| true),

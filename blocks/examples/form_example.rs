@@ -41,12 +41,12 @@ pub fn FormExample() -> Element {
     };
     
     rsx! {
-        div { class: "form-example", style: "padding: 20px; max-width: 500px; margin: 0 auto;",
+        div { class: "form-example p-5 max-w-lg mx-auto",
             h2 { "Form Components Example" }
             
-            div { style: "margin-bottom: 20px;",
+            div { class: "mb-5",
                 // Basic Label and Input
-                div { style: "margin-bottom: 16px;",
+                div { class: "mb-4",
                     Label {
                         for_id: use_signal(|| Some("email".to_string())),
                         "Email Address"
@@ -74,7 +74,7 @@ pub fn FormExample() -> Element {
                 }
                 
                 // Password field with label
-                div { style: "margin-bottom: 16px;",
+                div { class: "mb-4",
                     Label {
                         for_id: use_signal(|| Some("password".to_string())),
                         required: use_signal(|| true),
@@ -94,7 +94,7 @@ pub fn FormExample() -> Element {
                 }
                 
                 // Different sizes and variants
-                div { style: "display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; margin-bottom: 16px;",
+                div { class: "grid grid-cols-3 gap-2.5 mb-4",
                     div {
                         Label {
                             size: use_signal(|| LabelSize::Small),
@@ -133,10 +133,10 @@ pub fn FormExample() -> Element {
                 }
                 
                 // Input states example
-                div { style: "margin-bottom: 16px;",
+                div { class: "mb-4",
                     h3 { class: "mb-2 text-base font-medium", "Input States" }
                     
-                    div { style: "display: grid; grid-template-columns: repeat(2, 1fr); gap: 10px;",
+                    div { class: "grid grid-cols-2 gap-2.5",
                         div {
                             Label {
                                 for_id: use_signal(|| Some("disabled-input".to_string())),
