@@ -1,5 +1,6 @@
 use crate::{use_id_or, use_unique_id};
 use dioxus_lib::prelude::*;
+use lucide_dioxus::LoaderCircle;
 
 /// Button variant types
 #[derive(Clone, Copy, PartialEq, Eq, Debug)]
@@ -188,9 +189,9 @@ pub fn Button(props: ButtonProps) -> Element {
             // Show loading spinner if in loading state
             if (props.loading)() {
                 span {
-                    class: "mr-2 inline-block animate-spin",
-                    aria_hidden: "true",
-                    "⟳" // Simple loading indicator (could be replaced with an SVG)
+                    LoaderCircle {
+                        class: "mr-1 inline-block animate-spin h-4",
+                    }
                 }
             }
 

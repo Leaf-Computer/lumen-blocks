@@ -300,6 +300,7 @@ dependencies = [
  "dioxus-lib",
  "dioxus-primitives",
  "dioxus-time",
+ "lucide-dioxus",
  "tracing",
 ]
 
@@ -1086,6 +1087,15 @@ name = "longest-increasing-subsequence"
 version = "0.1.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "b3bd0dd2cd90571056fdb71f6275fada10131182f84899f4b2a916e565d81d86"
+
+[[package]]
+name = "lucide-dioxus"
+version = "2.1.0"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "e0508f42ea2c5ae9d3d3ab53d13c201ba7454cc0a8df436978c7215f2016393c"
+dependencies = [
+ "dioxus",
+]
 
 [[package]]
 name = "manganis"

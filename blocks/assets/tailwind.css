@@ -566,6 +566,10 @@ video {
   margin-right: 0.5rem;
 }
 
+.mr-1 {
+  margin-right: 0.25rem;
+}
+
 .block {
   display: block;
 }
@@ -580,6 +584,18 @@ video {
 
 .aspect-square {
   aspect-ratio: 1 / 1;
+}
+
+.h-6 {
+  height: 1.5rem;
+}
+
+.h-2 {
+  height: 0.5rem;
+}
+
+.h-4 {
+  height: 1rem;
 }
 
 .w-auto {
