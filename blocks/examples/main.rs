@@ -7,6 +7,8 @@ mod button_example;
 use button_example::ButtonExample;
 mod form_example;
 use form_example::FormExample;
+mod dropdown_example;
+use dropdown_example::DropdownExample;
 
 const TAILWIND_CSS: Asset = asset!("assets/tailwind.css");
 
@@ -35,6 +37,18 @@ fn App() -> Element {
             Collapsible {
                 CollapsibleTrigger { "Form Example" }
                 CollapsibleContent { FormExample {} }
+            }
+            
+            Separator {
+                class: "separator",
+                style: "margin: 15px 0;",
+                horizontal: true,
+                decorative: true,
+            }
+            
+            Collapsible {
+                CollapsibleTrigger { "Dropdown Example" }
+                CollapsibleContent { DropdownExample {} }
             }
         }
     }
