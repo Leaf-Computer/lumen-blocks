@@ -1,5 +1,5 @@
 use dioxus::prelude::*;
-use dioxus_blocks::components::menubar::menubar::{
+use dioxus_blocks::components::menubar::{
     Menubar, MenubarMenu, MenubarTrigger, MenubarContent, MenubarItem,
 };
 use dioxus::document::eval;

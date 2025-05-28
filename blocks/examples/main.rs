@@ -13,6 +13,8 @@ mod switch_example;
 use switch_example::SwitchExample;
 mod menubar_example;
 use menubar_example::MenubarExample;
+mod accordion_example;
+use accordion_example::accordion_examples;
 
 const TAILWIND_CSS: Asset = asset!("assets/tailwind.css");
 
@@ -77,6 +79,18 @@ fn App() -> Element {
             Collapsible {
                 CollapsibleTrigger { "Switch Example" }
                 CollapsibleContent { SwitchExample {} }
+            }
+            
+            Separator {
+                class: "separator",
+                style: "margin: 15px 0;",
+                horizontal: true,
+                decorative: true,
+            }
+            
+            Collapsible {
+                CollapsibleTrigger { "Accordion Example" }
+                CollapsibleContent { accordion_examples {} }
             }
         }
     }
