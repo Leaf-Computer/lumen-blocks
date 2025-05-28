@@ -40,6 +40,33 @@ You can preview the components with:
 dx serve -p dioxus-blocks --example main --platform web
 ```
 
+## Development Container
+
+This project includes a devcontainer configuration for Visual Studio Code and GitHub Codespaces. The devcontainer provides a consistent development environment with all the necessary tools for Rust and Dioxus development pre-installed.
+
+### Features
+
+- Rust toolchain with Rust Analyzer
+- Dioxus CLI (`dx`) pre-installed
+- Required dependencies for desktop/web/mobile development
+- Helpful VS Code extensions for Rust development
+
+### Usage
+
+#### With VS Code:
+
+1. Install the [Remote - Containers](https://marketplace.visualstudio.com/items?itemName=ms-vscode-remote.remote-containers) extension
+2. Open the project in VS Code
+3. Click on the green button in the bottom-left corner and select "Reopen in Container"
+
+#### With GitHub Codespaces:
+
+1. Navigate to the GitHub repository
+2. Click on the "Code" button and select the "Codespaces" tab
+3. Click "Create codespace on main"
+
+The container will automatically install all required dependencies and tools. Once the container is ready, you can start developing with full IDE support.
+
 ## License
 This project is licensed under the [MIT](./LICENSE).
 

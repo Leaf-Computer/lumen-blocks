@@ -1,0 +1,32 @@
+{
+  "name": "Rust and Dioxus Development",
+  "build": {
+    "dockerfile": "Dockerfile",
+    "context": "."
+  },
+  "extensions": [
+    "rust-lang.rust-analyzer",
+    "DioxusLabs.dioxus",
+    "tamasfe.even-better-toml",
+    "serayuzgur.crates",
+    "vadimcn.vscode-lldb"
+  ],
+  "settings": {
+    "terminal.integrated.defaultProfile.linux": "bash",
+    "rust-analyzer.checkOnSave.command": "clippy",
+    "editor.formatOnSave": true
+  },
+  "remoteUser": "vscode",
+  "features": {
+    "ghcr.io/devcontainers/features/git:1": {},
+    "ghcr.io/devcontainers/features/github-cli:1": {}
+  },
+  "containerEnv": {
+    "CARGO_HOME": "/usr/local/cargo",
+    "PATH": "${PATH}:/usr/local/cargo/bin"
+  },
+  "runArgs": ["--env-file", ".devcontainer/devcontainer.env"],
+  "mounts": [
+    "source=rust-cargo-cache,target=/usr/local/cargo,type=volume"
+  ]
+}
