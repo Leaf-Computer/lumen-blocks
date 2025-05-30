@@ -15,6 +15,8 @@ mod menubar_example;
 use menubar_example::MenubarExample;
 mod accordion_example;
 use accordion_example::accordion_examples;
+mod hover_card_example;
+use hover_card_example::HoverCardExample;
 
 const TAILWIND_CSS: Asset = asset!("assets/tailwind.css");
 
@@ -91,6 +93,18 @@ fn App() -> Element {
             Collapsible {
                 CollapsibleTrigger { "Accordion Example" }
                 CollapsibleContent { accordion_examples {} }
+            }
+            
+            Separator {
+                class: "separator",
+                style: "margin: 15px 0;",
+                horizontal: true,
+                decorative: true,
+            }
+            
+            Collapsible {
+                CollapsibleTrigger { "Hover Card Example" }
+                CollapsibleContent { HoverCardExample {} }
             }
         }
     }
