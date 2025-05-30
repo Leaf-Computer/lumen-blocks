@@ -1011,10 +1011,6 @@ video {
   border-bottom-width: 1px;
 }
 
-.border-b-0 {
-  border-bottom-width: 0px;
-}
-
 .border-none {
   border-style: none;
 }
@@ -1065,16 +1061,6 @@ video {
 
 .bg-secondary {
   background-color: var(--secondary);
-}
-
-.bg-slate-100 {
-  --tw-bg-opacity: 1;
-  background-color: rgb(241 245 249 / var(--tw-bg-opacity, 1));
-}
-
-.bg-slate-50 {
-  --tw-bg-opacity: 1;
-  background-color: rgb(248 250 252 / var(--tw-bg-opacity, 1));
 }
 
 .bg-transparent {
@@ -1251,11 +1237,6 @@ video {
   font-weight: 600;
 }
 
-.text-blue-600 {
-  --tw-text-opacity: 1;
-  color: rgb(37 99 235 / var(--tw-text-opacity, 1));
-}
-
 .text-current {
   color: currentColor;
 }
@@ -1273,11 +1254,6 @@ video {
   color: rgb(107 114 128 / var(--tw-text-opacity, 1));
 }
 
-.text-green-600 {
-  --tw-text-opacity: 1;
-  color: rgb(22 163 74 / var(--tw-text-opacity, 1));
-}
-
 .text-muted-foreground {
   color: var(--muted-foreground);
 }
@@ -1292,11 +1268,6 @@ video {
 
 .text-primary-foreground {
   color: var(--primary-foreground);
-}
-
-.text-purple-600 {
-  --tw-text-opacity: 1;
-  color: rgb(147 51 234 / var(--tw-text-opacity, 1));
 }
 
 .text-red-500 {
@@ -1592,11 +1563,6 @@ https://github.com/shadcn-ui/ui/blob/2773f9e2e29cf67e521632d15d1ba302a82e39e9/LI
   opacity: 0.5;
 }
 
-.aria-expanded\:rotate-180[aria-expanded="true"] {
-  --tw-rotate: 180deg;
-  transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
-}
-
 .group[aria-expanded="true"] .group-aria-expanded\:rotate-180 {
   --tw-rotate: 180deg;
   transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
@@ -1616,37 +1582,7 @@ https://github.com/shadcn-ui/ui/blob/2773f9e2e29cf67e521632d15d1ba302a82e39e9/LI
 }
 
 @media (prefers-color-scheme: dark) {
-  .dark\:bg-slate-800 {
-    --tw-bg-opacity: 1;
-    background-color: rgb(30 41 59 / var(--tw-bg-opacity, 1));
-  }
-
-  .dark\:bg-slate-900 {
-    --tw-bg-opacity: 1;
-    background-color: rgb(15 23 42 / var(--tw-bg-opacity, 1));
-  }
-
-  .dark\:text-blue-400 {
-    --tw-text-opacity: 1;
-    color: rgb(96 165 250 / var(--tw-text-opacity, 1));
-  }
-
   .dark\:text-foreground {
     color: var(--foreground);
   }
-
-  .dark\:text-green-400 {
-    --tw-text-opacity: 1;
-    color: rgb(74 222 128 / var(--tw-text-opacity, 1));
-  }
-
-  .dark\:text-purple-400 {
-    --tw-text-opacity: 1;
-    color: rgb(192 132 252 / var(--tw-text-opacity, 1));
-  }
-}
-
-.\[\&\[data-state\=open\]\>svg\]\:rotate-180[data-state=open]>svg {
-  --tw-rotate: 180deg;
-  transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
 }
