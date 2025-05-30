@@ -40,6 +40,12 @@ You can preview the components with:
 dx serve -p dioxus-blocks --example main --platform web
 ```
 
+You should run this during development to keep tailwind classes up to date
+
+```
+tailwindcss -i ./tailwind.css -o ./assets/tailwind.css --config tailwind.config.js --watch
+```
+
 ## Development Container
 
 This project includes a devcontainer configuration for Visual Studio Code and GitHub Codespaces. The devcontainer provides a consistent development environment with all the necessary tools for Rust and Dioxus development pre-installed.
