@@ -1,4 +1,5 @@
 pub mod accordion;
+pub mod aspect_ratio;
 pub mod avatar;
 pub mod button;
 pub mod label;

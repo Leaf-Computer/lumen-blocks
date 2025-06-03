@@ -27,6 +27,8 @@ mod avatar_example;
 use avatar_example::avatar_examples;
 mod collapsible_example;
 use collapsible_example::CollapsibleExample;
+mod aspect_ratio_example;
+use aspect_ratio_example::AspectRatioExample;
 
 const TAILWIND_CSS: Asset = asset!("assets/tailwind.css");
 
@@ -164,6 +166,18 @@ fn App() -> Element {
                 Collapsible {
                     CollapsibleTrigger { "Avatar Example" }
                     CollapsibleContent { avatar_examples {} }
+                }
+                
+                Separator {
+                    class: "separator",
+                    style: "margin: 15px 0;",
+                    horizontal: true,
+                    decorative: true,
+                }
+                
+                Collapsible {
+                    CollapsibleTrigger { "Aspect Ratio Example" }
+                    CollapsibleContent { AspectRatioExample {} }
                 }
             }
         }
