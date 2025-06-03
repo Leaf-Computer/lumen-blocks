@@ -1,5 +1,4 @@
 use dioxus::prelude::*;
-use dioxus_primitives::toast::*;
 use dioxus_blocks::components::collapsible::{
     Collapsible, CollapsibleContent, CollapsibleTrigger,
 };
@@ -27,6 +26,9 @@ mod avatar_example;
 use avatar_example::avatar_examples;
 mod collapsible_example;
 use collapsible_example::CollapsibleExample;
+use dioxus_blocks::components::toast::ToastProvider;
+mod toast_example;
+use toast_example::ToastExample;
 
 const TAILWIND_CSS: Asset = asset!("assets/tailwind.css");
 
@@ -38,9 +40,8 @@ fn main() {
 fn App() -> Element {
     rsx! {
         document::Link { rel: "stylesheet", href: TAILWIND_CSS }
-        
-        div { class: "p-6",
-            ToastProvider {
+        ToastProvider {
+            div { class: "p-6",
                 Collapsible {
                     CollapsibleTrigger { "Button Example" }
                     CollapsibleContent { ButtonExample {} }
@@ -164,6 +165,18 @@ fn App() -> Element {
                 Collapsible {
                     CollapsibleTrigger { "Avatar Example" }
                     CollapsibleContent { avatar_examples {} }
+                }
+                
+                Separator {
+                    class: "separator",
+                    style: "margin: 15px 0;",
+                    horizontal: true,
+                    decorative: true,
+                }
+                
+                Collapsible {
+                    CollapsibleTrigger { "Toast Example" }
+                    CollapsibleContent { ToastExample {} }
                 }
             }
         }
