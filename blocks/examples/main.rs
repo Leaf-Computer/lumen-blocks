@@ -3,6 +3,7 @@ use dioxus_blocks::components::collapsible::{
     Collapsible, CollapsibleContent, CollapsibleTrigger,
 };
 use dioxus_primitives::separator::*;
+use std::time::Duration;
 // Import examples as modules
 mod button_example;
 use button_example::ButtonExample;
@@ -28,7 +29,7 @@ mod collapsible_example;
 use collapsible_example::CollapsibleExample;
 use dioxus_blocks::components::toast::ToastProvider;
 mod toast_example;
-use toast_example::ToastExample;
+use toast_example::ToastExamples;
 
 const TAILWIND_CSS: Asset = asset!("assets/tailwind.css");
 
@@ -41,6 +42,7 @@ fn App() -> Element {
     rsx! {
         document::Link { rel: "stylesheet", href: TAILWIND_CSS }
         ToastProvider {
+            default_duration: Duration::from_secs(5),
             div { class: "p-6",
                 Collapsible {
                     CollapsibleTrigger { "Button Example" }
@@ -176,7 +178,7 @@ fn App() -> Element {
                 
                 Collapsible {
                     CollapsibleTrigger { "Toast Example" }
-                    CollapsibleContent { ToastExample {} }
+                    CollapsibleContent { ToastExamples {} }
                 }
             }
         }

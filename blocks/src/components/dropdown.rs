@@ -1,6 +1,6 @@
 use crate::{use_id_or, use_unique_id};
 use dioxus_lib::prelude::*;
-use dioxus_primitives::dropdown_menu::{DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger};
+use dioxus_primitives::dropdown_menu::{DropdownMenu, DropdownMenuContent, DropdownMenuItem};
 
 // Define a context struct for radio groups
 #[derive(Clone, PartialEq)]

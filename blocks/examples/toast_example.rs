@@ -1,226 +1,313 @@
-use dioxus_lib::prelude::*;
-use dioxus_blocks::components::toast::{
-    ToastProvider, use_toast
-};
-use dioxus_primitives::toast::ToastOptions;
+use dioxus::prelude::*;
+use dioxus_blocks::components::button::{Button, ButtonVariant};
+use dioxus_blocks::components::toast::{use_toast, ToastOptions, ToastProvider, ToastType};
 use std::time::Duration;
 
 fn main() {
-    #[cfg(debug_assertions)]
-    {
-        let _ = env_logger::builder()
-            .filter_level(log::LevelFilter::Debug)
-            .try_init();
-        log::info!("Logger initialized in debug mode");
-    }
-
-    dioxus::launch(ToastStandaloneExample);
+    dioxus::launch(App);
 }
 
 #[component]
-pub fn ToastStandaloneExample() -> Element {
+fn App() -> Element {
     rsx! {
         ToastProvider {
-            ToastExample {}
+            default_duration: Duration::from_secs(4),
+            max_toasts: 5,
+            
+            div {
+                class: "min-h-screen bg-background p-8",
+                
+                div {
+                    class: "max-w-4xl mx-auto space-y-8",
+                    
+                    h1 {
+                        class: "text-3xl font-bold text-foreground mb-8",
+                        "Toast Notification Examples"
+                    }
+                    
+                    ToastExamples {}
+                }
+            }
         }
     }
 }
 
 #[component]
-pub fn ToastExample() -> Element {
-    rsx! {
-        div { class: "toast-example p-12 bg-background min-h-screen",
-            div { class: "max-w-4xl mx-auto",
-                h2 { class: "mb-8 text-3xl font-bold text-foreground", "Toast Notifications Example" }
-                p { class: "mb-8 text-muted-foreground text-lg", 
-                    "Click the buttons below to see different types of toast notifications in action."
-                }
+pub fn ToastExamples() -> Element {
+    let toasts = use_toast();
 
-                div { class: "grid grid-cols-1 md:grid-cols-2 gap-8",
-                    // Basic Toast Types
-                    div { class: "space-y-6",
-                        h3 { class: "text-xl font-semibold mb-4", "Basic Toast Types" }
+    rsx! {
+        div {
+            class: "grid grid-cols-1 md:grid-cols-2 gap-6",
+            
+            // Basic Toast Types
+            div {
+                class: "space-y-4",
+                
+                h2 {
+                    class: "text-xl font-semibold text-foreground mb-4",
+                    "Basic Toast Types"
+                }
+                
+                Button {
+                    variant: use_signal(|| ButtonVariant::Primary),
+                    full_width: use_signal(|| true),
+                    on_click: move |_| {
+                        toasts.success("Success!".to_string(), None);
+                    },
+                    "Show Success Toast"
+                }
+                
+                Button {
+                    variant: use_signal(|| ButtonVariant::Destructive),
+                    full_width: use_signal(|| true),
+                    on_click: move |_| {
+                        toasts.error("Error occurred!".to_string(), None);
+                    },
+                    "Show Error Toast"
+                }
+                
+                Button {
+                    variant: use_signal(|| ButtonVariant::Secondary),
+                    full_width: use_signal(|| true),
+                    on_click: move |_| {
+                        toasts.warning("Warning message".to_string(), None);
+                    },
+                    "Show Warning Toast"
+                }
+                
+                Button {
+                    variant: use_signal(|| ButtonVariant::Outline),
+                    full_width: use_signal(|| true),
+                    on_click: move |_| {
+                        toasts.info("Information".to_string(), None);
+                    },
+                    "Show Info Toast"
+                }
+            }
+            
+            // Toast with Descriptions
+            div {
+                class: "space-y-4",
+                
+                h2 {
+                    class: "text-xl font-semibold text-foreground mb-4",
+                    "Toasts with Descriptions"
+                }
+                
+                Button {
+                    variant: use_signal(|| ButtonVariant::Primary),
+                    full_width: use_signal(|| true),
+                    on_click: move |_| {
+                        toasts.success(
+                            "Profile updated".to_string(),
+                            Some(ToastOptions {
+                                description: Some("Your profile has been successfully updated.".to_string()),
+                                ..Default::default()
+                            })
+                        );
+                    },
+                    "Success with Description"
+                }
+                
+                Button {
+                    variant: use_signal(|| ButtonVariant::Destructive),
+                    full_width: use_signal(|| true),
+                    on_click: move |_| {
+                        toasts.error(
+                            "Network Error".to_string(),
+                            Some(ToastOptions {
+                                description: Some("Failed to connect to the server. Please try again.".to_string()),
+                                ..Default::default()
+                            })
+                        );
+                    },
+                    "Error with Description"
+                }
+                
+                Button {
+                    variant: use_signal(|| ButtonVariant::Secondary),
+                    full_width: use_signal(|| true),
+                    on_click: move |_| {
+                        toasts.warning(
+                            "Storage Almost Full".to_string(),
+                            Some(ToastOptions {
+                                description: Some("You have used 90% of your storage quota.".to_string()),
+                                ..Default::default()
+                            })
+                        );
+                    },
+                    "Warning with Description"
+                }
+                
+                Button {
+                    variant: use_signal(|| ButtonVariant::Outline),
+                    full_width: use_signal(|| true),
+                    on_click: move |_| {
+                        toasts.info(
+                            "New Feature Available".to_string(),
+                            Some(ToastOptions {
+                                description: Some("Check out the new dashboard in your settings.".to_string()),
+                                ..Default::default()
+                            })
+                        );
+                    },
+                    "Info with Description"
+                }
+            }
+            
+            // Custom Duration Toasts
+            div {
+                class: "space-y-4",
+                
+                h2 {
+                    class: "text-xl font-semibold text-foreground mb-4",
+                    "Custom Duration"
+                }
+                
+                Button {
+                    variant: use_signal(|| ButtonVariant::Primary),
+                    full_width: use_signal(|| true),
+                    on_click: move |_| {
+                        toasts.success(
+                            "Quick toast".to_string(),
+                            Some(ToastOptions {
+                                description: Some("This toast disappears in 1 second".to_string()),
+                                duration: Some(Duration::from_secs(1)),
+                                ..Default::default()
+                            })
+                        );
+                    },
+                    "1 Second Toast"
+                }
+                
+                Button {
+                    variant: use_signal(|| ButtonVariant::Secondary),
+                    full_width: use_signal(|| true),
+                    on_click: move |_| {
+                        toasts.info(
+                            "Long toast".to_string(),
+                            Some(ToastOptions {
+                                description: Some("This toast stays for 10 seconds".to_string()),
+                                duration: Some(Duration::from_secs(10)),
+                                ..Default::default()
+                            })
+                        );
+                    },
+                    "10 Second Toast"
+                }
+                
+                Button {
+                    variant: use_signal(|| ButtonVariant::Destructive),
+                    full_width: use_signal(|| true),
+                    on_click: move |_| {
+                        toasts.error(
+                            "Permanent Error".to_string(),
+                            Some(ToastOptions {
+                                description: Some("This toast stays until manually closed".to_string()),
+                                permanent: true,
+                                ..Default::default()
+                            })
+                        );
+                    },
+                    "Permanent Toast"
+                }
+            }
+            
+            // Advanced Examples
+            div {
+                class: "space-y-4",
+                
+                h2 {
+                    class: "text-xl font-semibold text-foreground mb-4",
+                    "Advanced Examples"
+                }
+                
+                Button {
+                    variant: use_signal(|| ButtonVariant::Primary),
+                    full_width: use_signal(|| true),
+                    on_click: move |_| {
+                        // Simulate a file upload process
+                        toasts.info(
+                            "Upload started".to_string(),
+                            Some(ToastOptions {
+                                description: Some("Your file is being uploaded...".to_string()),
+                                duration: Some(Duration::from_millis(2000)),
+                                ..Default::default()
+                            })
+                        );
                         
-                        div { class: "space-y-3",
-                            BasicToastButtons {}
-                        }
-                    }
-
-                    // Advanced Toast Features
-                    div { class: "space-y-6",
-                        h3 { class: "text-xl font-semibold mb-4", "Advanced Features" }
-                        
-                        div { class: "space-y-3",
-                            AdvancedToastButtons {}
-                        }
-                    }
+                        // Show success after a delay (in a real app, this would be triggered by upload completion)
+                        toasts.success(
+                            "Upload complete".to_string(),
+                            Some(ToastOptions {
+                                description: Some("Your file has been successfully uploaded.".to_string()),
+                                duration: Some(Duration::from_secs(3)),
+                                ..Default::default()
+                            })
+                        );
+                    },
+                    "Simulate Upload Process"
                 }
-
-                div { class: "mt-12 p-6 rounded-lg bg-muted/50 border",
-                    h4 { class: "text-lg font-semibold mb-3", "Toast Features" }
-                    ul { class: "space-y-2 text-sm text-muted-foreground",
-                        li { "• Auto-dismiss with customizable duration" }
-                        li { "• Manual close option for important messages" }
-                        li { "• Different variants: Success, Error, Warning, Info" }
-                        li { "• Rich content with titles and descriptions" }
-                        li { "• Action buttons for interactive toasts" }
-                        li { "• Responsive design and dark mode support" }
-                        li { "• Accessible with proper ARIA labels" }
-                        li { "• Smooth animations and transitions" }
-                    }
+                
+                Button {
+                    variant: use_signal(|| ButtonVariant::Secondary),
+                    full_width: use_signal(|| true),
+                    on_click: move |_| {
+                        // Show multiple toasts of different types
+                        toasts.info("Processing...".to_string(), None);
+                        toasts.warning(
+                            "Rate limit warning".to_string(),
+                            Some(ToastOptions {
+                                description: Some("You're approaching your API rate limit.".to_string()),
+                                ..Default::default()
+                            })
+                        );
+                        toasts.success(
+                            "Task completed".to_string(),
+                            Some(ToastOptions {
+                                description: Some("All operations finished successfully.".to_string()),
+                                ..Default::default()
+                            })
+                        );
+                    },
+                    "Show Multiple Toasts"
+                }
+                
+                Button {
+                    variant: use_signal(|| ButtonVariant::Outline),
+                    full_width: use_signal(|| true),
+                    on_click: move |_| {
+                        // Custom toast using the show method directly
+                        toasts.show(
+                            "Custom Toast".to_string(),
+                            ToastType::Success,
+                            ToastOptions {
+                                description: Some("This toast was created using the show() method directly.".to_string()),
+                                duration: Some(Duration::from_secs(6)),
+                                permanent: false,
+                            }
+                        );
+                    },
+                    "Custom Show Method"
                 }
             }
         }
-    }
-}
-
-#[component]
-fn BasicToastButtons() -> Element {
-    let toast_api = use_toast();
-
-    rsx! {
-        div { class: "grid grid-cols-2 gap-3",
-            button {
-                class: "px-4 py-2 bg-green-600 text-white rounded-md hover:bg-green-700 transition-colors",
-                onclick: move |_| {
-                    toast_api.success(
-                        "Success!".to_string(),
-                        Some(ToastOptions {
-                            description: Some("Your action was completed successfully.".to_string()),
-                            duration: Some(Duration::from_secs(3)),
-                            ..Default::default()
-                        }),
-                    );
-                },
-                "Success Toast"
+        
+        div {
+            class: "mt-8 p-4 bg-muted rounded-lg",
+            h3 {
+                class: "text-lg font-semibold mb-2",
+                "Usage Tips"
             }
-
-            button {
-                class: "px-4 py-2 bg-red-600 text-white rounded-md hover:bg-red-700 transition-colors",
-                onclick: move |_| {
-                    toast_api.error(
-                        "Error occurred".to_string(),
-                        Some(ToastOptions {
-                            description: Some("Something went wrong. Please try again.".to_string()),
-                            duration: Some(Duration::from_secs(5)),
-                            ..Default::default()
-                        }),
-                    );
-                },
-                "Error Toast"
-            }
-
-            button {
-                class: "px-4 py-2 bg-yellow-600 text-white rounded-md hover:bg-yellow-700 transition-colors",
-                onclick: move |_| {
-                    toast_api.warning(
-                        "Warning".to_string(),
-                        Some(ToastOptions {
-                            description: Some("This action may have consequences.".to_string()),
-                            duration: Some(Duration::from_secs(4)),
-                            ..Default::default()
-                        }),
-                    );
-                },
-                "Warning Toast"
-            }
-
-            button {
-                class: "px-4 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700 transition-colors",
-                onclick: move |_| {
-                    toast_api.info(
-                        "Information".to_string(),
-                        Some(ToastOptions {
-                            description: Some("Here's some helpful information for you.".to_string()),
-                            duration: Some(Duration::from_secs(3)),
-                            ..Default::default()
-                        }),
-                    );
-                },
-                "Info Toast"
-            }
-        }
-    }
-}
-
-#[component]
-fn AdvancedToastButtons() -> Element {
-    let toast_api = use_toast();
-
-    rsx! {
-        div { class: "space-y-3",
-            button {
-                class: "w-full px-4 py-2 bg-purple-600 text-white rounded-md hover:bg-purple-700 transition-colors",
-                onclick: move |_| {
-                    toast_api.success(
-                        "Permanent Success".to_string(),
-                        Some(ToastOptions {
-                            description: Some("This toast won't disappear automatically.".to_string()),
-                            permanent: true,
-                            ..Default::default()
-                        }),
-                    );
-                },
-                "Permanent Toast"
-            }
-
-            button {
-                class: "w-full px-4 py-2 bg-indigo-600 text-white rounded-md hover:bg-indigo-700 transition-colors",
-                onclick: move |_| {
-                    toast_api.info(
-                        "Quick Message".to_string(),
-                        Some(ToastOptions {
-                            duration: Some(Duration::from_secs(1)),
-                            ..Default::default()
-                        }),
-                    );
-                },
-                "Quick Toast (1s)"
-            }
-
-            button {
-                class: "w-full px-4 py-2 bg-teal-600 text-white rounded-md hover:bg-teal-700 transition-colors",
-                onclick: move |_| {
-                    toast_api.warning(
-                        "Long Duration".to_string(),
-                        Some(ToastOptions {
-                            description: Some("This toast will stay visible for 10 seconds.".to_string()),
-                            duration: Some(Duration::from_secs(10)),
-                            ..Default::default()
-                        }),
-                    );
-                },
-                "Long Toast (10s)"
-            }
-
-            button {
-                class: "w-full px-4 py-2 bg-orange-600 text-white rounded-md hover:bg-orange-700 transition-colors",
-                onclick: move |_| {
-                    toast_api.error(
-                        "Critical Error".to_string(),
-                        Some(ToastOptions {
-                            description: Some("This is a critical error that requires immediate attention.".to_string()),
-                            permanent: true,
-                            ..Default::default()
-                        }),
-                    );
-                },
-                "Critical Error"
-            }
-
-            button {
-                class: "w-full px-4 py-2 bg-slate-600 text-white rounded-md hover:bg-slate-700 transition-colors",
-                onclick: move |_| {
-                    toast_api.info(
-                        "Rich Content".to_string(),
-                        Some(ToastOptions {
-                            description: Some("This toast contains rich content with detailed information about the current operation status.".to_string()),
-                            duration: Some(Duration::from_secs(6)),
-                            ..Default::default()
-                        }),
-                    );
-                },
-                "Rich Content"
+            ul {
+                class: "space-y-1 text-sm text-muted-foreground",
+                li { "• Success toasts are great for confirming actions" }
+                li { "• Error toasts should provide actionable information" }
+                li { "• Warning toasts help prevent user mistakes" }
+                li { "• Info toasts can announce new features or tips" }
+                li { "• Use permanent toasts for critical errors that need attention" }
+                li { "• Keep toast messages concise and clear" }
             }
         }
     }
