@@ -9,6 +9,8 @@ mod form_example;
 use form_example::FormExample;
 mod dropdown_example;
 use dropdown_example::DropdownExample;
+mod context_menu_example;
+use context_menu_example::ContextMenuExample;
 mod switch_example;
 use switch_example::SwitchExample;
 mod menubar_example;
@@ -61,6 +63,18 @@ fn App() -> Element {
             Collapsible {
                 CollapsibleTrigger { "Dropdown Example" }
                 CollapsibleContent { DropdownExample {} }
+            }
+
+            Separator {
+                class: "separator",
+                style: "margin: 15px 0;",
+                horizontal: true,
+                decorative: true,
+            }
+
+            Collapsible {
+                CollapsibleTrigger { "Context Menu Example" }
+                CollapsibleContent { ContextMenuExample {} }
             }
 
             Separator {

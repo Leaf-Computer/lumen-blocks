@@ -8,3 +8,4 @@ pub mod switch;
 pub mod menubar;
 pub mod hover_card;
 pub mod checkbox;
+pub mod context_menu;
