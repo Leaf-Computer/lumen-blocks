@@ -1,6 +1,8 @@
 use dioxus::prelude::*;
 use dioxus_primitives::toast::*;
-use dioxus_primitives::collapsible::*;
+use dioxus_blocks::components::collapsible::{
+    Collapsible, CollapsibleContent, CollapsibleTrigger,
+};
 use dioxus_primitives::separator::*;
 // Import examples as modules
 mod button_example;
@@ -37,130 +39,132 @@ fn App() -> Element {
     rsx! {
         document::Link { rel: "stylesheet", href: TAILWIND_CSS }
         
-        ToastProvider {
-            Collapsible {
-                CollapsibleTrigger { "Button Example" }
-                CollapsibleContent { ButtonExample {} }
-            }
-
-            Separator {
-                class: "separator",
-                style: "margin: 15px 0;",
-                horizontal: true,
-                decorative: true,
-            }
-
-            Collapsible {
-                CollapsibleTrigger { "Form Example" }
-                CollapsibleContent { FormExample {} }
-            }
-
-            Separator {
-                class: "separator",
-                style: "margin: 15px 0;",
-                horizontal: true,
-                decorative: true,
-            }
-
-            Collapsible {
-                CollapsibleTrigger { "Dropdown Example" }
-                CollapsibleContent { DropdownExample {} }
-            }
-
-            Separator {
-                class: "separator",
-                style: "margin: 15px 0;",
-                horizontal: true,
-                decorative: true,
-            }
-
-            Collapsible {
-                CollapsibleTrigger { "Context Menu Example" }
-                CollapsibleContent { ContextMenuExample {} }
-            }
-
-            Separator {
-                class: "separator",
-                style: "margin: 15px 0;",
-                horizontal: true,
-                decorative: true,
-            }
-
-            Collapsible {
-                CollapsibleTrigger { "Menubar Example" }
-                CollapsibleContent { MenubarExample {} }
-            }
-
-            Separator {
-                class: "separator",
-                style: "margin: 15px 0;",
-                horizontal: true,
-                decorative: true,
-            }
-
-            Collapsible {
-                CollapsibleTrigger { "Switch Example" }
-                CollapsibleContent { SwitchExample {} }
-            }
-            
-            Separator {
-                class: "separator",
-                style: "margin: 15px 0;",
-                horizontal: true,
-                decorative: true,
-            }
-            
-            Collapsible {
-                CollapsibleTrigger { "Accordion Example" }
-                CollapsibleContent { accordion_examples {} }
-            }
-            
-            Separator {
-                class: "separator",
-                style: "margin: 15px 0;",
-                horizontal: true,
-                decorative: true,
-            }
-            
-            Collapsible {
-                CollapsibleTrigger { "Collapsible Example" }
-                CollapsibleContent { CollapsibleExample {} }
-            }
-
-            Separator {
-                class: "separator",
-                style: "margin: 15px 0;",
-                horizontal: true,
-                decorative: true,
-            }
-
-            Collapsible {
-                CollapsibleTrigger { "Hover Card Example" }
-                CollapsibleContent { HoverCardExample {} }
-            }
-            
-            Separator {
-                class: "separator",
-                style: "margin: 15px 0;",
-                horizontal: true,
-                decorative: true,
-            }
-            
-            Collapsible {
-                CollapsibleTrigger { "Checkbox Example" }
-                CollapsibleContent { CheckboxExample {} }
-            }
-            
-            Separator {
-                class: "separator",
-                style: "margin: 15px 0;",
-                horizontal: true,
-                decorative: true,
-            }
-            
-            Collapsible {
-                CollapsibleTrigger { "Avatar Example" }
-                CollapsibleContent { avatar_examples {} }
+        div { class: "p-6",
+            ToastProvider {
+                Collapsible {
+                    CollapsibleTrigger { "Button Example" }
+                    CollapsibleContent { ButtonExample {} }
+                }
+    
+                Separator {
+                    class: "separator",
+                    style: "margin: 15px 0;",
+                    horizontal: true,
+                    decorative: true,
+                }
+    
+                Collapsible {
+                    CollapsibleTrigger { "Form Example" }
+                    CollapsibleContent { FormExample {} }
+                }
+    
+                Separator {
+                    class: "separator",
+                    style: "margin: 15px 0;",
+                    horizontal: true,
+                    decorative: true,
+                }
+    
+                Collapsible {
+                    CollapsibleTrigger { "Dropdown Example" }
+                    CollapsibleContent { DropdownExample {} }
+                }
+    
+                Separator {
+                    class: "separator",
+                    style: "margin: 15px 0;",
+                    horizontal: true,
+                    decorative: true,
+                }
+    
+                Collapsible {
+                    CollapsibleTrigger { "Context Menu Example" }
+                    CollapsibleContent { ContextMenuExample {} }
+                }
+    
+                Separator {
+                    class: "separator",
+                    style: "margin: 15px 0;",
+                    horizontal: true,
+                    decorative: true,
+                }
+    
+                Collapsible {
+                    CollapsibleTrigger { "Menubar Example" }
+                    CollapsibleContent { MenubarExample {} }
+                }
+    
+                Separator {
+                    class: "separator",
+                    style: "margin: 15px 0;",
+                    horizontal: true,
+                    decorative: true,
+                }
+    
+                Collapsible {
+                    CollapsibleTrigger { "Switch Example" }
+                    CollapsibleContent { SwitchExample {} }
+                }
+                
+                Separator {
+                    class: "separator",
+                    style: "margin: 15px 0;",
+                    horizontal: true,
+                    decorative: true,
+                }
+                
+                Collapsible {
+                    CollapsibleTrigger { "Accordion Example" }
+                    CollapsibleContent { accordion_examples {} }
+                }
+                
+                Separator {
+                    class: "separator",
+                    style: "margin: 15px 0;",
+                    horizontal: true,
+                    decorative: true,
+                }
+                
+                Collapsible {
+                    CollapsibleTrigger { "Collapsible Example" }
+                    CollapsibleContent { CollapsibleExample {} }
+                }
+    
+                Separator {
+                    class: "separator",
+                    style: "margin: 15px 0;",
+                    horizontal: true,
+                    decorative: true,
+                }
+    
+                Collapsible {
+                    CollapsibleTrigger { "Hover Card Example" }
+                    CollapsibleContent { HoverCardExample {} }
+                }
+                
+                Separator {
+                    class: "separator",
+                    style: "margin: 15px 0;",
+                    horizontal: true,
+                    decorative: true,
+                }
+                
+                Collapsible {
+                    CollapsibleTrigger { "Checkbox Example" }
+                    CollapsibleContent { CheckboxExample {} }
+                }
+                
+                Separator {
+                    class: "separator",
+                    style: "margin: 15px 0;",
+                    horizontal: true,
+                    decorative: true,
+                }
+                
+                Collapsible {
+                    CollapsibleTrigger { "Avatar Example" }
+                    CollapsibleContent { avatar_examples {} }
+                }
             }
         }
     }
