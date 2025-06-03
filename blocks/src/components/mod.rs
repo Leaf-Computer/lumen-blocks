@@ -6,3 +6,4 @@ pub mod dropdown;
 pub mod switch;
 pub mod menubar;
 pub mod hover_card;
+pub mod checkbox;
