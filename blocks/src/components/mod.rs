@@ -12,3 +12,4 @@ pub mod checkbox;
 pub mod context_menu;
 pub mod collapsible;
 pub mod toast;
+pub mod progress;

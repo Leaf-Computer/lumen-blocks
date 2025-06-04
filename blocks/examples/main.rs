@@ -32,6 +32,8 @@ use aspect_ratio_example::AspectRatioExample;
 use dioxus_blocks::components::toast::ToastProvider;
 mod toast_example;
 use toast_example::ToastExamples;
+mod progress_example;
+use progress_example::ProgressExample;
 
 const TAILWIND_CSS: Asset = asset!("assets/tailwind.css");
 
@@ -186,6 +188,10 @@ fn App() -> Element {
                 Collapsible {
                     CollapsibleTrigger { "Toast Example" }
                     CollapsibleContent { ToastExamples {} }
+               
+                Collapsible {
+                    CollapsibleTrigger { "Progress Example" }
+                    CollapsibleContent { ProgressExample {} }
                 }
             }
         }
