@@ -47,17 +47,10 @@ fn App() -> Element {
         document::Link { rel: "stylesheet", href: TAILWIND_CSS }
         ToastProvider {
             default_duration: Duration::from_secs(5),
-            div { class: "p-6",
+            div { class: "p-6 flex flex-col gap-4",
                 Collapsible {
                     CollapsibleTrigger { "Button Example" }
                     CollapsibleContent { ButtonExample {} }
-                }
-    
-                Separator {
-                    class: "separator",
-                    style: "margin: 15px 0;",
-                    horizontal: true,
-                    decorative: true,
                 }
     
                 Collapsible {
@@ -65,23 +58,9 @@ fn App() -> Element {
                     CollapsibleContent { FormExample {} }
                 }
     
-                Separator {
-                    class: "separator",
-                    style: "margin: 15px 0;",
-                    horizontal: true,
-                    decorative: true,
-                }
-    
                 Collapsible {
                     CollapsibleTrigger { "Dropdown Example" }
                     CollapsibleContent { DropdownExample {} }
-                }
-    
-                Separator {
-                    class: "separator",
-                    style: "margin: 15px 0;",
-                    horizontal: true,
-                    decorative: true,
                 }
     
                 Collapsible {
@@ -89,23 +68,9 @@ fn App() -> Element {
                     CollapsibleContent { ContextMenuExample {} }
                 }
     
-                Separator {
-                    class: "separator",
-                    style: "margin: 15px 0;",
-                    horizontal: true,
-                    decorative: true,
-                }
-    
                 Collapsible {
                     CollapsibleTrigger { "Menubar Example" }
                     CollapsibleContent { MenubarExample {} }
-                }
-    
-                Separator {
-                    class: "separator",
-                    style: "margin: 15px 0;",
-                    horizontal: true,
-                    decorative: true,
                 }
     
                 Collapsible {
@@ -113,23 +78,9 @@ fn App() -> Element {
                     CollapsibleContent { SwitchExample {} }
                 }
                 
-                Separator {
-                    class: "separator",
-                    style: "margin: 15px 0;",
-                    horizontal: true,
-                    decorative: true,
-                }
-                
                 Collapsible {
                     CollapsibleTrigger { "Accordion Example" }
                     CollapsibleContent { accordion_examples {} }
-                }
-                
-                Separator {
-                    class: "separator",
-                    style: "margin: 15px 0;",
-                    horizontal: true,
-                    decorative: true,
                 }
                 
                 Collapsible {
@@ -137,23 +88,9 @@ fn App() -> Element {
                     CollapsibleContent { CollapsibleExample {} }
                 }
     
-                Separator {
-                    class: "separator",
-                    style: "margin: 15px 0;",
-                    horizontal: true,
-                    decorative: true,
-                }
-    
                 Collapsible {
                     CollapsibleTrigger { "Hover Card Example" }
                     CollapsibleContent { HoverCardExample {} }
-                }
-                
-                Separator {
-                    class: "separator",
-                    style: "margin: 15px 0;",
-                    horizontal: true,
-                    decorative: true,
                 }
                 
                 Collapsible {
@@ -161,23 +98,9 @@ fn App() -> Element {
                     CollapsibleContent { CheckboxExample {} }
                 }
                 
-                Separator {
-                    class: "separator",
-                    style: "margin: 15px 0;",
-                    horizontal: true,
-                    decorative: true,
-                }
-                
                 Collapsible {
                     CollapsibleTrigger { "Avatar Example" }
                     CollapsibleContent { avatar_examples {} }
-                }
-                
-                Separator {
-                    class: "separator",
-                    style: "margin: 15px 0;",
-                    horizontal: true,
-                    decorative: true,
                 }
                 
                 Collapsible {
@@ -188,7 +111,8 @@ fn App() -> Element {
                 Collapsible {
                     CollapsibleTrigger { "Toast Example" }
                     CollapsibleContent { ToastExamples {} }
-               
+                }
+                
                 Collapsible {
                     CollapsibleTrigger { "Progress Example" }
                     CollapsibleContent { ProgressExample {} }
