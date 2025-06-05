@@ -40,7 +40,7 @@ pub struct MenubarMenuProps {
 
 #[component]
 pub fn MenubarMenu(props: MenubarMenuProps) -> Element {
-    let default_classes = "relative menubar-menu flex flex-col items-stretch";
+    let default_classes = "relative group flex flex-col items-stretch";
     let class = if let Some(extra) = &props.class {
         format!("{} {}", extra, default_classes)
     } else {
@@ -91,7 +91,7 @@ pub struct MenubarContentProps {
 
 #[component]
 pub fn MenubarContent(props: MenubarContentProps) -> Element {
-    let default_classes = "menubar-content absolute left-0 top-full mt-2 min-w-[10rem] bg-popover border border-border rounded-md shadow-lg z-50 p-1";
+    let default_classes = "hidden group-data-[state=open]:block absolute left-0 top-full mt-2 min-w-[10rem] bg-popover border border-border rounded-md shadow-lg z-50 p-1";
     let class = if let Some(extra) = &props.class {
         format!("{} {}", extra, default_classes)
     } else {

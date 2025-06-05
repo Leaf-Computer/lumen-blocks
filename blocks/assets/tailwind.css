@@ -1135,6 +1135,10 @@ video {
   grid-template-columns: repeat(3, minmax(0, 1fr));
 }
 
+.grid-rows-\[0fr\] {
+  grid-template-rows: 0fr;
+}
+
 .flex-row {
   flex-direction: row;
 }
@@ -1816,6 +1820,12 @@ video {
   transition-duration: 150ms;
 }
 
+.transition-\[grid-template-rows\] {
+  transition-property: grid-template-rows;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-duration: 150ms;
+}
+
 .transition-all {
   transition-property: all;
   transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
@@ -1846,6 +1856,10 @@ video {
   transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
 }
 
+.ease-out {
+  transition-timing-function: cubic-bezier(0, 0, 0.2, 1);
+}
+
 .will-change-transform {
   will-change: transform;
 }
@@ -1860,26 +1874,7 @@ body {
   color: var(--foreground);
 }
 
-.accordion-content {
-  display: grid;
-  grid-template-rows: 0fr;
-  transition: grid-template-rows 0.3s ease-out;
-}
-
-.accordion-item[data-open="true"] .accordion-content {
-  grid-template-rows: 1fr;
-}
-
-.menubar-content {
-  display: none;
-}
-
-.menubar-menu[data-state="open"] .menubar-content {
-  display: block;
-}
-
 /* 
-
 Based on MIT-licensed code from shadcn
 
 https://github.com/shadcn-ui/ui/blob/2773f9e2e29cf67e521632d15d1ba302a82e39e9/LICENSE.md
@@ -2071,8 +2066,16 @@ https://github.com/shadcn-ui/ui/blob/2773f9e2e29cf67e521632d15d1ba302a82e39e9/LI
   opacity: 1;
 }
 
+.group[data-state="open"] .group-data-\[state\=open\]\:block {
+  display: block;
+}
+
 .group[data-state="error"] .group-data-\[state\=error\]\:hidden {
   display: none;
+}
+
+.group[data-open="true"] .group-data-\[open\=true\]\:grid-rows-\[1fr\] {
+  grid-template-rows: 1fr;
 }
 
 @media (min-width: 768px) {

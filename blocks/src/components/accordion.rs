@@ -88,7 +88,7 @@ pub fn AccordionItem(props: AccordionItemProps) -> Element {
     
     let item_classes = vec![
         // Base classes
-        "accordion-item border-b last:border-b-0 border-border",
+        "group border-b last:border-b-0 border-border",
         
         // Additional classes passed by the user
         props.class.as_deref().unwrap_or(""),
@@ -200,7 +200,7 @@ pub fn AccordionContent(props: AccordionContentProps) -> Element {
     
     let content_classes = vec![
         // Base classes
-        "accordion-content text-sm",
+        "grid grid-rows-[0fr] transition-[grid-template-rows] duration-300 ease-out group-data-[open=true]:grid-rows-[1fr] text-sm",
         
         // Additional classes passed by the user
         props.class.as_deref().unwrap_or(""),

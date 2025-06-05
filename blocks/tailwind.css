@@ -7,26 +7,7 @@ body {
     color: var(--foreground);
 }
 
-.accordion-content {
-  display: grid;
-  grid-template-rows: 0fr;
-  transition: grid-template-rows 0.3s ease-out;
-}
-
-.accordion-item[data-open="true"] .accordion-content {
-  grid-template-rows: 1fr;
-}
-
-.menubar-content {
-    display: none;
-}
-
-.menubar-menu[data-state="open"] .menubar-content {
-    display: block;
-}
-
 /* 
-
 Based on MIT-licensed code from shadcn
 
 https://github.com/shadcn-ui/ui/blob/2773f9e2e29cf67e521632d15d1ba302a82e39e9/LICENSE.md
