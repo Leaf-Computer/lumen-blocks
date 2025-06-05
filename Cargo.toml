@@ -1,6 +1,6 @@
 [workspace]
 resolver = "3"
-members = ["blocks"]
+members = ["blocks", "sample-app"]
 
 [workspace.dependencies]
 laminar-blocks = { path = "blocks" }
