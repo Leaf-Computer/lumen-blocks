@@ -1,4 +1,5 @@
 <div align="center">
+  <img src="media/laminar-logo.png" width="300px" alt="Laminar Blocks Logo">
   <h1>Laminar Blocks</h1>
   <p><strong>Accessible, styled, opinionated components for Dioxus.</strong></p>
 </div>
