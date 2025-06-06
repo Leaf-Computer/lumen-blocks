@@ -3668,7 +3668,9 @@ name = "sample-app"
 version = "0.1.0"
 dependencies = [
  "dioxus",
+ "dioxus-time",
  "laminar-blocks",
+ "lucide-dioxus",
 ]
 
 [[package]]
