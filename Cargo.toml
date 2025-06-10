@@ -7,6 +7,10 @@ laminar-blocks = { path = "blocks" }
 
 dioxus = "0.6"
 dioxus-lib = "0.6"
+use-mdbook = { git = "https://github.com/DioxusLabs/docsite.git", rev = "ab5e121b9a9e022cecdfd35f55af3cac993fb5fb" }
+mdbook-shared = { git = "https://github.com/DioxusLabs/docsite.git", rev = "ab5e121b9a9e022cecdfd35f55af3cac993fb5fb" }
+mdbook-gen = { git = "https://github.com/DioxusLabs/docsite.git", rev = "ab5e121b9a9e022cecdfd35f55af3cac993fb5fb" }
+syn = "2.0.98"
 tracing = { version = "0.1", features = ["std"] }
 
 [profile]

@@ -1,0 +1,17 @@
+[package]
+name = "laminar-blocks-docs"
+version = "0.0.0"
+edition = "2021"
+
+[dependencies]
+serde = {version = "1.0.163", features = ["derive"]}
+use-mdbook = { workspace = true }
+dioxus = { workspace = true }
+mdbook-shared = { workspace = true }
+
+[build-dependencies]
+mdbook-gen = { workspace = true, features = ["manganis"] }
+mdbook-shared = { workspace = true }
+dioxus-autofmt = { version = "0.6.0" }
+prettyplease = "0.2.20"
+syn = { workspace = true }
