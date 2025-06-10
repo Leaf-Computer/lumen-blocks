@@ -5,11 +5,11 @@ dev-components:
 dev-components-tailwind:
     cd blocks && tailwindcss -i tailwind.css -o assets/tailwind.css --config tailwind.config.js --watch
     
-dev-sample:
-    dx serve -p sample-app --platform web
+dev-docsite:
+    dx serve -p docsite --platform web
 
-dev-sample-tailwind:
-    cd sample-app && tailwindcss -i tailwind.css -o assets/tailwind.css --config tailwind.config.js --watch
+dev-docsite-tailwind:
+    cd docsite && tailwindcss -i tailwind.css -o assets/tailwind.css --config tailwind.config.js --watch
 
 # Show available commands
 default:

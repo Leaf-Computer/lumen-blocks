@@ -1378,6 +1378,34 @@ dependencies = [
 ]
 
 [[package]]
+name = "docs"
+version = "0.0.0"
+dependencies = [
+ "dioxus",
+ "dioxus-autofmt",
+ "laminar-blocks",
+ "lucide-dioxus",
+ "mdbook-gen",
+ "mdbook-shared",
+ "prettyplease",
+ "serde",
+ "syn 2.0.101",
+ "use-mdbook",
+]
+
+[[package]]
+name = "docsite"
+version = "0.1.0"
+dependencies = [
+ "dioxus",
+ "dioxus-time",
+ "docs",
+ "laminar-blocks",
+ "lucide-dioxus",
+ "mdbook-shared",
+]
+
+[[package]]
 name = "dpi"
 version = "0.1.2"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -1490,7 +1518,7 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "cea14ef9355e3beab063703aa9dab15afd25f0667c341310c1e5274bb1d0da18"
 dependencies = [
  "libc",
- "windows-sys 0.59.0",
+ "windows-sys 0.52.0",
 ]
 
 [[package]]
@@ -2459,7 +2487,7 @@ checksum = "e04d7f318608d35d4b61ddd75cbdaee86b023ebe2bd5a66ee0915f0bf93095a9"
 dependencies = [
  "hermit-abi",
  "libc",
- "windows-sys 0.59.0",
+ "windows-sys 0.52.0",
 ]
 
 [[package]]
@@ -2807,6 +2835,27 @@ dependencies = [
  "proc-macro2",
  "pulldown-cmark 0.13.0",
  "pulldown-cmark-to-cmark",
+ "quote",
+ "serde",
+ "serde_json",
+ "syn 2.0.101",
+ "syntect",
+]
+
+[[package]]
+name = "mdbook-macro"
+version = "0.1.0"
+source = "git+https://github.com/DioxusLabs/docsite.git?rev=ab5e121b9a9e022cecdfd35f55af3cac993fb5fb#ab5e121b9a9e022cecdfd35f55af3cac993fb5fb"
+dependencies = [
+ "anyhow",
+ "convert_case 0.6.0",
+ "dioxus-rsx",
+ "macro_state",
+ "mdbook-gen",
+ "mdbook-shared",
+ "postcard",
+ "proc-macro2",
+ "pulldown-cmark 0.9.6",
  "quote",
  "serde",
  "serde_json",
@@ -3946,7 +3995,7 @@ dependencies = [
  "errno",
  "libc",
  "linux-raw-sys",
- "windows-sys 0.59.0",
+ "windows-sys 0.52.0",
 ]
 
 [[package]]
@@ -3968,17 +4017,6 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "93fc1dc3aaa9bfed95e02e6eadabb4baf7e3078b0bd1b4d7b6b0b68378900502"
 dependencies = [
  "winapi-util",
-]
-
-[[package]]
-name = "sample-app"
-version = "0.1.0"
-dependencies = [
- "dioxus",
- "dioxus-time",
- "laminar-blocks",
- "lucide-dioxus",
- "mdbook-gen",
 ]
 
 [[package]]
@@ -4525,7 +4563,7 @@ dependencies = [
  "getrandom 0.3.3",
  "once_cell",
  "rustix",
- "windows-sys 0.59.0",
+ "windows-sys 0.52.0",
 ]
 
 [[package]]
@@ -4955,6 +4993,21 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "daf8dba3b7eb870caf1ddeed7bc9d2a049f3cfdfae7cb521b087cc33ae4c49da"
 
 [[package]]
+name = "use-mdbook"
+version = "0.1.0"
+source = "git+https://github.com/DioxusLabs/docsite.git?rev=ab5e121b9a9e022cecdfd35f55af3cac993fb5fb#ab5e121b9a9e022cecdfd35f55af3cac993fb5fb"
+dependencies = [
+ "lazy_static",
+ "mdbook-macro",
+ "mdbook-shared",
+ "once_cell",
+ "postcard",
+ "serde",
+ "serde_json",
+ "yazi",
+]
+
+[[package]]
 name = "utf-8"
 version = "0.7.6"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -5263,7 +5316,7 @@ version = "0.1.9"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "cf221c93e13a30d793f7645a0e7762c55d169dbb0a49671918a2319d289b10bb"
 dependencies = [
- "windows-sys 0.59.0",
+ "windows-sys 0.48.0",
 ]
 
 [[package]]
@@ -5674,6 +5727,12 @@ checksum = "56c1936c4cc7a1c9ab21a1ebb602eb942ba868cbd44a99cb7cdc5892335e1c85"
 dependencies = [
  "linked-hash-map",
 ]
+
+[[package]]
+name = "yazi"
+version = "0.2.1"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "e01738255b5a16e78bbb83e7fbba0a1e7dd506905cfc53f4622d89015a03fbb5"
 
 [[package]]
 name = "yoke"
