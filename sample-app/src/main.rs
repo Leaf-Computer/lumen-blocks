@@ -25,6 +25,7 @@ enum Route {
 
 const FAVICON: Asset = asset!("/assets/favicon.ico");
 const TAILWIND_CSS: Asset = asset!("/assets/tailwind.css");
+const LAMINAR_LOGO: Asset = asset!("/assets/laminar-logo.png");
 
 fn main() {
     dioxus::launch(App);
@@ -49,6 +50,7 @@ fn Home() -> Element {
             
             div { class: "max-w-6xl mx-auto px-6 py-12",
                 div { class: "text-center mb-12",
+                    img { class: "w-48 h-48 mx-auto mb-4", src: LAMINAR_LOGO, alt: "Laminar Logo" }
                     h1 { class: "text-4xl font-bold text-foreground mb-4", "Laminar Blocks Demo" }
                     p { class: "text-xl text-muted-foreground mb-8", 
                         "A comprehensive component library for Dioxus applications" 
@@ -325,9 +327,7 @@ fn Navbar() -> Element {
         nav { class: "bg-card border-b border-border px-6 py-4",
             div { class: "max-w-6xl mx-auto flex items-center justify-between",
                 div { class: "flex items-center gap-2",
-                    div { class: "w-8 h-8 bg-primary rounded-lg flex items-center justify-center",
-                        span { class: "text-primary-foreground font-bold", "L" }
-                    }
+                    img { class: "w-8 h-8", src: LAMINAR_LOGO }
                     span { class: "text-xl font-bold text-foreground", "Laminar Blocks" }
                 }
                 

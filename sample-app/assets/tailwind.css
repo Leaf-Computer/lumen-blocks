@@ -918,6 +918,14 @@ video {
   height: 1px;
 }
 
+.h-24 {
+  height: 6rem;
+}
+
+.h-48 {
+  height: 12rem;
+}
+
 .min-h-\[100px\] {
   min-height: 100px;
 }
@@ -1028,6 +1036,10 @@ video {
 
 .w-full {
   width: 100%;
+}
+
+.w-24 {
+  width: 6rem;
 }
 
 .min-w-\[100px\] {
