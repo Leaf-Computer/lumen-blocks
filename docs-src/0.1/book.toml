@@ -1,0 +1,29 @@
+[book.en]
+title = "Laminar Blocks Documentation"
+description = "Get started with "
+authors = ["Daniel D’Aquino"]
+
+[rust]
+edition = "2018"
+
+[output.html]
+mathjax-support = true
+site-url = "/mdBook/"
+
+[output.html.playground]
+editable = false
+line-numbers = true
+# running examples will not work because dioxus is not a included in the playground
+runnable = false
+
+[output.html.search]
+limit-results = 20
+use-boolean-and = true
+boost-title = 2
+boost-hierarchy = 2
+boost-paragraph = 1
+expand = true
+heading-split-level = 2
+
+# [output.html.redirect]
+# "/format/config.html" = "configuration/index.html"

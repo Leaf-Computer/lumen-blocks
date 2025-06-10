@@ -11,6 +11,7 @@ dioxus = { workspace = true, features = ["router"] }
 laminar-blocks.workspace = true
 lucide-dioxus = { version = "2.1.0", features = ["all-icons"] }
 dioxus-time = "=0.1.0-alpha.1"
+mdbook-gen = { git = "https://github.com/DioxusLabs/docsite.git", rev = "ab5e121b9a9e022cecdfd35f55af3cac993fb5fb" }
 
 [features]
 default = ["web"]

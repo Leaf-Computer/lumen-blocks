@@ -20,7 +20,7 @@ enum Route {
     #[route("/components")]
     Components {},
     #[route("/dashboard")]
-    Dashboard {},
+    Dashboard {}
 }
 
 const FAVICON: Asset = asset!("/assets/favicon.ico");
