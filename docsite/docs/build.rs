@@ -3,14 +3,13 @@ use std::{env::current_dir, path::PathBuf};
 
 fn main() {
     // re-run only if the "example-book" directory changes
-    println!("cargo:rerun-if-changed=../../docs-src/");
-    println!("cargo:rerun-if-changed=src/doc_examples/");
+    println!("cargo:rerun-if-changed=./docs-src/");
 
     make_docs("0.1");
 }
 
 fn make_docs(version: &str) {
-    let mdbook_dir = PathBuf::from("../docs-src").join(version);
+    let mdbook_dir = PathBuf::from("./docs-src").join(version);
     let out_dir = current_dir().unwrap().join("src/docs");
     let mut out = generate_router_build_script(mdbook_dir);
     out.push_str("\nuse super::*;\n");

@@ -1,6 +1,6 @@
 [workspace]
 resolver = "3"
-members = ["blocks", "sample-app"]
+members = ["blocks", "docsite"]
 
 [workspace.dependencies]
 laminar-blocks = { path = "blocks" }
@@ -12,6 +12,7 @@ mdbook-shared = { git = "https://github.com/DioxusLabs/docsite.git", rev = "ab5e
 mdbook-gen = { git = "https://github.com/DioxusLabs/docsite.git", rev = "ab5e121b9a9e022cecdfd35f55af3cac993fb5fb" }
 syn = "2.0.98"
 tracing = { version = "0.1", features = ["std"] }
+docs = { path = "./docsite/docs" }
 
 [profile]
 
