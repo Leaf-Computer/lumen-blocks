@@ -163,7 +163,7 @@ pub fn SideSheetContent(props: SideSheetContentProps) -> Element {
             
             // Content
             div {
-                class: "fixed z-50 bg-background shadow-lg transition ease-in-out duration-300 {side_classes} {animation_classes} {props.class}",
+                class: "fixed z-50 bg-background border-l border-border shadow-lg transition ease-in-out duration-300 {side_classes} {animation_classes} {props.class}",
                 role: "dialog",
                 aria_modal: "true",
                 aria_labelledby: "side-sheet-title",

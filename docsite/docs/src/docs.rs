@@ -1,6 +1,8 @@
 use crate::doc_examples::*;
 use dioxus::prelude::*;
+use laminar_blocks::components::button::{Button, ButtonSize, ButtonVariant};
 use std::hash::Hash;
+use lucide_dioxus::{Check, Copy};
 
 pub mod router_01;
 
@@ -8,7 +10,7 @@ pub mod router_01;
 fn SandBoxFrame(url: String) -> Element {
     rsx! {
         iframe {
-            style: "border: 1px solid rgba(0, 0, 0, 0.1);border-radius:2px;",
+            class: "border rounded-md border-border shadow-sm",
             width: "800",
             height: "450",
             src: "{url}?embed=1",
@@ -21,8 +23,7 @@ fn SandBoxFrame(url: String) -> Element {
 fn DemoFrame(children: Element) -> Element {
     rsx! {
         div {
-            class: "bg-background rounded-md shadow-md p-4 my-4 overflow-auto text-black dioxus-demo",
-            max_height: "50vh",
+            class: "bg-background border border-border rounded-lg shadow p-6 my-6 overflow-auto text-foreground",
             {children}
         }
     }
@@ -30,7 +31,10 @@ fn DemoFrame(children: Element) -> Element {
 
 fn LayoutsExplanation() -> Element {
     rsx! {
-        pre { onmouseenter: move |_| {}, onmouseleave: move |_| {},
+        pre {
+            class: "p-4 bg-card rounded-lg text-sm font-mono text-card-foreground overflow-auto",
+            onmouseenter: move |_| {},
+            onmouseleave: move |_| {},
             span {
                 "#[derive(Clone, Routable, PartialEq, Eq, Serialize, Deserialize)]
 #[rustfmt::skip]
@@ -39,21 +43,21 @@ pub enum Route {{\n\t"
             span {
                 onmouseenter: move |_| {},
                 onmouseleave: move |_| {},
-                class: "border border-orange-600 rounded-md",
+                class: "border border-orange-500 rounded-md px-1",
                 "#[layout(HeaderFooter)]"
             }
             span { "\n\t\t// ... other routes\n\t\t" }
             span {
                 onmouseenter: move |_| {},
                 onmouseleave: move |_| {},
-                class: "border border-green-600 rounded-md",
+                class: "border border-green-500 rounded-md px-1",
                 r##"#[layout(DocsSidebars)]"##
             }
             "\n\t\t\t"
             span {
                 onmouseenter: move |_| {},
                 onmouseleave: move |_| {},
-                class: "border border-blue-600 rounded-md",
+                class: "border border-blue-500 rounded-md px-1",
                 r##"#[route("/learn")]"##
             }
             span { "\n\t\t\tDocs {{}},\n}}" }
@@ -65,39 +69,33 @@ pub enum Route {{\n\t"
 fn CodeBlock(contents: String, name: Option<String>) -> Element {
     let mut copied = use_signal(|| false);
     rsx! {
-        div { class: "border overflow-hidden rounded-md border-gray-300 dark:border-gray-700 mb-8",
-            div { class: "w-full bg-red flex flex-row justify-between border-b border-gray-300 dark:border-gray-700 py-1 px-2 text-xs items-center bg-gray-100 dark:bg-ideblack",
-                div { class: "font-mono",
+        div {
+            class: "rounded-lg border border-border shadow-sm mb-6 overflow-hidden",
+            div {
+                class: "bg-card flex justify-between items-center p-2 text-xs font-mono rounded-t-lg",
+                div {
+                    class: "text-card-foreground",
                     if let Some(path) = name {
                         "src/{path}"
                     }
                 }
-                button {
-                    class: "hover:text-blue-600 flex flex-row items-center gap-1",
-                    class: if copied() { "text-green-600" },
+                Button {
+                    variant: ButtonVariant::Ghost,
+                    size: ButtonSize::Small,
+                    on_click: move |_| { copied.set(true); },
                     "onclick": "navigator.clipboard.writeText(this.parentNode.parentNode.lastChild.innerText);",
-                    onclick: move |_| copied.set(true),
                     if copied() {
-                        "Copied!"
+                        div { class: "flex gap-1 text-green-500 items-center",
+                            Check { class: "w-4 h-4" }
+                            "Copied!"
+                        }
                     }
-                    span { Copy {} }
+                    else {
+                        Copy { class: "w-4 h-4" }
+                    }
                 }
             }
-            div { class: "codeblock", dangerous_inner_html: contents }
+            div { class: "codeblock text-xs bg-[#0d0d0d] p-4 overflow-auto", dangerous_inner_html: contents }
         }
     }
 }
-
-
-pub(crate) static Copy: Component<()> = |_| {
-    rsx!(
-        svg {
-            width: "24",
-            height: "24",
-            stroke_width: "1.5",
-            fill: "none",
-            stroke: "currentColor",
-            path { d: "M8 16c0 1.886 0 2.828.586 3.414C9.172 20 10.114 20 12 20h4c1.886 0 2.828 0 3.414-.586C20 18.828 20 17.886 20 16v-4c0-1.886 0-2.828-.586-3.414C18.828 8 17.886 8 16 8m-8 8h4c1.886 0 2.828 0 3.414-.586C16 14.828 16 13.886 16 12V8m-8 8c-1.886 0-2.828 0-3.414-.586C4 14.828 4 13.886 4 12V8c0-1.886 0-2.828.586-3.414C5.172 4 6.114 4 8 4h4c1.886 0 2.828 0 3.414.586C16 5.172 16 6.114 16 8" }
-        }
-    )
-};

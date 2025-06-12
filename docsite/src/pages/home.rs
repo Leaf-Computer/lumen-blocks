@@ -8,6 +8,7 @@ use laminar_blocks::components::{
     switch::Switch,
 };
 use lucide_dioxus::{Check, Info, X};
+use docs::docs;
 
 use crate::components::Navbar;
 use crate::Route;
@@ -17,8 +18,7 @@ use crate::components::FeatureCard;
 #[component]
 pub fn Home() -> Element {
     rsx! {
-        div { class: "min-h-screen bg-background",
-            Navbar {}
+        div { class: "min-h-screen bg-background relative",
             
             div { class: "max-w-6xl mx-auto px-6 py-12",
                 div { class: "text-center mb-12",
@@ -29,18 +29,11 @@ pub fn Home() -> Element {
                     }
                     
                     div { class: "flex justify-center gap-4",
-                        Link { to: Route::Components {},
+                        Link { to: Route::Docs01 { child: docs::router_01::BookRoute::Index { section: Default::default() } },
                             Button {
                                 variant: use_signal(|| ButtonVariant::Primary),
                                 size: use_signal(|| ButtonSize::Large),
                                 "View Components"
-                            }
-                        }
-                        Link { to: Route::Dashboard {},
-                            Button {
-                                variant: use_signal(|| ButtonVariant::Ghost),
-                                size: use_signal(|| ButtonSize::Large),
-                                "Dashboard Demo"
                             }
                         }
                     }

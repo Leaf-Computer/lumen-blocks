@@ -12,33 +12,29 @@ use lucide_dioxus::{Check, Info, X};
 mod components;
 mod pages;
 mod layouts;
-use crate::components::MainLayout;
 use crate::components::{ProjectCard, StatsCard};
-use crate::pages::{Components, Dashboard, Home};
-use crate::layouts::DocsLayout;
+use crate::pages::{Err404, Dashboard, Home};
+use crate::layouts::{DocsLayout, MainLayout};
 use docs::docs;
 
 #[derive(Clone, Routable, PartialEq, Eq, Debug)]
 enum Route {
+    #[layout(MainLayout)]
     
-    #[route("/")]
-    Home {},
-    
-    #[route("/components")]
-    Components {},
-    
-    #[layout(DocsLayout)]
-        #[nest("/docs")]
-            #[redirect("/", || Route::Docs01 { child: docs::router_01::BookRoute::Index { section: Default::default() } })]
-            
-            #[child("/0.1")]
-            Docs01 { child: docs::router_01::BookRoute },
-        #[end_nest]
+        #[route("/")]
+        Home {},
+        
+        #[layout(DocsLayout)]
+            #[nest("/docs")]
+                #[redirect("/", || Route::Docs01 { child: docs::router_01::BookRoute::Index { section: Default::default() } })]
+                
+                #[child("/0.1")]
+                Docs01 { child: docs::router_01::BookRoute },
+            #[end_nest]
+        #[end_layout]
     #[end_layout]
-    
-    #[route("/dashboard")]
-    Dashboard {},
-
+    #[route("/:..segments")]
+    Err404 { segments: Vec<String> },
 }
 
 const FAVICON: Asset = asset!("/assets/favicon.ico");
@@ -54,7 +50,7 @@ fn App() -> Element {
     rsx! {
         document::Link { rel: "icon", href: FAVICON }
         document::Link { rel: "stylesheet", href: TAILWIND_CSS }
-        div { class: "min-h-screen bg-gray-50 dark:bg-gray-900",
+        div { class: "min-h-screen bg-background",
             Router::<Route> {}
         }
     }
