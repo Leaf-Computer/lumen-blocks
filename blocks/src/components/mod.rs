@@ -13,3 +13,4 @@ pub mod context_menu;
 pub mod collapsible;
 pub mod toast;
 pub mod progress;
+pub mod side_sheet;
