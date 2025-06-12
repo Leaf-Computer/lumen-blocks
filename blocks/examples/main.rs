@@ -34,6 +34,8 @@ mod toast_example;
 use toast_example::ToastExamples;
 mod progress_example;
 use progress_example::ProgressExample;
+mod side_sheet_example;
+use side_sheet_example::SideSheetExamples;
 
 const TAILWIND_CSS: Asset = asset!("assets/tailwind.css");
 
@@ -116,6 +118,11 @@ fn App() -> Element {
                 Collapsible {
                     CollapsibleTrigger { "Progress Example" }
                     CollapsibleContent { ProgressExample {} }
+                }
+                
+                Collapsible {
+                    CollapsibleTrigger { "Side Sheet Example" }
+                    CollapsibleContent { SideSheetExamples {} }
                 }
             }
         }
