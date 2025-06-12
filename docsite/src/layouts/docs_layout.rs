@@ -1,6 +1,6 @@
 use dioxus::prelude::*;
 use dioxus_router::prelude::{Link, Outlet, use_route};
-use crate::Route;
+use crate::{components::Navbar, Route};
 use docs::docs::router_01::{BookRoute, LAZY_BOOK};
 use mdbook_shared::SummaryItem;
 
@@ -10,8 +10,8 @@ pub(crate) static SHOW_SIDEBAR: GlobalSignal<bool> = Signal::global(|| false);
 #[component]
 pub fn DocsLayout() -> Element {
     rsx! {
-        div { class: "w-full text-sm border-b dark:border-[#a4a9ac7d] border-gray-300",
-            div { class: "flex flex-row justify-center dark:text-[#dee2e6] font-light lg:gap-12",
+        div { class: "w-full text-sm border-b border-border relative bg-background",
+            div { class: "flex flex-row justify-center text-foreground font-light lg:gap-12",
                 DocsLeftNav {}
                 DocsContent {}
                 DocsRightNav {}
@@ -30,7 +30,7 @@ fn DocsLeftNav() -> Element {
         _ => None,
     };
     
-    let toggle_sidebar = move |_| *SHOW_SIDEBAR.write() = *SHOW_SIDEBAR.read();
+    let toggle_sidebar = move |_: String| *SHOW_SIDEBAR.write() = *SHOW_SIDEBAR.read();
     let is_sidebar_visible = *SHOW_SIDEBAR.read();
     
     // Get the book structure from LAZY_BOOK
@@ -45,22 +45,15 @@ fn DocsLeftNav() -> Element {
 
     rsx! {
         div { 
-            class: "min-w-[240px] pt-12 pb-16 dark:border-r border-r border-[#a4a9ac7d] sticky top-16 self-start h-[calc(100vh-64px)] overflow-auto",
+            class: "min-w-[240px] pt-12 pb-16 border-r border-border sticky top-16 self-start h-[calc(100vh-64px)] overflow-auto bg-card/50 backdrop-blur-sm",
             class: if is_sidebar_visible { "block" } else { "hidden lg:block" },
             div { class: "pr-8",
-                div { class: "flex justify-between items-center mb-4 px-6",
-                    h3 { class: "font-bold", "Documentation" }
-                    
-                    // Mobile close button
-                    button {
-                        class: "lg:hidden p-2 rounded-md hover:bg-gray-200 dark:hover:bg-gray-700",
-                        onclick: toggle_sidebar,
-                        "×"
-                    }
+                div { class: "flex justify-between items-center mb-4",
+                    h3 { class: "text-sm text-muted-foreground text-foreground", "Documentation" }
                 }
                 
                 // Dynamic navigation based on the book structure
-                nav { class: "pl-2 pb-2 text-base sm:block text-gray-600 dark:text-gray-400 pr-2 space-y-1",
+                nav { class: "pl-2 pb-2 text-base sm:block text-muted-foreground pr-2 space-y-2",
                     for chapter_list in chapters.into_iter().flatten() {
                         if let Some(link) = chapter_list.maybe_link() {
                             SidebarSection { 
@@ -92,10 +85,12 @@ fn SidebarSection(chapter: &'static SummaryItem<BookRoute>, current_route: Optio
             if let Some(url) = &link.location {
                 Link {
                     to: Route::Docs01 { child: *url },
-                    class: "font-semibold hover:text-sky-500 dark:hover:text-sky-400 dark:text-gray-100 text-gray-700",
-                    active_class: "text-sky-600 dark:text-sky-400",
+                    class: "font-semibold text-foreground hover:text-primary transition-colors",
+                    active_class: "text-primary",
                     div { class: "flex items-center justify-between pb-2",
-                        h3 { "{link.name}" }
+                        h3 { class: "hover:underline",
+                            "{link.name}"
+                        }
                         
                         if has_children {
                             button {
@@ -103,7 +98,7 @@ fn SidebarSection(chapter: &'static SummaryItem<BookRoute>, current_route: Optio
                                     e.stop_propagation();
                                     expanded.toggle();
                                 },
-                                class: "px-2",
+                                class: "px-2 text-muted-foreground",
                                 if expanded() { "▼" } else { "▶" }
                             }
                         }
@@ -112,7 +107,7 @@ fn SidebarSection(chapter: &'static SummaryItem<BookRoute>, current_route: Optio
             }
             
             if has_children && expanded() {
-                ul { class: "ml-1 space-y-1 border-l border-gray-200 dark:border-gray-700 pl-4",
+                ul { class: "ml-1 space-y-1 border-l border-border pl-4",
                     for chapter in link.nested_items.iter() {
                         SidebarChapter { 
                             chapter,
@@ -138,7 +133,7 @@ fn SidebarChapter(chapter: &'static SummaryItem<BookRoute>, current_route: Optio
     let mut expanded = use_signal(|| is_active);
 
     rsx! {
-        li { class: "rounded-md hover:text-sky-500 dark:hover:text-sky-400",
+        li { class: "rounded-md",
             if let Some(url) = &link.location {
                 Link {
                     to: Route::Docs01 { child: *url },
@@ -148,18 +143,18 @@ fn SidebarChapter(chapter: &'static SummaryItem<BookRoute>, current_route: Optio
                         }
                         *SHOW_SIDEBAR.write() = false;
                     },
-                    class: "flex items-center justify-between py-1",
-                    active_class: "text-sky-600 dark:text-sky-400",
+                    class: "flex items-center justify-between py-1 text-foreground hover:text-primary transition-colors",
+                    active_class: "text-primary",
                     span { "{link.name}" }
                     
                     if has_children {
-                        span { class: "ml-2", if expanded() { "▼" } else { "▶" } }
+                        span { class: "ml-2 text-muted-foreground", if expanded() { "▼" } else { "▶" } }
                     }
                 }
             }
             
             if has_children && expanded() {
-                ul { class: "ml-2 mt-1 space-y-1 border-l border-gray-200 dark:border-gray-700 pl-4",
+                ul { class: "ml-2 mt-1 space-y-1 border-l border-border pl-4",
                     for child in link.nested_items.iter() {
                         SidebarChapter { chapter: child, current_route }
                     }
@@ -171,18 +166,33 @@ fn SidebarChapter(chapter: &'static SummaryItem<BookRoute>, current_route: Optio
 
 #[component]
 fn DocsContent() -> Element {
-    let toggle_sidebar = move |_| *SHOW_SIDEBAR.write() = *SHOW_SIDEBAR.read();
-
     rsx! {
         div { 
-            class: "flex-1 max-w-[65ch] pt-12 pb-16 px-6",
-            
-            // Mobile menu button
-            button {
-                class: "lg:hidden mb-4 p-2 rounded-md bg-gray-100 hover:bg-gray-200 dark:bg-gray-800 dark:hover:bg-gray-700",
-                onclick: toggle_sidebar,
-                "Menu"
-            }
+            class: "
+                flex-1 max-w-[80ch] w-full pt-12 pb-16 px-6
+                text-foreground bg-background
+
+                /* Headings */
+                [&_h1]:mt-12 [&_h1]:mb-3 [&_h1]:text-3xl [&_h1]:font-bold [&_h1]:text-foreground
+                [&_h2]:mt-12 [&_h2]:mb-3 [&_h2]:text-2xl [&_h2]:font-semibold [&_h2]:text-foreground
+                [&_h3]:mt-12 [&_h3]:mb-3 [&_h3]:text-xl [&_h3]:font-medium [&_h3]:text-foreground
+                [&_h4]:mt-12 [&_h4]:mb-3 [&_h4]:text-lg [&_h4]:font-medium [&_h4]:text-foreground
+                [&_h5]:mt-10 [&_h5]:mb-2 [&_h5]:text-base [&_h5]:font-medium [&_h5]:text-foreground
+                [&_h6]:mt-8 [&_h6]:mb-2 [&_h6]:text-sm [&_h6]:font-medium [&_h6]:text-foreground
+
+                /* Paragraphs */
+                [&_p]:my-3
+
+                /* Lists */
+                [&_ul]:list-disc [&_ul]:ml-6
+                [&_li]:my-2
+
+                /* Links */
+                [&_a]:text-primary [&_a]:transition-colors
+
+                /* Text formatting */
+                [&_strong]:font-bold
+            ",
             
             // This is where the current route's content will be rendered
             Outlet::<Route> {}
@@ -204,12 +214,12 @@ fn DocsRightNav() -> Element {
     let sections = current_book_route.map(|route| route.sections()).unwrap_or_default();
 
     rsx! {
-        div { class: "hidden xl:block min-w-[240px] pt-12 pb-16 dark:border-l border-l border-[#a4a9ac7d] sticky top-16 self-start h-[calc(100vh-64px)] overflow-auto",
+        div { class: "hidden xl:block min-w-[240px] pt-12 pb-16 border-l border-border sticky top-16 self-start h-[calc(100vh-64px)] overflow-auto bg-card/50 backdrop-blur-sm",
             div { class: "pl-8",
-                h3 { class: "font-bold mb-4", "On This Page" }
+                h3 { class: "font-bold mb-4 text-foreground", "On This Page" }
                 
                 // Page sections navigation
-                ul { class: "space-y-1 text-sm",
+                ul { class: "space-y-2 text-sm",
                     for section in sections.iter().skip(1) {
                         li { 
                             class: if section.level == 1 { "" as &str }
@@ -217,7 +227,7 @@ fn DocsRightNav() -> Element {
                                 else if section.level == 3 { "pl-4" }
                                 else { "pl-6" },
                             a { 
-                                class: "block py-1 hover:text-blue-500", 
+                                class: "block py-1 text-muted-foreground hover:text-primary transition-colors rounded px-2 hover:bg-muted/50", 
                                 href: "#{section.id}",
                                 "{section.title}" 
                             }
@@ -226,9 +236,9 @@ fn DocsRightNav() -> Element {
                 }
                 
                 // Edit page link
-                div { class: "mt-8 pt-4 border-t border-gray-200 dark:border-gray-700",
+                div { class: "mt-8 pt-4 border-t border-border",
                     a {
-                        class: "text-sm flex items-center text-gray-600 dark:text-gray-400 hover:text-blue-500 dark:hover:text-blue-400",
+                        class: "text-sm flex items-center text-muted-foreground hover:text-primary transition-colors rounded p-1 hover:bg-muted/50",
                         href: "https://github.com/DioxusLabs/dioxus-blocks/edit/main/docs",
                         svg {
                             class: "w-4 h-4 mr-2",

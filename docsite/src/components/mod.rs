@@ -6,7 +6,6 @@ pub mod progress_demo;
 pub mod form_demo;
 pub mod project_detail_card;
 pub mod team_member_card;
-pub mod main_layout;
 pub mod navbar;
 pub mod feature_card;
 
@@ -16,7 +15,6 @@ pub use showcase::*;
 pub use toast_demo::*;
 pub use progress_demo::*;
 pub use form_demo::*;
-pub use main_layout::*;
 pub use navbar::Navbar;
 
 // Cards - avoid glob imports for modules with conflicting names
