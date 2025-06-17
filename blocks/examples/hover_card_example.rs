@@ -1,8 +1,7 @@
 use dioxus::prelude::*;
 use laminar_blocks::components::hover_card::{
-    HoverCard, HoverCardTrigger, HoverCardContent,
+    HoverCard, HoverCardTrigger, HoverCardContent, HoverCardAlign, HoverCardSide
 };
-use dioxus_primitives::hover_card::{HoverCardAlign, HoverCardSide};
 
 fn main() {
     #[cfg(debug_assertions)]
