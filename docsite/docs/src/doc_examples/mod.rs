@@ -14,6 +14,9 @@ pub mod collapsible_examples;
 pub mod context_menu_examples;
 #[cfg(not(feature = "doc_test"))]
 pub mod dropdown_examples;
+#[cfg(not(feature = "doc_test"))]
+pub mod form_examples;
+
 
 
 
