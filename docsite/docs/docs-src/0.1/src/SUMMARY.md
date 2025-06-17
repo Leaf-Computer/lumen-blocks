@@ -7,5 +7,6 @@
 - [Avatar](avatar/index.md)
 - [Checkbox](checkbox/index.md)
 - [Collapsible](collapsible/index.md)
+- [Context Menu](context-menu/index.md)
 
 
