@@ -11,6 +11,8 @@
 - [Dropdown](dropdown/index.md)
 - [Form Components](form/index.md)
 - [Hover Card](hover-card/index.md)
+- [Menubar](menubar/index.md)
+
 
 
 

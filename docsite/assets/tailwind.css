@@ -812,6 +812,10 @@ video {
   margin-left: 1rem;
 }
 
+.mb-24 {
+  margin-bottom: 6rem;
+}
+
 .block {
   display: block;
 }
@@ -2031,6 +2035,10 @@ video {
   padding-bottom: 9rem;
 }
 
+.pb-24 {
+  padding-bottom: 6rem;
+}
+
 .text-left {
   text-align: left;
 }
@@ -2547,6 +2555,10 @@ https://github.com/shadcn-ui/ui/blob/2773f9e2e29cf67e521632d15d1ba302a82e39e9/LI
   background-color: rgb(229 231 235 / var(--tw-bg-opacity, 1));
 }
 
+.hover\:bg-primary:hover {
+  background-color: var(--primary);
+}
+
 .hover\:text-accent-foreground:hover {
   color: var(--accent-foreground);
 }
@@ -2557,6 +2569,10 @@ https://github.com/shadcn-ui/ui/blob/2773f9e2e29cf67e521632d15d1ba302a82e39e9/LI
 
 .hover\:text-primary:hover {
   color: var(--primary);
+}
+
+.hover\:text-primary-foreground:hover {
+  color: var(--primary-foreground);
 }
 
 .hover\:underline:hover {
