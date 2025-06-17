@@ -1186,7 +1186,7 @@ dependencies = [
 [[package]]
 name = "dioxus-primitives"
 version = "0.0.1"
-source = "git+https://github.com/DioxusLabs/components?branch=main#254ddadb35b2c6eac10902438edeff8a2276f1d2"
+source = "git+https://github.com/DioxusLabs/components?rev=254ddadb35b2c6eac10902438edeff8a2276f1d2#254ddadb35b2c6eac10902438edeff8a2276f1d2"
 dependencies = [
  "dioxus-lib",
  "dioxus-time",
