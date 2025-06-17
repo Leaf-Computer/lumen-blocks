@@ -10,7 +10,8 @@ pub mod avatar_examples;
 pub mod checkbox_examples;
 #[cfg(not(feature = "doc_test"))]
 pub mod collapsible_examples;
-
+#[cfg(not(feature = "doc_test"))]
+pub mod context_menu_examples;
 
 
 
