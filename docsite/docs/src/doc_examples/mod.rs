@@ -8,6 +8,9 @@ pub mod aspect_ratio_examples;
 pub mod avatar_examples;
 #[cfg(not(feature = "doc_test"))]
 pub mod checkbox_examples;
+#[cfg(not(feature = "doc_test"))]
+pub mod collapsible_examples;
+
 
 
 
