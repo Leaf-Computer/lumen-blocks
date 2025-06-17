@@ -6,6 +6,9 @@ pub mod accordion_examples;
 pub mod aspect_ratio_examples;
 #[cfg(not(feature = "doc_test"))]
 pub mod avatar_examples;
+#[cfg(not(feature = "doc_test"))]
+pub mod checkbox_examples;
+
 
 
 
