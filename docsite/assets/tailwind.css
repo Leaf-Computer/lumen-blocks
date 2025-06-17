@@ -1847,6 +1847,10 @@ video {
   padding: 2rem;
 }
 
+.p-20 {
+  padding: 5rem;
+}
+
 .px-1 {
   padding-left: 0.25rem;
   padding-right: 0.25rem;
@@ -2017,6 +2021,10 @@ video {
 
 .pt-6 {
   padding-top: 1.5rem;
+}
+
+.pb-36 {
+  padding-bottom: 9rem;
 }
 
 .text-left {
