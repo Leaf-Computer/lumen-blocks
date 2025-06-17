@@ -20,6 +20,8 @@ pub mod form_examples;
 pub mod hover_card_examples;
 #[cfg(not(feature = "doc_test"))]
 pub mod menubar_examples;
+#[cfg(not(feature = "doc_test"))]
+pub mod progress_examples;
 
 
 

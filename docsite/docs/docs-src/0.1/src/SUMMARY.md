@@ -12,6 +12,8 @@
 - [Form Components](form/index.md)
 - [Hover Card](hover-card/index.md)
 - [Menubar](menubar/index.md)
+- [Progress](progress/index.md)
+
 
 
 
