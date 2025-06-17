@@ -6,4 +6,6 @@
 - [Aspect Ratio](aspect-ratio/index.md)
 - [Avatar](avatar/index.md)
 - [Checkbox](checkbox/index.md)
+- [Collapsible](collapsible/index.md)
+
 
