@@ -18,6 +18,9 @@ pub mod dropdown_examples;
 pub mod form_examples;
 #[cfg(not(feature = "doc_test"))]
 pub mod hover_card_examples;
+#[cfg(not(feature = "doc_test"))]
+pub mod menubar_examples;
+
 
 
 
