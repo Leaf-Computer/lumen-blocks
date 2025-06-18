@@ -1,54 +1,27 @@
 # Introduction
 
-Welcome to the Laminar Blocks documentation!!
+Welcome to Laminar Blocks - an ARIA-accessible, styled, opinionated component library for Dioxus based on the [shadcn](https://ui.shadcn.com) project, and built on top of the [Dioxus Primitives](https://github.com/DioxusLabs/components) unstyled components library.
 
-```rust
-#[component]
-fn BasicAccordionExample() -> Element {
-    rsx! {
-        Accordion {
-            allow_multiple_open: false,
-            horizontal: false,
+## What is Laminar Blocks?
 
-            AccordionItem {
-                index: 0,
-                AccordionTrigger { "What is Dioxus?" }
-                AccordionContent {
-                    p { 
-                        "Dioxus is a portable, performant, and ergonomic framework for building cross-platform user interfaces in Rust."
-                    }
-                }
-            }
+Laminar Blocks provides a collection of pre-styled, accessible UI components for Rust's Dioxus framework. These components follow modern design principles and accessibility guidelines, making it easy to build beautiful, functional user interfaces in your Dioxus applications.
 
-            AccordionItem {
-                index: 1,
-                AccordionTrigger { "How does it compare to React?" }
-                AccordionContent {
-                    p { 
-                        "Dioxus is heavily inspired by React but built from the ground up in Rust. It offers similar component-based architecture with hooks, but with the safety and performance benefits of Rust."
-                    }
-                }
-            }
+## Features
 
-            AccordionItem {
-                index: 2,
-                AccordionTrigger { "What platforms does it support?" }
-                AccordionContent {
-                    p { 
-                        "Dioxus supports multiple platforms including Web, Desktop (Windows, macOS, Linux), Mobile (iOS, Android), and TUI (Terminal UI)."
-                    }
-                }
-            }
-        }
-    }
-}
-```
+- **Accessible**: Built with ARIA standards in mind
+- **Styled**: Pre-designed components with a consistent look and feel
+- **Customizable**: Easily adapt components to match your brand
+- **Type-safe**: Leverage Rust's type system for component props
+- **Based on shadcn/ui**: Inspired by the popular React component collection
 
-```rust, no_run
-{{#include src/doc_examples/button_examples.rs:example}}
-```
-```inject-dioxus
-DemoFrame {
-    button_examples::example::ButtonExample {}
-}
-```
+## Getting Started
+
+Ready to use Laminar Blocks in your project? Check out our [Installation Guide](installation/index.md) to get started.
+
+## Component Showcase
+
+Laminar Blocks offers a variety of components to build your application's UI. Explore the sidebar to see detailed documentation for each component, including props, variants, and usage examples.
+
+## Contributing
+
+Laminar Blocks is open to contributions! Whether you're fixing bugs, improving documentation, or proposing new components, your help is welcome. Check out the [GitHub repository](https://github.com/DioxusLabs/laminar-blocks) to get involved.
