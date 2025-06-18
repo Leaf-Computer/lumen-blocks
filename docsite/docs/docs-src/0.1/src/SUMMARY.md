@@ -13,6 +13,8 @@
 - [Hover Card](hover-card/index.md)
 - [Menubar](menubar/index.md)
 - [Progress](progress/index.md)
+- [Side Sheet](side-sheet/index.md)
+
 
 
 
