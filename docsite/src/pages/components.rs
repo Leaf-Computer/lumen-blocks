@@ -23,7 +23,7 @@ pub fn Components() -> Element {
         div { class: "min-h-screen bg-background",
             div { class: "bg-card shadow-sm border-b border-border",
                 div { class: "max-w-6xl mx-auto px-6 py-4 flex items-center justify-between",
-                    h1 { class: "text-xl font-bold", "Dioxus Blocks" }
+                    h1 { class: "text-xl font-bold", "Laminar Blocks" }
                     
                     div { class: "flex items-center gap-4",
                         a { 
@@ -48,7 +48,7 @@ pub fn Components() -> Element {
             div { class: "max-w-6xl mx-auto px-6 py-8",
                 h1 { class: "text-3xl font-bold text-foreground mb-2", "Component Showcase" }
                 p { class: "text-muted-foreground mb-8", 
-                    "A comprehensive demonstration of the Dioxus Blocks component library" 
+                    "A comprehensive demonstration of the Laminar Blocks component library" 
                 }
                 
                 div { class: "space-y-12",

@@ -1,6 +1,6 @@
-# Dioxus Blocks Development Container
+# Laminar Blocks Development Container
 
-This directory contains configuration for a development container that provides a consistent environment for working on the Dioxus Blocks project.
+This directory contains configuration for a development container that provides a consistent environment for working on the Laminar Blocks project.
 
 ## Features
 

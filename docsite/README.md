@@ -1,4 +1,4 @@
-# Dioxus Blocks Sample App
+# Laminar Blocks Sample App
 
 A comprehensive demonstration application showcasing the capabilities of the `laminar-blocks` component library for Dioxus. This sample app demonstrates real-world usage patterns and provides a complete example of building modern web applications with the blocks library.
 

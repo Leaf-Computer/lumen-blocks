@@ -8,6 +8,7 @@ use laminar_blocks::components::{
     switch::Switch,
 };
 use lucide_dioxus::{Check, Info, X};
+use dioxus::document;
 
 mod components;
 mod pages;
