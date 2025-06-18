@@ -22,6 +22,8 @@ pub mod hover_card_examples;
 pub mod menubar_examples;
 #[cfg(not(feature = "doc_test"))]
 pub mod progress_examples;
+#[cfg(not(feature = "doc_test"))]
+pub mod side_sheet_examples;
 
 
 
