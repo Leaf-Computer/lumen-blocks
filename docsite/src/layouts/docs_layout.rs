@@ -188,7 +188,7 @@ fn DocsContent() -> Element {
                 [&_li]:my-2
 
                 /* Links */
-                [&_a]:text-primary [&_a]:transition-colors
+                [&_a]:text-primary [&_a]:transition-colors [&_a]:underline [&_a:hover]:text-foreground [&_a]:font-bold [&_a]:decoration-transparent [&_a:hover]:decoration-foreground
 
                 /* Text formatting */
                 [&_strong]:font-bold

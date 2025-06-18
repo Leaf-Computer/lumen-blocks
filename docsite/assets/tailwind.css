@@ -2272,6 +2272,10 @@ video {
   text-underline-offset: 4px;
 }
 
+.accent-foreground {
+  accent-color: var(--foreground);
+}
+
 .opacity-0 {
   opacity: 0;
 }
@@ -2340,6 +2344,12 @@ video {
 .ring-0 {
   --tw-ring-offset-shadow: var(--tw-ring-inset) 0 0 0 var(--tw-ring-offset-width) var(--tw-ring-offset-color);
   --tw-ring-shadow: var(--tw-ring-inset) 0 0 0 calc(0px + var(--tw-ring-offset-width)) var(--tw-ring-color);
+  box-shadow: var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow, 0 0 #0000);
+}
+
+.ring {
+  --tw-ring-offset-shadow: var(--tw-ring-inset) 0 0 0 var(--tw-ring-offset-width) var(--tw-ring-offset-color);
+  --tw-ring-shadow: var(--tw-ring-inset) 0 0 0 calc(3px + var(--tw-ring-offset-width)) var(--tw-ring-color);
   box-shadow: var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow, 0 0 #0000);
 }
 
@@ -2432,6 +2442,11 @@ video {
 }
 
 .animate-in {
+  animation-fill-mode: forwards;
+  animation-timing-function: cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.animate-out {
   animation-fill-mode: forwards;
   animation-timing-function: cubic-bezier(0.16, 1, 0.3, 1);
 }
@@ -2931,14 +2946,70 @@ https://github.com/shadcn-ui/ui/blob/2773f9e2e29cf67e521632d15d1ba302a82e39e9/LI
   transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
 }
 
+.\[\&_a\:hover\]\:text-secondary a:hover {
+  color: var(--secondary);
+}
+
+.\[\&_a\:hover\]\:text-secondary-foreground a:hover {
+  color: var(--secondary-foreground);
+}
+
+.\[\&_a\:hover\]\:text-foreground a:hover {
+  color: var(--foreground);
+}
+
+.\[\&_a\:hover\]\:underline a:hover {
+  text-decoration-line: underline;
+}
+
+.\[\&_a\:hover\]\:decoration-foreground a:hover {
+  text-decoration-color: var(--foreground);
+}
+
+.\[\&_a\]\:font-semibold a {
+  font-weight: 600;
+}
+
+.\[\&_a\]\:font-bold a {
+  font-weight: 700;
+}
+
 .\[\&_a\]\:text-primary a {
   color: var(--primary);
+}
+
+.\[\&_a\]\:underline a {
+  text-decoration-line: underline;
+}
+
+.\[\&_a\]\:decoration-sky-500 a {
+  text-decoration-color: #0ea5e9;
+}
+
+.\[\&_a\]\:decoration-secondary a {
+  text-decoration-color: var(--secondary);
+}
+
+.\[\&_a\]\:decoration-muted-foreground a {
+  text-decoration-color: var(--muted-foreground);
+}
+
+.\[\&_a\]\:decoration-muted a {
+  text-decoration-color: var(--muted);
+}
+
+.\[\&_a\]\:decoration-transparent a {
+  text-decoration-color: transparent;
 }
 
 .\[\&_a\]\:transition-colors a {
   transition-property: color, background-color, border-color, text-decoration-color, fill, stroke;
   transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
   transition-duration: 150ms;
+}
+
+.\[\&_a\]\:hover\:underline:hover a {
+  text-decoration-line: underline;
 }
 
 .\[\&_h1\]\:mb-3 h1 {
@@ -2962,6 +3033,18 @@ https://github.com/shadcn-ui/ui/blob/2773f9e2e29cf67e521632d15d1ba302a82e39e9/LI
   color: var(--foreground);
 }
 
+.\[\&_h1\]\:no-underline h1 {
+  text-decoration-line: none;
+}
+
+.\[\&_h1\]\:\!no-underline h1 {
+  text-decoration-line: none !important;
+}
+
+.\[\&_h1\]\:decoration-muted h1 {
+  text-decoration-color: var(--muted);
+}
+
 .\[\&_h2\]\:mb-3 h2 {
   margin-bottom: 0.75rem;
 }
@@ -2981,6 +3064,18 @@ https://github.com/shadcn-ui/ui/blob/2773f9e2e29cf67e521632d15d1ba302a82e39e9/LI
 
 .\[\&_h2\]\:text-foreground h2 {
   color: var(--foreground);
+}
+
+.\[\&_h2\]\:no-underline h2 {
+  text-decoration-line: none;
+}
+
+.\[\&_h2\]\:\!no-underline h2 {
+  text-decoration-line: none !important;
+}
+
+.\[\&_h2\]\:decoration-muted h2 {
+  text-decoration-color: var(--muted);
 }
 
 .\[\&_h3\]\:mb-3 h3 {
@@ -3004,6 +3099,14 @@ https://github.com/shadcn-ui/ui/blob/2773f9e2e29cf67e521632d15d1ba302a82e39e9/LI
   color: var(--foreground);
 }
 
+.\[\&_h3\]\:no-underline h3 {
+  text-decoration-line: none;
+}
+
+.\[\&_h3\]\:\!no-underline h3 {
+  text-decoration-line: none !important;
+}
+
 .\[\&_h4\]\:mb-3 h4 {
   margin-bottom: 0.75rem;
 }
@@ -3023,6 +3126,14 @@ https://github.com/shadcn-ui/ui/blob/2773f9e2e29cf67e521632d15d1ba302a82e39e9/LI
 
 .\[\&_h4\]\:text-foreground h4 {
   color: var(--foreground);
+}
+
+.\[\&_h4\]\:no-underline h4 {
+  text-decoration-line: none;
+}
+
+.\[\&_h4\]\:\!no-underline h4 {
+  text-decoration-line: none !important;
 }
 
 .\[\&_h5\]\:mb-2 h5 {
@@ -3046,6 +3157,10 @@ https://github.com/shadcn-ui/ui/blob/2773f9e2e29cf67e521632d15d1ba302a82e39e9/LI
   color: var(--foreground);
 }
 
+.\[\&_h5\]\:no-underline h5 {
+  text-decoration-line: none;
+}
+
 .\[\&_h6\]\:mb-2 h6 {
   margin-bottom: 0.5rem;
 }
@@ -3065,6 +3180,10 @@ https://github.com/shadcn-ui/ui/blob/2773f9e2e29cf67e521632d15d1ba302a82e39e9/LI
 
 .\[\&_h6\]\:text-foreground h6 {
   color: var(--foreground);
+}
+
+.\[\&_h6\]\:no-underline h6 {
+  text-decoration-line: none;
 }
 
 .\[\&_li\]\:my-2 li {
