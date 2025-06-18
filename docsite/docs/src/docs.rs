@@ -23,7 +23,7 @@ fn SandBoxFrame(url: String) -> Element {
 fn DemoFrame(children: Element) -> Element {
     rsx! {
         div {
-            class: "bg-background border border-border rounded-lg shadow p-6 my-6 overflow-auto text-foreground",
+            class: "bg-background border border-border rounded-lg shadow p-6 my-6 overflow-visible text-foreground",
             {children}
         }
     }
