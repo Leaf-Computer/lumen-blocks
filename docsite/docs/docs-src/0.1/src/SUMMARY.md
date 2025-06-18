@@ -1,6 +1,7 @@
 # Summary
 
 - [Introduction](index.md)
+- [Installation](installation/index.md)
 - [Button](button/index.md)
 - [Accordion](accordion/index.md)
 - [Aspect Ratio](aspect-ratio/index.md)
