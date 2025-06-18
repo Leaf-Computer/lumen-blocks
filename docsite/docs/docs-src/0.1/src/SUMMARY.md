@@ -14,6 +14,8 @@
 - [Menubar](menubar/index.md)
 - [Progress](progress/index.md)
 - [Side Sheet](side-sheet/index.md)
+- [Switch](switch/index.md)
+
 
 
 
