@@ -3,7 +3,7 @@
 [web.app]
 
 # HTML title tag content
-title = "sample-app"
+title = "Laminar Blocks"
 
 # include `assets` in web platform
 [web.resource]

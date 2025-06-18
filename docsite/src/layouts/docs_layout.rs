@@ -1,6 +1,7 @@
 use dioxus::prelude::*;
+use dioxus::document;
 use dioxus_router::prelude::{Link, Outlet, use_route};
-use crate::{components::Navbar, Route};
+use crate::Route;
 use docs::docs::router_01::{BookRoute, LAZY_BOOK};
 use mdbook_shared::SummaryItem;
 
@@ -9,7 +10,61 @@ pub(crate) static SHOW_SIDEBAR: GlobalSignal<bool> = Signal::global(|| false);
 
 #[component]
 pub fn DocsLayout() -> Element {
+    let route = use_route::<Route>();
+    
+    // Extract the current BookRoute from the Route enum
+    let current_book_route = match route {
+        Route::Docs01 { child } => Some(child),
+        _ => None,
+    };
+    
+    // Generate a dynamic title based on the current page
+    let title = if let Some(book_route) = current_book_route {
+        // Get the title from the book's structure
+        let book = &*LAZY_BOOK;
+        
+        // Helper function to find a title for a route
+        fn find_title(items: &[SummaryItem<BookRoute>], route: &BookRoute) -> Option<String> {
+            for item in items {
+                if let Some(link) = item.maybe_link() {
+                    // Check if this item matches the route
+                    if let Some(loc) = &link.location {
+                        if loc == route {
+                            return Some(link.name.clone());
+                        }
+                    }
+                    
+                    // Check nested items
+                    if !link.nested_items.is_empty() {
+                        if let Some(title) = find_title(&link.nested_items, route) {
+                            return Some(title);
+                        }
+                    }
+                }
+            }
+            None
+        }
+        
+        // Search all chapters for the title
+        let chapters = vec![
+            &book.summary.prefix_chapters,
+            &book.summary.numbered_chapters,
+            &book.summary.suffix_chapters,
+        ];
+        
+        let page_title = chapters
+            .iter()
+            .flat_map(|&chapters| find_title(chapters, &book_route))
+            .next()
+            .unwrap_or_else(|| "Documentation".to_string());
+            
+        format!("Laminar Blocks - {}", page_title)
+    } else {
+        "Laminar Blocks - Documentation".to_string()
+    };
+    
     rsx! {
+        document::Title { "{title}" }
         div { class: "w-full text-sm border-b border-border relative bg-background",
             div { class: "flex flex-row justify-center text-foreground font-light lg:gap-12",
                 DocsLeftNav {}
