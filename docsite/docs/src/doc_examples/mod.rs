@@ -24,6 +24,8 @@ pub mod menubar_examples;
 pub mod progress_examples;
 #[cfg(not(feature = "doc_test"))]
 pub mod side_sheet_examples;
+#[cfg(not(feature = "doc_test"))]
+pub mod switch_examples;
 
 
 
