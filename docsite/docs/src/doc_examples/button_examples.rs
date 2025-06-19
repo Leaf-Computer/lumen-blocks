@@ -1,7 +1,5 @@
 #![allow(non_snake_case)]
 
-use lucide_dioxus::{ArrowLeft, ArrowRight, RefreshCw, Plus, Pencil, Trash, Search, X};
-
 pub use variants::ButtonVariantsExample;
 pub use sizes::ButtonSizesExample;
 pub use states::ButtonStatesExample;
@@ -12,7 +10,7 @@ pub use icon_buttons::IconButtonsExample;
 pub mod variants {
     // ANCHOR: variants
     use dioxus::prelude::*;
-    use laminar_blocks::components::button::{Button, ButtonVariant, ButtonSize};
+    use laminar_blocks::components::button::{Button, ButtonVariant};
     
     #[component]
     pub fn ButtonVariantsExample() -> Element {
@@ -88,7 +86,7 @@ pub mod sizes {
 pub mod states {
     // ANCHOR: states
     use dioxus::prelude::*;
-    use laminar_blocks::components::button::{Button, ButtonVariant, ButtonSize};
+    use laminar_blocks::components::button::{Button, ButtonVariant};
     
     #[component]
     pub fn ButtonStatesExample() -> Element {
@@ -128,7 +126,7 @@ pub mod states {
 pub mod icons {
     // ANCHOR: icons
     use dioxus::prelude::*;
-    use laminar_blocks::components::button::{Button, ButtonVariant, ButtonSize};
+    use laminar_blocks::components::button::{Button, ButtonVariant};
     use lucide_dioxus::{ArrowLeft, ArrowRight};
     
     #[component]
@@ -162,7 +160,7 @@ pub mod icons {
 pub mod full_width {
     // ANCHOR: full_width
     use dioxus::prelude::*;
-    use laminar_blocks::components::button::{Button, ButtonVariant, ButtonSize};
+    use laminar_blocks::components::button::{Button, ButtonVariant};
     
     #[component]
     pub fn FullWidthButtonExample() -> Element {
@@ -182,7 +180,7 @@ pub mod full_width {
 pub mod icon_buttons {
     // ANCHOR: icon_buttons
     use dioxus::prelude::*;
-    use laminar_blocks::components::button::{Button, ButtonVariant, ButtonSize};
+    use laminar_blocks::components::button::{Button, ButtonVariant};
     use lucide_dioxus::{Plus, Pencil, Trash, Search, X};
     
     #[component]
@@ -232,17 +230,10 @@ pub mod icon_buttons {
 // This maintains the original example for backward compatibility
 pub mod example {
     use dioxus::prelude::*;
-    use laminar_blocks::components::button::{Button, ButtonVariant, ButtonSize};
+    use laminar_blocks::components::button::{Button, ButtonVariant};
     
     #[component]
     pub fn ButtonExample() -> Element {
-        // State for loading button
-        let mut loading = use_signal(|| false);
-            
-        // Toggle loading state
-        let toggle_loading = move |_: String| {
-            loading.set(!loading());
-        };
             
         rsx! {
             Button {

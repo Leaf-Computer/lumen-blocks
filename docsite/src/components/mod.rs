@@ -15,7 +15,6 @@ pub use showcase::*;
 pub use toast_demo::*;
 pub use progress_demo::*;
 pub use form_demo::*;
-pub use navbar::Navbar;
 
 // Cards - avoid glob imports for modules with conflicting names
 pub use cards::{StatsCard, ProjectCard}; // Import specific items from cards

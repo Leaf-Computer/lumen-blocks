@@ -44,8 +44,7 @@ pub mod basic {
     // ANCHOR: basic
     use dioxus::prelude::*;
     use laminar_blocks::components::button::{Button, ButtonVariant};
-    use laminar_blocks::components::toast::{use_toast, ToastOptions, ToastType};
-    use std::time::Duration;
+    use laminar_blocks::components::toast::use_toast;
     
     #[component]
     pub fn BasicToastExample() -> Element {
@@ -98,8 +97,7 @@ pub mod descriptions {
     // ANCHOR: descriptions
     use dioxus::prelude::*;
     use laminar_blocks::components::button::{Button, ButtonVariant};
-    use laminar_blocks::components::toast::{use_toast, ToastOptions, ToastType};
-    use std::time::Duration;
+    use laminar_blocks::components::toast::{use_toast, ToastOptions};
     
     #[component]
     pub fn ToastWithDescriptionsExample() -> Element {
@@ -176,7 +174,7 @@ pub mod durations {
     // ANCHOR: durations
     use dioxus::prelude::*;
     use laminar_blocks::components::button::{Button, ButtonVariant};
-    use laminar_blocks::components::toast::{use_toast, ToastOptions, ToastType};
+    use laminar_blocks::components::toast::{use_toast, ToastOptions};
     use std::time::Duration;
     
     #[component]
@@ -328,8 +326,7 @@ pub mod advanced {
 // This is for backward compatibility with any existing examples
 pub mod example {
     use dioxus::prelude::*;
-    use laminar_blocks::components::{button::Button, toast::{use_toast, ToastOptions, ToastProvider, ToastType}};
-    use std::time::Duration;
+    use laminar_blocks::components::{button::Button, toast::use_toast};
     
     #[component]
     pub fn ToastExample() -> Element {

@@ -8,10 +8,10 @@ use lucide_dioxus::{Check, Info, X};
 
 #[component]
 pub fn Dashboard() -> Element {
-    let mut current_section = use_signal(|| "overview".to_string());
-    let mut notification_enabled = use_signal(|| true);
-    let mut dark_mode = use_signal(|| false);
-    let mut project_progress = use_signal(|| 65.0);
+    let current_section = use_signal(|| "overview".to_string());
+    let notification_enabled = use_signal(|| true);
+    let dark_mode = use_signal(|| false);
+    let project_progress = use_signal(|| 65.0);
     
     rsx! {
         AppLayout {

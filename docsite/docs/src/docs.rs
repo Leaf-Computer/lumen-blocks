@@ -29,42 +29,6 @@ fn DemoFrame(children: Element) -> Element {
     }
 }
 
-fn LayoutsExplanation() -> Element {
-    rsx! {
-        pre {
-            class: "p-4 bg-card rounded-lg text-sm font-mono text-card-foreground overflow-auto",
-            onmouseenter: move |_| {},
-            onmouseleave: move |_| {},
-            span {
-                "#[derive(Clone, Routable, PartialEq, Eq, Serialize, Deserialize)]
-#[rustfmt::skip]
-pub enum Route {{\n\t"
-            }
-            span {
-                onmouseenter: move |_| {},
-                onmouseleave: move |_| {},
-                class: "border border-orange-500 rounded-md px-1",
-                "#[layout(HeaderFooter)]"
-            }
-            span { "\n\t\t// ... other routes\n\t\t" }
-            span {
-                onmouseenter: move |_| {},
-                onmouseleave: move |_| {},
-                class: "border border-green-500 rounded-md px-1",
-                r##"#[layout(DocsSidebars)]"##
-            }
-            "\n\t\t\t"
-            span {
-                onmouseenter: move |_| {},
-                onmouseleave: move |_| {},
-                class: "border border-blue-500 rounded-md px-1",
-                r##"#[route("/learn")]"##
-            }
-            span { "\n\t\t\tDocs {{}},\n}}" }
-        }
-    }
-}
-
 #[component]
 fn CodeBlock(contents: String, name: Option<String>) -> Element {
     let mut copied = use_signal(|| false);

@@ -1,19 +1,10 @@
 use dioxus::prelude::*;
-use dioxus_router::prelude::*;
-use laminar_blocks::components::{
-    avatar::{Avatar, AvatarImage, AvatarFallback},
-    button::{Button, ButtonVariant, ButtonSize},
-    input::{Input, InputSize},
-    progress::{Progress, ProgressSize, ProgressVariant},
-    switch::Switch,
-};
-use lucide_dioxus::{Check, Info, X};
+
 use dioxus::document;
 
 mod components;
 mod pages;
 mod layouts;
-use crate::components::{ProjectCard, StatsCard};
 use crate::pages::{Err404, Dashboard, Home};
 use crate::layouts::{DocsLayout, MainLayout};
 use docs::docs;
@@ -71,5 +62,3 @@ fn DashboardRoute() -> Element {
         Dashboard {}
     }
 }
-
-pub(crate) static SHOW_SIDEBAR: GlobalSignal<bool> = Signal::global(|| false);

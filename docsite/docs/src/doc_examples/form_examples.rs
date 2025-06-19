@@ -1,6 +1,5 @@
 #![allow(non_snake_case)]
 
-use lucide_dioxus::{Mail, Lock, CircleAlert, Eye, EyeOff, Info, Search, User, Calendar, FileText};
 
 pub use basic::BasicInputExample;
 pub use variants::InputVariantsExample;
@@ -16,7 +15,7 @@ pub use complete::CompleteFormExample;
 pub mod basic {
     // ANCHOR: basic
     use dioxus::prelude::*;
-    use laminar_blocks::components::input::{Input, InputVariant};
+    use laminar_blocks::components::input::Input;
     
     #[component]
     pub fn BasicInputExample() -> Element {

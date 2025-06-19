@@ -102,8 +102,8 @@ pub mod states {
     #[component]
     pub fn SwitchStatesExample() -> Element {
         let mut checked_enabled = use_signal(|| true);
-        let mut checked_disabled = use_signal(|| true);
-        let mut unchecked_disabled = use_signal(|| false);
+        let checked_disabled = use_signal(|| true);
+        let unchecked_disabled = use_signal(|| false);
         
         let disabled = ReadOnlySignal::new(Signal::new(true));
         

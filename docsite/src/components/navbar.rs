@@ -1,11 +1,10 @@
 use dioxus::prelude::*;
-use dioxus_router::prelude::*;
 use ::docs::docs::router_01::{BookRoute, LAZY_BOOK};
 use laminar_blocks::components::side_sheet::*;
 use laminar_blocks::components::button::{Button, ButtonVariant};
 use lucide_dioxus::Menu;
 use mdbook_shared::SummaryItem;
-use crate::{Route, SHOW_SIDEBAR};
+use crate::Route;
 use crate::LAMINAR_LOGO;
 use docs::docs;
 
@@ -95,7 +94,7 @@ pub fn Navbar() -> Element {
                         "Docs"
                     }
                     for chapter_list in chapters.into_iter().flatten() {
-                        if let Some(link) = chapter_list.maybe_link() {
+                        if let Some(_link) = chapter_list.maybe_link() {
                             SidebarSection { 
                                 chapter: chapter_list,
                                 current_route: current_book_route

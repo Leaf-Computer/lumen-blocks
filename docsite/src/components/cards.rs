@@ -133,7 +133,7 @@ pub fn ProjectDetailCard(
                 div {
                     p { class: "text-sm text-muted-foreground mb-2", "Team Members" }
                     div { class: "flex -space-x-2",
-                        for (i, member) in team.iter().enumerate() {
+                        for (_i, member) in team.iter().enumerate() {
                             Avatar {
                                 class: Some("w-8 h-8 border-2 border-background".to_string()),
                                 AvatarFallback { 

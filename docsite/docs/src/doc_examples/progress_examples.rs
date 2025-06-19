@@ -10,7 +10,7 @@ pub use real_world::RealWorldProgressExample;
 pub mod basic {
     // ANCHOR: basic
     use dioxus::prelude::*;
-    use laminar_blocks::components::progress::{Progress, ProgressSize, ProgressVariant};
+    use laminar_blocks::components::progress::Progress;
     
     #[component]
     pub fn BasicProgressExample() -> Element {
@@ -34,7 +34,7 @@ pub mod basic {
 pub mod percentages {
     // ANCHOR: percentages
     use dioxus::prelude::*;
-    use laminar_blocks::components::progress::{Progress, ProgressSize, ProgressVariant};
+    use laminar_blocks::components::progress::Progress;
     
     #[component]
     pub fn ProgressWithPercentageExample() -> Element {
@@ -60,7 +60,7 @@ pub mod percentages {
 pub mod interactive {
     // ANCHOR: interactive
     use dioxus::prelude::*;
-    use laminar_blocks::components::progress::{Progress, ProgressSize, ProgressVariant};
+    use laminar_blocks::components::progress::Progress;
     
     #[component]
     pub fn InteractiveProgressExample() -> Element {
@@ -113,7 +113,7 @@ pub mod interactive {
 pub mod sizes {
     // ANCHOR: sizes
     use dioxus::prelude::*;
-    use laminar_blocks::components::progress::{Progress, ProgressSize, ProgressVariant};
+    use laminar_blocks::components::progress::{Progress, ProgressSize};
     
     #[component]
     pub fn ProgressSizesExample() -> Element {
@@ -163,7 +163,7 @@ pub mod sizes {
 pub mod variants {
     // ANCHOR: variants
     use dioxus::prelude::*;
-    use laminar_blocks::components::progress::{Progress, ProgressSize, ProgressVariant};
+    use laminar_blocks::components::progress::{Progress, ProgressVariant};
     
     #[component]
     pub fn ProgressVariantsExample() -> Element {

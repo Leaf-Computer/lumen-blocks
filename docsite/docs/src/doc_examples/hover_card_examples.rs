@@ -268,7 +268,7 @@ pub mod icon {
     // ANCHOR: icon
     use dioxus::prelude::*;
     use laminar_blocks::components::hover_card::{
-        HoverCard, HoverCardTrigger, HoverCardContent, HoverCardAlign, HoverCardSide
+        HoverCard, HoverCardTrigger, HoverCardContent, HoverCardSide
     };
     use lucide_dioxus::Info;
     

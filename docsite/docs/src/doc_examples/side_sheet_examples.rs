@@ -1,13 +1,5 @@
 #![allow(non_snake_case)]
 
-use dioxus::prelude::*;
-use laminar_blocks::components::button::{Button, ButtonVariant};
-use laminar_blocks::components::side_sheet::{
-    SideSheet, SideSheetTrigger, SideSheetContent, SideSheetCloseButton,
-    SideSheetHeader, SideSheetTitle, SideSheetDescription,
-    SideSheetBody, SideSheetFooter, SideSheetClose, SideSheetSide
-};
-use lucide_dioxus::{Menu, Settings, Info, X, CircleHelp};
 
 pub use basic::BasicSideSheetExample;
 pub use positions::SideSheetPositionsExample;

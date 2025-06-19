@@ -1,7 +1,3 @@
-# Run component development environment with bash (default)
-dev-components:
-    dx serve -p laminar-blocks --example main --platform web --port 8080
-
 dev-components-tailwind:
     cd blocks && tailwindcss -i tailwind.css -o assets/tailwind.css --config tailwind.config.js --watch
     

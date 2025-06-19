@@ -12,7 +12,6 @@ pub fn MainLayout() -> Element {
         Route::Home { .. } => "Laminar Blocks - Home",
         Route::Docs01 { .. } => "Laminar Blocks - Documentation",
         Route::Err404 { .. } => "Laminar Blocks - Page Not Found",
-        _ => "Laminar Blocks",
     };
     
     rsx! {

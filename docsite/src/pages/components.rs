@@ -16,8 +16,6 @@ use crate::components::{
 
 #[component]
 pub fn Components() -> Element {
-    let notification_enabled = use_signal(|| true);
-    let dark_mode = use_signal(|| false);
     
     rsx! {
         div { class: "min-h-screen bg-background",
