@@ -246,7 +246,7 @@ pub mod icons {
                             DropdownItem {
                                 value: use_signal(|| "Profile".to_string()),
                                 index: use_signal(|| 0),
-                                icon: rsx! { User { size: 16, color: "currentColor" } },
+                                icon: rsx! { User { size: 16 } },
                                 on_select: move |value| {
                                     selected_action.set(value);
                                 },
@@ -256,7 +256,7 @@ pub mod icons {
                             DropdownItem {
                                 value: use_signal(|| "Settings".to_string()),
                                 index: use_signal(|| 1),
-                                icon: rsx! { Settings { size: 16, color: "currentColor" } },
+                                icon: rsx! { Settings { size: 16 } },
                                 on_select: move |value| {
                                     selected_action.set(value);
                                 },
@@ -266,7 +266,7 @@ pub mod icons {
                             DropdownItem {
                                 value: use_signal(|| "Logout".to_string()),
                                 index: use_signal(|| 2),
-                                icon: rsx! { LogOut { size: 16, color: "currentColor" } },
+                                icon: rsx! { LogOut { size: 16 } },
                                 destructive: use_signal(|| true),
                                 on_select: move |value| {
                                     selected_action.set(value);
@@ -288,7 +288,7 @@ pub mod icons {
                             DropdownItem {
                                 value: use_signal(|| "New Item".to_string()),
                                 index: use_signal(|| 0),
-                                icon: rsx! { Plus { size: 16, color: "currentColor" } },
+                                icon: rsx! { Plus { size: 16 } },
                                 on_select: move |value| {
                                     selected_action.set(value);
                                 },
@@ -298,7 +298,7 @@ pub mod icons {
                             DropdownItem {
                                 value: use_signal(|| "Share".to_string()),
                                 index: use_signal(|| 1),
-                                icon: rsx! { Share2 { size: 16, color: "currentColor" } },
+                                icon: rsx! { Share2 { size: 16 } },
                                 on_select: move |value| {
                                     selected_action.set(value);
                                 },
@@ -618,7 +618,7 @@ pub mod complex {
                             DropdownItem {
                                 value: use_signal(|| "Profile".to_string()),
                                 index: use_signal(|| 0),
-                                icon: rsx! { User { size: 16, color: "currentColor" } },
+                                icon: rsx! { User { size: 16 } },
                                 on_select: move |value| {
                                     selected_section.set("My Account".to_string());
                                     selected_action.set(value);
@@ -629,7 +629,7 @@ pub mod complex {
                             DropdownItem {
                                 value: use_signal(|| "Messages".to_string()),
                                 index: use_signal(|| 1),
-                                icon: rsx! { MessageSquare { size: 16, color: "currentColor" } },
+                                icon: rsx! { MessageSquare { size: 16 } },
                                 on_select: move |value| {
                                     selected_section.set("My Account".to_string());
                                     selected_action.set(value);
@@ -640,7 +640,7 @@ pub mod complex {
                             DropdownItem {
                                 value: use_signal(|| "Mail".to_string()),
                                 index: use_signal(|| 2),
-                                icon: rsx! { Mail { size: 16, color: "currentColor" } },
+                                icon: rsx! { Mail { size: 16 } },
                                 on_select: move |value| {
                                     selected_section.set("My Account".to_string());
                                     selected_action.set(value);
@@ -657,7 +657,7 @@ pub mod complex {
                             DropdownItem {
                                 value: use_signal(|| "Billing".to_string()),
                                 index: use_signal(|| 3),
-                                icon: rsx! { CreditCard { size: 16, color: "currentColor" } },
+                                icon: rsx! { CreditCard { size: 16 } },
                                 on_select: move |value| {
                                     selected_section.set("Settings".to_string());
                                     selected_action.set(value);
@@ -668,7 +668,7 @@ pub mod complex {
                             DropdownItem {
                                 value: use_signal(|| "Preferences".to_string()),
                                 index: use_signal(|| 4),
-                                icon: rsx! { Settings { size: 16, color: "currentColor" } },
+                                icon: rsx! { Settings { size: 16 } },
                                 on_select: move |value| {
                                     selected_section.set("Settings".to_string());
                                     selected_action.set(value);
@@ -681,7 +681,7 @@ pub mod complex {
                             DropdownItem {
                                 value: use_signal(|| "Logout".to_string()),
                                 index: use_signal(|| 5),
-                                icon: rsx! { LogOut { size: 16, color: "currentColor" } },
+                                icon: rsx! { LogOut { size: 16 } },
                                 destructive: use_signal(|| true),
                                 on_select: move |value| {
                                     selected_section.set("Action".to_string());

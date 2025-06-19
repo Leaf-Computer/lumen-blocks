@@ -249,21 +249,21 @@ pub mod with_icons {
                                 value: "new".to_string(),
                                 on_select: Callback::new(file_open.clone()),
                                 class: Some("flex items-center gap-2".to_string()),
-                                FileText { size: 16, color: "currentColor" }
+                                FileText { size: 16 }
                                 span { "New" }
                             }
                             MenubarItem {
                                 value: "open".to_string(),
                                 on_select: Callback::new(file_open.clone()),
                                 class: Some("flex items-center gap-2".to_string()),
-                                FolderOpen { size: 16, color: "currentColor" }
+                                FolderOpen { size: 16 }
                                 span { "Open" }
                             }
                             MenubarItem {
                                 value: "save".to_string(),
                                 on_select: Callback::new(file_open.clone()),
                                 class: Some("flex items-center gap-2".to_string()),
-                                Save { size: 16, color: "currentColor" }
+                                Save { size: 16 }
                                 span { "Save" }
                             }
                         }
@@ -277,21 +277,21 @@ pub mod with_icons {
                                 value: "cut".to_string(),
                                 on_select: Callback::new(edit_open.clone()),
                                 class: Some("flex items-center gap-2".to_string()),
-                                Scissors { size: 16, color: "currentColor" }
+                                Scissors { size: 16 }
                                 span { "Cut" }
                             }
                             MenubarItem {
                                 value: "copy".to_string(),
                                 on_select: Callback::new(edit_open.clone()),
                                 class: Some("flex items-center gap-2".to_string()),
-                                Copy { size: 16, color: "currentColor" }
+                                Copy { size: 16 }
                                 span { "Copy" }
                             }
                             MenubarItem {
                                 value: "paste".to_string(),
                                 on_select: Callback::new(edit_open.clone()),
                                 class: Some("flex items-center gap-2".to_string()),
-                                Clipboard { size: 16, color: "currentColor" }
+                                Clipboard { size: 16 }
                                 span { "Paste" }
                             }
                         }

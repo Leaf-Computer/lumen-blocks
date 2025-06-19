@@ -135,21 +135,14 @@ pub mod icons {
             div { class: "flex flex-wrap gap-2.5 items-center",
                 Button {
                     variant: ButtonVariant::Primary,
-                    icon_left: rsx! { ArrowLeft { size: 16, color: "currentColor" } },
+                    icon_left: rsx! { ArrowLeft { size: 16 } },
                     "Left Icon"
                 }
                 
                 Button {
                     variant: ButtonVariant::Primary,
-                    icon_right: rsx! { ArrowRight { size: 16, color: "currentColor" } },
+                    icon_right: rsx! { ArrowRight { size: 16 } },
                     "Right Icon"
-                }
-                
-                Button {
-                    variant: ButtonVariant::Secondary,
-                    icon_left: rsx! { ArrowLeft { size: 16, color: "currentColor" } },
-                    icon_right: rsx! { ArrowRight { size: 16, color: "currentColor" } },
-                    "Both Icons"
                 }
             }
         }
@@ -191,35 +184,35 @@ pub mod icon_buttons {
                     variant: ButtonVariant::Primary,
                     is_icon_button: true,
                     aria_label: Some("Add item".to_string()),
-                    Plus { size: 20, color: "currentColor" }
+                    Plus { size: 20 }
                 }
                 
                 Button {
                     variant: ButtonVariant::Secondary,
                     is_icon_button: true,
                     aria_label: Some("Edit item".to_string()),
-                    Pencil { size: 20, color: "currentColor" }
+                    Pencil { size: 20 }
                 }
                 
                 Button {
                     variant: ButtonVariant::Outline,
                     is_icon_button: true,
                     aria_label: Some("Delete item".to_string()),
-                    Trash { size: 20, color: "currentColor" }
+                    Trash { size: 20 }
                 }
                 
                 Button {
                     variant: ButtonVariant::Ghost,
                     is_icon_button: true,
                     aria_label: Some("Search".to_string()),
-                    Search { size: 20, color: "currentColor" }
+                    Search { size: 20 }
                 }
                 
                 Button {
                     variant: ButtonVariant::Destructive,
                     is_icon_button: true,
                     aria_label: Some("Close".to_string()),
-                    X { size: 20, color: "currentColor" }
+                    X { size: 20 }
                 }
             }
         }

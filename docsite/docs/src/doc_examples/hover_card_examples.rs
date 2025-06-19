@@ -244,7 +244,7 @@ pub mod tooltip {
                             class: "text-blue-600 hover:underline flex items-center gap-1", 
                             href: "#", 
                             "Visit documentation site"
-                            ExternalLink { size: 16, color: "currentColor" }
+                            ExternalLink { size: 16 }
                         }
                     }
 
@@ -280,7 +280,7 @@ pub mod icon {
                     HoverCardTrigger {
                         button { 
                             class: "w-10 h-10 rounded-full bg-secondary flex items-center justify-center hover:bg-secondary/80", 
-                            Info { size: 20, color: "currentColor" }
+                            Info { size: 20 }
                         }
                     }
 
