@@ -29,8 +29,8 @@ pub fn Home() -> Element {
                     div { class: "flex justify-center gap-4",
                         Link { to: Route::Docs01 { child: docs::router_01::BookRoute::Index { section: Default::default() } },
                             Button {
-                                variant: use_signal(|| ButtonVariant::Primary),
-                                size: use_signal(|| ButtonSize::Large),
+                                variant: ButtonVariant::Primary,
+                                size: ButtonSize::Large,
                                 "View Docs"
                             }
                         }
@@ -65,15 +65,15 @@ pub fn Home() -> Element {
                             h3 { class: "font-medium text-foreground mb-3", "Buttons" }
                             div { class: "flex flex-wrap gap-2",
                                 Button {
-                                    variant: use_signal(|| ButtonVariant::Primary),
+                                    variant: ButtonVariant::Primary,
                                     "Primary"
                                 }
                                 Button {
-                                    variant: use_signal(|| ButtonVariant::Secondary),
+                                    variant: ButtonVariant::Secondary,
                                     "Secondary"
                                 }
                                 Button {
-                                    variant: use_signal(|| ButtonVariant::Outline),
+                                    variant: ButtonVariant::Outline,
                                     "Outline"
                                 }
                             }

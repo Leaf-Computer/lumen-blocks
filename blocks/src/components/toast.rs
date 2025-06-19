@@ -201,8 +201,8 @@ pub fn Toast(props: ToastProps) -> Element {
             }
 
             Button {
-                variant: use_signal(|| ButtonVariant::Ghost),
-                is_icon_button: use_signal(|| true),
+                variant: ButtonVariant::Ghost,
+                is_icon_button: true,
                 aria_label: Some("Close".to_string()),
                 on_click: start_exit,
                 class: "absolute right-2 top-2 opacity-0 group-hover:opacity-100",

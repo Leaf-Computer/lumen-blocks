@@ -23,7 +23,7 @@ pub mod basic {
                 SideSheet {
                     SideSheetTrigger {
                         Button {
-                            variant: use_signal(|| ButtonVariant::Primary),
+                            variant: ButtonVariant::Primary,
                             "Open Side Sheet"
                         }
                     }
@@ -52,12 +52,12 @@ pub mod basic {
                         SideSheetFooter {
                             SideSheetClose {
                                 Button {
-                                    variant: use_signal(|| ButtonVariant::Outline),
+                                    variant: ButtonVariant::Outline,
                                     "Cancel"
                                 }
                             }
                             Button {
-                                variant: use_signal(|| ButtonVariant::Primary),
+                                variant: ButtonVariant::Primary,
                                 "Save Changes"
                             }
                         }
@@ -89,7 +89,7 @@ pub mod positions {
                     SideSheet {
                         SideSheetTrigger {
                             Button {
-                                variant: use_signal(|| ButtonVariant::Primary),
+                                variant: ButtonVariant::Primary,
                                 "Right Side Sheet"
                             }
                         }
@@ -125,7 +125,7 @@ pub mod positions {
                         
                         SideSheetTrigger {
                             Button {
-                                variant: use_signal(|| ButtonVariant::Secondary),
+                                variant: ButtonVariant::Secondary,
                                 Menu { class: "mr-2 h-4 w-4" }
                                 "Left Side Sheet"
                             }
@@ -178,7 +178,7 @@ pub mod settings {
                 SideSheet {
                     SideSheetTrigger {
                         Button {
-                            variant: use_signal(|| ButtonVariant::Outline),
+                            variant: ButtonVariant::Outline,
                             Settings { class: "mr-2 h-4 w-4" }
                             "Settings"
                         }
@@ -224,12 +224,12 @@ pub mod settings {
                         SideSheetFooter {
                             SideSheetClose {
                                 Button {
-                                    variant: use_signal(|| ButtonVariant::Outline),
+                                    variant: ButtonVariant::Outline,
                                     "Cancel"
                                 }
                             }
                             Button {
-                                variant: use_signal(|| ButtonVariant::Primary),
+                                variant: ButtonVariant::Primary,
                                 "Save Settings"
                             }
                         }
@@ -259,7 +259,7 @@ pub mod help {
                 SideSheet {
                     SideSheetTrigger {
                         Button {
-                            variant: use_signal(|| ButtonVariant::Ghost),
+                            variant: ButtonVariant::Ghost,
                             CircleHelp { class: "mr-2 h-4 w-4" }
                             "Help"
                         }
@@ -312,7 +312,7 @@ pub mod help {
                         SideSheetFooter {
                             SideSheetClose {
                                 Button {
-                                    variant: use_signal(|| ButtonVariant::Primary),
+                                    variant: ButtonVariant::Primary,
                                     "Close Help"
                                 }
                             }

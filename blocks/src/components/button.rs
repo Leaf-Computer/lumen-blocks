@@ -41,29 +41,29 @@ pub struct ButtonProps {
 
     /// The variant of the button
     #[props(default)]
-    variant: ReadOnlySignal<ButtonVariant>,
+    variant: ButtonVariant,
 
     /// The size of the button
     #[props(default)]
-    size: ReadOnlySignal<ButtonSize>,
+    size: ButtonSize,
     
     /// Whether the button is disabled
     #[props(default)]
-    disabled: ReadOnlySignal<bool>,
+    disabled: bool,
 
     /// Whether the button is in a loading state
     #[props(default)]
-    loading: ReadOnlySignal<bool>,
+    loading: bool,
 
     /// Whether the button is displayed as a full width block
     #[props(default)]
-    full_width: ReadOnlySignal<bool>,
+    full_width: bool,
 
     /// Whether the button is an icon-only button (square with centered icon)
     /// Note: When using icon-only buttons, providing an aria-label is strongly recommended
     /// for accessibility purposes as there is no visible text to identify the button.
     #[props(default)]
-    is_icon_button: ReadOnlySignal<bool>,
+    is_icon_button: bool,
 
     /// Callback when the button is clicked
     #[props(default)]
@@ -71,15 +71,15 @@ pub struct ButtonProps {
 
     /// Name of the button for form submission
     #[props(default)]
-    name: ReadOnlySignal<String>,
+    name: String,
     
     /// Value of the button for form submission
     #[props(default)]
-    value: ReadOnlySignal<String>,
+    value: String,
 
     /// Optional ID for the button
     #[props(default)]
-    id: ReadOnlySignal<Option<String>>,
+    id: Option<String>,
 
     /// Optional icon to display before the button text
     #[props(default)]
@@ -123,18 +123,19 @@ pub struct ButtonProps {
 pub fn Button(props: ButtonProps) -> Element {
     // Generate unique ID if not provided
     let button_id = use_unique_id();
-    let id_value = use_id_or(button_id, props.id);
+    let props_id_signal = use_signal(|| props.id);
+    let id_value = use_id_or(button_id, props_id_signal.into());
 
     // Check if icon button has aria label for accessibility
     #[cfg(debug_assertions)]
     {
-        if (props.is_icon_button)() && props.aria_label.is_none() && props.aria_labelledby.is_none() {
+        if props.is_icon_button && props.aria_label.is_none() && props.aria_labelledby.is_none() {
             log::warn!("Icon button missing aria-label or aria-labelledby attribute. This may cause accessibility issues.");
         }
     }
 
     // Determine base classes for button based on variant
-    let variant_classes = match (props.variant)() {
+    let variant_classes = match props.variant {
         ButtonVariant::Primary => "bg-primary text-primary-foreground hover:bg-primary/90 border-transparent focus:ring-ring",
         ButtonVariant::Secondary => "bg-secondary text-secondary-foreground hover:bg-secondary/80 border-transparent focus:ring-ring",
         ButtonVariant::Outline => "bg-background text-foreground hover:bg-muted border-border focus:ring-ring",
@@ -144,14 +145,14 @@ pub fn Button(props: ButtonProps) -> Element {
     };
 
     // Determine size classes based on whether it's an icon button or regular button
-    let size_classes = if (props.is_icon_button)() {
-        match (props.size)() {
+    let size_classes = if props.is_icon_button {
+        match props.size {
             ButtonSize::Small => "p-1.5 text-sm",
             ButtonSize::Medium => "p-2 text-base",
             ButtonSize::Large => "p-3 text-lg",
         }
     } else {
-        match (props.size)() {
+        match props.size {
             ButtonSize::Small => "text-xs px-2.5 py-1",
             ButtonSize::Medium => "text-sm px-4 py-1.5",
             ButtonSize::Large => "text-base px-6 py-2",
@@ -159,16 +160,16 @@ pub fn Button(props: ButtonProps) -> Element {
     };
 
     // Determine if the button should be full width (only for non-icon buttons)
-    let width_class = if (props.is_icon_button)() {
+    let width_class = if props.is_icon_button {
         "w-auto" // Icon buttons should never be full width
-    } else if (props.full_width)() {
+    } else if props.full_width {
         "w-full"
     } else {
         "w-auto"
     };
 
     // Determine disabled and loading state classes
-    let state_class = if (props.disabled)() || (props.loading)() {
+    let state_class = if props.disabled || props.loading {
         "opacity-50 cursor-not-allowed"
     } else {
         "cursor-pointer"
@@ -190,7 +191,7 @@ pub fn Button(props: ButtonProps) -> Element {
         width_class,
         
         // Icon button gets aspect-square class
-        if (props.is_icon_button)() { "aspect-square" } else { "" },
+        if props.is_icon_button { "aspect-square" } else { "" },
         
         // State class (disabled/loading)
         state_class,
@@ -212,14 +213,14 @@ pub fn Button(props: ButtonProps) -> Element {
             // Standard HTML attributes
             id: id_value,
             type: props.button_type.clone(),
-            name: (props.name)(),
-            value: (props.value)(),
-            disabled: (props.disabled)() || (props.loading)(),
+            name: props.name,
+            value: props.value,
+            disabled: props.disabled || props.loading,
             class: button_classes,
             onclick: handle_click,
 
             // ARIA attributes
-            aria_label: if (props.is_icon_button)() && props.aria_label.is_none() {
+            aria_label: if props.is_icon_button && props.aria_label.is_none() {
                 // Fallback for icon buttons without aria-label
                 Some("Button".to_string())
             } else {
@@ -230,14 +231,14 @@ pub fn Button(props: ButtonProps) -> Element {
             aria_controls: props.aria_controls.clone(),
             aria_expanded: props.aria_expanded.map(|v| v.to_string()),
             aria_pressed: props.aria_pressed.map(|v| v.to_string()),
-            aria_disabled: ((props.disabled)() || (props.loading)()).to_string(),
+            aria_disabled: (props.disabled || props.loading).to_string(),
 
             // Pass through other attributes
             ..props.attributes,
 
-            if (props.is_icon_button)() {
+            if props.is_icon_button {
                 // Icon button content
-                if (props.loading)() {
+                if props.loading {
                     // Loading spinner for icon button
                     span {
                         class: "animate-spin inline-block",
@@ -252,7 +253,7 @@ pub fn Button(props: ButtonProps) -> Element {
                 }
             } else {
                 // Standard button content
-                if (props.loading)() {
+                if props.loading {
                     // Loading spinner for standard button
                     span {
                         LoaderCircle {
@@ -285,5 +286,3 @@ pub fn Button(props: ButtonProps) -> Element {
         }
     }
 }
-
-

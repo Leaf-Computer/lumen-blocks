@@ -105,8 +105,8 @@ pub fn Header(current_section: Signal<String>) -> Element {
                     
                     // Notifications
                     Button {
-                        variant: use_signal(|| ButtonVariant::Ghost),
-                        is_icon_button: use_signal(|| true),
+                        variant: ButtonVariant::Ghost,
+                        is_icon_button: true,
                         aria_label: Some("Notifications".to_string()),
                         Info { class: "w-5 h-5" }
                     }

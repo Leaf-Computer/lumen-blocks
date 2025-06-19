@@ -53,8 +53,8 @@ pub mod basic {
         rsx! {
             div { class: "space-y-4",
                 Button {
-                    variant: use_signal(|| ButtonVariant::Primary),
-                    full_width: use_signal(|| true),
+                    variant: ButtonVariant::Primary,
+                    full_width: true,
                     on_click: move |_| {
                         toasts.success("Success!".to_string(), None);
                     },
@@ -62,8 +62,8 @@ pub mod basic {
                 }
                 
                 Button {
-                    variant: use_signal(|| ButtonVariant::Destructive),
-                    full_width: use_signal(|| true),
+                    variant: ButtonVariant::Destructive,
+                    full_width: true,
                     on_click: move |_| {
                         toasts.error("Error occurred!".to_string(), None);
                     },
@@ -71,8 +71,8 @@ pub mod basic {
                 }
                 
                 Button {
-                    variant: use_signal(|| ButtonVariant::Secondary),
-                    full_width: use_signal(|| true),
+                    variant: ButtonVariant::Secondary,
+                    full_width: true,
                     on_click: move |_| {
                         toasts.warning("Warning message".to_string(), None);
                     },
@@ -80,8 +80,8 @@ pub mod basic {
                 }
                 
                 Button {
-                    variant: use_signal(|| ButtonVariant::Outline),
-                    full_width: use_signal(|| true),
+                    variant: ButtonVariant::Outline,
+                    full_width: true,
                     on_click: move |_| {
                         toasts.info("Information".to_string(), None);
                     },
@@ -106,8 +106,8 @@ pub mod descriptions {
         rsx! {
             div { class: "space-y-4",
                 Button {
-                    variant: use_signal(|| ButtonVariant::Primary),
-                    full_width: use_signal(|| true),
+                    variant: ButtonVariant::Primary,
+                    full_width: true,
                     on_click: move |_| {
                         toasts.success(
                             "Profile updated".to_string(),
@@ -121,8 +121,8 @@ pub mod descriptions {
                 }
                 
                 Button {
-                    variant: use_signal(|| ButtonVariant::Destructive),
-                    full_width: use_signal(|| true),
+                    variant: ButtonVariant::Destructive,
+                    full_width: true,
                     on_click: move |_| {
                         toasts.error(
                             "Network Error".to_string(),
@@ -136,8 +136,8 @@ pub mod descriptions {
                 }
                 
                 Button {
-                    variant: use_signal(|| ButtonVariant::Secondary),
-                    full_width: use_signal(|| true),
+                    variant: ButtonVariant::Secondary,
+                    full_width: true,
                     on_click: move |_| {
                         toasts.warning(
                             "Storage Almost Full".to_string(),
@@ -151,8 +151,8 @@ pub mod descriptions {
                 }
                 
                 Button {
-                    variant: use_signal(|| ButtonVariant::Outline),
-                    full_width: use_signal(|| true),
+                    variant: ButtonVariant::Outline,
+                    full_width: true,
                     on_click: move |_| {
                         toasts.info(
                             "New Feature Available".to_string(),
@@ -184,8 +184,8 @@ pub mod durations {
         rsx! {
             div { class: "space-y-4",
                 Button {
-                    variant: use_signal(|| ButtonVariant::Primary),
-                    full_width: use_signal(|| true),
+                    variant: ButtonVariant::Primary,
+                    full_width: true,
                     on_click: move |_| {
                         toasts.success(
                             "Quick toast".to_string(),
@@ -200,8 +200,8 @@ pub mod durations {
                 }
                 
                 Button {
-                    variant: use_signal(|| ButtonVariant::Secondary),
-                    full_width: use_signal(|| true),
+                    variant: ButtonVariant::Secondary,
+                    full_width: true,
                     on_click: move |_| {
                         toasts.info(
                             "Long toast".to_string(),
@@ -216,8 +216,8 @@ pub mod durations {
                 }
                 
                 Button {
-                    variant: use_signal(|| ButtonVariant::Destructive),
-                    full_width: use_signal(|| true),
+                    variant: ButtonVariant::Destructive,
+                    full_width: true,
                     on_click: move |_| {
                         toasts.error(
                             "Permanent Error".to_string(),
@@ -250,8 +250,8 @@ pub mod advanced {
         rsx! {
             div { class: "space-y-4",
                 Button {
-                    variant: use_signal(|| ButtonVariant::Primary),
-                    full_width: use_signal(|| true),
+                    variant: ButtonVariant::Primary,
+                    full_width: true,
                     on_click: move |_| {
                         // Custom toast using the show method directly
                         toasts.show(
@@ -268,8 +268,8 @@ pub mod advanced {
                 }
                 
                 Button {
-                    variant: use_signal(|| ButtonVariant::Secondary),
-                    full_width: use_signal(|| true),
+                    variant: ButtonVariant::Secondary,
+                    full_width: true,
                     on_click: move |_| {
                         // Show multiple toasts of different types
                         toasts.info("Processing...".to_string(), None);
@@ -292,8 +292,8 @@ pub mod advanced {
                 }
                 
                 Button {
-                    variant: use_signal(|| ButtonVariant::Outline),
-                    full_width: use_signal(|| true),
+                    variant: ButtonVariant::Outline,
+                    full_width: true,
                     on_click: move |_| {
                         // Simulate a file upload process
                         toasts.info(
