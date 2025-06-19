@@ -98,7 +98,7 @@ fn DocsLeftNav() -> Element {
 
     rsx! {
         div { 
-            class: "min-w-[240px] pt-12 pb-16 border-r border-border sticky top-16 self-start h-[calc(100vh-64px)] overflow-auto bg-card/50 backdrop-blur-sm",
+            class: "min-w-[240px] pt-12 pb-16 border-r border-border sticky top-16 self-start h-[calc(100vh-64px)] overflow-auto backdrop-blur-sm",
             class: if is_sidebar_visible { "block" } else { "hidden lg:block" },
             div { class: "pr-8",
                 div { class: "flex justify-between items-center mb-4",
@@ -267,7 +267,7 @@ fn DocsRightNav() -> Element {
     let sections = current_book_route.map(|route| route.sections()).unwrap_or_default();
 
     rsx! {
-        div { class: "hidden xl:block min-w-[240px] pt-12 pb-16 border-l border-border sticky top-16 self-start h-[calc(100vh-64px)] overflow-auto bg-card/50 backdrop-blur-sm",
+        div { class: "hidden xl:block min-w-[240px] pt-12 pb-16 border-l border-border sticky top-16 self-start h-[calc(100vh-64px)] overflow-auto backdrop-blur-sm",
             div { class: "pl-8",
                 h3 { class: "font-bold mb-4 text-foreground", "On This Page" }
                 
