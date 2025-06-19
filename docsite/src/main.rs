@@ -1,11 +1,10 @@
 use dioxus::prelude::*;
-
 use dioxus::document;
 
 mod components;
 mod pages;
 mod layouts;
-use crate::pages::{Err404, Dashboard, Home};
+use crate::pages::{Err404, Home};
 use crate::layouts::{DocsLayout, MainLayout};
 use docs::docs;
 
@@ -45,20 +44,5 @@ fn App() -> Element {
         div { class: "min-h-screen bg-background",
             Router::<Route> {}
         }
-    }
-}
-
-#[component]
-// Route handler for the Components page
-fn ComponentsRoute() -> Element {
-    rsx! {
-        pages::Components {}
-    }
-}
-
-#[component]
-fn DashboardRoute() -> Element {
-    rsx! {
-        Dashboard {}
     }
 }

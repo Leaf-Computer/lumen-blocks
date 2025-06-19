@@ -18,7 +18,7 @@ Laminar is an ARIA-accessible, styled, opinionated component library for Dioxus 
 2. Run this to serve the base component preview app:
 
 ```
-dx serve -p laminar-blocks --example main --platform web
+dx serve -p docsite --platform web
 ```
 
 # Development
@@ -28,7 +28,7 @@ dx serve -p laminar-blocks --example main --platform web
 If you are making changes to components, you should also run this during development to keep tailwind classes up to date, on top of the `dx serve` command.
 
 ```
-cd blocks && tailwindcss -i tailwind.css -o assets/tailwind.css --config tailwind.config.js --watch
+cd docsite && tailwindcss -i tailwind.css -o assets/tailwind.css --config tailwind.config.js --watch
 ```
 
 ### With nix-shell
@@ -44,13 +44,13 @@ nix-shell
 2. Run this to serve the base component preview app:
 
 ```
-just dev-components
+just dev-docsite
 ```
 
 3. Run this to keep tailwind classes up to date:
 
 ```
-just dev-components-tailwind
+just dev-docsite-tailwind
 ```
 
 

@@ -31,7 +31,7 @@ pub fn Home() -> Element {
                             Button {
                                 variant: use_signal(|| ButtonVariant::Primary),
                                 size: use_signal(|| ButtonSize::Large),
-                                "View Components"
+                                "View Docs"
                             }
                         }
                     }
