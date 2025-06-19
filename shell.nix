@@ -3,7 +3,7 @@
 pkgs.mkShell {
   buildInputs = with pkgs; [
     # TailwindCSS CLI
-    tailwindcss
+    tailwindcss_4
     
     # Just command runner
     just

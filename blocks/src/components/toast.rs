@@ -171,7 +171,7 @@ pub fn Toast(props: ToastProps) -> Element {
                 class: "flex items-center space-x-3 flex-1",
                 
                 div {
-                    class: "flex-shrink-0 {toast.toast_type.icon_classes()}",
+                    class: "shrink-0 {toast.toast_type.icon_classes()}",
                     aria_label: match toast.toast_type {
                         ToastType::Success => "Success:",
                         ToastType::Error => "Error:",

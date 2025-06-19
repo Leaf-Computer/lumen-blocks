@@ -172,7 +172,7 @@ pub fn Input(props: InputProps) -> Element {
     let input_classes = vec![
         // Base classes
         "rounded border text-foreground",
-        "transition-colors focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2",
+        "transition-colors focus:outline-hidden focus:ring-2 focus:ring-ring focus:ring-offset-2",
         
         // Variant-specific classes
         variant_classes,

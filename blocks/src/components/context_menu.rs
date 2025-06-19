@@ -274,8 +274,8 @@ pub fn ContextMenuCheckboxItem(props: ContextMenuCheckboxItemProps) -> Element {
     // Determine item classes
     let item_classes = vec![
         // Base classes
-        "relative flex cursor-pointer select-none items-center rounded-sm px-2 py-1.5",
-        "text-sm outline-none transition-colors focus:bg-accent focus:text-accent-foreground",
+        "relative flex cursor-pointer select-none items-center rounded-xs px-2 py-1.5",
+        "text-sm outline-hidden transition-colors focus:bg-accent focus:text-accent-foreground",
         "data-[disabled=true]:pointer-events-none data-[disabled=true]:opacity-50",
         
         // State classes
@@ -406,8 +406,8 @@ pub fn ContextMenuRadioItem(props: ContextMenuRadioItemProps) -> Element {
     // Determine item classes
     let item_classes = vec![
         // Base classes
-        "relative flex cursor-pointer select-none items-center rounded-sm px-2 py-1.5",
-        "text-sm outline-none transition-colors focus:bg-accent focus:text-accent-foreground",
+        "relative flex cursor-pointer select-none items-center rounded-xs px-2 py-1.5",
+        "text-sm outline-hidden transition-colors focus:bg-accent focus:text-accent-foreground",
         "data-[disabled=true]:pointer-events-none data-[disabled=true]:opacity-50",
         
         // State classes
@@ -463,7 +463,7 @@ pub fn ContextMenuItem(props: ContextMenuItemProps) -> Element {
     let item_classes = vec![
         // Base classes
         "relative flex cursor-pointer select-none items-center rounded-sm px-2 py-1.5",
-        "text-sm outline-none transition-colors focus:bg-accent focus:text-accent-foreground",
+        "text-sm outline-hidden transition-colors focus:bg-accent focus:text-accent-foreground",
         "data-[disabled=true]:pointer-events-none data-[disabled=true]:opacity-50",
         "disabled:pointer-events-none disabled:opacity-50 hover:bg-accent hover:text-accent-foreground",
         

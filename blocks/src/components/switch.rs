@@ -80,7 +80,7 @@ pub fn Switch(props: SwitchProps) -> Element {
     let full_switch_classes = vec![
         // Base classes
         "relative inline-flex shrink-0 cursor-pointer disabled:cursor-not-allowed disabled:opacity-50 rounded-full border-2 border-transparent",
-        "transition-colors duration-300 ease-in-out focus:outline-none focus:ring-2",
+        "transition-colors duration-300 ease-in-out focus:outline-hidden focus:ring-2",
         "focus:ring-ring focus:ring-offset-2 focus:ring-offset-background",
         // Background colors based on state
         if (props.checked)() { "bg-primary" } else { "bg-input" },

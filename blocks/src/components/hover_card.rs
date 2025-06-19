@@ -40,7 +40,7 @@ pub struct HoverCardTriggerProps {
 
 #[component]
 pub fn HoverCardTrigger(props: HoverCardTriggerProps) -> Element {
-    let default_classes = "cursor-pointer focus:outline-none";
+    let default_classes = "cursor-pointer focus:outline-hidden";
     let class = if let Some(extra) = &props.class {
         format!("{} {}", extra, default_classes)
     } else {
