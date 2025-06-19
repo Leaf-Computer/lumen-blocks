@@ -17,32 +17,32 @@ pub mod variants {
         rsx! {
             div { class: "flex flex-wrap gap-2.5 items-center",
                 Button {
-                    variant: use_signal(|| ButtonVariant::Primary),
+                    variant: ButtonVariant::Primary,
                     "Primary"
                 }
                 
                 Button {
-                    variant: use_signal(|| ButtonVariant::Secondary),
+                    variant: ButtonVariant::Secondary,
                     "Secondary"
                 }
                 
                 Button {
-                    variant: use_signal(|| ButtonVariant::Outline),
+                    variant: ButtonVariant::Outline,
                     "Outline"
                 }
                 
                 Button {
-                    variant: use_signal(|| ButtonVariant::Ghost),
+                    variant: ButtonVariant::Ghost,
                     "Ghost"
                 }
                 
                 Button {
-                    variant: use_signal(|| ButtonVariant::Link),
+                    variant: ButtonVariant::Link,
                     "Link"
                 }
                 
                 Button {
-                    variant: use_signal(|| ButtonVariant::Destructive),
+                    variant: ButtonVariant::Destructive,
                     "Destructive"
                 }
             }
@@ -61,20 +61,20 @@ pub mod sizes {
         rsx! {
             div { class: "flex flex-wrap gap-2.5 items-center",
                 Button {
-                    variant: use_signal(|| ButtonVariant::Primary),
-                    size: use_signal(|| ButtonSize::Small),
+                    variant: ButtonVariant::Primary,
+                    size: ButtonSize::Small,
                     "Small"
                 }
                 
                 Button {
-                    variant: use_signal(|| ButtonVariant::Primary),
-                    size: use_signal(|| ButtonSize::Medium),
+                    variant: ButtonVariant::Primary,
+                    size: ButtonSize::Medium,
                     "Medium"
                 }
                 
                 Button {
-                    variant: use_signal(|| ButtonVariant::Primary),
-                    size: use_signal(|| ButtonSize::Large),
+                    variant: ButtonVariant::Primary,
+                    size: ButtonSize::Large,
                     "Large"
                 }
             }
@@ -101,19 +101,19 @@ pub mod states {
         rsx! {
             div { class: "flex flex-wrap gap-2.5 items-center",
                 Button {
-                    variant: use_signal(|| ButtonVariant::Primary),
-                    disabled: use_signal(|| true),
+                    variant: ButtonVariant::Primary,
+                    disabled: true,
                     "Disabled"
                 }
                 
                 Button {
-                    variant: use_signal(|| ButtonVariant::Primary),
-                    loading: loading,
+                    variant: ButtonVariant::Primary,
+                    loading: loading(),
                     "Loading"
                 }
                 
                 Button {
-                    variant: use_signal(|| ButtonVariant::Secondary),
+                    variant: ButtonVariant::Secondary,
                     on_click: toggle_loading,
                     "Toggle Loading"
                 }
@@ -134,19 +134,19 @@ pub mod icons {
         rsx! {
             div { class: "flex flex-wrap gap-2.5 items-center",
                 Button {
-                    variant: use_signal(|| ButtonVariant::Primary),
+                    variant: ButtonVariant::Primary,
                     icon_left: rsx! { ArrowLeft { size: 16, color: "currentColor" } },
                     "Left Icon"
                 }
                 
                 Button {
-                    variant: use_signal(|| ButtonVariant::Primary),
+                    variant: ButtonVariant::Primary,
                     icon_right: rsx! { ArrowRight { size: 16, color: "currentColor" } },
                     "Right Icon"
                 }
                 
                 Button {
-                    variant: use_signal(|| ButtonVariant::Secondary),
+                    variant: ButtonVariant::Secondary,
                     icon_left: rsx! { ArrowLeft { size: 16, color: "currentColor" } },
                     icon_right: rsx! { ArrowRight { size: 16, color: "currentColor" } },
                     "Both Icons"
@@ -167,8 +167,8 @@ pub mod full_width {
         rsx! {
             div { class: "w-full",
                 Button {
-                    variant: use_signal(|| ButtonVariant::Primary),
-                    full_width: use_signal(|| true),
+                    variant: ButtonVariant::Primary,
+                    full_width: true,
                     "Full Width Button"
                 }
             }
@@ -188,36 +188,36 @@ pub mod icon_buttons {
         rsx! {
             div { class: "flex flex-wrap gap-2.5 items-center",
                 Button {
-                    variant: use_signal(|| ButtonVariant::Primary),
-                    is_icon_button: use_signal(|| true),
+                    variant: ButtonVariant::Primary,
+                    is_icon_button: true,
                     aria_label: Some("Add item".to_string()),
                     Plus { size: 20, color: "currentColor" }
                 }
                 
                 Button {
-                    variant: use_signal(|| ButtonVariant::Secondary),
-                    is_icon_button: use_signal(|| true),
+                    variant: ButtonVariant::Secondary,
+                    is_icon_button: true,
                     aria_label: Some("Edit item".to_string()),
                     Pencil { size: 20, color: "currentColor" }
                 }
                 
                 Button {
-                    variant: use_signal(|| ButtonVariant::Outline),
-                    is_icon_button: use_signal(|| true),
+                    variant: ButtonVariant::Outline,
+                    is_icon_button: true,
                     aria_label: Some("Delete item".to_string()),
                     Trash { size: 20, color: "currentColor" }
                 }
                 
                 Button {
-                    variant: use_signal(|| ButtonVariant::Ghost),
-                    is_icon_button: use_signal(|| true),
+                    variant: ButtonVariant::Ghost,
+                    is_icon_button: true,
                     aria_label: Some("Search".to_string()),
                     Search { size: 20, color: "currentColor" }
                 }
                 
                 Button {
-                    variant: use_signal(|| ButtonVariant::Destructive),
-                    is_icon_button: use_signal(|| true),
+                    variant: ButtonVariant::Destructive,
+                    is_icon_button: true,
                     aria_label: Some("Close".to_string()),
                     X { size: 20, color: "currentColor" }
                 }
@@ -237,7 +237,7 @@ pub mod example {
             
         rsx! {
             Button {
-                variant: use_signal(|| ButtonVariant::Outline),
+                variant: ButtonVariant::Outline,
                 "Outline"
             }
         }

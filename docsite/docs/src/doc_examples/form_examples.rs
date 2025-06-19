@@ -463,9 +463,9 @@ pub mod complete {
                     
                     // Submit button
                     Button {
-                        variant: use_signal(|| ButtonVariant::Primary),
+                        variant: ButtonVariant::Primary,
                         button_type: "submit".to_string(),
-                        full_width: use_signal(|| true),
+                        full_width: true,
                         on_click: handle_submit,
                         "Sign In"
                     }

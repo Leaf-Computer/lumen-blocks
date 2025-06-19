@@ -28,7 +28,7 @@ pub mod basic {
                     Dropdown {
                         DropdownTrigger {
                             Button {
-                                variant: use_signal(|| ButtonVariant::Outline),
+                                variant: ButtonVariant::Outline,
                                 "Basic Dropdown"
                             }
                         }
@@ -67,7 +67,7 @@ pub mod basic {
                     Dropdown {
                         DropdownTrigger {
                             Button {
-                                variant: use_signal(|| ButtonVariant::Outline),
+                                variant: ButtonVariant::Outline,
                                 "With Label & Separator"
                             }
                         }
@@ -142,8 +142,8 @@ pub mod states {
                     disabled: use_signal(|| true),
                     DropdownTrigger {
                         Button {
-                            variant: use_signal(|| ButtonVariant::Outline),
-                            disabled: use_signal(|| true),
+                            variant: ButtonVariant::Outline,
+                            disabled: true,
                             "Disabled Dropdown"
                         }
                     }
@@ -161,7 +161,7 @@ pub mod states {
                 Dropdown {
                     DropdownTrigger {
                         Button {
-                            variant: use_signal(|| ButtonVariant::Outline),
+                            variant: ButtonVariant::Outline,
                             "With Disabled Item"
                         }
                     }
@@ -192,7 +192,7 @@ pub mod states {
                 Dropdown {
                     DropdownTrigger {
                         Button {
-                            variant: use_signal(|| ButtonVariant::Outline),
+                            variant: ButtonVariant::Outline,
                             "With Destructive Item"
                         }
                     }
@@ -237,7 +237,7 @@ pub mod icons {
                     Dropdown {
                         DropdownTrigger {
                             Button {
-                                variant: use_signal(|| ButtonVariant::Outline),
+                                variant: ButtonVariant::Outline,
                                 "User Menu"
                             }
                         }
@@ -279,7 +279,7 @@ pub mod icons {
                     Dropdown {
                         DropdownTrigger {
                             Button {
-                                variant: use_signal(|| ButtonVariant::Outline),
+                                variant: ButtonVariant::Outline,
                                 "Actions"
                             }
                         }
@@ -339,7 +339,7 @@ pub mod alignment {
                     Dropdown {
                         DropdownTrigger {
                             Button {
-                                variant: use_signal(|| ButtonVariant::Outline),
+                                variant: ButtonVariant::Outline,
                                 "Left Aligned"
                             }
                         }
@@ -373,7 +373,7 @@ pub mod alignment {
                     Dropdown {
                         DropdownTrigger {
                             Button {
-                                variant: use_signal(|| ButtonVariant::Outline),
+                                variant: ButtonVariant::Outline,
                                 "Center Aligned"
                             }
                         }
@@ -407,7 +407,7 @@ pub mod alignment {
                     Dropdown {
                         DropdownTrigger {
                             Button {
-                                variant: use_signal(|| ButtonVariant::Outline),
+                                variant: ButtonVariant::Outline,
                                 "Right Aligned"
                             }
                         }
@@ -470,7 +470,7 @@ pub mod checkbox_radio {
                     Dropdown {
                         DropdownTrigger {
                             Button {
-                                variant: use_signal(|| ButtonVariant::Outline),
+                                variant: ButtonVariant::Outline,
                                 "Settings"
                             }
                         }
@@ -512,7 +512,7 @@ pub mod checkbox_radio {
                     Dropdown {
                         DropdownTrigger {
                             Button {
-                                variant: use_signal(|| ButtonVariant::Outline),
+                                variant: ButtonVariant::Outline,
                                 "Theme"
                             }
                         }
@@ -603,7 +603,7 @@ pub mod complex {
                     Dropdown {
                         DropdownTrigger {
                             Button {
-                                variant: use_signal(|| ButtonVariant::Outline),
+                                variant: ButtonVariant::Outline,
                                 "Account & Settings"
                             }
                         }

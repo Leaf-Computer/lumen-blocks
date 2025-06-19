@@ -60,7 +60,7 @@ pub fn Navbar() -> Element {
                 div { class: "md:hidden",
                     SideSheetTrigger {
                         Button {
-                            variant: use_signal(|| ButtonVariant::Ghost),
+                            variant: ButtonVariant::Ghost,
                             Menu { class: "h-6 w-6" }
                         }
                     }
