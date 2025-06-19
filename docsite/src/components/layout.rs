@@ -2,7 +2,7 @@ use dioxus::prelude::*;
 use laminar_blocks::components::{
     avatar::{Avatar, AvatarImage, AvatarFallback},
     button::{Button, ButtonVariant},
-    input::{Input, InputSize},
+    input::Input,
 };
 use lucide_dioxus::{Check, Info, X};
 

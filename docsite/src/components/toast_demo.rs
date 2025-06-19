@@ -1,7 +1,7 @@
 use dioxus::prelude::*;
 use laminar_blocks::components::{
     button::{Button, ButtonVariant},
-    toast::{use_toast, ToastOptions, ToastProvider, ToastType},
+    toast::{use_toast, ToastOptions, ToastProvider},
 };
 use lucide_dioxus::{TriangleAlert, Check, Info, X};
 use std::time::Duration;

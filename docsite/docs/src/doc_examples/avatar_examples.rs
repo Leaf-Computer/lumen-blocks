@@ -13,8 +13,6 @@ pub mod basic {
     use laminar_blocks::components::avatar::{Avatar, AvatarFallback, AvatarImage};
     
     const PERSON_1: Asset = asset!("/assets/person-1.avif");
-    const PERSON_2: Asset = asset!("/assets/person-2.jpeg");
-    const PERSON_3: Asset = asset!("/assets/person-3.avif");
     
     #[component]
     pub fn BasicAvatarExample() -> Element {
@@ -239,8 +237,6 @@ pub mod state {
     use laminar_blocks::components::avatar::{Avatar, AvatarFallback, AvatarImage};
     
     const PERSON_1: Asset = asset!("/assets/person-1.avif");
-    const PERSON_2: Asset = asset!("/assets/person-2.jpeg");
-    const PERSON_3: Asset = asset!("/assets/person-3.avif");
     
     #[component]
     pub fn AvatarStateExample() -> Element {

@@ -9,7 +9,7 @@ pub use form_integration::FormIntegrationExample;
 pub mod basic {
     // ANCHOR: basic
     use dioxus::prelude::*;
-    use laminar_blocks::components::checkbox::{Checkbox, CheckboxSize};
+    use laminar_blocks::components::checkbox::Checkbox;
     
     #[component]
     pub fn BasicCheckboxExample() -> Element {
@@ -120,12 +120,12 @@ pub mod sizes {
 pub mod states {
     // ANCHOR: states
     use dioxus::prelude::*;
-    use laminar_blocks::components::checkbox::{Checkbox, CheckboxSize};
+    use laminar_blocks::components::checkbox::Checkbox;
     
     #[component]
     pub fn CheckboxStatesExample() -> Element {
-        let mut checked1 = use_signal(|| false);
-        let mut checked2 = use_signal(|| true);
+        let checked1 = use_signal(|| false);
+        let checked2 = use_signal(|| true);
         let disabled = ReadOnlySignal::new(Signal::new(true));
         
         rsx! {
@@ -160,7 +160,7 @@ pub mod states {
 pub mod custom_indicator {
     // ANCHOR: custom_indicator
     use dioxus::prelude::*;
-    use laminar_blocks::components::checkbox::{Checkbox, CheckboxSize};
+    use laminar_blocks::components::checkbox::Checkbox;
     
     #[component]
     pub fn CustomIndicatorExample() -> Element {
@@ -206,8 +206,7 @@ pub mod custom_indicator {
 pub mod form_integration {
     // ANCHOR: form_integration
     use dioxus::prelude::*;
-    use laminar_blocks::components::checkbox::{Checkbox, CheckboxSize};
-    use laminar_blocks::components::button::{Button, ButtonVariant, ButtonSize};
+    use laminar_blocks::components::checkbox::Checkbox;
     
     #[component]
     pub fn FormIntegrationExample() -> Element {
@@ -265,7 +264,7 @@ pub mod form_integration {
 // This maintains the original example for backward compatibility
 pub mod example {
     use dioxus::prelude::*;
-    use laminar_blocks::components::checkbox::{Checkbox, CheckboxSize};
+    use laminar_blocks::components::checkbox::Checkbox;
     
     #[component]
     pub fn CheckboxExample() -> Element {

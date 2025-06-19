@@ -1,6 +1,5 @@
 use dioxus_lib::prelude::*;
 use lucide_dioxus::X;
-use std::sync::Arc;
 
 // Side from which the sheet appears
 #[derive(Debug, Clone, Copy, PartialEq, Eq)]
@@ -144,7 +143,7 @@ pub struct SideSheetContentProps {
 
 #[component]
 pub fn SideSheetContent(props: SideSheetContentProps) -> Element {
-    let mut context = use_context::<SideSheetContext>();
+    let context = use_context::<SideSheetContext>();
     let is_open = *context.is_open.read();
     
     // We'll handle escape key with the aria-modal attribute

@@ -1,9 +1,5 @@
 #![allow(non_snake_case)]
 
-use lucide_dioxus::{
-    User, Settings, LogOut, Plus, Share2, 
-    MessageSquare, Mail, CreditCard
-};
 
 pub use basic::BasicDropdownExample;
 pub use states::DropdownStatesExample;

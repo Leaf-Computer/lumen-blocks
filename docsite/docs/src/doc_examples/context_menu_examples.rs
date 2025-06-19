@@ -1,6 +1,6 @@
 #![allow(non_snake_case)]
 
-use lucide_dioxus::{Pencil, Plus, Trash, Settings, Share2, Search, X};
+
 
 pub use basic::BasicContextMenuExample;
 pub use with_labels::ContextMenuWithLabelsExample;

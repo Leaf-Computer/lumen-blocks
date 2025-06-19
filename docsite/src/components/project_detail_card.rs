@@ -4,7 +4,7 @@ use laminar_blocks::components::{
     avatar::{Avatar, AvatarFallback},
     button::{Button, ButtonVariant},
 };
-use lucide_dioxus::{Clock, Users, Check, TriangleAlert};
+use lucide_dioxus::{Clock, Users, Check};
 
 #[component]
 pub fn ProjectDetailCard(
@@ -100,7 +100,7 @@ pub fn ProjectDetailCard(
             div { class: "p-6",
                 h4 { class: "text-sm font-medium mb-3", "Team Members" }
                 div { class: "flex -space-x-2 overflow-hidden",
-                    for (index, member) in team.iter().enumerate().take(4) {
+                    for (_index, member) in team.iter().enumerate().take(4) {
                         Avatar {
                             class: Some("border-2 border-background".to_string()),
                             AvatarFallback { 

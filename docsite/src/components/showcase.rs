@@ -6,7 +6,7 @@ use laminar_blocks::components::{
     progress::{Progress, ProgressSize, ProgressVariant},
     switch::{Switch, SwitchSize},
 };
-use lucide_dioxus::{Check, Info, X};
+use lucide_dioxus::{Check, Info};
 
 #[component]
 pub fn ComponentShowcase(

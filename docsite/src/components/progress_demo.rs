@@ -1,6 +1,6 @@
 use dioxus::prelude::*;
 use laminar_blocks::components::{
-    progress::{Progress, ProgressVariant, ProgressSize},
+    progress::{Progress, ProgressVariant},
     button::{Button, ButtonVariant},
 };
 use lucide_dioxus::{RefreshCw, Play, X};
@@ -14,7 +14,7 @@ pub fn ProgressDemo() -> Element {
     // Create an effect to increment the progress when running
     use_effect(move || {
         if is_running() && progress_value() < 100.0 {
-            let handle = use_timeout(std::time::Duration::from_millis(200), move |_: String| {
+            let _handle = use_timeout(std::time::Duration::from_millis(200), move |_: String| {
                 if progress_value() < 100.0 {
                     progress_value.set(progress_value() + 1.0);
                 } else {

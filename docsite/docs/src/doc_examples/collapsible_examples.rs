@@ -1,6 +1,5 @@
 #![allow(non_snake_case)]
 
-use lucide_dioxus::{ChevronDown, Plus, Minus};
 
 pub use basic::BasicCollapsibleExample;
 pub use multiple::MultipleCollapsiblesExample;

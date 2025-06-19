@@ -1,7 +1,5 @@
 #![allow(non_snake_case)]
 
-use dioxus::prelude::*;
-use laminar_blocks::components::accordion::{Accordion, AccordionContent, AccordionItem, AccordionTrigger};
 
 pub use basic::BasicAccordionExample;
 pub use multiple::MultipleOpenAccordionExample;

@@ -84,8 +84,6 @@ fn DocsLeftNav() -> Element {
         Route::Docs01 { child } => Some(child),
         _ => None,
     };
-    
-    let toggle_sidebar = move |_: String| *SHOW_SIDEBAR.write() = *SHOW_SIDEBAR.read();
     let is_sidebar_visible = *SHOW_SIDEBAR.read();
     
     // Get the book structure from LAZY_BOOK
@@ -110,7 +108,7 @@ fn DocsLeftNav() -> Element {
                 // Dynamic navigation based on the book structure
                 nav { class: "pl-2 pb-2 text-base sm:block text-muted-foreground pr-2 space-y-2",
                     for chapter_list in chapters.into_iter().flatten() {
-                        if let Some(link) = chapter_list.maybe_link() {
+                        if let Some(_link) = chapter_list.maybe_link() {
                             SidebarSection { 
                                 chapter: chapter_list,
                                 current_route: current_book_route
