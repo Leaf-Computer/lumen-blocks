@@ -29,7 +29,7 @@ pub struct CheckboxProps {
     
     /// Whether the checkbox is disabled
     #[props(default)]
-    pub disabled: ReadOnlySignal<bool>,
+    pub disabled: bool,
     
     /// Size of the checkbox
     #[props(default)]
@@ -74,13 +74,13 @@ pub fn Checkbox(props: CheckboxProps) -> Element {
         "inline-flex items-center justify-center rounded border-2 transition-colors {} {} {}",
         size_class,
         if (props.checked)() { "bg-primary border-primary" } else { "bg-background border-input hover:bg-accent/10" },
-        if (props.disabled)() { "cursor-not-allowed opacity-50" } else { "cursor-pointer" }
+        if props.disabled { "cursor-not-allowed opacity-50" } else { "cursor-pointer" }
     );
     
     // Handle checkbox change
     let mut checked = props.checked.clone();
     let on_change = move |_| {
-        if !(props.disabled)() {
+        if !props.disabled {
             if let Some(handler) = &props.on_checked_change {
                 let new_state = !checked();
                 checked.set(new_state);
@@ -96,7 +96,7 @@ pub fn Checkbox(props: CheckboxProps) -> Element {
             "aria-checked": (props.checked)().to_string(),
             id: id.clone(),
             onclick: on_change,
-            tabindex: if !(props.disabled)() { "0" } else { "-1" },
+            tabindex: if !props.disabled { "0" } else { "-1" },
             
             // Render indicator when checked
             if (props.checked)() {
@@ -116,7 +116,7 @@ pub fn Checkbox(props: CheckboxProps) -> Element {
                     id: format!("{}-input", id),
                     name: name.clone(),
                     checked: (props.checked)(),
-                    disabled: (props.disabled)(),
+                    disabled: props.disabled,
                     class: "sr-only",
                 }
             }

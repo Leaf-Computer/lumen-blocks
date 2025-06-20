@@ -52,22 +52,6 @@ DemoFrame {
 
 Disabled checkboxes maintain their checked/unchecked state but prevent user interaction, visually indicating that they are not currently actionable.
 
-## Custom Indicators
-
-You can customize the appearance of the checkbox indicator by providing your own content as children of the checkbox component.
-
-```inject-dioxus
-DemoFrame {
-    checkbox_examples::custom_indicator::CustomIndicatorExample {}
-}
-```
-
-```rust, no_run
-{{#include src/doc_examples/checkbox_examples.rs:custom_indicator}}
-```
-
-Custom indicators allow you to replace the default checkmark with your own symbol, icon, or even emoji, while maintaining the checkbox's native functionality.
-
 ## Form Integration
 
 Checkboxes integrate seamlessly with forms by providing `id` and `name` attributes.

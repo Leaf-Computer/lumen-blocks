@@ -3,7 +3,6 @@
 pub use basic::BasicCheckboxExample;
 pub use sizes::CheckboxSizesExample;
 pub use states::CheckboxStatesExample;
-pub use custom_indicator::CustomIndicatorExample;
 pub use form_integration::FormIntegrationExample;
 
 pub mod basic {
@@ -126,14 +125,13 @@ pub mod states {
     pub fn CheckboxStatesExample() -> Element {
         let checked1 = use_signal(|| false);
         let checked2 = use_signal(|| true);
-        let disabled = ReadOnlySignal::new(Signal::new(true));
         
         rsx! {
             div { class: "flex flex-col gap-4",
                 div { class: "flex items-center gap-2",
                     Checkbox {
                         checked: checked1,
-                        disabled: disabled,
+                        disabled: true,
                         aria_label: Some(String::from("Disabled unchecked checkbox example")),
                     }
                     label { class: "text-sm font-medium text-gray-500",
@@ -144,7 +142,7 @@ pub mod states {
                 div { class: "flex items-center gap-2",
                     Checkbox {
                         checked: checked2,
-                        disabled: disabled,
+                        disabled: true,
                         aria_label: Some(String::from("Disabled checked checkbox example")),
                     }
                     label { class: "text-sm font-medium text-gray-500",
@@ -157,67 +155,24 @@ pub mod states {
     // ANCHOR_END: states
 }
 
-pub mod custom_indicator {
-    // ANCHOR: custom_indicator
-    use dioxus::prelude::*;
-    use laminar_blocks::components::checkbox::Checkbox;
-    
-    #[component]
-    pub fn CustomIndicatorExample() -> Element {
-        let mut checked = use_signal(|| false);
-        
-        rsx! {
-            div { class: "flex flex-col gap-4",
-                div { class: "flex items-center gap-2",
-                    Checkbox {
-                        checked: checked,
-                        on_checked_change: move |new_state| {
-                            checked.set(new_state);
-                        },
-                        aria_label: Some(String::from("Custom indicator example")),
-                        
-                        span { class: "text-sm font-bold text-background", "✓" }
-                    }
-                    label { class: "text-sm font-medium",
-                        "Custom checkmark" 
-                    }
-                }
-                
-                div { class: "flex items-center gap-2",
-                    Checkbox {
-                        checked: checked,
-                        on_checked_change: move |new_state| {
-                            checked.set(new_state);
-                        },
-                        aria_label: Some(String::from("Custom emoji indicator example")),
-                        
-                        span { class: "text-sm text-background", "👍" }
-                    }
-                    label { class: "text-sm font-medium",
-                        "Emoji indicator" 
-                    }
-                }
-            }
-        }
-    }
-    // ANCHOR_END: custom_indicator
-}
-
 pub mod form_integration {
     // ANCHOR: form_integration
     use dioxus::prelude::*;
-    use laminar_blocks::components::checkbox::Checkbox;
+    use laminar_blocks::components::{button::Button, checkbox::Checkbox};
     
     #[component]
     pub fn FormIntegrationExample() -> Element {
         let mut terms_accepted = use_signal(|| false);
         let mut newsletter = use_signal(|| true);
+        let mut form_status = use_signal(|| "Not submitted".to_string());
         
         rsx! {
             form {
                 class: "space-y-4",
                 onsubmit: move |e| {
-                    println!("Form submitted with values: {:?}", e.values());
+                    // Format and display the form values
+                    let new_text = format!("Form submitted with: {:?}", e.values());
+                    form_status.set(new_text);
                 },
                 
                 div { class: "flex items-center gap-2",
@@ -248,12 +203,16 @@ pub mod form_integration {
                     }
                 }
                 
-                button {
-                    r#type: "submit",
-                    class: "px-4 py-2 bg-primary text-primary-foreground rounded-md hover:bg-primary/90 transition-colors",
+                Button {
+                    button_type: "submit",
                     disabled: !terms_accepted(),
-                    
                     "Submit Form"
+                }
+                
+                // Display form submission status
+                div { 
+                    class: "mt-4 p-2 bg-muted rounded text-sm",
+                    code { "{form_status}" }
                 }
             }
         }
