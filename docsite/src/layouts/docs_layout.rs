@@ -226,12 +226,12 @@ fn DocsContent() -> Element {
                 text-foreground bg-background
 
                 /* Headings */
-                [&_h1]:mt-12 [&_h1]:mb-3 [&_h1]:text-3xl [&_h1]:font-bold [&_h1]:text-foreground
-                [&_h2]:mt-12 [&_h2]:mb-3 [&_h2]:text-2xl [&_h2]:font-semibold [&_h2]:text-foreground
-                [&_h3]:mt-12 [&_h3]:mb-3 [&_h3]:text-xl [&_h3]:font-medium [&_h3]:text-foreground
-                [&_h4]:mt-12 [&_h4]:mb-3 [&_h4]:text-lg [&_h4]:font-medium [&_h4]:text-foreground
-                [&_h5]:mt-10 [&_h5]:mb-2 [&_h5]:text-base [&_h5]:font-medium [&_h5]:text-foreground
-                [&_h6]:mt-8 [&_h6]:mb-2 [&_h6]:text-sm [&_h6]:font-medium [&_h6]:text-foreground
+                [&_h1]:mt-12 [&_h1]:mb-3 [&_h1]:text-3xl [&_h1]:font-bold [&_h1]:text-foreground [&_h1]:scroll-mt-20
+                [&_h2]:mt-12 [&_h2]:mb-3 [&_h2]:text-2xl [&_h2]:font-semibold [&_h2]:text-foreground [&_h2]:scroll-mt-20
+                [&_h3]:mt-12 [&_h3]:mb-3 [&_h3]:text-xl [&_h3]:font-medium [&_h3]:text-foreground [&_h3]:scroll-mt-20
+                [&_h4]:mt-12 [&_h4]:mb-3 [&_h4]:text-lg [&_h4]:font-medium [&_h4]:text-foreground [&_h4]:scroll-mt-20
+                [&_h5]:mt-10 [&_h5]:mb-2 [&_h5]:text-base [&_h5]:font-medium [&_h5]:text-foreground [&_h5]:scroll-mt-20
+                [&_h6]:mt-8 [&_h6]:mb-2 [&_h6]:text-sm [&_h6]:font-medium [&_h6]:text-foreground [&_h6]:scroll-mt-20
 
                 /* Paragraphs */
                 [&_p]:my-3
@@ -285,24 +285,6 @@ fn DocsRightNav() -> Element {
                                 "{section.title}" 
                             }
                         }
-                    }
-                }
-                
-                // Edit page link
-                div { class: "mt-8 pt-4 border-t border-border",
-                    a {
-                        class: "text-sm flex items-center text-muted-foreground hover:text-primary transition-colors rounded p-1 hover:bg-muted/50",
-                        href: "https://github.com/DioxusLabs/dioxus-blocks/edit/main/docs",
-                        svg {
-                            class: "w-4 h-4 mr-2",
-                            "xmlns": "http://www.w3.org/2000/svg",
-                            "viewBox": "0 0 20 20",
-                            "fill": "currentColor",
-                            path {
-                                "d": "M13.586 3.586a2 2 0 112.828 2.828l-.793.793-2.828-2.828.793-.793zM11.379 5.793L3 14.172V17h2.828l8.38-8.379-2.83-2.828z"
-                            }
-                        }
-                        "Edit this page"
                     }
                 }
             }
