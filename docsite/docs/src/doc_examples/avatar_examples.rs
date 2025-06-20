@@ -240,14 +240,15 @@ pub mod state {
     
     #[component]
     pub fn AvatarStateExample() -> Element {
-        let mut avatar_state = use_signal(|| "No state yet".to_string());
+        let mut avatar_state_1 = use_signal(|| "No state yet".to_string());
+        let mut avatar_state_2 = use_signal(|| "No state yet".to_string());
 
         rsx! {
             div { class: "space-y-4",
                 div { class: "flex items-center gap-4",
                     Avatar {
                         on_state_change: move |state| {
-                            avatar_state.set(format!("Avatar state: {:?}", state));
+                            avatar_state_1.set(format!("Avatar state: {:?}", state));
                         },
 
                         AvatarImage {
@@ -264,13 +265,13 @@ pub mod state {
                 }
                 
                 div { class: "p-2 bg-muted rounded text-sm",
-                    code { "{avatar_state}" }
+                    code { "{avatar_state_1}" }
                 }
                 
                 div { class: "flex items-center gap-4",
                     Avatar {
                         on_state_change: move |state| {
-                            avatar_state.set(format!("Avatar state: {:?}", state));
+                            avatar_state_2.set(format!("Avatar state: {:?}", state));
                         },
 
                         AvatarImage {
@@ -284,6 +285,10 @@ pub mod state {
                     div { class: "text-sm",
                         p { "Avatar with invalid image (triggers error state)" }
                     }
+                }
+                
+                div { class: "p-2 bg-muted rounded text-sm",
+                    code { "{avatar_state_2}" }
                 }
             }
         }
