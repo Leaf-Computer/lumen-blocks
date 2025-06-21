@@ -2665,18 +2665,6 @@ https://github.com/shadcn-ui/ui/blob/2773f9e2e29cf67e521632d15d1ba302a82e39e9/LI
   margin-top: 3rem;
 }
 
-.\[\&_h1\]\:scroll-mt-4 h1 {
-  scroll-margin-top: 1rem;
-}
-
-.\[\&_h1\]\:scroll-mt-32 h1 {
-  scroll-margin-top: 8rem;
-}
-
-.\[\&_h1\]\:scroll-mt-16 h1 {
-  scroll-margin-top: 4rem;
-}
-
 .\[\&_h1\]\:scroll-mt-20 h1 {
   scroll-margin-top: 5rem;
 }
@@ -2700,18 +2688,6 @@ https://github.com/shadcn-ui/ui/blob/2773f9e2e29cf67e521632d15d1ba302a82e39e9/LI
 
 .\[\&_h2\]\:mt-12 h2 {
   margin-top: 3rem;
-}
-
-.\[\&_h2\]\:scroll-mt-4 h2 {
-  scroll-margin-top: 1rem;
-}
-
-.\[\&_h2\]\:scroll-mt-32 h2 {
-  scroll-margin-top: 8rem;
-}
-
-.\[\&_h2\]\:scroll-mt-16 h2 {
-  scroll-margin-top: 4rem;
 }
 
 .\[\&_h2\]\:scroll-mt-20 h2 {
@@ -2739,18 +2715,6 @@ https://github.com/shadcn-ui/ui/blob/2773f9e2e29cf67e521632d15d1ba302a82e39e9/LI
   margin-top: 3rem;
 }
 
-.\[\&_h3\]\:scroll-mt-4 h3 {
-  scroll-margin-top: 1rem;
-}
-
-.\[\&_h3\]\:scroll-mt-32 h3 {
-  scroll-margin-top: 8rem;
-}
-
-.\[\&_h3\]\:scroll-mt-16 h3 {
-  scroll-margin-top: 4rem;
-}
-
 .\[\&_h3\]\:scroll-mt-20 h3 {
   scroll-margin-top: 5rem;
 }
@@ -2774,18 +2738,6 @@ https://github.com/shadcn-ui/ui/blob/2773f9e2e29cf67e521632d15d1ba302a82e39e9/LI
 
 .\[\&_h4\]\:mt-12 h4 {
   margin-top: 3rem;
-}
-
-.\[\&_h4\]\:scroll-mt-4 h4 {
-  scroll-margin-top: 1rem;
-}
-
-.\[\&_h4\]\:scroll-mt-32 h4 {
-  scroll-margin-top: 8rem;
-}
-
-.\[\&_h4\]\:scroll-mt-16 h4 {
-  scroll-margin-top: 4rem;
 }
 
 .\[\&_h4\]\:scroll-mt-20 h4 {
@@ -2813,18 +2765,6 @@ https://github.com/shadcn-ui/ui/blob/2773f9e2e29cf67e521632d15d1ba302a82e39e9/LI
   margin-top: 2.5rem;
 }
 
-.\[\&_h5\]\:scroll-mt-4 h5 {
-  scroll-margin-top: 1rem;
-}
-
-.\[\&_h5\]\:scroll-mt-32 h5 {
-  scroll-margin-top: 8rem;
-}
-
-.\[\&_h5\]\:scroll-mt-16 h5 {
-  scroll-margin-top: 4rem;
-}
-
 .\[\&_h5\]\:scroll-mt-20 h5 {
   scroll-margin-top: 5rem;
 }
@@ -2848,18 +2788,6 @@ https://github.com/shadcn-ui/ui/blob/2773f9e2e29cf67e521632d15d1ba302a82e39e9/LI
 
 .\[\&_h6\]\:mt-8 h6 {
   margin-top: 2rem;
-}
-
-.\[\&_h6\]\:scroll-mt-4 h6 {
-  scroll-margin-top: 1rem;
-}
-
-.\[\&_h6\]\:scroll-mt-32 h6 {
-  scroll-margin-top: 8rem;
-}
-
-.\[\&_h6\]\:scroll-mt-16 h6 {
-  scroll-margin-top: 4rem;
 }
 
 .\[\&_h6\]\:scroll-mt-20 h6 {

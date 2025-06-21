@@ -1,7 +1,4 @@
 #![allow(non_snake_case)]
-
-
-
 pub use basic::BasicContextMenuExample;
 pub use with_labels::ContextMenuWithLabelsExample;
 pub use with_checkboxes::ContextMenuWithCheckboxesExample;
@@ -30,16 +27,16 @@ pub mod basic {
                     
                     ContextMenuContent { width: "w-48",
                         ContextMenuItem {
-                            value: ReadOnlySignal::new(Signal::new("edit".to_string())),
-                            index: ReadOnlySignal::new(Signal::new(0)),
+                            value: "edit".to_string(),
+                            index: 0,
                             icon: rsx! { Pencil { class: "h-4 w-4" } },
                             on_select: move |value| selected_action.set(value),
                             "Edit"
                         }
                         
                         ContextMenuItem {
-                            value: ReadOnlySignal::new(Signal::new("copy".to_string())),
-                            index: ReadOnlySignal::new(Signal::new(1)),
+                            value: "copy".to_string(),
+                            index: 1,
                             icon: rsx! { Plus { class: "h-4 w-4" } },
                             on_select: move |value| selected_action.set(value),
                             "Copy"
@@ -48,9 +45,9 @@ pub mod basic {
                         ContextMenuSeparator {}
                         
                         ContextMenuItem {
-                            value: ReadOnlySignal::new(Signal::new("delete".to_string())),
-                            index: ReadOnlySignal::new(Signal::new(2)),
-                            destructive: ReadOnlySignal::new(Signal::new(true)),
+                            value: "delete".to_string(),
+                            index: 2,
+                            destructive: true,
                             icon: rsx! { Trash { class: "h-4 w-4" } },
                             on_select: move |value| selected_action.set(value),
                             "Delete"
@@ -92,16 +89,16 @@ pub mod with_labels {
                     ContextMenuContent { width: "w-56",
                         ContextMenuLabel { "Actions" }
                         ContextMenuItem {
-                            value: ReadOnlySignal::new(Signal::new("download".to_string())),
-                            index: ReadOnlySignal::new(Signal::new(0)),
+                            value: "download".to_string(),
+                            index: 0,
                             icon: rsx! { Search { class: "h-4 w-4" } },
                             on_select: move |value| selected_action.set(value),
                             "Download"
                         }
                         
                         ContextMenuItem {
-                            value: ReadOnlySignal::new(Signal::new("share".to_string())),
-                            index: ReadOnlySignal::new(Signal::new(1)),
+                            value: "share".to_string(),
+                            index: 1,
                             icon: rsx! { Share2 { class: "h-4 w-4" } },
                             on_select: move |value| selected_action.set(value),
                             "Share"
@@ -111,8 +108,8 @@ pub mod with_labels {
                         
                         ContextMenuLabel { "Settings" }
                         ContextMenuItem {
-                            value: ReadOnlySignal::new(Signal::new("preferences".to_string())),
-                            index: ReadOnlySignal::new(Signal::new(2)),
+                            value: "preferences".to_string(),
+                            index: 2,
                             icon: rsx! { Settings { class: "h-4 w-4" } },
                             on_select: move |value| selected_action.set(value),
                             "Preferences"
@@ -154,9 +151,9 @@ pub mod with_checkboxes {
                         ContextMenuLabel { "View Options" }
                         
                         ContextMenuCheckboxItem {
-                            value: ReadOnlySignal::new(Signal::new("show_toolbar".to_string())),
-                            index: ReadOnlySignal::new(Signal::new(0)),
-                            checked: ReadOnlySignal::new(Signal::new(checkbox_states()[0])),
+                            value: "show_toolbar".to_string(),
+                            index: 0,
+                            checked: checkbox_states()[0],
                             on_change: move |checked| {
                                 let mut states = checkbox_states();
                                 states[0] = checked;
@@ -166,9 +163,9 @@ pub mod with_checkboxes {
                         }
                         
                         ContextMenuCheckboxItem {
-                            value: ReadOnlySignal::new(Signal::new("show_sidebar".to_string())),
-                            index: ReadOnlySignal::new(Signal::new(1)),
-                            checked: ReadOnlySignal::new(Signal::new(checkbox_states()[1])),
+                            value: "show_sidebar".to_string(),
+                            index: 1,
+                            checked: checkbox_states()[1],
                             on_change: move |checked| {
                                 let mut states = checkbox_states();
                                 states[1] = checked;
@@ -178,9 +175,9 @@ pub mod with_checkboxes {
                         }
                         
                         ContextMenuCheckboxItem {
-                            value: ReadOnlySignal::new(Signal::new("show_footer".to_string())),
-                            index: ReadOnlySignal::new(Signal::new(2)),
-                            checked: ReadOnlySignal::new(Signal::new(checkbox_states()[2])),
+                            value: "show_footer".to_string(),
+                            index: 2,
+                            checked: checkbox_states()[2],
                             on_change: move |checked| {
                                 let mut states = checkbox_states();
                                 states[2] = checked;
@@ -225,24 +222,24 @@ pub mod with_radio {
                     ContextMenuContent { width: "w-48",
                         ContextMenuLabel { "Size" }
                         ContextMenuRadioGroup {
-                            value: ReadOnlySignal::new(radio_value.clone()),
+                            value: radio_value,
                             on_value_change: move |value| radio_value.set(value),
                             
                             ContextMenuRadioItem {
-                                value: ReadOnlySignal::new(Signal::new("small".to_string())),
-                                index: ReadOnlySignal::new(Signal::new(0)),
+                                value: "small".to_string(),
+                                index: 0,
                                 "Small"
                             }
                             
                             ContextMenuRadioItem {
-                                value: ReadOnlySignal::new(Signal::new("medium".to_string())),
-                                index: ReadOnlySignal::new(Signal::new(1)),
+                                value: "medium".to_string(),
+                                index: 1,
                                 "Medium"
                             }
                             
                             ContextMenuRadioItem {
-                                value: ReadOnlySignal::new(Signal::new("large".to_string())),
-                                index: ReadOnlySignal::new(Signal::new(2)),
+                                value: "large".to_string(),
+                                index: 2,
                                 "Large"
                             }
                         }
@@ -251,18 +248,18 @@ pub mod with_radio {
                         
                         ContextMenuLabel { "Visibility" }
                         ContextMenuRadioGroup {
-                            value: ReadOnlySignal::new(visibility_value.clone()),
+                            value: visibility_value,
                             on_value_change: move |value| visibility_value.set(value),
                             
                             ContextMenuRadioItem {
-                                value: ReadOnlySignal::new(Signal::new("visible".to_string())),
-                                index: ReadOnlySignal::new(Signal::new(0)),
+                                value: "visible".to_string(),
+                                index: 0,
                                 "Visible"
                             }
                             
                             ContextMenuRadioItem {
-                                value: ReadOnlySignal::new(Signal::new("hidden".to_string())),
-                                index: ReadOnlySignal::new(Signal::new(1)),
+                                value: "hidden".to_string(),
+                                index: 1,
                                 "Hidden"
                             }
                         }
@@ -289,7 +286,7 @@ pub mod disabled {
         rsx! {
             div { class: "space-y-4",
                 ContextMenu {
-                    disabled: ReadOnlySignal::new(Signal::new(true)),
+                    disabled: true,
                     
                     ContextMenuTrigger {
                         div { 
@@ -300,8 +297,8 @@ pub mod disabled {
                     
                     ContextMenuContent { width: "w-48",
                         ContextMenuItem {
-                            value: ReadOnlySignal::new(Signal::new("disabled_action".to_string())),
-                            index: ReadOnlySignal::new(Signal::new(0)),
+                            value: "disabled_action".to_string(),
+                            index: 0,
                             "This won't work"
                         }
                     }
@@ -314,56 +311,4 @@ pub mod disabled {
         }
     }
     // ANCHOR_END: disabled
-}
-
-// Original example for backward compatibility
-pub mod example {
-    use dioxus::prelude::*;
-    use laminar_blocks::components::context_menu::*;
-    use lucide_dioxus::{Pencil, Plus, Trash};
-    
-    #[component]
-    pub fn ContextMenuExample() -> Element {
-        let mut selected_action = use_signal(|| String::new());
-        
-        rsx! {
-            ContextMenu {
-                ContextMenuTrigger {
-                    div { 
-                        class: "flex h-32 w-full items-center justify-center rounded-md border border-dashed border-border bg-muted/50 text-sm",
-                        "Right-click here"
-                    }
-                }
-                
-                ContextMenuContent { width: "w-48",
-                    ContextMenuItem {
-                        value: ReadOnlySignal::new(Signal::new("edit".to_string())),
-                        index: ReadOnlySignal::new(Signal::new(0)),
-                        icon: rsx! { Pencil { class: "h-4 w-4" } },
-                        on_select: move |value| selected_action.set(value),
-                        "Edit"
-                    }
-                    
-                    ContextMenuItem {
-                        value: ReadOnlySignal::new(Signal::new("copy".to_string())),
-                        index: ReadOnlySignal::new(Signal::new(1)),
-                        icon: rsx! { Plus { class: "h-4 w-4" } },
-                        on_select: move |value| selected_action.set(value),
-                        "Copy"
-                    }
-                    
-                    ContextMenuSeparator {}
-                    
-                    ContextMenuItem {
-                        value: ReadOnlySignal::new(Signal::new("delete".to_string())),
-                        index: ReadOnlySignal::new(Signal::new(2)),
-                        destructive: ReadOnlySignal::new(Signal::new(true)),
-                        icon: rsx! { Trash { class: "h-4 w-4" } },
-                        on_select: move |value| selected_action.set(value),
-                        "Delete"
-                    }
-                }
-            }
-        }
-    }
 }

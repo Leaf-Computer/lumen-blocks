@@ -14,11 +14,11 @@ struct RadioGroupContext {
 pub struct ContextMenuProps {
     /// Optional ID for the context menu
     #[props(default)]
-    id: ReadOnlySignal<Option<String>>,
+    id: Option<String>,
 
     /// Whether the context menu is disabled
     #[props(default)]
-    disabled: ReadOnlySignal<bool>,
+    disabled: bool,
 
     /// Accessible label for the context menu
     #[props(default)]
@@ -45,7 +45,7 @@ pub struct ContextMenuContentProps {
 
     /// Optional ID for the content
     #[props(default)]
-    id: ReadOnlySignal<Option<String>>,
+    id: Option<String>,
 
     #[props(extends = GlobalAttributes)]
     attributes: Vec<Attribute>,
@@ -59,19 +59,19 @@ pub struct ContextMenuContentProps {
 pub struct ContextMenuItemProps {
     /// The value of the item
     #[props(default)]
-    value: ReadOnlySignal<String>,
+    value: String,
 
     /// The index of the item
     #[props(default)]
-    index: ReadOnlySignal<usize>,
+    index: usize,
 
     /// Whether the item is disabled
     #[props(default)]
-    disabled: ReadOnlySignal<bool>,
+    disabled: bool,
 
     /// Whether the item is destructive (red)
     #[props(default)]
-    destructive: ReadOnlySignal<bool>,
+    destructive: bool,
 
     /// Optional icon to display before the item text
     #[props(default)]
@@ -79,7 +79,7 @@ pub struct ContextMenuItemProps {
 
     /// Optional ID for the item
     #[props(default)]
-    id: ReadOnlySignal<Option<String>>,
+    id: Option<String>,
 
     /// Callback when the item is selected
     #[props(default)]
@@ -96,19 +96,20 @@ pub struct ContextMenuItemProps {
 pub fn ContextMenu(props: ContextMenuProps) -> Element {
     // Generate unique ID if not provided
     let context_menu_id = use_unique_id();
-    let id_value = use_id_or(context_menu_id, props.id);
+    let props_id = use_signal(|| props.id);
+    let id_value = use_id_or(context_menu_id, props_id.into());
 
     // Determine base classes for context menu
     let context_menu_classes = vec![
         "relative", 
-        if (props.disabled)() { "opacity-50 pointer-events-none" } else { "" }
+        if props.disabled { "opacity-50 pointer-events-none" } else { "" }
     ]
     .into_iter()
     .filter(|s| !s.is_empty())
     .collect::<Vec<_>>()
     .join(" ");
 
-    let disabled_val = (props.disabled)();
+    let disabled_val = props.disabled;
 
     rsx! {
         PrimitiveContextMenu {
@@ -129,7 +130,8 @@ use lucide_dioxus::Check;
 pub fn ContextMenuContent(props: ContextMenuContentProps) -> Element {
     // Generate unique ID if not provided
     let content_id = use_unique_id();
-    let id_value = use_id_or(content_id, props.id);
+    let props_id = use_signal(|| props.id);
+    let id_value = use_id_or(content_id, props_id.into());
 
     // Alignment classes
     let align_class = match props.align.as_str() {
@@ -165,7 +167,7 @@ pub fn ContextMenuContent(props: ContextMenuContentProps) -> Element {
 pub struct ContextMenuLabelProps {
     /// Optional ID for the label
     #[props(default)]
-    id: ReadOnlySignal<Option<String>>,
+    id: Option<String>,
 
     #[props(extends = GlobalAttributes)]
     attributes: Vec<Attribute>,
@@ -178,7 +180,8 @@ pub struct ContextMenuLabelProps {
 pub fn ContextMenuLabel(props: ContextMenuLabelProps) -> Element {
     // Generate unique ID if not provided
     let label_id = use_unique_id();
-    let id_value = use_id_or(label_id, props.id);
+    let props_id = use_signal(|| props.id);
+    let id_value = use_id_or(label_id, props_id.into());
 
     // Label classes
     let label_classes = "px-2 py-1.5 text-xs font-semibold text-foreground/80";
@@ -198,7 +201,7 @@ pub fn ContextMenuLabel(props: ContextMenuLabelProps) -> Element {
 pub struct ContextMenuSeparatorProps {
     /// Optional ID for the separator
     #[props(default)]
-    id: ReadOnlySignal<Option<String>>,
+    id: Option<String>,
 
     #[props(extends = GlobalAttributes)]
     attributes: Vec<Attribute>,
@@ -208,7 +211,8 @@ pub struct ContextMenuSeparatorProps {
 pub fn ContextMenuSeparator(props: ContextMenuSeparatorProps) -> Element {
     // Generate unique ID if not provided
     let separator_id = use_unique_id();
-    let id_value = use_id_or(separator_id, props.id);
+    let props_id = use_signal(|| props.id);
+    let id_value = use_id_or(separator_id, props_id.into());
 
     // Separator classes
     let separator_classes = "h-px my-1 bg-muted";
@@ -229,23 +233,23 @@ pub fn ContextMenuSeparator(props: ContextMenuSeparatorProps) -> Element {
 pub struct ContextMenuCheckboxItemProps {
     /// The value of the item
     #[props(default)]
-    value: ReadOnlySignal<String>,
+    value: String,
 
     /// The index of the item
     #[props(default)]
-    index: ReadOnlySignal<usize>,
+    index: usize,
 
     /// Whether the checkbox is checked
     #[props(default)]
-    checked: ReadOnlySignal<bool>,
+    checked: bool,
 
     /// Whether the item is disabled
     #[props(default)]
-    disabled: ReadOnlySignal<bool>,
+    disabled: bool,
 
     /// Optional ID for the item
     #[props(default)]
-    id: ReadOnlySignal<Option<String>>,
+    id: Option<String>,
 
     /// Callback when the item is selected
     #[props(default)]
@@ -262,12 +266,13 @@ pub struct ContextMenuCheckboxItemProps {
 pub fn ContextMenuCheckboxItem(props: ContextMenuCheckboxItemProps) -> Element {
     // Generate unique ID if not provided
     let item_id = use_unique_id();
-    let id_value = use_id_or(item_id, props.id);
+    let props_id = use_signal(|| props.id);
+    let id_value = use_id_or(item_id, props_id.into());
 
     // Handle change event
     let handle_change = move || {
         if let Some(handler) = &props.on_change {
-            handler.call(!(props.checked)());
+            handler.call(!props.checked);
         }
     };
 
@@ -279,15 +284,15 @@ pub fn ContextMenuCheckboxItem(props: ContextMenuCheckboxItemProps) -> Element {
         "data-[disabled=true]:pointer-events-none data-[disabled=true]:opacity-50",
         
         // State classes
-        if (props.disabled)() { "pointer-events-none opacity-50" } else { "hover:bg-accent hover:text-accent-foreground" },
+        if props.disabled { "pointer-events-none opacity-50" } else { "hover:bg-accent hover:text-accent-foreground" },
     ]
     .into_iter()
     .filter(|s| !s.is_empty())
     .collect::<Vec<_>>()
     .join(" ");
 
-    let value_str = (props.value)();
-    let index_val = (props.index)();
+    let value_str = props.value;
+    let index_val = props.index;
 
     rsx! {
         PrimitiveContextMenuItem {
@@ -302,7 +307,7 @@ pub fn ContextMenuCheckboxItem(props: ContextMenuCheckboxItemProps) -> Element {
                 class: "mr-2 h-4 w-4 flex items-center justify-center border-none",
                 aria_hidden: "true",
 
-                if (props.checked)() {
+                if props.checked {
                     Check {
                         class: "h-4 w-4 text-current",
                     }
@@ -319,11 +324,11 @@ pub fn ContextMenuCheckboxItem(props: ContextMenuCheckboxItemProps) -> Element {
 pub struct ContextMenuRadioGroupProps {
     /// The value of the selected radio item
     #[props(default)]
-    value: ReadOnlySignal<String>,
+    value: Signal<String>,
 
     /// Optional ID for the radio group
     #[props(default)]
-    id: ReadOnlySignal<Option<String>>,
+    id: Option<String>,
 
     /// Callback when the selection changes
     #[props(default)]
@@ -340,15 +345,13 @@ pub struct ContextMenuRadioGroupProps {
 pub fn ContextMenuRadioGroup(props: ContextMenuRadioGroupProps) -> Element {
     // Generate unique ID if not provided
     let group_id = use_unique_id();
-    let id_value = use_id_or(group_id, props.id);
-
-    // Create a signal to track the current value
-    let selected_value = use_signal(|| (props.value)());
+    let props_id = use_signal(|| props.id);
+    let id_value = use_id_or(group_id, props_id.into());
     
     // Create a context with value signal and change handler
     if let Some(handler) = &props.on_value_change {
         let context = RadioGroupContext {
-            value: selected_value,
+            value: props.value,
             on_change: handler.clone(),
         };
         provide_context(context);
@@ -370,19 +373,19 @@ pub fn ContextMenuRadioGroup(props: ContextMenuRadioGroupProps) -> Element {
 pub struct ContextMenuRadioItemProps {
     /// The value of the radio item
     #[props(default)]
-    value: ReadOnlySignal<String>,
+    value: String,
 
     /// The index of the item
     #[props(default)]
-    index: ReadOnlySignal<usize>,
+    index: usize,
 
     /// Whether the item is disabled
     #[props(default)]
-    disabled: ReadOnlySignal<bool>,
+    disabled: bool,
 
     /// Optional ID for the item
     #[props(default)]
-    id: ReadOnlySignal<Option<String>>,
+    id: Option<String>,
 
     #[props(extends = GlobalAttributes)]
     attributes: Vec<Attribute>,
@@ -395,13 +398,14 @@ pub struct ContextMenuRadioItemProps {
 pub fn ContextMenuRadioItem(props: ContextMenuRadioItemProps) -> Element {
     // Generate unique ID if not provided
     let item_id = use_unique_id();
-    let id_value = use_id_or(item_id, props.id);
+    let props_id = use_signal(|| props.id);
+    let id_value = use_id_or(item_id, props_id.into());
 
     // Get the radio group context if available
     let context = use_context::<RadioGroupContext>();
     
     // Check if this item is selected based on context
-    let is_selected = *context.value.read() == *props.value.read();
+    let is_selected = *context.value.read() == props.value;
 
     // Determine item classes
     let item_classes = vec![
@@ -411,15 +415,15 @@ pub fn ContextMenuRadioItem(props: ContextMenuRadioItemProps) -> Element {
         "data-[disabled=true]:pointer-events-none data-[disabled=true]:opacity-50",
         
         // State classes
-        if (props.disabled)() { "pointer-events-none opacity-50" } else { "hover:bg-accent hover:text-accent-foreground" },
+        if props.disabled { "pointer-events-none opacity-50" } else { "hover:bg-accent hover:text-accent-foreground" },
     ]
     .into_iter()
     .filter(|s| !s.is_empty())
     .collect::<Vec<_>>()
     .join(" ");
 
-    let value_str = (props.value)();
-    let index_val = (props.index)();
+    let value_str = props.value;
+    let index_val = props.index;
 
     // When selected, call the group's value change handler
     let value_for_handler = value_str.clone();
@@ -432,8 +436,8 @@ pub fn ContextMenuRadioItem(props: ContextMenuRadioItemProps) -> Element {
         PrimitiveContextMenuItem {
             class: item_classes,
             id: id_value,
-            value: ReadOnlySignal::new(Signal::new(value_str.clone())),
-            index: ReadOnlySignal::new(Signal::new(index_val)),
+            value: value_str,
+            index: index_val,
             on_select: handle_select,
 
             // Radio indicator
@@ -457,7 +461,8 @@ pub fn ContextMenuRadioItem(props: ContextMenuRadioItemProps) -> Element {
 pub fn ContextMenuItem(props: ContextMenuItemProps) -> Element {
     // Generate unique ID if not provided
     let item_id = use_unique_id();
-    let id_value = use_id_or(item_id, props.id);
+    let props_id = use_signal(|| props.id);
+    let id_value = use_id_or(item_id, props_id.into());
 
     // Determine item classes
     let item_classes = vec![
@@ -468,15 +473,15 @@ pub fn ContextMenuItem(props: ContextMenuItemProps) -> Element {
         "disabled:pointer-events-none disabled:opacity-50 hover:bg-accent hover:text-accent-foreground",
         
         // Destructive style
-        if (props.destructive)() { "text-destructive focus:text-destructive" } else { "" },
+        if props.destructive { "text-destructive focus:text-destructive" } else { "" },
     ]
     .into_iter()
     .filter(|s| !s.is_empty())
     .collect::<Vec<_>>()
     .join(" ");
 
-    let value_str = (props.value)();
-    let index_val = (props.index)();
+    let value_str = props.value;
+    let index_val = props.index;
     
     // Handle select event - clone value early to avoid move issues
     let value_for_handler = value_str.clone();
@@ -491,8 +496,8 @@ pub fn ContextMenuItem(props: ContextMenuItemProps) -> Element {
         PrimitiveContextMenuItem {
             class: item_classes,
             id: id_value,
-            value: ReadOnlySignal::new(Signal::new(value_str.clone())),
-            index: ReadOnlySignal::new(Signal::new(index_val)),
+            value: value_str,
+            index: index_val,
             on_select: handle_select,
 
             // Icon if provided
