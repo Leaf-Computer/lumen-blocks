@@ -24,6 +24,8 @@ enum Route {
             #[end_nest]
         #[end_layout]
     #[end_layout]
+    
+    #[layout(MainLayout)]
     #[route("/:..segments")]
     Err404 { segments: Vec<String> },
 }

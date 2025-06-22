@@ -29,7 +29,17 @@ pub fn MainLayout() -> Element {
                 
                 // Simple footer
                 footer { class: "py-6 text-center text-gray-500 dark:text-gray-400",
-                    p { "© 2025 Leaf Computer Corporation. All rights reserved." }
+                    p { 
+                        "Crafted with "
+                        span { class: "text-red-500", "♥" }
+                        " by "
+                        a {
+                            class: "hover:underline",
+                            target: "_blank",
+                            href: "https://leaf.computer",
+                            "Leaf Computer" 
+                        }
+                    }
                 }
             }
         }
