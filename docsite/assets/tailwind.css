@@ -693,6 +693,10 @@ video {
   z-index: 50;
 }
 
+.m-0 {
+  margin: 0px;
+}
+
 .mx-auto {
   margin-left: auto;
   margin-right: auto;
@@ -799,6 +803,22 @@ video {
 
 .mt-8 {
   margin-top: 2rem;
+}
+
+.mb-0 {
+  margin-bottom: 0px;
+}
+
+.mt-0 {
+  margin-top: 0px;
+}
+
+.\!mb-0 {
+  margin-bottom: 0px !important;
+}
+
+.\!mt-0 {
+  margin-top: 0px !important;
 }
 
 .block {
@@ -1335,6 +1355,10 @@ video {
 
 .gap-8 {
   gap: 2rem;
+}
+
+.gap-y-1 {
+  row-gap: 0.25rem;
 }
 
 .-space-x-2 > :not([hidden]) ~ :not([hidden]) {

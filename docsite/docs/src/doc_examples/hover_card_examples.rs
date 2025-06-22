@@ -193,9 +193,9 @@ pub mod profile {
                                     src: "https://github.com/DioxusLabs.png",
                                     alt: "User avatar",
                                 }
-                                div {
-                                    h4 { class: "text-base font-semibold", "John Doe" }
-                                    p { class: "text-sm text-muted-foreground", "@johndoe" }
+                                div { class: "flex flex-col gap-y-1",
+                                    h4 { class: "text-base font-semibold !mt-0 !mb-0", "John Doe" }
+                                    p { class: "text-sm text-muted-foreground !mt-0 !mb-0", "@johndoe" }
                                 }
                             }
 
