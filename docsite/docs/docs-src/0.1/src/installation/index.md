@@ -28,7 +28,7 @@ dioxus-web = "0.6.0"
 laminar-blocks = "0.1.0"
 ```
 
-2. Create a `tailwind.css` file in your project's root or assets directory:
+2. Create a `tailwind.css` file in your project's root or assets directory, with the following content:
 
 ```css
 @tailwind base;
@@ -36,78 +36,78 @@ laminar-blocks = "0.1.0"
 @tailwind utilities;
 
 body {
-    background-color: var(--background);
-    color: var(--foreground);
+    background-color: rgb(var(--background));
+    color: rgb(var(--foreground));
 }
 
 :root {
 --radius: 0.75rem;
---background: oklch(1 0 0);
---foreground: oklch(0.145 0 0);
---card: oklch(1 0 0);
---card-foreground: oklch(0.145 0 0);
---popover: oklch(1 0 0);
---popover-foreground: oklch(0.145 0 0);
---primary: oklch(0.205 0 0);
---primary-foreground: oklch(0.985 0 0);
---secondary: oklch(0.97 0 0);
---secondary-foreground: oklch(0.205 0 0);
---muted: oklch(0.97 0 0);
---muted-foreground: oklch(0.556 0 0);
---accent: oklch(0.97 0 0);
---accent-foreground: oklch(0.205 0 0);
---destructive: oklch(0.577 0.245 27.325);
---border: oklch(0.922 0 0);
---input: oklch(0.922 0 0);
---ring: oklch(0.708 0 0);
---chart-1: oklch(0.646 0.222 41.116);
---chart-2: oklch(0.6 0.118 184.704);
---chart-3: oklch(0.398 0.07 227.392);
---chart-4: oklch(0.828 0.189 84.429);
---chart-5: oklch(0.769 0.188 70.08);
---sidebar: oklch(0.985 0 0);
---sidebar-foreground: oklch(0.145 0 0);
---sidebar-primary: oklch(0.205 0 0);
---sidebar-primary-foreground: oklch(0.985 0 0);
---sidebar-accent: oklch(0.97 0 0);
---sidebar-accent-foreground: oklch(0.205 0 0);
---sidebar-border: oklch(0.922 0 0);
---sidebar-ring: oklch(0.708 0 0);
+--background: 255 255 255;
+--foreground: 10 10 10;
+--card: 255 255 255;
+--card-foreground: 10 10 10;
+--popover: 255 255 255;
+--popover-foreground: 10 10 10;
+--primary: 23 23 23;
+--primary-foreground: 250 250 250;
+--secondary: 245 245 245;
+--secondary-foreground: 23 23 23;
+--muted: 245 245 245;
+--muted-foreground: 115 115 115;
+--accent: 245 245 245;
+--accent-foreground: 23 23 23;
+--destructive: 227 0 17;
+--border: 229 229 229;
+--input: 229 229 229;
+--ring: 161 161 161;
+--chart-1: 223 97 0;
+--chart-2: 0 149 136;
+--chart-3: 16 78 100;
+--chart-4: 249 188 0;
+--chart-5: 242 159 0;
+--sidebar: 250 250 250;
+--sidebar-foreground: 10 10 10;
+--sidebar-primary: 23 23 23;
+--sidebar-primary-foreground: 250 250 250;
+--sidebar-accent: 245 245 245;
+--sidebar-accent-foreground: 23 23 23;
+--sidebar-border: 229 229 229;
+--sidebar-ring: 161 161 161;
 }
 
 @media (prefers-color-scheme: dark) {
     :root {
-    --background: oklch(0.145 0 0);
-    --foreground: oklch(0.985 0 0);
-    --card: oklch(0.205 0 0);
-    --card-foreground: oklch(0.985 0 0);
-    --popover: oklch(0.145 0 0);
-    --popover-foreground: oklch(0.985 0 0);
-    --primary: oklch(0.922 0 0);
-    --primary-foreground: oklch(0.205 0 0);
-    --secondary: oklch(0.269 0 0);
-    --secondary-foreground: oklch(0.985 0 0);
-    --muted: oklch(0.269 0 0);
-    --muted-foreground: oklch(0.708 0 0);
-    --accent: oklch(0.371 0 0);
-    --accent-foreground: oklch(0.985 0 0);
-    --destructive: oklch(0.628 0.2577 29.23 / 40%);
-    --border: oklch(1 0 0 / 20%);
-    --input: oklch(1 0 0 / 15%);
-    --ring: oklch(0.556 0 0);
-    --chart-1: oklch(0.488 0.243 264.376);
-    --chart-2: oklch(0.696 0.17 162.48);
-    --chart-3: oklch(0.769 0.188 70.08);
-    --chart-4: oklch(0.627 0.265 303.9);
-    --chart-5: oklch(0.645 0.246 16.439);
-    --sidebar: oklch(0.205 0 0);
-    --sidebar-foreground: oklch(0.985 0 0);
-    --sidebar-primary: oklch(0.488 0.243 264.376);
-    --sidebar-primary-foreground: oklch(0.985 0 0);
-    --sidebar-accent: oklch(0.269 0 0);
-    --sidebar-accent-foreground: oklch(0.985 0 0);
-    --sidebar-border: oklch(1 0 0 / 10%);
-    --sidebar-ring: oklch(0.439 0 0);
+    --background: 10 10 10;
+    --foreground: 250 250 250;
+    --card: 23 23 23;
+    --card-foreground: 250 250 250;
+    --popover: 10 10 10;
+    --popover-foreground: 250 250 250;
+    --primary: 229 229 229;
+    --primary-foreground: 23 23 23;
+    --secondary: 38 38 38;
+    --secondary-foreground: 250 250 250;
+    --muted: 38 38 38;
+    --muted-foreground: 161 161 161;
+    --accent: 64 64 64;
+    --accent-foreground: 250 250 250;
+    --destructive: 191 0 13;
+    --border: 255 255 255 / 20%;
+    --input: 255 255 255 / 15%;
+    --ring: 115 115 115;
+    --chart-1: 20 71 230;
+    --chart-2: 0 186 129;
+    --chart-3: 242 159 0;
+    --chart-4: 171 75 255;
+    --chart-5: 255 35 87;
+    --sidebar: 23 23 23;
+    --sidebar-foreground: 250 250 250;
+    --sidebar-primary: 20 71 230;
+    --sidebar-primary-foreground: 250 250 250;
+    --sidebar-accent: 38 38 38;
+    --sidebar-accent-foreground: 250 250 250;
+    --sidebar-border: 255 255 255 / 10%;
+    --sidebar-ring: 82 82 82;
     }
 }
 ```
@@ -126,48 +126,48 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        border: "var(--border)",
-        input: "var(--input)",
-        ring: "var(--ring)",
-        background: "var(--background)",
-        foreground: "var(--foreground)",
+        border: "rgb(var(--border))",
+        input: "rgb(var(--input))",
+        ring: "rgb(var(--ring))",
+        background: "rgb(var(--background))",
+        foreground: "rgb(var(--foreground))",
         primary: {
-          DEFAULT: "var(--primary)",
-          foreground: "var(--primary-foreground)",
+          DEFAULT: "rgb(var(--primary))",
+          foreground: "rgb(var(--primary-foreground))",
         },
         secondary: {
-          DEFAULT: "var(--secondary)",
-          foreground: "var(--secondary-foreground)",
+          DEFAULT: "rgb(var(--secondary))",
+          foreground: "rgb(var(--secondary-foreground))",
         },
         destructive: {
-          DEFAULT: "var(--destructive)",
-          foreground: "var(--primary-foreground)",
+          DEFAULT: "rgb(var(--destructive))",
+          foreground: "rgb(var(--primary-foreground))",
         },
         muted: {
-          DEFAULT: "var(--muted)",
-          foreground: "var(--muted-foreground)",
+          DEFAULT: "rgb(var(--muted))",
+          foreground: "rgb(var(--muted-foreground))",
         },
         accent: {
-          DEFAULT: "var(--accent)",
-          foreground: "var(--accent-foreground)",
+          DEFAULT: "rgb(var(--accent))",
+          foreground: "rgb(var(--accent-foreground))",
         },
         popover: {
-          DEFAULT: "var(--popover)",
-          foreground: "var(--popover-foreground)",
+          DEFAULT: "rgb(var(--popover))",
+          foreground: "rgb(var(--popover-foreground))",
         },
         card: {
-          DEFAULT: "var(--card)",
-          foreground: "var(--card-foreground)",
+          DEFAULT: "rgb(var(--card))",
+          foreground: "rgb(var(--card-foreground))",
         },
         sidebar: {
-          DEFAULT: "var(--sidebar)",
-          foreground: "var(--sidebar-foreground)",
-          primary: "var(--sidebar-primary)",
-          "primary-foreground": "var(--sidebar-primary-foreground)",
-          accent: "var(--sidebar-accent)",
-          "accent-foreground": "var(--sidebar-accent-foreground)",
-          border: "var(--sidebar-border)",
-          ring: "var(--sidebar-ring)",
+          DEFAULT: "rgb(var(--sidebar))",
+          foreground: "rgb(var(--sidebar-foreground))",
+          primary: "rgb(var(--sidebar-primary))",
+          "primary-foreground": "rgb(var(--sidebar-primary-foreground))",
+          accent: "rgb(var(--sidebar-accent))",
+          "accent-foreground": "rgb(var(--sidebar-accent-foreground))",
+          border: "rgb(var(--sidebar-border))",
+          ring: "rgb(var(--sidebar-ring))",
         },
       },
       borderRadius: {
@@ -230,6 +230,8 @@ module.exports = {
 npx tailwindcss -i ./tailwind.css -o ./assets/tailwind.css --watch
 ```
 
+**Note:** Please ensure to use Tailwind v3. Tailwind v4 support is coming soon!
+
 ### Option 2: Add Locally for Modifications
 
 1. Create a workspace structure for your project:
@@ -238,9 +240,9 @@ npx tailwindcss -i ./tailwind.css -o ./assets/tailwind.css --watch
 my-project/
 ├── Cargo.toml         # Workspace manifest
 ├── app/               # Your application
-│   └── Cargo.toml     # App manifest
-└── laminar-blocks/    # Local copy of Laminar Blocks
-    └── Cargo.toml     # Laminar Blocks manifest
+│   └── Cargo.toml    # App manifest
+└── laminar-blocks/    # Local copy of the laminar-blocks crate
+    └── ...
 ```
 
 2. Set up your workspace `Cargo.toml`:
@@ -251,6 +253,9 @@ members = [
     "app",
     "laminar-blocks"
 ]
+
+[workspace.dependencies]
+laminar-blocks = { path = "./laminar-blocks" }
 ```
 
 3. Clone Laminar Blocks into your workspace:
@@ -265,7 +270,7 @@ git clone https://github.com/Leaf-Computer/laminar-blocks.git
 [dependencies]
 dioxus = "0.6.0"
 dioxus-web = "0.6.0"
-laminar-blocks = { path = "../laminar-blocks" }
+laminar-blocks.workspace = true
 ```
 
 5. Create a `tailwind.css` file in your app directory (same as in Option 1).
@@ -307,7 +312,7 @@ fn App() -> Element {
             Button {
                 variant: "default",
                 onclick: move |_| {
-                    log::info!("Button clicked!");
+                    println!("Button clicked!");
                 },
                 "Click Me"
             }
@@ -321,7 +326,7 @@ fn App() -> Element {
 If Tailwind CSS classes aren't being applied:
 
 1. Ensure your `tailwind.config.js` correctly points to both your source files and the Laminar Blocks components.
-2. Make sure you're generating the Tailwind CSS output file and including it in your HTML.
+2. Make sure you're generating the Tailwind CSS output file and including it in your application.
 3. Check for any path errors in the `content` array of your Tailwind configuration.
 
 If components aren't rendering correctly:

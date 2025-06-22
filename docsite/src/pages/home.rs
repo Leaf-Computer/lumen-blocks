@@ -51,7 +51,7 @@ pub fn Home() -> Element {
                     }
                     FeatureCard {
                         title: "Accessible".to_string(),
-                        description: "Built with accessibility in mind, following ARIA best practices".to_string(),
+                        description: "Built with accessibility in mind, following good ARIA practices".to_string(),
                         icon: rsx! { X { class: "w-8 h-8 text-primary" } }
                     }
                 }

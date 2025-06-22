@@ -1,6 +1,3 @@
-dev-components-tailwind:
-    cd blocks && tailwindcss -i tailwind.css -o assets/tailwind.css --config tailwind.config.js --watch
-    
 dev-docsite:
     dx serve -p docsite --platform web --port 8081
 
