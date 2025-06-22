@@ -397,8 +397,8 @@ pub mod complete {
                             input_type: "email".to_string(),
                             placeholder: "Enter your email".to_string(),
                             full_width: true,
-                            variant: if (has_error() && email().is_empty() || (email().len() > 0 && !email().contains('@'))) { 
-                                InputVariant::Error 
+                            variant: if has_error() && email().is_empty() || (email().len() > 0 && !email().contains('@')) { 
+                                InputVariant::Error
                             } else { 
                                 InputVariant::Default 
                             },
@@ -436,7 +436,7 @@ pub mod complete {
                             placeholder: "Enter your password".to_string(),
                             full_width: true,
                             required: true,
-                            variant: if (has_error() && (password().is_empty() || password().len() < 6)) { 
+                            variant: if has_error() && (password().is_empty() || password().len() < 6) { 
                                 InputVariant::Error 
                             } else { 
                                 InputVariant::Default 

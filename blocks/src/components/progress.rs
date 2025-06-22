@@ -34,11 +34,11 @@ impl Default for ProgressVariant {
 #[derive(Props, Clone, PartialEq)]
 pub struct ProgressProps {
     /// The current progress value, between 0 and max
-    value: Option<ReadOnlySignal<f64>>,
+    value: ReadOnlySignal<f64>,
 
     /// The maximum value. Defaults to 100
-    #[props(default = ReadOnlySignal::new(Signal::new(100.0)))]
-    max: ReadOnlySignal<f64>,
+    #[props(default = 100.0)]
+    max: f64,
     
     /// Size variant of the progress bar
     #[props(default)]
@@ -69,8 +69,8 @@ pub struct ProgressProps {
 #[component]
 pub fn Progress(props: ProgressProps) -> Element {
     // Calculate percentage
-    let current = if let Some(val) = &props.value { *val.read() } else { 0.0 };
-    let max_value = *props.max.read();
+    let current: f64 = (props.value)();
+    let max_value = props.max;
     let percentage = (current / max_value * 100.0).min(100.0).max(0.0);
 
     // Determine size-specific classes

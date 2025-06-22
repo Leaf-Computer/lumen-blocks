@@ -80,24 +80,3 @@ DemoFrame {
 ```rust, no_run
 {{#include src/doc_examples/progress_examples.rs:interactive}}
 ```
-
-## Real-world Examples
-
-Progress bars are commonly used in scenarios like file uploads, installations, or task completions.
-
-```inject-dioxus
-DemoFrame {
-    progress_examples::real_world::RealWorldProgressExample {}
-}
-```
-
-```rust, no_run
-{{#include src/doc_examples/progress_examples.rs:real_world}}
-```
-
-In these examples, progress bars provide visual feedback for:
-
-- **File uploads**: Showing how much of a file has been uploaded.
-- **Task completion tracking**: Monitoring the status of multiple tasks in a workflow.
-
-Remember to include appropriate accessibility attributes like `aria_label` to ensure the progress information is available to assistive technologies.

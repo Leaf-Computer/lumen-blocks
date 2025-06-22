@@ -87,7 +87,7 @@ pub fn Home() -> Element {
                             
                             h3 { class: "font-medium text-foreground mb-3 mt-6", "Progress" }
                             Progress {
-                                value: Some(use_signal(|| 75.0).into()),
+                                value: use_signal(|| 75.0),
                                 variant: ProgressVariant::Default,
                                 show_percentage: true,
                             }
