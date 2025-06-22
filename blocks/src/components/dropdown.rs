@@ -1,6 +1,11 @@
+use std::time::Duration;
+
 use crate::{use_id_or, use_unique_id};
 use dioxus_lib::prelude::*;
 use dioxus_primitives::dropdown_menu::{DropdownMenu, DropdownMenuContent, DropdownMenuItem};
+pub use dioxus_primitives::dropdown_menu::DropdownMenuTrigger as DropdownTrigger;
+use lucide_dioxus::Check;
+use dioxus_time::use_timeout;
 
 // Define a context struct for radio groups
 #[derive(Clone, PartialEq)]
@@ -36,11 +41,11 @@ pub struct DropdownProps {
 
     /// Optional ID for the dropdown
     #[props(default)]
-    id: ReadOnlySignal<Option<String>>,
+    id: Option<String>,
 
     /// Whether the dropdown is disabled
     #[props(default)]
-    disabled: ReadOnlySignal<bool>,
+    disabled: bool,
 
     /// Accessible label for the dropdown
     #[props(default)]
@@ -57,11 +62,11 @@ pub struct DropdownProps {
 pub struct DropdownTriggerProps {
     /// Whether the trigger is disabled
     #[props(default)]
-    disabled: ReadOnlySignal<bool>,
+    disabled: bool,
 
     /// Optional ID for the trigger
     #[props(default)]
-    id: ReadOnlySignal<Option<String>>,
+    id: Option<String>,
 
     /// Optional aria-label for the trigger (for accessibility)
     #[props(default)]
@@ -86,7 +91,7 @@ pub struct DropdownContentProps {
 
     /// Optional ID for the content
     #[props(default)]
-    id: ReadOnlySignal<Option<String>>,
+    id: Option<String>,
 
     #[props(extends = GlobalAttributes)]
     attributes: Vec<Attribute>,
@@ -100,19 +105,19 @@ pub struct DropdownContentProps {
 pub struct DropdownItemProps {
     /// The value of the item
     #[props(default)]
-    value: ReadOnlySignal<String>,
+    value: String,
 
     /// The index of the item
     #[props(default)]
-    index: ReadOnlySignal<usize>,
+    index: usize,
 
     /// Whether the item is disabled
     #[props(default)]
-    disabled: ReadOnlySignal<bool>,
+    disabled: bool,
 
     /// Whether the item is destructive (red)
     #[props(default)]
-    destructive: ReadOnlySignal<bool>,
+    destructive: bool,
 
     /// Optional icon to display before the item text
     #[props(default)]
@@ -120,7 +125,7 @@ pub struct DropdownItemProps {
 
     /// Optional ID for the item
     #[props(default)]
-    id: ReadOnlySignal<Option<String>>,
+    id: Option<String>,
 
     /// Callback when the item is selected
     #[props(default)]
@@ -137,42 +142,49 @@ pub struct DropdownItemProps {
 pub fn Dropdown(props: DropdownProps) -> Element {
     // Generate unique ID if not provided
     let dropdown_id = use_unique_id();
-    let id_value = use_id_or(dropdown_id, props.id);
+    let props_id = use_signal(|| props.id);
+    let id_value = use_id_or(dropdown_id, props_id.into());
+    let mut is_open = use_signal(|| false);
+    // Delay closing the dropdown after focusout to ensure it can capture events such as actions inside the object
+    let timeout = use_timeout(Duration::from_millis(200), move |()| is_open.set(false));
 
     // Determine base classes for dropdown
     let dropdown_classes = vec![
         "relative inline-block text-left", 
-        if (props.disabled)() { "opacity-50 pointer-events-none" } else { "" }
+        if props.disabled { "opacity-50 pointer-events-none" } else { "" }
     ]
     .into_iter()
     .filter(|s| !s.is_empty())
     .collect::<Vec<_>>()
     .join(" ");
 
-    let disabled_val = (props.disabled)();
+    let disabled_val = props.disabled;
 
     rsx! {
         DropdownMenu {
+            open: Some(is_open),
+            on_open_change: move |new_open| is_open.set(new_open),
             class: dropdown_classes,
             id: id_value,
             default_open: props.default_open,
             // Note: DropdownMenuTrigger doesn't have a disabled prop, using class and aria attributes instead
             "aria-disabled": if disabled_val { "true" } else { "false" },
             aria_label: props.aria_label.clone(),
-
-            {props.children}
+            div {
+                onfocusout: move |_| { timeout.action(()); },
+                tabindex: 0,    // Make this focusable
+                {props.children}
+            }
         }
     }
 }
-
-pub use dioxus_primitives::dropdown_menu::DropdownMenuTrigger as DropdownTrigger;
-use lucide_dioxus::Check;
 
 #[component]
 pub fn DropdownContent(props: DropdownContentProps) -> Element {
     // Generate unique ID if not provided
     let content_id = use_unique_id();
-    let id_value = use_id_or(content_id, props.id);
+    let props_id = use_signal(|| props.id);
+    let id_value = use_id_or(content_id, props_id.into());
 
     // Alignment classes
     let align_class = match props.align.as_str() {
@@ -272,23 +284,23 @@ pub fn DropdownSeparator(props: DropdownSeparatorProps) -> Element {
 pub struct DropdownCheckboxItemProps {
     /// The value of the item
     #[props(default)]
-    value: ReadOnlySignal<String>,
+    value: String,
 
     /// The index of the item
     #[props(default)]
-    index: ReadOnlySignal<usize>,
+    index: usize,
 
     /// Whether the checkbox is checked
     #[props(default)]
-    checked: ReadOnlySignal<bool>,
+    checked: bool,
 
     /// Whether the item is disabled
     #[props(default)]
-    disabled: ReadOnlySignal<bool>,
+    disabled: bool,
 
     /// Optional ID for the item
     #[props(default)]
-    id: ReadOnlySignal<Option<String>>,
+    id: Option<String>,
 
     /// Callback when the item is selected
     #[props(default)]
@@ -305,12 +317,13 @@ pub struct DropdownCheckboxItemProps {
 pub fn DropdownCheckboxItem(props: DropdownCheckboxItemProps) -> Element {
     // Generate unique ID if not provided
     let item_id = use_unique_id();
-    let id_value = use_id_or(item_id, props.id);
+    let props_id = use_signal(|| props.id);
+    let id_value = use_id_or(item_id, props_id.into());
 
     // Handle change event
     let handle_change = move || {
         if let Some(handler) = &props.on_change {
-            handler.call(!(props.checked)());
+            handler.call(!props.checked);
         }
     };
 
@@ -322,16 +335,16 @@ pub fn DropdownCheckboxItem(props: DropdownCheckboxItemProps) -> Element {
         "data-[disabled=true]:pointer-events-none data-[disabled=true]:opacity-50",
         
         // State classes
-        if (props.disabled)() { "pointer-events-none opacity-50" } else { "hover:bg-accent hover:text-accent-foreground" },
+        if props.disabled { "pointer-events-none opacity-50" } else { "hover:bg-accent hover:text-accent-foreground" },
     ]
     .into_iter()
     .filter(|s| !s.is_empty())
     .collect::<Vec<_>>()
     .join(" ");
 
-    let value_str = (props.value)();
-    let index_val = (props.index)();
-    let disabled_val = (props.disabled)();
+    let value_str = props.value;
+    let index_val = props.index;
+    let disabled_val = props.disabled;
 
     rsx! {
         DropdownMenuItem {
@@ -347,7 +360,7 @@ pub fn DropdownCheckboxItem(props: DropdownCheckboxItemProps) -> Element {
                 class: "mr-2 h-4 w-4 flex items-center justify-center border-none",
                 aria_hidden: "true",
 
-                if (props.checked)() {
+                if props.checked {
                     Check {
                         class: "h-4 w-4 text-current",
                     }
@@ -364,7 +377,7 @@ pub fn DropdownCheckboxItem(props: DropdownCheckboxItemProps) -> Element {
 pub struct DropdownRadioGroupProps {
     /// The value of the selected radio item
     #[props(default)]
-    value: ReadOnlySignal<String>,
+    value: Signal<String>,
 
     /// Optional ID for the radio group
     #[props(default)]
@@ -387,13 +400,10 @@ pub fn DropdownRadioGroup(props: DropdownRadioGroupProps) -> Element {
     let group_id = use_unique_id();
     let id_value = use_id_or(group_id, props.id);
 
-    // Create a signal to track the current value
-    let selected_value = use_signal(|| (props.value)());
-    
     // Create a context with value signal and change handler
     if let Some(handler) = &props.on_value_change {
         let context = RadioGroupContext {
-            value: selected_value,
+            value: props.value,
             on_change: handler.clone(),
         };
         provide_context(context);
@@ -415,19 +425,19 @@ pub fn DropdownRadioGroup(props: DropdownRadioGroupProps) -> Element {
 pub struct DropdownRadioItemProps {
     /// The value of the radio item
     #[props(default)]
-    value: ReadOnlySignal<String>,
+    value: String,
 
     /// The index of the item
     #[props(default)]
-    index: ReadOnlySignal<usize>,
+    index: usize,
 
     /// Whether the item is disabled
     #[props(default)]
-    disabled: ReadOnlySignal<bool>,
+    disabled: bool,
 
     /// Optional ID for the item
     #[props(default)]
-    id: ReadOnlySignal<Option<String>>,
+    id: Option<String>,
 
     #[props(extends = GlobalAttributes)]
     attributes: Vec<Attribute>,
@@ -440,13 +450,14 @@ pub struct DropdownRadioItemProps {
 pub fn DropdownRadioItem(props: DropdownRadioItemProps) -> Element {
     // Generate unique ID if not provided
     let item_id = use_unique_id();
-    let id_value = use_id_or(item_id, props.id);
+    let props_id = use_signal(|| props.id);
+    let id_value = use_id_or(item_id, props_id.into());
 
     // Get the radio group context if available
     let context = use_context::<RadioGroupContext>();
     
     // Check if this item is selected based on context
-    let is_selected = *context.value.read() == *props.value.read();
+    let is_selected = *context.value.read() == props.value;
 
     // Determine item classes
     let item_classes = vec![
@@ -456,16 +467,16 @@ pub fn DropdownRadioItem(props: DropdownRadioItemProps) -> Element {
         "data-[disabled=true]:pointer-events-none data-[disabled=true]:opacity-50",
         
         // State classes
-        if (props.disabled)() { "pointer-events-none opacity-50" } else { "hover:bg-accent hover:text-accent-foreground" },
+        if props.disabled { "pointer-events-none opacity-50" } else { "hover:bg-accent hover:text-accent-foreground" },
     ]
     .into_iter()
     .filter(|s| !s.is_empty())
     .collect::<Vec<_>>()
     .join(" ");
 
-    let value_str = (props.value)();
-    let index_val = (props.index)();
-    let disabled_val = (props.disabled)();
+    let value_str = props.value;
+    let index_val = props.index;
+    let disabled_val = props.disabled;
 
     // When selected, call the group's value change handler
     let value_for_handler = value_str.clone();
@@ -504,7 +515,8 @@ pub fn DropdownRadioItem(props: DropdownRadioItemProps) -> Element {
 pub fn DropdownItem(props: DropdownItemProps) -> Element {
     // Generate unique ID if not provided
     let item_id = use_unique_id();
-    let id_value = use_id_or(item_id, props.id);
+    let props_id = use_signal(|| props.id);
+    let id_value = use_id_or(item_id, props_id.into());
 
     // Determine item classes
     let item_classes = vec![
@@ -515,16 +527,16 @@ pub fn DropdownItem(props: DropdownItemProps) -> Element {
         "disabled:pointer-events-none disabled:opacity-50 hover:bg-secondary hover:text-accent-foreground",
         
         // Destructive style
-        if (props.destructive)() { "text-destructive focus:text-destructive" } else { "" },
+        if props.destructive { "text-destructive focus:text-destructive" } else { "" },
     ]
     .into_iter()
     .filter(|s| !s.is_empty())
     .collect::<Vec<_>>()
     .join(" ");
 
-    let value_str = (props.value)();
-    let index_val = (props.index)();
-    let disabled_val = (props.disabled)();
+    let value_str = props.value;
+    let index_val = props.index;
+    let disabled_val = props.disabled;
     
     // Handle select event - clone value early to avoid move issues
     let value_for_handler = value_str.clone();
@@ -539,8 +551,8 @@ pub fn DropdownItem(props: DropdownItemProps) -> Element {
         DropdownMenuItem {
             class: item_classes,
             id: id_value,
-            value: ReadOnlySignal::new(Signal::new(value_str.clone())),
-            index: ReadOnlySignal::new(Signal::new(index_val)),
+            value: value_str,
+            index: index_val,
             disabled: disabled_val,
             on_select: handle_select,
 

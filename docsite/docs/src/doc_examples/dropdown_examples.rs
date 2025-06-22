@@ -22,7 +22,7 @@ pub mod basic {
         let mut selected_action = use_signal(|| String::new());
         
         rsx! {
-            div { class: "flex flex-col gap-4 pt-12 pb-36",
+            div { class: "flex flex-col gap-4",
                 div { class: "flex flex-wrap gap-6 items-start",
                     // Simple dropdown
                     Dropdown {
@@ -35,8 +35,8 @@ pub mod basic {
                         
                         DropdownContent {
                             DropdownItem {
-                                value: use_signal(|| "Profile".to_string()),
-                                index: use_signal(|| 0),
+                                value: "Profile".to_string(),
+                                index: 0,
                                 on_select: move |value| {
                                     selected_action.set(value);
                                 },
@@ -44,8 +44,8 @@ pub mod basic {
                             }
                             
                             DropdownItem {
-                                value: use_signal(|| "Settings".to_string()),
-                                index: use_signal(|| 1),
+                                value: "Settings".to_string(),
+                                index: 1,
                                 on_select: move |value| {
                                     selected_action.set(value);
                                 },
@@ -53,8 +53,8 @@ pub mod basic {
                             }
                             
                             DropdownItem {
-                                value: use_signal(|| "Logout".to_string()),
-                                index: use_signal(|| 2),
+                                value: "Logout".to_string(),
+                                index: 2,
                                 on_select: move |value| {
                                     selected_action.set(value);
                                 },
@@ -78,8 +78,8 @@ pub mod basic {
                             }
                         
                             DropdownItem {
-                                value: use_signal(|| "Profile".to_string()),
-                                index: use_signal(|| 0),
+                                value: "Profile".to_string(),
+                                index: 0,
                                 on_select: move |value| {
                                     selected_action.set(value);
                                 },
@@ -87,8 +87,8 @@ pub mod basic {
                             }
                         
                             DropdownItem {
-                                value: use_signal(|| "Settings".to_string()),
-                                index: use_signal(|| 1),
+                                value: "Settings".to_string(),
+                                index: 1,
                                 on_select: move |value| {
                                     selected_action.set(value);
                                 },
@@ -102,8 +102,8 @@ pub mod basic {
                             }
                         
                             DropdownItem {
-                                value: use_signal(|| "Logout".to_string()),
-                                index: use_signal(|| 2),
+                                value: "Logout".to_string(),
+                                index: 2,
                                 on_select: move |value| {
                                     selected_action.set(value);
                                 },
@@ -115,7 +115,7 @@ pub mod basic {
             }
                 
             if !selected_action().is_empty() {
-                div { class: "p-3 bg-muted rounded-md",
+                div { class: "p-3 bg-muted rounded-md my-4",
                     "Selected: " strong { "{selected_action()}" }
                 }
             }
@@ -139,7 +139,7 @@ pub mod states {
             div { class: "flex flex-wrap gap-6 items-start",
                 // Disabled dropdown
                 Dropdown {
-                    disabled: use_signal(|| true),
+                    disabled: true,
                     DropdownTrigger {
                         Button {
                             variant: ButtonVariant::Outline,
@@ -150,8 +150,8 @@ pub mod states {
                     
                     DropdownContent {
                         DropdownItem {
-                            value: use_signal(|| "item1".to_string()),
-                            index: use_signal(|| 0),
+                            value: "item1".to_string(),
+                            index: 0,
                             "Item 1"
                         }
                     }
@@ -168,21 +168,21 @@ pub mod states {
                     
                     DropdownContent {
                         DropdownItem {
-                            value: use_signal(|| "item1".to_string()),
-                            index: use_signal(|| 0),
+                            value: "item1".to_string(),
+                            index: 0,
                             "Normal Item"
                         }
                         
                         DropdownItem {
-                            value: use_signal(|| "item2".to_string()),
-                            index: use_signal(|| 1),
-                            disabled: use_signal(|| true),
+                            value: "item2".to_string(),
+                            index: 1,
+                            disabled: true,
                             "Disabled Item"
                         }
                         
                         DropdownItem {
-                            value: use_signal(|| "item3".to_string()),
-                            index: use_signal(|| 2),
+                            value: "item3".to_string(),
+                            index: 2,
                             "Normal Item"
                         }
                     }
@@ -199,15 +199,15 @@ pub mod states {
                     
                     DropdownContent {
                         DropdownItem {
-                            value: use_signal(|| "item1".to_string()),
-                            index: use_signal(|| 0),
+                            value: "item1".to_string(),
+                            index: 0,
                             "Normal Item"
                         }
                         
                         DropdownItem {
-                            value: use_signal(|| "item2".to_string()),
-                            index: use_signal(|| 1),
-                            destructive: use_signal(|| true),
+                            value: "item2".to_string(),
+                            index: 1,
+                            destructive: true,
                             "Destructive Action"
                         }
                     }
@@ -232,7 +232,7 @@ pub mod icons {
         let mut selected_action = use_signal(|| String::new());
 
         rsx! {
-            div { class: "flex flex-col gap-4 pt-12 pb-36",
+            div { class: "flex flex-col gap-4",
                 div { class: "flex flex-wrap gap-6 items-start",
                     Dropdown {
                         DropdownTrigger {
@@ -244,8 +244,8 @@ pub mod icons {
 
                         DropdownContent {
                             DropdownItem {
-                                value: use_signal(|| "Profile".to_string()),
-                                index: use_signal(|| 0),
+                                value: "Profile".to_string(),
+                                index: 0,
                                 icon: rsx! { User { size: 16 } },
                                 on_select: move |value| {
                                     selected_action.set(value);
@@ -254,8 +254,8 @@ pub mod icons {
                             }
 
                             DropdownItem {
-                                value: use_signal(|| "Settings".to_string()),
-                                index: use_signal(|| 1),
+                                value: "Settings".to_string(),
+                                index: 1,
                                 icon: rsx! { Settings { size: 16 } },
                                 on_select: move |value| {
                                     selected_action.set(value);
@@ -264,10 +264,10 @@ pub mod icons {
                             }
 
                             DropdownItem {
-                                value: use_signal(|| "Logout".to_string()),
-                                index: use_signal(|| 2),
+                                value: "Logout".to_string(),
+                                index: 2,
                                 icon: rsx! { LogOut { size: 16 } },
-                                destructive: use_signal(|| true),
+                                destructive: true,
                                 on_select: move |value| {
                                     selected_action.set(value);
                                 },
@@ -286,8 +286,8 @@ pub mod icons {
 
                         DropdownContent {
                             DropdownItem {
-                                value: use_signal(|| "New Item".to_string()),
-                                index: use_signal(|| 0),
+                                value: "New Item".to_string(),
+                                index: 0,
                                 icon: rsx! { Plus { size: 16 } },
                                 on_select: move |value| {
                                     selected_action.set(value);
@@ -296,8 +296,8 @@ pub mod icons {
                             }
 
                             DropdownItem {
-                                value: use_signal(|| "Share".to_string()),
-                                index: use_signal(|| 1),
+                                value: "Share".to_string(),
+                                index: 1,
                                 icon: rsx! { Share2 { size: 16 } },
                                 on_select: move |value| {
                                     selected_action.set(value);
@@ -333,7 +333,7 @@ pub mod alignment {
         let mut selected_alignment = use_signal(|| String::new());
         
         rsx! {
-            div { class: "flex flex-col gap-4 pt-12 pb-36",
+            div { class: "flex flex-col gap-4 mb-4",
                 div { class: "flex flex-wrap gap-6 items-start",
                     // Left aligned (default)
                     Dropdown {
@@ -348,8 +348,8 @@ pub mod alignment {
                             align: "start".to_string(),
                             
                             DropdownItem {
-                                value: use_signal(|| "Item 1".to_string()),
-                                index: use_signal(|| 0),
+                                value: "Item 1".to_string(),
+                                index: 0,
                                 on_select: move |value| {
                                     selected_item.set(value);
                                     selected_alignment.set("start".to_string());
@@ -358,8 +358,8 @@ pub mod alignment {
                             }
                             
                             DropdownItem {
-                                value: use_signal(|| "Item 2".to_string()),
-                                index: use_signal(|| 1),
+                                value: "Item 2".to_string(),
+                                index: 1,
                                 on_select: move |value| {
                                     selected_item.set(value);
                                     selected_alignment.set("start".to_string());
@@ -382,8 +382,8 @@ pub mod alignment {
                             align: "center".to_string(),
                             
                             DropdownItem {
-                                value: use_signal(|| "Item 1".to_string()),
-                                index: use_signal(|| 0),
+                                value: "Item 1".to_string(),
+                                index: 0,
                                 on_select: move |value| {
                                     selected_item.set(value);
                                     selected_alignment.set("center".to_string());
@@ -392,8 +392,8 @@ pub mod alignment {
                             }
                             
                             DropdownItem {
-                                value: use_signal(|| "Item 2".to_string()),
-                                index: use_signal(|| 1),
+                                value: "Item 2".to_string(),
+                                index: 1,
                                 on_select: move |value| {
                                     selected_item.set(value);
                                     selected_alignment.set("center".to_string());
@@ -416,8 +416,8 @@ pub mod alignment {
                             align: "end".to_string(),
                             
                             DropdownItem {
-                                value: use_signal(|| "Item 1".to_string()),
-                                index: use_signal(|| 0),
+                                value: "Item 1".to_string(),
+                                index: 0,
                                 on_select: move |value| {
                                     selected_item.set(value);
                                     selected_alignment.set("end".to_string());
@@ -426,8 +426,8 @@ pub mod alignment {
                             }
                             
                             DropdownItem {
-                                value: use_signal(|| "Item 2".to_string()),
-                                index: use_signal(|| 1),
+                                value: "Item 2".to_string(),
+                                index: 1,
                                 on_select: move |value| {
                                     selected_item.set(value);
                                     selected_alignment.set("end".to_string());
@@ -464,7 +464,7 @@ pub mod checkbox_radio {
         let mut compact_mode = use_signal(|| false);
         let mut theme = use_signal(|| "system".to_string());
         rsx! {
-            div { class: "flex flex-col gap-4 pt-12 pb-36",
+            div { class: "flex flex-col gap-4",
                 div { class: "flex flex-wrap gap-6 items-start",
                     // Checkbox Example
                     Dropdown {
@@ -485,9 +485,9 @@ pub mod checkbox_radio {
                             {
                                 rsx! {
                                     DropdownCheckboxItem {
-                                        value: use_signal(|| "dark_mode".to_string()),
-                                        index: use_signal(|| 0),
-                                        checked: dark_mode,
+                                        value: "dark_mode".to_string(),
+                                        index: 0,
+                                        checked: dark_mode(),
                                         on_change: move |checked| {
                                             dark_mode.set(checked);
                                         },
@@ -495,9 +495,9 @@ pub mod checkbox_radio {
                                     }
 
                                     DropdownCheckboxItem {
-                                        value: use_signal(|| "compact_mode".to_string()),
-                                        index: use_signal(|| 1),
-                                        checked: compact_mode,
+                                        value: "compact_mode".to_string(),
+                                        index: 1,
+                                        checked: compact_mode(),
                                         on_change: move |checked| {
                                             compact_mode.set(checked);
                                         },
@@ -533,20 +533,20 @@ pub mod checkbox_radio {
                                         },
                                           
                                         DropdownRadioItem {
-                                            value: use_signal(|| "light".to_string()),
-                                            index: use_signal(|| 0),
+                                            value: "light".to_string(),
+                                            index: 0,
                                             "Light"
                                         }
                                          
                                         DropdownRadioItem {
-                                            value: use_signal(|| "dark".to_string()),
-                                            index: use_signal(|| 1),
+                                            value: "dark".to_string(),
+                                            index: 1,
                                             "Dark"
                                         }
                                              
                                         DropdownRadioItem {
-                                            value: use_signal(|| "system".to_string()),
-                                            index: use_signal(|| 2),
+                                            value: "system".to_string(),
+                                            index: 2,
                                             "System"
                                         }
                                     }
@@ -598,7 +598,7 @@ pub mod complex {
         let mut selected_action = use_signal(|| String::new());
 
         rsx! {
-            div { class: "flex flex-col gap-4 pt-12 pb-36 p-20",
+            div { class: "flex flex-col gap-4",
                 div { class: "flex flex-wrap gap-6 items-start",
                     Dropdown {
                         DropdownTrigger {
@@ -616,8 +616,8 @@ pub mod complex {
                             }
 
                             DropdownItem {
-                                value: use_signal(|| "Profile".to_string()),
-                                index: use_signal(|| 0),
+                                value: "Profile".to_string(),
+                                index: 0,
                                 icon: rsx! { User { size: 16 } },
                                 on_select: move |value| {
                                     selected_section.set("My Account".to_string());
@@ -627,8 +627,8 @@ pub mod complex {
                             }
 
                             DropdownItem {
-                                value: use_signal(|| "Messages".to_string()),
-                                index: use_signal(|| 1),
+                                value: "Messages".to_string(),
+                                index: 1,
                                 icon: rsx! { MessageSquare { size: 16 } },
                                 on_select: move |value| {
                                     selected_section.set("My Account".to_string());
@@ -638,8 +638,8 @@ pub mod complex {
                             }
 
                             DropdownItem {
-                                value: use_signal(|| "Mail".to_string()),
-                                index: use_signal(|| 2),
+                                value: "Mail".to_string(),
+                                index: 2,
                                 icon: rsx! { Mail { size: 16 } },
                                 on_select: move |value| {
                                     selected_section.set("My Account".to_string());
@@ -655,8 +655,8 @@ pub mod complex {
                             }
 
                             DropdownItem {
-                                value: use_signal(|| "Billing".to_string()),
-                                index: use_signal(|| 3),
+                                value: "Billing".to_string(),
+                                index: 3,
                                 icon: rsx! { CreditCard { size: 16 } },
                                 on_select: move |value| {
                                     selected_section.set("Settings".to_string());
@@ -666,8 +666,8 @@ pub mod complex {
                             }
 
                             DropdownItem {
-                                value: use_signal(|| "Preferences".to_string()),
-                                index: use_signal(|| 4),
+                                value: "Preferences".to_string(),
+                                index: 4,
                                 icon: rsx! { Settings { size: 16 } },
                                 on_select: move |value| {
                                     selected_section.set("Settings".to_string());
@@ -679,10 +679,10 @@ pub mod complex {
                             DropdownSeparator {}
 
                             DropdownItem {
-                                value: use_signal(|| "Logout".to_string()),
-                                index: use_signal(|| 5),
+                                value: "Logout".to_string(),
+                                index: 5,
                                 icon: rsx! { LogOut { size: 16 } },
-                                destructive: use_signal(|| true),
+                                destructive: true,
                                 on_select: move |value| {
                                     selected_section.set("Action".to_string());
                                     selected_action.set(value);
