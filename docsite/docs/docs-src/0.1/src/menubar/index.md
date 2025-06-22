@@ -40,22 +40,6 @@ DemoFrame {
 
 You can disable entire menus or individual menu items by adding `class: Some("opacity-50 pointer-events-none".to_string())` to the respective component. This provides visual feedback to users that certain options are unavailable.
 
-## Custom Styling
-
-The menubar can be customized to match your application's design system.
-
-```inject-dioxus
-DemoFrame {
-    menubar_examples::custom_styling::CustomStyledMenubarExample {}
-}
-```
-
-```rust, no_run
-{{#include src/doc_examples/menubar_examples.rs:custom_styling}}
-```
-
-All menubar components accept a `class` property that allows you to customize their appearance. This enables you to integrate the menubar seamlessly into your application's visual style.
-
 ## Using Icons
 
 Adding icons to menu items can improve usability by providing visual cues for actions.
@@ -71,14 +55,3 @@ DemoFrame {
 ```
 
 Icons can be added to menu items by including them as children alongside text elements. For proper alignment, add a `class` with flexbox utilities like `"flex items-center gap-2"` to the `MenubarItem`.
-
-## Accessibility
-
-The menubar component implements proper keyboard navigation and ARIA attributes to ensure accessibility:
-
-- Arrow keys navigate between menus and menu items
-- Space or Enter opens menus and selects items
-- Escape closes open menus
-- ARIA attributes provide context for screen readers
-
-Always ensure that your menubar implementation is accessible to all users by maintaining these accessibility features.

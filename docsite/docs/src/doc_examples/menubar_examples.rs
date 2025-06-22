@@ -14,12 +14,14 @@ pub mod basic {
     
     #[component]
     pub fn BasicMenubarExample() -> Element {
+        let mut last_action = use_signal(|| String::new());
+
         let file_open = move |value: String| {
-            println!("File menu selected: {}", value);
+            last_action.set(format!("File menu selected: {}", value));
         };
 
         let edit_open = move |value: String| {
-            println!("Edit menu selected: {}", value);
+            last_action.set(format!("Edit menu selected: {}", value));
         };
 
         rsx! {
@@ -70,6 +72,14 @@ pub mod basic {
                         }
                     }
                 }
+                
+                // Display last action
+                if !last_action().is_empty() {
+                    div { 
+                        class: "mt-4 p-2 rounded bg-card text-sm",
+                        "Last action: {last_action}"
+                    }
+                }
             }
         }
     }
@@ -85,8 +95,10 @@ pub mod disabled {
     
     #[component]
     pub fn DisabledMenubarExample() -> Element {
+        let mut last_action = use_signal(|| String::new());
+        
         let handle_select = move |value: String| {
-            println!("Menu item selected: {}", value);
+            last_action.set(format!("Menu item selected: {}", value));
         };
 
         rsx! {
@@ -143,6 +155,14 @@ pub mod disabled {
                         }
                     }
                 }
+                
+                // Display last action
+                if !last_action().is_empty() {
+                    div { 
+                        class: "mt-4 p-2 rounded bg-card text-sm",
+                        "Last action: {last_action}"
+                    }
+                }
             }
         }
     }
@@ -158,8 +178,10 @@ pub mod custom_styling {
     
     #[component]
     pub fn CustomStyledMenubarExample() -> Element {
+        let mut last_action = use_signal(|| String::new());
+        
         let handle_select = move |value: String| {
-            println!("Menu item selected: {}", value);
+            last_action.set(format!("Menu item selected: {}", value));
         };
 
         rsx! {
@@ -213,6 +235,14 @@ pub mod custom_styling {
                         }
                     }
                 }
+                
+                // Display selected action with custom styling
+                if !last_action().is_empty() {
+                    div { 
+                        class: "p-3 bg-secondary/20 rounded-md mt-4",
+                        "Selected: " strong { "{last_action()}" }
+                    }
+                }
             }
         }
     }
@@ -229,12 +259,14 @@ pub mod with_icons {
     
     #[component]
     pub fn MenubarWithIconsExample() -> Element {
+        let mut last_action = use_signal(|| String::new());
+        
         let file_open = move |value: String| {
-            println!("File menu selected: {}", value);
+            last_action.set(format!("File menu selected: {}", value));
         };
 
         let edit_open = move |value: String| {
-            println!("Edit menu selected: {}", value);
+            last_action.set(format!("Edit menu selected: {}", value));
         };
 
         rsx! {
@@ -295,6 +327,14 @@ pub mod with_icons {
                                 span { "Paste" }
                             }
                         }
+                    }
+                }
+                
+                // Display selected action with icon
+                if !last_action().is_empty() {
+                    div { 
+                        class: "mt-4 p-2 rounded bg-card text-sm",
+                        "Selected: " strong { "{last_action()}" }
                     }
                 }
             }
