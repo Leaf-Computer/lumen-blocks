@@ -36,35 +36,35 @@ pub struct InputProps {
 
     /// The variant of the input
     #[props(default)]
-    variant: ReadOnlySignal<InputVariant>,
+    variant: InputVariant,
 
     /// The size of the input
     #[props(default)]
-    size: ReadOnlySignal<InputSize>,
+    size: InputSize,
     
     /// Whether the input is disabled
     #[props(default)]
-    disabled: ReadOnlySignal<bool>,
+    disabled: bool,
 
     /// Whether the input is read-only
     #[props(default)]
-    readonly: ReadOnlySignal<bool>,
+    readonly: bool,
 
     /// Whether the input is required
     #[props(default)]
-    required: ReadOnlySignal<bool>,
+    required: bool,
 
     /// Placeholder text for the input
     #[props(default)]
-    placeholder: ReadOnlySignal<String>,
+    placeholder: String,
 
     /// Current value for the input (controlled component)
     #[props(default)]
-    value: ReadOnlySignal<String>,
+    value: String,
 
     /// Whether the input is displayed as a full width block
     #[props(default)]
-    full_width: ReadOnlySignal<bool>,
+    full_width: bool,
 
     /// Optional icon to display before the input text
     #[props(default)]
@@ -88,11 +88,11 @@ pub struct InputProps {
 
     /// Name of the input for form submission
     #[props(default)]
-    name: ReadOnlySignal<String>,
+    name: String,
 
     /// Optional ID for the input
     #[props(default)]
-    id: ReadOnlySignal<Option<String>>,
+    id: Option<String>,
 
     /// Optional aria-label for the input (for accessibility)
     #[props(default)]
@@ -118,30 +118,31 @@ pub struct InputProps {
 pub fn Input(props: InputProps) -> Element {
     // Generate unique ID if not provided
     let input_id = use_unique_id();
-    let id_value = use_id_or(input_id, props.id);
+    let props_id = use_signal(|| props.id);
+    let id_value = use_id_or(input_id, props_id.into());
 
     // Determine variant classes
-    let variant_classes = match (props.variant)() {
+    let variant_classes = match props.variant {
         InputVariant::Default => "border-input focus:border-ring",
         InputVariant::Error => "border-destructive focus:border-destructive",
     };
 
     // Determine size classes
-    let size_classes = match (props.size)() {
+    let size_classes = match props.size {
         InputSize::Small => "text-xs px-2 py-1 h-8",
         InputSize::Medium => "text-sm px-3 py-1.5 h-10",
         InputSize::Large => "text-base px-4 py-2 h-12",
     };
 
     // Determine width class
-    let width_class = if (props.full_width)() {
+    let width_class = if props.full_width {
         "w-full"
     } else {
         "w-auto"
     };
 
     // Determine state classes
-    let state_class = if (props.disabled)() {
+    let state_class = if props.disabled {
         "opacity-50 cursor-not-allowed bg-muted"
     } else {
         "bg-background"
@@ -149,7 +150,7 @@ pub fn Input(props: InputProps) -> Element {
 
     // Padding adjustment when icons are present
     let padding_left = if props.icon_left.is_some() {
-        match (props.size)() {
+        match props.size {
             InputSize::Small => "pl-7",
             InputSize::Medium => "pl-9",
             InputSize::Large => "pl-10",
@@ -159,7 +160,7 @@ pub fn Input(props: InputProps) -> Element {
     };
 
     let padding_right = if props.icon_right.is_some() {
-        match (props.size)() {
+        match props.size {
             InputSize::Small => "pr-7",
             InputSize::Medium => "pr-9",
             InputSize::Large => "pr-10",
@@ -236,12 +237,12 @@ pub fn Input(props: InputProps) -> Element {
                 // Standard HTML attributes
                 id: id_value,
                 type: props.input_type.clone(),
-                name: (props.name)(),
-                placeholder: (props.placeholder)(),
-                value: (props.value)(),
-                disabled: (props.disabled)(),
-                readonly: (props.readonly)(),
-                required: (props.required)(),
+                name: props.name,
+                placeholder: props.placeholder,
+                value: props.value,
+                disabled: props.disabled,
+                readonly: props.readonly,
+                required: props.required,
                 class: input_classes,
                 
                 // Event handlers
@@ -253,8 +254,8 @@ pub fn Input(props: InputProps) -> Element {
                 aria_label: props.aria_label.clone(),
                 aria_labelledby: props.aria_labelledby.clone(),
                 aria_describedby: props.aria_describedby.clone(),
-                aria_disabled: (props.disabled)().to_string(),
-                aria_required: (props.required)().to_string(),
+                aria_disabled: props.disabled.to_string(),
+                aria_required: props.required.to_string(),
                 
                 // Pass through other attributes
                 ..props.attributes,

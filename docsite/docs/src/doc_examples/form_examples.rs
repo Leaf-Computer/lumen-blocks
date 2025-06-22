@@ -24,10 +24,10 @@ pub mod basic {
         rsx! {
             div { class: "w-full max-w-md",
                 Input {
-                    id: use_signal(|| Some("basic-input".to_string())),
+                    id: Some("basic-input".to_string()),
                     input_type: "text".to_string(),
-                    placeholder: use_signal(|| "Enter text".to_string()),
-                    full_width: use_signal(|| true),
+                    placeholder: "Enter text".to_string(),
+                    full_width: true,
                     value: value,
                     on_change: move |evt: FormEvent| value.set(evt.value().clone())
                 }
@@ -49,21 +49,21 @@ pub mod variants {
             div { class: "w-full max-w-md space-y-4",
                 div {
                     Input {
-                        id: use_signal(|| Some("default-input".to_string())),
+                        id: Some("default-input".to_string()),
                         input_type: "text".to_string(),
-                        placeholder: use_signal(|| "Default input".to_string()),
-                        full_width: use_signal(|| true),
-                        variant: use_signal(|| InputVariant::Default)
+                        placeholder: "Default input".to_string(),
+                        full_width: true,
+                        variant: InputVariant::Default
                     }
                 }
                 
                 div {
                     Input {
-                        id: use_signal(|| Some("error-input".to_string())),
+                        id: Some("error-input".to_string()),
                         input_type: "text".to_string(),
-                        placeholder: use_signal(|| "Error input".to_string()),
-                        full_width: use_signal(|| true),
-                        variant: use_signal(|| InputVariant::Error)
+                        placeholder: "Error input".to_string(),
+                        full_width: true,
+                        variant: InputVariant::Error
                     }
                     
                     div {
@@ -88,21 +88,21 @@ pub mod sizes {
         rsx! {
             div { class: "w-full max-w-md space-y-4",
                 Input {
-                    size: use_signal(|| InputSize::Small),
-                    placeholder: use_signal(|| "Small input".to_string()),
-                    full_width: use_signal(|| true)
+                    size: InputSize::Small,
+                    placeholder: "Small input".to_string(),
+                    full_width: true
                 }
                 
                 Input {
-                    size: use_signal(|| InputSize::Medium),
-                    placeholder: use_signal(|| "Medium input".to_string()),
-                    full_width: use_signal(|| true)
+                    size: InputSize::Medium,
+                    placeholder: "Medium input".to_string(),
+                    full_width: true
                 }
                 
                 Input {
-                    size: use_signal(|| InputSize::Large),
-                    placeholder: use_signal(|| "Large input".to_string()),
-                    full_width: use_signal(|| true)
+                    size: InputSize::Large,
+                    placeholder: "Large input".to_string(),
+                    full_width: true
                 }
             }
         }
@@ -121,20 +121,20 @@ pub mod icons {
         rsx! {
             div { class: "w-full max-w-md space-y-4",
                 Input {
-                    placeholder: use_signal(|| "Email address".to_string()),
-                    full_width: use_signal(|| true),
+                    placeholder: "Email address".to_string(),
+                    full_width: true,
                     icon_left: rsx! { Mail { size: 18, class: "text-foreground" } }
                 }
                 
                 Input {
-                    placeholder: use_signal(|| "Search...".to_string()),
-                    full_width: use_signal(|| true),
+                    placeholder: "Search...".to_string(),
+                    full_width: true,
                     icon_left: rsx! { Search { size: 18, class: "text-foreground" } }
                 }
                 
                 Input {
-                    placeholder: use_signal(|| "Username".to_string()),
-                    full_width: use_signal(|| true),
+                    placeholder: "Username".to_string(),
+                    full_width: true,
                     icon_left: rsx! { User { size: 18, class: "text-foreground" } }
                 }
             }
@@ -153,15 +153,15 @@ pub mod states {
         rsx! {
             div { class: "w-full max-w-md space-y-4",
                 Input {
-                    placeholder: use_signal(|| "Disabled input".to_string()),
-                    full_width: use_signal(|| true),
-                    disabled: use_signal(|| true)
+                    placeholder: "Disabled input".to_string(),
+                    full_width: true,
+                    disabled: true
                 }
                 
                 Input {
-                    value: use_signal(|| "Read-only value".to_string()),
-                    full_width: use_signal(|| true),
-                    readonly: use_signal(|| true)
+                    value: "Read-only value".to_string(),
+                    full_width: true,
+                    readonly: true
                 }
             }
         }
@@ -180,15 +180,15 @@ pub mod labels {
         rsx! {
             div { class: "w-full max-w-md space-y-1",
                 Label {
-                    for_id: use_signal(|| Some("labeled-input".to_string())),
+                    for_id: Some("labeled-input".to_string()),
                     "Email Address"
                 }
                 
                 Input {
-                    id: use_signal(|| Some("labeled-input".to_string())),
+                    id: Some("labeled-input".to_string()),
                     input_type: "email".to_string(),
-                    placeholder: use_signal(|| "Enter your email".to_string()),
-                    full_width: use_signal(|| true)
+                    placeholder: "Enter your email".to_string(),
+                    full_width: true
                 }
             }
         }
@@ -208,43 +208,43 @@ pub mod label_sizes {
             div { class: "w-full max-w-md space-y-4",
                 div { class: "space-y-1",
                     Label {
-                        size: use_signal(|| LabelSize::Small),
-                        for_id: use_signal(|| Some("small-input".to_string())),
+                        size: LabelSize::Small,
+                        for_id: Some("small-input".to_string()),
                         "Small Label"
                     }
                     
                     Input {
-                        id: use_signal(|| Some("small-input".to_string())),
-                        size: use_signal(|| InputSize::Small),
-                        full_width: use_signal(|| true)
+                        id: Some("small-input".to_string()),
+                        size: InputSize::Small,
+                        full_width: true
                     }
                 }
                 
                 div { class: "space-y-1",
                     Label {
-                        size: use_signal(|| LabelSize::Medium),
-                        for_id: use_signal(|| Some("medium-input".to_string())),
+                        size: LabelSize::Medium,
+                        for_id: Some("medium-input".to_string()),
                         "Medium Label"
                     }
                     
                     Input {
-                        id: use_signal(|| Some("medium-input".to_string())),
-                        size: use_signal(|| InputSize::Medium),
-                        full_width: use_signal(|| true)
+                        id: Some("medium-input".to_string()),
+                        size: InputSize::Medium,
+                        full_width: true
                     }
                 }
                 
                 div { class: "space-y-1",
                     Label {
-                        size: use_signal(|| LabelSize::Large),
-                        for_id: use_signal(|| Some("large-input".to_string())),
+                        size: LabelSize::Large,
+                        for_id: Some("large-input".to_string()),
                         "Large Label"
                     }
                     
                     Input {
-                        id: use_signal(|| Some("large-input".to_string())),
-                        size: use_signal(|| InputSize::Large),
-                        full_width: use_signal(|| true)
+                        id: Some("large-input".to_string()),
+                        size: InputSize::Large,
+                        full_width: true
                     }
                 }
             }
@@ -265,27 +265,27 @@ pub mod required {
             div { class: "w-full max-w-md space-y-4",
                 div { class: "space-y-1",
                     Label {
-                        for_id: use_signal(|| Some("optional-field".to_string())),
+                        for_id: Some("optional-field".to_string()),
                         "Optional Field"
                     }
                     
                     Input {
-                        id: use_signal(|| Some("optional-field".to_string())),
-                        full_width: use_signal(|| true)
+                        id: Some("optional-field".to_string()),
+                        full_width: true
                     }
                 }
                 
                 div { class: "space-y-1",
                     Label {
-                        for_id: use_signal(|| Some("required-field".to_string())),
-                        required: use_signal(|| true),
+                        for_id: Some("required-field".to_string()),
+                        required: true,
                         "Required Field"
                     }
                     
                     Input {
-                        id: use_signal(|| Some("required-field".to_string())),
-                        required: use_signal(|| true),
-                        full_width: use_signal(|| true)
+                        id: Some("required-field".to_string()),
+                        required: true,
+                        full_width: true
                     }
                 }
             }
@@ -315,16 +315,16 @@ pub mod validation {
             div { class: "w-full max-w-md",
                 div { class: "space-y-1",
                     Label {
-                        for_id: use_signal(|| Some("email-input".to_string())),
+                        for_id: Some("email-input".to_string()),
                         "Email Address"
                     }
                     
                     Input {
-                        id: use_signal(|| Some("email-input".to_string())),
+                        id: Some("email-input".to_string()),
                         input_type: "email".to_string(),
-                        placeholder: use_signal(|| "Enter your email".to_string()),
-                        full_width: use_signal(|| true),
-                        variant: use_signal(|| if has_error() { InputVariant::Error } else { InputVariant::Default }),
+                        placeholder: "Enter your email".to_string(),
+                        full_width: true,
+                        variant: if has_error() { InputVariant::Error } else { InputVariant::Default },
                         value: email,
                         on_change: validate_email
                     }
@@ -388,20 +388,20 @@ pub mod complete {
                     // Email field
                     div { class: "space-y-1",
                         Label {
-                            for_id: use_signal(|| Some("email".to_string())),
+                            for_id: Some("email".to_string()),
                             "Email Address"
                         }
                         
                         Input {
-                            id: use_signal(|| Some("email".to_string())),
+                            id: Some("email".to_string()),
                             input_type: "email".to_string(),
-                            placeholder: use_signal(|| "Enter your email".to_string()),
-                            full_width: use_signal(|| true),
-                            variant: use_signal(|| if has_error() && email().is_empty() || (email().len() > 0 && !email().contains('@')) { 
+                            placeholder: "Enter your email".to_string(),
+                            full_width: true,
+                            variant: if (has_error() && email().is_empty() || (email().len() > 0 && !email().contains('@'))) { 
                                 InputVariant::Error 
                             } else { 
                                 InputVariant::Default 
-                            }),
+                            },
                             value: email,
                             on_change: handle_email_change,
                             icon_left: rsx! { Mail { size: 18, class: "text-foreground" } }
@@ -425,22 +425,22 @@ pub mod complete {
                     // Password field
                     div { class: "space-y-1",
                         Label {
-                            for_id: use_signal(|| Some("password".to_string())),
-                            required: use_signal(|| true),
+                            for_id: Some("password".to_string()),
+                            required: true,
                             "Password"
                         }
                         
                         Input {
-                            id: use_signal(|| Some("password".to_string())),
+                            id: Some("password".to_string()),
                             input_type: "password".to_string(),
-                            placeholder: use_signal(|| "Enter your password".to_string()),
-                            full_width: use_signal(|| true),
-                            required: use_signal(|| true),
-                            variant: use_signal(|| if has_error() && (password().is_empty() || password().len() < 6) { 
+                            placeholder: "Enter your password".to_string(),
+                            full_width: true,
+                            required: true,
+                            variant: if (has_error() && (password().is_empty() || password().len() < 6)) { 
                                 InputVariant::Error 
                             } else { 
                                 InputVariant::Default 
-                            }),
+                            },
                             value: password,
                             on_change: handle_password_change,
                             icon_left: rsx! { Lock { size: 18, class: "text-foreground" } }

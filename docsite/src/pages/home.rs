@@ -80,8 +80,8 @@ pub fn Home() -> Element {
                             
                             h3 { class: "font-medium text-foreground mb-3 mt-6", "Inputs" }
                             Input {
-                                placeholder: use_signal(|| "Enter your email".to_string()),
-                                size: use_signal(|| InputSize::Medium),
+                                placeholder: "Enter your email".to_string(),
+                                size: InputSize::Medium,
                                 icon_left: rsx! { Info { class: "w-4 h-4" } },
                             }
                             
