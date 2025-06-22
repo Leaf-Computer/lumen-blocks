@@ -5,7 +5,7 @@ use laminar_blocks::components::button::{Button, ButtonVariant};
 use lucide_dioxus::Menu;
 use mdbook_shared::SummaryItem;
 use crate::Route;
-use crate::LAMINAR_LOGO;
+use crate::LAMINAR_LOGO_SMALL;
 use docs::docs;
 
 #[component]
@@ -39,7 +39,7 @@ pub fn Navbar() -> Element {
                     class: "text-foreground hover:text-primary transition-colors",
                     div {
                         class: "flex items-center gap-2",
-                        img { class: "w-8 h-8", src: LAMINAR_LOGO }
+                        img { class: "w-8 h-8", src: LAMINAR_LOGO_SMALL }
                         span { class: "text-xl font-bold text-foreground", "Laminar Blocks" }
                     }
                 }
