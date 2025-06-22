@@ -381,7 +381,7 @@ pub mod complete {
         };
         
         rsx! {
-            div { class: "w-full max-w-md p-4 border rounded-md",
+            div { class: "w-full max-w-md p-4 border border-border rounded-md bg-card",
                 h3 { class: "text-lg font-medium mb-4", "Sign In" }
                 
                 div { class: "space-y-4",

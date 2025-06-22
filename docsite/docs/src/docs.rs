@@ -1,4 +1,4 @@
-use crate::doc_examples::*;
+pub use crate::doc_examples::*;
 use dioxus::prelude::*;
 use laminar_blocks::components::button::{Button, ButtonSize, ButtonVariant};
 use std::hash::Hash;

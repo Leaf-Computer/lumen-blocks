@@ -159,13 +159,13 @@ pub mod with_text {
         let mut checked = use_signal(|| true);
         
         rsx! {
-            div { class: "flex items-center justify-between py-3",
+            div { class: "flex items-center justify-between py-3 gap-2",
                 div {
                     label { class: "text-sm font-medium block",
                         "Airplane Mode" 
                     }
                     span { class: "text-xs text-gray-500",
-                        if checked() { "On - All wireless communications are disabled" } 
+                        if checked() { "On - Wireless communications are disabled" } 
                         else { "Off - Wireless communications are enabled" }
                     }
                 }

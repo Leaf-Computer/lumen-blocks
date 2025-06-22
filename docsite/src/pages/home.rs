@@ -1,17 +1,23 @@
 use dioxus::prelude::*;
+use ::docs::docs::{dropdown_examples::ComplexDropdownExample, menubar_examples::MenubarWithIconsExample, progress_examples::InteractiveProgressExample};
 use laminar_blocks::components::{
-    avatar::{Avatar, AvatarImage, AvatarFallback},
     button::{Button, ButtonVariant, ButtonSize},
-    input::{Input, InputSize},
-    progress::{Progress, ProgressVariant},
-    switch::Switch,
+    toast::ToastProvider,
 };
-use lucide_dioxus::{Check, Info, X};
+use lucide_dioxus::{Check, Wind, PersonStanding};
 use docs::docs;
+use docs::button_examples::ButtonVariantsExample;
+use docs::toast_examples::ToastWithDescriptionsExample;
+use docs::accordion_examples::BasicAccordionExample;
+use docs::hover_card_examples::HoverCardProfileExample;
+use docs::switch_examples::SwitchWithTextExample;
+use docs::side_sheet_examples::BasicSideSheetExample;
+use docs::form_examples::CompleteFormExample;
+use docs::avatar_examples::AvatarGroupExample;
 
 use crate::Route;
 use crate::LAMINAR_LOGO;
-use crate::components::FeatureCard;
+use crate::components::{FeatureCard, ComponentCard};
 
 #[component]
 pub fn Home() -> Element {
@@ -21,9 +27,9 @@ pub fn Home() -> Element {
             div { class: "max-w-6xl mx-auto px-6 py-12",
                 div { class: "text-center mb-12",
                     img { class: "w-48 h-48 mx-auto mb-4", src: LAMINAR_LOGO, alt: "Laminar Logo" }
-                    h1 { class: "text-4xl font-bold text-foreground mb-4", "Laminar Blocks Demo" }
+                    h1 { class: "text-4xl font-bold text-foreground mb-4", "Laminar Blocks" }
                     p { class: "text-xl text-muted-foreground mb-8", 
-                        "A comprehensive component library for Dioxus applications" 
+                        "Styled, opinionated UI components for building Dioxus applications"
                     }
                     
                     div { class: "flex justify-center gap-4",
@@ -38,7 +44,7 @@ pub fn Home() -> Element {
                 }
                 
                 // Feature Cards
-                div { class: "grid grid-cols-1 md:grid-cols-3 gap-8 mb-12",
+                div { class: "grid grid-cols-1 md:grid-cols-3 gap-8 mb-24",
                     FeatureCard {
                         title: "Rich Components".to_string(),
                         description: "Comprehensive set of UI components built for modern web applications".to_string(),
@@ -47,77 +53,114 @@ pub fn Home() -> Element {
                     FeatureCard {
                         title: "Tailwind Styled".to_string(),
                         description: "Beautifully designed with Tailwind CSS and dark mode support".to_string(),
-                        icon: rsx! { Info { class: "w-8 h-8 text-primary" } }
+                        icon: rsx! { Wind { class: "w-8 h-8 text-primary" } }
                     }
                     FeatureCard {
                         title: "Accessible".to_string(),
                         description: "Built with accessibility in mind, following good ARIA practices".to_string(),
-                        icon: rsx! { X { class: "w-8 h-8 text-primary" } }
+                        icon: rsx! { PersonStanding { class: "w-8 h-8 text-primary" } }
                     }
                 }
                 
-                // Quick Component Preview
-                div { class: "bg-card rounded-lg border border-border p-8",
-                    h2 { class: "text-2xl font-semibold text-foreground mb-6", "Quick Preview" }
-                    
-                    div { class: "grid grid-cols-1 md:grid-cols-2 gap-8",
-                        div { class: "space-y-4",
-                            h3 { class: "font-medium text-foreground mb-3", "Buttons" }
-                            div { class: "flex flex-wrap gap-2",
-                                Button {
-                                    variant: ButtonVariant::Primary,
-                                    "Primary"
-                                }
-                                Button {
-                                    variant: ButtonVariant::Secondary,
-                                    "Secondary"
-                                }
-                                Button {
-                                    variant: ButtonVariant::Outline,
-                                    "Outline"
-                                }
-                            }
-                            
-                            h3 { class: "font-medium text-foreground mb-3 mt-6", "Inputs" }
-                            Input {
-                                placeholder: "Enter your email".to_string(),
-                                size: InputSize::Medium,
-                                icon_left: rsx! { Info { class: "w-4 h-4" } },
-                            }
-                            
-                            h3 { class: "font-medium text-foreground mb-3 mt-6", "Progress" }
-                            Progress {
-                                value: use_signal(|| 75.0),
-                                variant: ProgressVariant::Default,
-                                show_percentage: true,
-                            }
-                        }
+                // Interactive Component Showcase - Bento Grid
+                ToastProvider {
+                    div { class: "rounded-lg",
+                        h2 { class: "text-3xl font-semibold text-foreground mb-6", "Component Showcase" }
                         
-                        div { class: "space-y-4",
-                            h3 { class: "font-medium text-foreground mb-3", "Avatars" }
-                            div { class: "flex gap-2",
-                                Avatar {
-                                    AvatarImage {
-                                        src: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=40&h=40&fit=crop&crop=face".to_string(),
-                                        alt: "User".to_string(),
-                                    }
-                                    AvatarFallback { "JD" }
-                                }
-                                Avatar {
-                                    AvatarFallback { "AB" }
-                                }
-                                Avatar {
-                                    class: Some("w-12 h-12".to_string()),
-                                    AvatarFallback { "CD" }
-                                }
+                        div { class: "grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6",
+                            // Buttons
+                            ComponentCard {
+                                title: "Button".to_string(),
+                                doc_route: Route::Docs01 { child: docs::router_01::BookRoute::ButtonIndex { section: Default::default() } },
+                                col_span: Some("md:col-span-2".to_string()),
+                                ButtonVariantsExample {  }
                             }
                             
-                            h3 { class: "font-medium text-foreground mb-3 mt-6", "Switch" }
-                            div { class: "flex items-center gap-3",
-                                Switch {
-                                    checked: use_signal(|| true),
-                                }
-                                span { class: "text-sm text-muted-foreground", "Enable notifications" }
+                            // Hover Card
+                            ComponentCard {
+                                title: "Hover Card".to_string(),
+                                doc_route: Route::Docs01 { child: docs::router_01::BookRoute::HoverCardIndex { section: Default::default() } },
+                                content_class: Some("px-4".to_string()),
+                                HoverCardProfileExample {}
+                            }
+                            
+                            // Complete form example
+                            ComponentCard {
+                                title: "Form components".to_string(),
+                                doc_route: Route::Docs01 { child: docs::router_01::BookRoute::FormIndex { section: Default::default() } },
+                                col_span: Some("md:col-span-1".to_string()),
+                                row_span: Some("md:row-span-2".to_string()),
+                                CompleteFormExample {}
+                            }
+                            
+                            // Switch (small screen)
+                            ComponentCard {
+                                title: "Switch".to_string(),
+                                doc_route: Route::Docs01 { child: docs::router_01::BookRoute::SwitchIndex { section: Default::default() } },
+                                col_span: Some("col-span-1 block lg:hidden".to_string()),
+                                SwitchWithTextExample {}
+                            }
+                            
+                            // Accordion
+                            ComponentCard {
+                                title: "Accordion".to_string(),
+                                doc_route: Route::Docs01 { child: docs::router_01::BookRoute::AccordionIndex { section: Default::default() } },
+                                col_span: Some("md:col-span-2".to_string()),
+                                BasicAccordionExample {}
+                            }
+                            
+                            // Switch (large screen)
+                            ComponentCard {
+                                title: "Switch".to_string(),
+                                doc_route: Route::Docs01 { child: docs::router_01::BookRoute::SwitchIndex { section: Default::default() } },
+                                col_span: Some("col-span-1 hidden lg:block".to_string()),
+                                SwitchWithTextExample {}
+                            }
+                            
+                            // Side Sheet
+                            ComponentCard {
+                                title: "Side Sheet".to_string(),
+                                doc_route: Route::Docs01 { child: docs::router_01::BookRoute::SideSheetIndex { section: Default::default() } },
+                                col_span: Some("md:col-span-1".to_string()),
+                                BasicSideSheetExample {}
+                            }
+                            
+                            // Toast
+                            ComponentCard {
+                                title: "Toast".to_string(),
+                                doc_route: Route::Docs01 { child: docs::router_01::BookRoute::ToastIndex { section: Default::default() } },
+                                ToastWithDescriptionsExample {}
+                            }
+                            
+                            // Menu bar
+                            ComponentCard {
+                                title: "Menubar".to_string(),
+                                doc_route: Route::Docs01 { child: docs::router_01::BookRoute::ProgressIndex { section: Default::default() } },
+                                col_span: Some("md:col-span-2".to_string()),
+                                MenubarWithIconsExample {  }
+                            }
+                            
+                            // Dropdown
+                            ComponentCard {
+                                title: "Dropdown".to_string(),
+                                doc_route: Route::Docs01 { child: docs::router_01::BookRoute::DropdownIndex { section: Default::default() } },
+                                ComplexDropdownExample {  }
+                            }
+                            
+                            // Progress
+                            ComponentCard {
+                                title: "Progress".to_string(),
+                                doc_route: Route::Docs01 { child: docs::router_01::BookRoute::ProgressIndex { section: Default::default() } },
+                                col_span: Some("md:col-span-1".to_string()),
+                                InteractiveProgressExample {  }
+                            }
+                            
+                            // Avatar
+                            ComponentCard {
+                                title: "Avatar".to_string(),
+                                doc_route: Route::Docs01 { child: docs::router_01::BookRoute::AvatarIndex { section: Default::default() } },
+                                col_span: Some("col-span-1 md:col-span-2 lg:col-span-1".to_string()),
+                                AvatarGroupExample {  }
                             }
                         }
                     }

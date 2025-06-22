@@ -2,7 +2,6 @@
 
 pub use basic::BasicMenubarExample;
 pub use disabled::DisabledMenubarExample;
-pub use custom_styling::CustomStyledMenubarExample;
 pub use with_icons::MenubarWithIconsExample;
 
 pub mod basic {
@@ -169,86 +168,6 @@ pub mod disabled {
     // ANCHOR_END: disabled
 }
 
-pub mod custom_styling {
-    // ANCHOR: custom_styling
-    use dioxus::prelude::*;
-    use laminar_blocks::components::menubar::{
-        Menubar, MenubarMenu, MenubarTrigger, MenubarContent, MenubarItem,
-    };
-    
-    #[component]
-    pub fn CustomStyledMenubarExample() -> Element {
-        let mut last_action = use_signal(|| String::new());
-        
-        let handle_select = move |value: String| {
-            last_action.set(format!("Menu item selected: {}", value));
-        };
-
-        rsx! {
-            div { class: "pb-24", // Add a big vertical margin
-                Menubar {
-                    class: Some("bg-secondary rounded-md p-1 gap-1".to_string()),
-                    // File Menu
-                    MenubarMenu {
-                        index: 0,
-                        MenubarTrigger { 
-                            class: Some("px-3 py-1.5 text-sm font-medium rounded-sm hover:bg-primary hover:text-primary-foreground".to_string()),
-                            "File" 
-                        }
-                        MenubarContent {
-                            class: Some("rounded-md border bg-popover p-2 text-popover-foreground shadow-md".to_string()),
-                            MenubarItem {
-                                value: "new".to_string(),
-                                on_select: Callback::new(handle_select.clone()),
-                                class: Some("px-2 py-1.5 text-sm rounded-sm hover:bg-accent hover:text-accent-foreground".to_string()),
-                                "New"
-                            }
-                            MenubarItem {
-                                value: "open".to_string(),
-                                on_select: Callback::new(handle_select.clone()),
-                                class: Some("px-2 py-1.5 text-sm rounded-sm hover:bg-accent hover:text-accent-foreground".to_string()),
-                                "Open"
-                            }
-                        }
-                    }
-                    // Edit Menu
-                    MenubarMenu {
-                        index: 1,
-                        MenubarTrigger { 
-                            class: Some("px-3 py-1.5 text-sm font-medium rounded-sm hover:bg-primary hover:text-primary-foreground".to_string()),
-                            "Edit" 
-                        }
-                        MenubarContent {
-                            class: Some("rounded-md border bg-popover p-2 text-popover-foreground shadow-md".to_string()),
-                            MenubarItem {
-                                value: "cut".to_string(),
-                                on_select: Callback::new(handle_select.clone()),
-                                class: Some("px-2 py-1.5 text-sm rounded-sm hover:bg-accent hover:text-accent-foreground".to_string()),
-                                "Cut"
-                            }
-                            MenubarItem {
-                                value: "copy".to_string(),
-                                on_select: Callback::new(handle_select.clone()),
-                                class: Some("px-2 py-1.5 text-sm rounded-sm hover:bg-accent hover:text-accent-foreground".to_string()),
-                                "Copy"
-                            }
-                        }
-                    }
-                }
-                
-                // Display selected action with custom styling
-                if !last_action().is_empty() {
-                    div { 
-                        class: "p-3 bg-secondary/20 rounded-md mt-4",
-                        "Selected: " strong { "{last_action()}" }
-                    }
-                }
-            }
-        }
-    }
-    // ANCHOR_END: custom_styling
-}
-
 pub mod with_icons {
     // ANCHOR: with_icons
     use dioxus::prelude::*;
@@ -270,7 +189,7 @@ pub mod with_icons {
         };
 
         rsx! {
-            div { class: "pb-24", // Add a big vertical margin
+            div { class: "w-full pb-24", // Add a big vertical margin
                 Menubar {
                     // File Menu
                     MenubarMenu {

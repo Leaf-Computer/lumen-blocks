@@ -16,7 +16,7 @@ pub mod basic {
     #[component]
     pub fn HoverCardBasicExample() -> Element {
         rsx! {
-            div { class: "flex flex-col items-center p-48",
+            div { class: "flex flex-col items-center",
                 HoverCard {
                     HoverCardTrigger {
                         button { 
@@ -50,7 +50,7 @@ pub mod placement {
     #[component]
     pub fn HoverCardPlacementExample() -> Element {
         rsx! {
-            div { class: "flex flex-col gap-8 p-48",
+            div { class: "flex flex-col gap-8",
                 // Top placement
                 div { class: "flex flex-row gap-8 justify-center",
                     HoverCard {
@@ -174,7 +174,7 @@ pub mod profile {
     #[component]
     pub fn HoverCardProfileExample() -> Element {
         rsx! {
-            div { class: "flex justify-center p-48",
+            div { class: "flex justify-center",
                 HoverCard {
                     HoverCardTrigger {
                         button { 
@@ -237,7 +237,7 @@ pub mod tooltip {
     #[component]
     pub fn HoverCardTooltipExample() -> Element {
         rsx! {
-            div { class: "flex justify-center p-48",
+            div { class: "flex justify-center",
                 HoverCard {
                     HoverCardTrigger {
                         a { 
@@ -275,7 +275,7 @@ pub mod icon {
     #[component]
     pub fn HoverCardIconExample() -> Element {
         rsx! {
-            div { class: "flex justify-center p-48",
+            div { class: "flex justify-center",
                 HoverCard {
                     HoverCardTrigger {
                         button { 
