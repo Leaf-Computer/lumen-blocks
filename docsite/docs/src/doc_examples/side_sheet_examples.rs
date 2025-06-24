@@ -52,9 +52,11 @@ pub mod basic {
                                     "Cancel"
                                 }
                             }
-                            Button {
-                                variant: ButtonVariant::Primary,
-                                "Save Changes"
+                            SideSheetClose {
+                                Button {
+                                    variant: ButtonVariant::Primary,
+                                    "Save Changes"
+                                }
                             }
                         }
                     }

@@ -267,7 +267,7 @@ pub struct SideSheetFooterProps {
 pub fn SideSheetFooter(props: SideSheetFooterProps) -> Element {
     rsx! {
         div {
-            class: "flex flex-col-reverse sm:flex-row sm:justify-end sm:space-x-2 {props.class}",
+            class: "flex gap-2 {props.class}",
             {props.children}
         }
     }
@@ -292,7 +292,7 @@ pub fn SideSheetCloseButton(props: SideSheetCloseButtonProps) -> Element {
             aria_label: "Close",
             
             X { 
-                class: "h-4 w-4" 
+                class: "h-6 w-6" 
             }
         }
     }

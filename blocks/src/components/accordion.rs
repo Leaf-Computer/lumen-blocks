@@ -148,7 +148,7 @@ pub fn AccordionTrigger(props: AccordionTriggerProps) -> Element {
     
     let trigger_classes = vec![
         // Base classes
-        "flex w-full items-center justify-between py-4 px-5 font-medium transition-all hover:underline group",
+        "flex w-full items-center text-left justify-between py-4 px-5 font-medium transition-all hover:underline group",
         
         // Additional classes passed by the user
         props.class.as_deref().unwrap_or(""),

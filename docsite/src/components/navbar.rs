@@ -70,7 +70,7 @@ pub fn Navbar() -> Element {
         nav {
             class: "md:hidden",
             SideSheetContent {
-                class: "p-6 w-64 h-full flex flex-col space-y-8",
+                class: "p-6 w-64 h-full flex flex-col space-y-8 overflow-scroll",
                 SideSheetCloseButton {},
                 nav {
                     class: "flex flex-col space-y-3",
