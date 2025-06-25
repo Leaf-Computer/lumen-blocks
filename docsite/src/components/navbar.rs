@@ -56,6 +56,13 @@ pub fn Navbar() -> Element {
                         class: "text-foreground hover:text-primary transition-colors",
                         "Docs"
                     }
+                    a {
+                        href: "https://github.com/Leaf-Computer/lumen-blocks",
+                        target: "_blank",
+                        rel: "noopener noreferrer",
+                        class: "text-foreground hover:text-primary transition-colors",
+                        "GitHub"
+                    }
                 }
                 div { class: "md:hidden",
                     SideSheetTrigger {
@@ -86,6 +93,13 @@ pub fn Navbar() -> Element {
                         to: Route::Docs01 { child: docs::router_01::BookRoute::Index { section: Default::default() } },
                         class: "text-foreground hover:text-primary transition-colors",
                         "Docs"
+                    }
+                    a {
+                        href: "https://github.com/Leaf-Computer/lumen-blocks",
+                        target: "_blank",
+                        rel: "noopener noreferrer",
+                        class: "text-foreground hover:text-primary transition-colors",
+                        "GitHub"
                     }
                 }
                 nav {

@@ -31,8 +31,12 @@ pub fn Home() -> Element {
                 div { class: "text-center mb-12",
                     img { class: "w-48 h-48 mx-auto mb-4 dark:invert", src: LUMEN_LOGO, alt: "Lumen Logo" }
                     h1 { class: "text-4xl font-bold text-foreground mb-4", "Lumen Blocks" }
-                    p { class: "text-xl text-muted-foreground mb-8",
+                    p { class: "text-xl text-muted-foreground mb-4",
                         "Styled, opinionated UI components for building Dioxus applications"
+                    }
+
+                    div { class: "inline-block px-3 py-1 mb-8 text-xs font-medium rounded-full bg-primary/10 text-primary border border-primary/20",
+                        "v0.1 Alpha"
                     }
 
                     div { class: "flex justify-center gap-4",

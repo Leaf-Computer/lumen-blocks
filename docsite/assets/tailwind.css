@@ -1431,6 +1431,10 @@ video {
   border-color: rgb(var(--primary));
 }
 
+.border-primary\/20 {
+  border-color: rgb(var(--primary) / 0.2);
+}
+
 .border-transparent {
   border-color: transparent;
 }
