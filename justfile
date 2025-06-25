@@ -11,6 +11,11 @@ pre-commit:
     cargo fmt --all
     cd docsite && tailwindcss -i tailwind.css -o assets/tailwind.css --config tailwind.config.js
 
+build-docsite:
+    cd docsite && tailwindcss -i tailwind.css -o assets/tailwind.css --config tailwind.config.js
+    dx bundle -p docsite --platform web --ssg --features analytics --release
+    cp docsite/assets/_redirects target/dx/docsite/release/web/public
+
 # Show available commands
 default:
     @just --list

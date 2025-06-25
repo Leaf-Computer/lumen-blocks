@@ -7,7 +7,7 @@ edition = "2021"
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 
 [dependencies]
-dioxus = { workspace = true, features = ["router"] }
+dioxus = { workspace = true, features = ["router", "fullstack"] }
 lumen-blocks.workspace = true
 lucide-dioxus = { version = "2.1.0", features = ["all-icons"] }
 dioxus-time = "=0.1.0-alpha.1"
@@ -17,5 +17,4 @@ mdbook-shared.workspace = true
 [features]
 default = ["web"]
 web = ["dioxus/web"]
-desktop = ["dioxus/desktop"]
-mobile = ["dioxus/mobile"]
+analytics = []
