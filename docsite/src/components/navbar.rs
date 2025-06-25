@@ -39,7 +39,7 @@ pub fn Navbar() -> Element {
                     class: "text-foreground hover:text-primary transition-colors",
                     div {
                         class: "flex items-center gap-2",
-                        img { class: "w-8 h-8", src: LUMEN_LOGO_SMALL }
+                        img { class: "w-8 h-8 dark:invert", src: LUMEN_LOGO_SMALL }
                         span { class: "text-xl font-bold text-foreground", "Lumen Blocks" }
                     }
                 }

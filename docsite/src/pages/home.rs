@@ -29,7 +29,7 @@ pub fn Home() -> Element {
 
             div { class: "max-w-6xl mx-auto px-6 py-12",
                 div { class: "text-center mb-12",
-                    img { class: "w-48 h-48 mx-auto mb-4", src: LUMEN_LOGO, alt: "Lumen Logo" }
+                    img { class: "w-48 h-48 mx-auto mb-4 dark:invert", src: LUMEN_LOGO, alt: "Lumen Logo" }
                     h1 { class: "text-4xl font-bold text-foreground mb-4", "Lumen Blocks" }
                     p { class: "text-xl text-muted-foreground mb-8",
                         "Styled, opinionated UI components for building Dioxus applications"
