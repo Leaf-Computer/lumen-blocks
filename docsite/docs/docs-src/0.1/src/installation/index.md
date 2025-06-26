@@ -1,6 +1,6 @@
 # Installation
 
-This guide will walk you through the process of installing and setting up Lumen Blocks in your Dioxus project.
+This guide will walk you through the process of installing and setting up Lumen Blocks (version `v0.1.0`) in your Dioxus project.
 
 ## Prerequisites
 
@@ -9,13 +9,42 @@ Before installing Lumen Blocks, ensure you have:
 - [Rust](https://www.rust-lang.org/tools/install) installed
 - [Dioxus CLI](https://dioxuslabs.com/learn/0.6/getting_started/#installing-the-cli) installed
 
-## Setting Up a Dioxus Project with Tailwind
+## Starting from our base project template (new projects)
 
-Please refer to the official Dioxus docs to find out how to setup a project with Tailwind: [Dioxus Tailwind guide](https://dioxuslabs.com/learn/0.6/cookbook/tailwind)
+1. Clone the starter template:
 
-## Installing Lumen Blocks
+```bash
+git clone https://github.com/Leaf-Computer/lumen-blocks-starter.git my-lumen-app
+```
 
-You have two options for installing Lumen Blocks:
+2. Navigate to the newly created project directory:
+
+```bash
+cd my-lumen-app
+```
+
+3. Install dependencies and build the project:
+
+```bash
+cargo build
+```
+
+4. Start the development server:
+
+```bash
+dx serve
+```
+
+5. Open your browser and visit `http://localhost:8080` to see your new Lumen Blocks project.
+
+6. For customization options, component documentation, and best practices, refer to the `README.md` file included in the project.
+
+
+## Installing Lumen Blocks on an existing project
+
+These options assume you have an existing Dioxus 0.6 project setup with Tailwind, similar to the one in the [Dioxus Tailwind guide](https://dioxuslabs.com/learn/0.6/cookbook/tailwind).
+
+For an existing project, you have two options for installing Lumen Blocks:
 
 ### Option 1: Add as a Dependency
 
@@ -25,7 +54,8 @@ You have two options for installing Lumen Blocks:
 [dependencies]
 dioxus = "0.6.0"
 dioxus-web = "0.6.0"
-lumen-blocks = "0.1.0"
+# Add this line
+lumen-blocks = { git = "https://github.com/Leaf-Computer/lumen-blocks.git", rev = "v0.1.0" }
 ```
 
 2. Create a `tailwind.css` file in your project's root or assets directory, with the following content:
@@ -119,9 +149,11 @@ body {
 module.exports = {
   mode: "all",
   content: [
+    // Include your source files
     "./src/**/*.{rs,html,css}",
     // Include Lumen Blocks components
-    "${process.env.HOME}/.cargo/registry/src/**/lumen-blocks-*/src/**/*.{rs,html,css}"
+    // Note: The `9beadef` on the path is there to match version v0.1.0. If you update Lumen Blocks on your project, you should update this path as well with the first 7 digits of the commit hash.
+    `${process.env.HOME}/.cargo/git/checkouts/lumen-blocks-*/9beadef/blocks/src/**/*.rs`
   ],
   theme: {
     extend: {
@@ -227,12 +259,12 @@ module.exports = {
 4. Generate the Tailwind CSS output:
 
 ```bash
-npx tailwindcss -i ./tailwind.css -o ./assets/tailwind.css --watch
+npx tailwindcss@3 -i ./tailwind.css -o ./assets/tailwind.css --watch
 ```
 
-**Note:** Please ensure to use Tailwind v3. Tailwind v4 support is coming soon!
+**Note:** This project currently only supports Tailwind v3. Tailwind v4 support is coming [in the future](https://github.com/Leaf-Computer/lumen-blocks/issues/24)!
 
-### Option 2: Add Locally for Modifications
+### Option 2: Add Locally for component customization
 
 1. Create a workspace structure for your project:
 
@@ -241,8 +273,14 @@ my-project/
 ├── Cargo.toml         # Workspace manifest
 ├── app/               # Your application
 │   └── Cargo.toml    # App manifest
-└── lumen-blocks/    # Local copy of the lumen-blocks crate
-    └── ...
+└── lumen-blocks/      # Local copy of the lumen-blocks repository (Copied or via git submodules)
+    └── blocks         # blocks crate
+```
+
+You can manually get the repository by running this command inside your workspace:
+
+```bash
+git clone https://github.com/Leaf-Computer/lumen-blocks.git
 ```
 
 2. Set up your workspace `Cargo.toml`:
@@ -255,16 +293,10 @@ members = [
 ]
 
 [workspace.dependencies]
-lumen-blocks = { path = "./lumen-blocks" }
+lumen-blocks = { path = "./lumen-blocks/blocks" }
 ```
 
-3. Clone Lumen Blocks into your workspace:
-
-```bash
-git clone https://github.com/Leaf-Computer/lumen-blocks.git
-```
-
-4. Update your app's `Cargo.toml` to reference the local copy:
+3. Update your app's `Cargo.toml` to reference the local copy:
 
 ```toml
 [dependencies]
@@ -273,9 +305,9 @@ dioxus-web = "0.6.0"
 lumen-blocks.workspace = true
 ```
 
-5. Create a `tailwind.css` file in your app directory (same as in Option 1).
+4. Create a `tailwind.css` file in your app directory (same as in Option 1).
 
-6. Update your `tailwind.config.js` to include the local Lumen Blocks components:
+5. Update your `tailwind.config.js` in your app folder to include the local Lumen Blocks components:
 
 ```js
 /** @type {import('tailwindcss').Config} */
@@ -284,52 +316,130 @@ module.exports = {
   content: [
     "./src/**/*.{rs,html,css}",
     // Include local Lumen Blocks components
-    "../lumen-blocks/**/*.{rs,html,css}"
+    "../lumen-blocks/blocks/**/*.rs"
   ],
-  // Rest of the configuration same as Option 1
-  // ...
+  theme: {
+    extend: {
+      colors: {
+        border: "rgb(var(--border))",
+        input: "rgb(var(--input))",
+        ring: "rgb(var(--ring))",
+        background: "rgb(var(--background))",
+        foreground: "rgb(var(--foreground))",
+        primary: {
+          DEFAULT: "rgb(var(--primary))",
+          foreground: "rgb(var(--primary-foreground))",
+        },
+        secondary: {
+          DEFAULT: "rgb(var(--secondary))",
+          foreground: "rgb(var(--secondary-foreground))",
+        },
+        destructive: {
+          DEFAULT: "rgb(var(--destructive))",
+          foreground: "rgb(var(--primary-foreground))",
+        },
+        muted: {
+          DEFAULT: "rgb(var(--muted))",
+          foreground: "rgb(var(--muted-foreground))",
+        },
+        accent: {
+          DEFAULT: "rgb(var(--accent))",
+          foreground: "rgb(var(--accent-foreground))",
+        },
+        popover: {
+          DEFAULT: "rgb(var(--popover))",
+          foreground: "rgb(var(--popover-foreground))",
+        },
+        card: {
+          DEFAULT: "rgb(var(--card))",
+          foreground: "rgb(var(--card-foreground))",
+        },
+        sidebar: {
+          DEFAULT: "rgb(var(--sidebar))",
+          foreground: "rgb(var(--sidebar-foreground))",
+          primary: "rgb(var(--sidebar-primary))",
+          "primary-foreground": "rgb(var(--sidebar-primary-foreground))",
+          accent: "rgb(var(--sidebar-accent))",
+          "accent-foreground": "rgb(var(--sidebar-accent-foreground))",
+          border: "rgb(var(--sidebar-border))",
+          ring: "rgb(var(--sidebar-ring))",
+        },
+      },
+      borderRadius: {
+        lg: "var(--radius)",
+        md: "calc(var(--radius) - 2px)",
+        sm: "calc(var(--radius) - 4px)",
+      },
+      keyframes: {
+        "accordion-down": {
+          from: { height: 0 },
+          to: { height: "var(--radix-accordion-content-height)" },
+        },
+        "accordion-up": {
+          from: { height: "var(--radix-accordion-content-height)" },
+          to: { height: 0 },
+        },
+        "slide-in-from-right": {
+          from: { transform: "translateX(100%)" },
+          to: { transform: "translateX(0)" },
+        },
+        "slide-out-to-right": {
+          from: { transform: "translateX(0)" },
+          to: { transform: "translateX(100%)" },
+        },
+      },
+      animation: {
+        "accordion-down": "accordion-down 0.2s ease-out",
+        "accordion-up": "accordion-up 0.2s ease-out",
+        "slide-in-from-right": "slide-in-from-right 0.2s ease-out",
+        "slide-out-to-right": "slide-out-to-right 0.2s ease-out",
+      },
+    },
+  },
+  plugins: [
+    function({ addUtilities }) {
+      addUtilities({
+        ".animate-in": {
+          "animation-fill-mode": "forwards",
+          "animation-timing-function": "cubic-bezier(0.16, 1, 0.3, 1)",
+        },
+        ".animate-out": {
+          "animation-fill-mode": "forwards",
+          "animation-timing-function": "cubic-bezier(0.16, 1, 0.3, 1)",
+        },
+        ".slide-in-from-right": {
+          "animation-name": "slide-in-from-right",
+        },
+        ".slide-out-to-right": {
+          "animation-name": "slide-out-to-right",
+        },
+      });
+    },
+  ],
 };
 ```
 
-7. Generate the Tailwind CSS output:
+6. Generate the Tailwind CSS output:
 
 ```bash
-npx tailwindcss -i ./tailwind.css -o ./assets/tailwind.css --watch
+npx tailwindcss@3 -i ./tailwind.css -o ./assets/tailwind.css --watch
 ```
 
 ## Using Lumen Blocks
 
-After installation, you can import and use Lumen Blocks components in your Dioxus application:
-
-```rust
-use dioxus::prelude::*;
-use lumen_blocks::button::Button;
-
-fn App() -> Element {
-    rsx! {
-        div {
-            h1 { "Hello, Lumen Blocks!" }
-            Button {
-                variant: "default",
-                onclick: move |_| {
-                    println!("Button clicked!");
-                },
-                "Click Me"
-            }
-        }
-    }
-}
-```
+After installation, you can import and use Lumen Blocks components in your Dioxus application. Please see the other documentation pages for examples!
 
 ## Troubleshooting
 
 If Tailwind CSS classes aren't being applied:
 
-1. Ensure your `tailwind.config.js` correctly points to both your source files and the Lumen Blocks components.
-2. Make sure you're generating the Tailwind CSS output file and including it in your application.
-3. Check for any path errors in the `content` array of your Tailwind configuration.
+- Ensure your `tailwind.config.js` correctly points to both your source files and the Lumen Blocks components.
+- Make sure you're generating the Tailwind CSS output file and including it in your application.
+- Check for any path errors in the `content` array of your Tailwind configuration.
 
 If components aren't rendering correctly:
 
-1. Verify you've imported the components correctly.
-2. Ensure you're using the latest compatible versions of Dioxus and Lumen Blocks.
+- Verify you've imported the components correctly.
+- Ensure you're using the latest compatible versions of Dioxus and Lumen Blocks.
+
+If you are still running into issues, please open an issue here: [Issues](https://github.com/Leaf-Computer/lumen-blocks/issues)
