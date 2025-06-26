@@ -65,6 +65,10 @@ This project stands in the shoulders of giants, and we would like to acknowledge
 - [shadcn UI](https://ui.shadcn.com) for the inspiration and overall structure.
 - [Dioxus](https://github.com/dioxuslabs/dioxus) for the awesome framework, and several code examples that helped the development of this library.
 
+## Funding
+
+If you find value in this project, please consider becoming a sponsor to support ongoing development and maintenance. Your contributions help ensure Lumen Blocks continues to evolve with new features and improvements!
+
 ## License
 
 All source-code for this project is licensed under the [MIT license](./LICENSE).
