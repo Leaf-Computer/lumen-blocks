@@ -12,6 +12,7 @@ const FAVICON: Asset = asset!("/assets/lumen-logo-small.png");
 const TAILWIND_CSS: Asset = asset!("/assets/tailwind.css");
 const LUMEN_LOGO: Asset = asset!("/assets/lumen-logo.png");
 const LUMEN_LOGO_SMALL: Asset = asset!("/assets/lumen-logo-small.png");
+const LUMEN_PREVIEW_IMAGE: Asset = asset!("/assets/lumen-blocks-preview.jpg");
 
 #[derive(Clone, Routable, PartialEq, Eq, Debug)]
 enum Route {
@@ -55,6 +56,12 @@ fn App() -> Element {
     rsx! {
         document::Link { rel: "icon", href: FAVICON }
         document::Link { rel: "stylesheet", href: TAILWIND_CSS }
+        document::Meta { property: "og:url", content: "https://lumenblocks.dev" }
+        document::Meta { property: "og:type", content: "website" }
+        document::Meta { property: "og:title", content: "Lumen Blocks - Styled components for Rust Applications" }
+        document::Meta { property: "og:description", content: "Lumen Blocks is a styled, opinionated UI component library for Dioxus." }
+        document::Meta { property: "og:image", content: LUMEN_PREVIEW_IMAGE }
+        document::Meta { name: "twitter:card", content: "summary_large_image" }
 
         // Include the analytics script (will be empty if feature is disabled)
         {analytics_script}
