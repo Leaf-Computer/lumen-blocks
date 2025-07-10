@@ -2405,6 +2405,10 @@ https://github.com/shadcn-ui/ui/blob/2773f9e2e29cf67e521632d15d1ba302a82e39e9/LI
     grid-row: span 2 / span 2;
   }
 
+  .md\:block {
+    display: block;
+  }
+
   .md\:flex {
     display: flex;
   }
