@@ -99,7 +99,7 @@ fn DocsLeftNav() -> Element {
     rsx! {
         div {
             class: "min-w-[240px] pt-12 pb-16 border-r border-border sticky top-16 self-start h-[calc(100vh-64px)] overflow-auto backdrop-blur-sm",
-            class: if is_sidebar_visible { "block" } else { "hidden lg:block" },
+            class: if is_sidebar_visible { "block" } else { "hidden md:block" },
             div { class: "pr-8",
                 div { class: "flex justify-between items-center mb-4",
                     h3 { class: "text-sm text-muted-foreground text-foreground", "Documentation" }
