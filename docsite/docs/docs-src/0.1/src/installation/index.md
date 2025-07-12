@@ -152,8 +152,8 @@ module.exports = {
     // Include your source files
     "./src/**/*.{rs,html,css}",
     // Include Lumen Blocks components
-    // Note: The `6180efe` on the path is there to match version v0.1.1. If you update Lumen Blocks on your project, you should update this path as well with the first 7 digits of the commit hash.
-    `${process.env.HOME}/.cargo/git/checkouts/lumen-blocks-*/6180efe/blocks/src/**/*.rs`
+    // Note: The `74dd453` on the path is there to match version v0.1.1. If you update Lumen Blocks on your project, you should update this path as well with the first 7 digits of the commit hash.
+    `${process.env.HOME}/.cargo/git/checkouts/lumen-blocks-*/74dd453/blocks/src/**/*.rs`
   ],
   theme: {
     extend: {
