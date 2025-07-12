@@ -790,7 +790,7 @@ dependencies = [
 
 [[package]]
 name = "docsite"
-version = "0.1.0"
+version = "0.1.1"
 dependencies = [
  "dioxus",
  "dioxus-time",
@@ -1371,7 +1371,7 @@ dependencies = [
 
 [[package]]
 name = "lumen-blocks"
-version = "0.1.0"
+version = "0.1.1"
 dependencies = [
  "dioxus",
  "dioxus-lib",
