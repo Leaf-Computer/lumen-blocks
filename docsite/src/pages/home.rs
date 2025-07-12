@@ -36,7 +36,7 @@ pub fn Home() -> Element {
                     }
 
                     div { class: "inline-block px-3 py-1 mb-8 text-xs font-medium rounded-full bg-primary/10 text-primary border border-primary/20",
-                        "v0.1 Alpha"
+                        "v0.1.1 Alpha"
                     }
 
                     div { class: "flex justify-center gap-4",
