@@ -1,6 +1,6 @@
 # Installation
 
-This guide will walk you through the process of installing and setting up Lumen Blocks (version `v0.1.0`) in your Dioxus project.
+This guide will walk you through the process of installing and setting up Lumen Blocks (version `v0.1.1`) in your Dioxus project.
 
 ## Prerequisites
 
@@ -55,7 +55,7 @@ For an existing project, you have two options for installing Lumen Blocks:
 dioxus = "0.6.0"
 dioxus-web = "0.6.0"
 # Add this line
-lumen-blocks = { git = "https://github.com/Leaf-Computer/lumen-blocks.git", rev = "v0.1.0" }
+lumen-blocks = { git = "https://github.com/Leaf-Computer/lumen-blocks.git", rev = "v0.1.1" }
 ```
 
 2. Create a `tailwind.css` file in your project's root or assets directory, with the following content:
@@ -152,8 +152,8 @@ module.exports = {
     // Include your source files
     "./src/**/*.{rs,html,css}",
     // Include Lumen Blocks components
-    // Note: The `9beadef` on the path is there to match version v0.1.0. If you update Lumen Blocks on your project, you should update this path as well with the first 7 digits of the commit hash.
-    `${process.env.HOME}/.cargo/git/checkouts/lumen-blocks-*/9beadef/blocks/src/**/*.rs`
+    // Note: The `6180efe` on the path is there to match version v0.1.1. If you update Lumen Blocks on your project, you should update this path as well with the first 7 digits of the commit hash.
+    `${process.env.HOME}/.cargo/git/checkouts/lumen-blocks-*/6180efe/blocks/src/**/*.rs`
   ],
   theme: {
     extend: {
