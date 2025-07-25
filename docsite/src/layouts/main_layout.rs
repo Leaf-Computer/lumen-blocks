@@ -1,5 +1,5 @@
 use dioxus::prelude::*;
-use dioxus_router::prelude::{use_route, Outlet};
+use dioxus_router::{use_route, Outlet};
 use lumen_blocks::components::side_sheet::SideSheet;
 
 use crate::components::navbar::Navbar;

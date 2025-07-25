@@ -21,10 +21,10 @@ fn use_unique_id() -> Signal<String> {
 }
 
 // Elements can only have one id so if the user provides their own, we must use it as the aria id.
-fn use_id_or(mut gen_id: Signal<String>, user_id: ReadOnlySignal<Option<String>>) -> Memo<String> {
-    // First, check if we have a user-provided ID
-    let has_user_id = use_memo(move || user_id().is_some());
-
+fn use_id_or(
+    mut gen_id: Signal<String>,
+    user_id: ReadOnlySignal<Option<String>>,
+) -> Memo<Option<String>> {
     // If we have a user ID, update the gen_id in an effect
     use_effect(move || {
         if let Some(id) = user_id() {
@@ -33,11 +33,8 @@ fn use_id_or(mut gen_id: Signal<String>, user_id: ReadOnlySignal<Option<String>>
     });
 
     // Return the appropriate ID
-    use_memo(move || {
-        if has_user_id() {
-            user_id().unwrap()
-        } else {
-            gen_id.peek().clone()
-        }
+    use_memo(move || match user_id() {
+        Some(user_id) => Some(user_id),
+        None => Some(gen_id.peek().clone()),
     })
 }

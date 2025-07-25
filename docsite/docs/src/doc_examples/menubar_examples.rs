@@ -28,20 +28,23 @@ pub mod basic {
                 Menubar {
                     // File Menu
                     MenubarMenu {
-                        index: 0,
+                        index: 0_usize,
                         MenubarTrigger { "File" }
                         MenubarContent {
                             MenubarItem {
+                                index: 0_usize,
                                 value: "new".to_string(),
                                 on_select: Callback::new(file_open.clone()),
                                 "New"
                             }
                             MenubarItem {
+                                index: 1_usize,
                                 value: "open".to_string(),
                                 on_select: Callback::new(file_open.clone()),
                                 "Open"
                             }
                             MenubarItem {
+                                index: 2_usize,
                                 value: "save".to_string(),
                                 on_select: Callback::new(file_open.clone()),
                                 "Save"
@@ -50,20 +53,23 @@ pub mod basic {
                     }
                     // Edit Menu
                     MenubarMenu {
-                        index: 1,
+                        index: 1_usize,
                         MenubarTrigger { "Edit" }
                         MenubarContent {
                             MenubarItem {
+                                index: 0_usize,
                                 value: "cut".to_string(),
                                 on_select: Callback::new(edit_open.clone()),
                                 "Cut"
                             }
                             MenubarItem {
+                                index: 1_usize,
                                 value: "copy".to_string(),
                                 on_select: Callback::new(edit_open.clone()),
                                 "Copy"
                             }
                             MenubarItem {
+                                index: 2_usize,
                                 value: "paste".to_string(),
                                 on_select: Callback::new(edit_open.clone()),
                                 "Paste"
@@ -105,15 +111,17 @@ pub mod disabled {
                 Menubar {
                     // Active Menu
                     MenubarMenu {
-                        index: 0,
+                        index: 0_usize,
                         MenubarTrigger { "Active Menu" }
                         MenubarContent {
                             MenubarItem {
+                                index: 0_usize,
                                 value: "item1".to_string(),
                                 on_select: Callback::new(handle_select.clone()),
                                 "Item 1"
                             }
                             MenubarItem {
+                                index: 1_usize,
                                 value: "item2".to_string(),
                                 on_select: Callback::new(handle_select.clone()),
                                 "Item 2"
@@ -122,13 +130,14 @@ pub mod disabled {
                     }
                     // Disabled Menu
                     MenubarMenu {
-                        index: 1,
+                        index: 1_usize,
                         MenubarTrigger {
                             class: Some("opacity-50 pointer-events-none".to_string()),
                             "Disabled Menu"
                         }
                         MenubarContent {
                             MenubarItem {
+                                index: 0_usize,
                                 value: "disabled1".to_string(),
                                 on_select: Callback::new(handle_select.clone()),
                                 "Disabled Item 1"
@@ -137,15 +146,17 @@ pub mod disabled {
                     }
                     // Menu with Disabled Items
                     MenubarMenu {
-                        index: 2,
+                        index: 2_usize,
                         MenubarTrigger { "Mixed Menu" }
                         MenubarContent {
                             MenubarItem {
+                                index: 0_usize,
                                 value: "active".to_string(),
                                 on_select: Callback::new(handle_select.clone()),
                                 "Active Item"
                             }
                             MenubarItem {
+                                index: 1_usize,
                                 value: "disabled".to_string(),
                                 on_select: Callback::new(handle_select.clone()),
                                 class: Some("opacity-50 pointer-events-none".to_string()),
@@ -193,10 +204,11 @@ pub mod with_icons {
                 Menubar {
                     // File Menu
                     MenubarMenu {
-                        index: 0,
+                        index: 0_usize,
                         MenubarTrigger { "File" }
                         MenubarContent {
                             MenubarItem {
+                                index: 0_usize,
                                 value: "new".to_string(),
                                 on_select: Callback::new(file_open.clone()),
                                 class: Some("flex items-center gap-2".to_string()),
@@ -204,6 +216,7 @@ pub mod with_icons {
                                 span { "New" }
                             }
                             MenubarItem {
+                                index: 1_usize,
                                 value: "open".to_string(),
                                 on_select: Callback::new(file_open.clone()),
                                 class: Some("flex items-center gap-2".to_string()),
@@ -211,6 +224,7 @@ pub mod with_icons {
                                 span { "Open" }
                             }
                             MenubarItem {
+                                index: 2_usize,
                                 value: "save".to_string(),
                                 on_select: Callback::new(file_open.clone()),
                                 class: Some("flex items-center gap-2".to_string()),
@@ -221,10 +235,11 @@ pub mod with_icons {
                     }
                     // Edit Menu
                     MenubarMenu {
-                        index: 1,
+                        index: 1_usize,
                         MenubarTrigger { "Edit" }
                         MenubarContent {
                             MenubarItem {
+                                index: 0_usize,
                                 value: "cut".to_string(),
                                 on_select: Callback::new(edit_open.clone()),
                                 class: Some("flex items-center gap-2".to_string()),
@@ -232,6 +247,7 @@ pub mod with_icons {
                                 span { "Cut" }
                             }
                             MenubarItem {
+                                index: 1_usize,
                                 value: "copy".to_string(),
                                 on_select: Callback::new(edit_open.clone()),
                                 class: Some("flex items-center gap-2".to_string()),
@@ -239,6 +255,7 @@ pub mod with_icons {
                                 span { "Copy" }
                             }
                             MenubarItem {
+                                index: 2_usize,
                                 value: "paste".to_string(),
                                 on_select: Callback::new(edit_open.clone()),
                                 class: Some("flex items-center gap-2".to_string()),

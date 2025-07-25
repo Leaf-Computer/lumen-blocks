@@ -1,6 +1,6 @@
 [package]
 name = "lumen-blocks"
-version = "0.1.1"
+version = "0.2.0-wip"
 edition = "2024"
 description = "Accessible, styled, opinionated components for Dioxus inspired by the shadcn UI and built on Dioxus Primitives"
 readme = "../README.md"
@@ -13,10 +13,10 @@ repository = "https://github.com/Leaf-Computer/lumen-blocks"
 
 [dependencies]
 dioxus-lib.workspace = true
-dioxus-time = "=0.1.0-alpha.1"
-dioxus-primitives = { git = "https://github.com/DioxusLabs/components", package = "dioxus-primitives", rev = "254ddadb35b2c6eac10902438edeff8a2276f1d2" }
+dioxus-time.workspace = true
+dioxus-primitives = { git = "https://github.com/DioxusLabs/components", package = "dioxus-primitives", rev = "8d21a6b60b2cfd73dba569f33f5ca2bdd16d2f38" }
 tracing.workspace = true
-lucide-dioxus = { version = "2.1.0", features = ["all-icons"] }
+lucide-dioxus = { workspace = true, features = ["all-icons"] }
 log = "0.4"
 
 [dev-dependencies]

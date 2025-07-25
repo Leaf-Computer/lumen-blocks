@@ -1,7 +1,7 @@
 use crate::Route;
 use dioxus::document;
 use dioxus::prelude::*;
-use dioxus_router::prelude::{use_route, Link, Outlet};
+use dioxus_router::{use_route, Link, Outlet};
 use docs::docs::router_01::{BookRoute, LAZY_BOOK};
 use mdbook_shared::SummaryItem;
 

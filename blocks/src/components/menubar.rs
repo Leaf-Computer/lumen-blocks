@@ -1,3 +1,4 @@
+use dioxus_lib::html::GlobalAttributesExtension;
 use dioxus_lib::prelude::*;
 use dioxus_primitives::menubar::{
     Menubar as PrimitiveMenubar, MenubarContent as PrimitiveMenubarContent,
@@ -36,7 +37,7 @@ pub fn Menubar(props: MenubarProps) -> Element {
 pub struct MenubarMenuProps {
     #[props(default)]
     pub class: Option<String>,
-    pub index: usize,
+    pub index: ReadOnlySignal<usize>,
     pub children: Element,
 }
 
@@ -111,6 +112,8 @@ pub fn MenubarContent(props: MenubarContentProps) -> Element {
 /// MenubarItem: An item in a menu, styled with Tailwind
 #[derive(Props, Clone, PartialEq)]
 pub struct MenubarItemProps {
+    /// The index of this item within the [`MenubarContent`]. This is used to define the focus order for keyboard navigation.
+    pub index: ReadOnlySignal<usize>,
     #[props(default)]
     pub class: Option<String>,
     pub value: String,
@@ -130,6 +133,7 @@ pub fn MenubarItem(props: MenubarItemProps) -> Element {
 
     rsx! {
         PrimitiveMenubarItem {
+            index: props.index,
             class: class,
             value: props.value.clone(),
             on_select: props.on_select.clone(),

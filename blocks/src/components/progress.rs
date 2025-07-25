@@ -1,3 +1,4 @@
+use dioxus_lib::html::GlobalAttributesExtension;
 use dioxus_lib::prelude::*;
 use dioxus_primitives::progress::Progress as ProgressPrimitive;
 
@@ -72,6 +73,8 @@ pub fn Progress(props: ProgressProps) -> Element {
     let current: f64 = (props.value)();
     let max_value = props.max;
     let percentage = (current / max_value * 100.0).min(100.0).max(0.0);
+    // An adapter to convert signal type from `f64` to `Option<f64>`
+    let value_optional = use_memo(move || Some((props.value)()));
 
     // Determine size-specific classes
     let height_class = match props.size {
@@ -122,7 +125,7 @@ pub fn Progress(props: ProgressProps) -> Element {
             }
 
             ProgressPrimitive {
-                value: props.value,
+                value: value_optional,
                 max: props.max,
                 class: combined_class,
                 id: props.id.clone(),

@@ -1,10 +1,8 @@
-use std::time::Duration;
-
 use crate::{use_id_or, use_unique_id};
+use dioxus_lib::html::GlobalAttributesExtension;
 use dioxus_lib::prelude::*;
 pub use dioxus_primitives::dropdown_menu::DropdownMenuTrigger as DropdownTrigger;
 use dioxus_primitives::dropdown_menu::{DropdownMenu, DropdownMenuContent, DropdownMenuItem};
-use dioxus_time::use_timeout;
 use lucide_dioxus::Check;
 
 // Define a context struct for radio groups
@@ -142,9 +140,7 @@ pub fn Dropdown(props: DropdownProps) -> Element {
     let dropdown_id = use_unique_id();
     let props_id = use_signal(|| props.id);
     let id_value = use_id_or(dropdown_id, props_id.into());
-    let mut is_open = use_signal(|| false);
-    // Delay closing the dropdown after focusout to ensure it can capture events such as actions inside the object
-    let timeout = use_timeout(Duration::from_millis(200), move |()| is_open.set(false));
+    let mut is_open = use_signal::<Option<bool>>(|| Some(false));
 
     // Determine base classes for dropdown
     let dropdown_classes = vec![
@@ -164,8 +160,8 @@ pub fn Dropdown(props: DropdownProps) -> Element {
 
     rsx! {
         DropdownMenu {
-            open: Some(is_open),
-            on_open_change: move |new_open| is_open.set(new_open),
+            open: is_open,
+            on_open_change: move |new_open| is_open.set(Some(new_open)),
             class: dropdown_classes,
             id: id_value,
             default_open: props.default_open,
@@ -173,7 +169,6 @@ pub fn Dropdown(props: DropdownProps) -> Element {
             "aria-disabled": if disabled_val { "true" } else { "false" },
             aria_label: props.aria_label.clone(),
             div {
-                onfocusout: move |_| { timeout.action(()); },
                 tabindex: 0,    // Make this focusable
                 {props.children}
             }

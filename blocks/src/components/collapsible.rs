@@ -1,4 +1,5 @@
 use crate::use_unique_id;
+use dioxus_lib::html::GlobalAttributesExtension;
 use dioxus_lib::prelude::*;
 use dioxus_primitives::collapsible::{
     Collapsible as PrimitiveCollapsible, CollapsibleContent as PrimitiveCollapsibleContent,
