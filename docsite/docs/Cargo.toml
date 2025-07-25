@@ -9,11 +9,11 @@ use-mdbook = { workspace = true }
 dioxus = { workspace = true, features = ["router"] }
 mdbook-shared = { workspace = true }
 lumen-blocks.workspace = true
-lucide-dioxus = { version = "2.1.0", features = ["all-icons"] }
+lucide-dioxus = { workspace = true, features = ["all-icons"] }
 
 [build-dependencies]
 mdbook-gen = { workspace = true, features = ["manganis"] }
 mdbook-shared = { workspace = true }
 dioxus-autofmt = { version = "0.6.0" }
-prettyplease = "0.2.20"
+prettyplease = "0.2.36"
 syn = { workspace = true }

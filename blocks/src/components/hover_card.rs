@@ -4,7 +4,8 @@ use dioxus_primitives::hover_card::{
     HoverCardTrigger as PrimitiveHoverCardTrigger,
 };
 
-pub use dioxus_primitives::hover_card::{HoverCardAlign, HoverCardSide};
+use dioxus_lib::html::GlobalAttributesExtension;
+pub use dioxus_primitives::{ContentAlign as HoverCardAlign, ContentSide as HoverCardSide};
 
 /// HoverCard main container, styled with Tailwind
 #[derive(Props, Clone, PartialEq)]

@@ -4,15 +4,27 @@ members = ["blocks", "docsite"]
 
 [workspace.dependencies]
 lumen-blocks = { path = "blocks" }
-
-dioxus = "0.6"
-dioxus-lib = "0.6"
-use-mdbook = { git = "https://github.com/DioxusLabs/docsite.git", rev = "ab5e121b9a9e022cecdfd35f55af3cac993fb5fb" }
-mdbook-shared = { git = "https://github.com/DioxusLabs/docsite.git", rev = "ab5e121b9a9e022cecdfd35f55af3cac993fb5fb" }
-mdbook-gen = { git = "https://github.com/DioxusLabs/docsite.git", rev = "ab5e121b9a9e022cecdfd35f55af3cac993fb5fb" }
+dioxus = "=0.7.0-alpha.3"
+dioxus-lib = "=0.7.0-alpha.3"
+use-mdbook = { git = "https://github.com/DioxusLabs/docsite.git", rev = "029a529a02f3fe3d0b24c143bc7722850986dbfa" }
+mdbook-shared = { git = "https://github.com/DioxusLabs/docsite.git", rev = "029a529a02f3fe3d0b24c143bc7722850986dbfa" }
+mdbook-gen = { git = "https://github.com/DioxusLabs/docsite.git", rev = "029a529a02f3fe3d0b24c143bc7722850986dbfa" }
 syn = "2.0.98"
 tracing = { version = "0.1", features = ["std"] }
 docs = { path = "./docsite/docs" }
+dioxus-time = "=0.7.0-alpha.3"
+# Custom Lucide version with support for Dioxus 0.7 alpha
+lucide-dioxus = { git = "https://github.com/Leaf-Computer/lucide.git", rev = "0395334f1d6e3d90c8cab6ab110c91a27e9033c1" }
+
+[patch.crates-io]
+dioxus-geolocation = { git = "https://github.com/ealmloff/dioxus-std", branch = "0.7" }
+dioxus-notification = { git = "https://github.com/ealmloff/dioxus-std", branch = "0.7" }
+dioxus-sdk = { git = "https://github.com/ealmloff/dioxus-std", branch = "0.7" }
+dioxus_storage = { git = "https://github.com/ealmloff/dioxus-std", branch = "0.7" }
+dioxus-sync = { git = "https://github.com/ealmloff/dioxus-std", branch = "0.7" }
+dioxus-time = { git = "https://github.com/ealmloff/dioxus-std", branch = "0.7" }
+dioxus-util = { git = "https://github.com/ealmloff/dioxus-std", branch = "0.7" }
+dioxus-window = { git = "https://github.com/ealmloff/dioxus-std", branch = "0.7" }
 
 [profile]
 

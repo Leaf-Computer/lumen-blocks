@@ -13,7 +13,6 @@ pre-commit:
 
 build-docsite:
     cd docsite && tailwindcss -i tailwind.css -o assets/tailwind.css --config tailwind.config.js
-    dx clean
     dx bundle -p docsite --platform web --features analytics --release
     cp docsite/assets/_redirects target/dx/docsite/release/web/public
 
