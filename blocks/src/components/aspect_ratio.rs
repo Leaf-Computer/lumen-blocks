@@ -1,6 +1,7 @@
 use crate::use_unique_id;
 use dioxus_lib::prelude::*;
 use dioxus_primitives::aspect_ratio::AspectRatio as PrimitiveAspectRatio;
+use dioxus_lib::html::GlobalAttributesExtension;
 
 /// Props for the AspectRatio component
 #[derive(Props, Clone, PartialEq)]

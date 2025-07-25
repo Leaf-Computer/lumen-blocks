@@ -4,6 +4,7 @@ use dioxus_primitives::avatar::{
     Avatar as PrimitiveAvatar, AvatarFallback as PrimitiveAvatarFallback,
     AvatarImage as PrimitiveAvatarImage, AvatarState,
 };
+use dioxus_lib::html::GlobalAttributesExtension;
 
 /// Props for the Avatar component
 #[derive(Props, Clone, PartialEq)]
