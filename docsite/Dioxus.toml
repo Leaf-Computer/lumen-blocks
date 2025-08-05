@@ -1,5 +1,7 @@
 [application]
 
+asset_dir = "assets"
+
 [web.app]
 
 # HTML title tag content
