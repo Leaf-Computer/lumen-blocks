@@ -14,7 +14,7 @@ repository = "https://github.com/Leaf-Computer/lumen-blocks"
 [dependencies]
 dioxus-lib.workspace = true
 dioxus-time.workspace = true
-dioxus-primitives = { git = "https://github.com/DioxusLabs/components", package = "dioxus-primitives", rev = "8d21a6b60b2cfd73dba569f33f5ca2bdd16d2f38" }
+dioxus-primitives = { git = "https://github.com/DioxusLabs/components", package = "dioxus-primitives", rev = "1398113b052211928e1146c93648eee17ac558b3" }
 tracing.workspace = true
 lucide-dioxus = { workspace = true, features = ["all-icons"] }
 log = "0.4"

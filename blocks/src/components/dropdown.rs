@@ -350,10 +350,10 @@ pub fn DropdownCheckboxItem(props: DropdownCheckboxItemProps) -> Element {
         DropdownMenuItem {
             class: item_classes,
             id: id_value,
-            value: ReadOnlySignal::new(Signal::new(value_str)),
-            index: ReadOnlySignal::new(Signal::new(index_val)),
+            value: ReadOnlySignal::<String>::new(Signal::new(value_str)),
+            index: ReadOnlySignal::<usize>::new(Signal::new(index_val)),
             disabled: disabled_val,
-            on_select: move |_| handle_change(),
+            on_select: move |_: String| handle_change(),
 
             // Checkbox indicator
             span {
@@ -457,7 +457,7 @@ pub fn DropdownRadioItem(props: DropdownRadioItemProps) -> Element {
     let context = use_context::<RadioGroupContext>();
 
     // Check if this item is selected based on context
-    let is_selected = *context.value.read() == props.value;
+    let is_selected: bool = *context.value.read() == props.value;
 
     // Determine item classes
     let item_classes = vec![
@@ -484,18 +484,17 @@ pub fn DropdownRadioItem(props: DropdownRadioItemProps) -> Element {
     // When selected, call the group's value change handler
     let value_for_handler = value_str.clone();
     let context_clone = context.clone();
-    let handle_select = move |_| {
-        context_clone.on_change.call(value_for_handler.clone());
-    };
 
     rsx! {
         DropdownMenuItem {
             class: item_classes,
             id: id_value,
-            value: ReadOnlySignal::new(Signal::new(value_str.clone())),
-            index: ReadOnlySignal::new(Signal::new(index_val)),
+            value: ReadOnlySignal::<String>::new(Signal::new(value_str.clone())),
+            index: ReadOnlySignal::<usize>::new(Signal::new(index_val)),
             disabled: disabled_val,
-            on_select: handle_select,
+            on_select: move |_: String| {
+                context_clone.on_change.call(value_for_handler.clone());
+            },
 
             // Radio indicator
             span {
@@ -544,7 +543,7 @@ pub fn DropdownItem(props: DropdownItemProps) -> Element {
     // Handle select event - clone value early to avoid move issues
     let value_for_handler = value_str.clone();
     let handler_clone = props.on_select.clone();
-    let handle_select = move |_| {
+    let handle_select = move |_: String| {
         if let Some(handler) = &handler_clone {
             handler.call(value_for_handler.clone());
         }
@@ -554,8 +553,8 @@ pub fn DropdownItem(props: DropdownItemProps) -> Element {
         DropdownMenuItem {
             class: item_classes,
             id: id_value,
-            value: value_str,
-            index: index_val,
+            value: ReadOnlySignal::<String>::new(Signal::new(value_str)),
+            index: ReadOnlySignal::<usize>::new(Signal::new(index_val)),
             disabled: disabled_val,
             on_select: handle_select,
 
