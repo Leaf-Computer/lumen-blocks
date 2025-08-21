@@ -1,10 +1,10 @@
-use dioxus_lib::prelude::*;
+use dioxus::prelude::*;
 use dioxus_primitives::hover_card::{
     HoverCard as PrimitiveHoverCard, HoverCardContent as PrimitiveHoverCardContent,
     HoverCardTrigger as PrimitiveHoverCardTrigger,
 };
 
-use dioxus_lib::html::GlobalAttributesExtension;
+use dioxus::html::GlobalAttributesExtension;
 pub use dioxus_primitives::{ContentAlign as HoverCardAlign, ContentSide as HoverCardSide};
 
 /// HoverCard main container, styled with Tailwind

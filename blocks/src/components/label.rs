@@ -1,5 +1,5 @@
 use crate::{use_id_or, use_unique_id};
-use dioxus_lib::prelude::*;
+use dioxus::prelude::*;
 
 /// Label size options
 #[derive(Clone, Copy, PartialEq, Eq, Debug)]

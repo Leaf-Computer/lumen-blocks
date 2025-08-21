@@ -1,15 +1,15 @@
 use crate::{use_id_or, use_unique_id};
-use dioxus_lib::html::GlobalAttributesExtension;
-use dioxus_lib::prelude::*;
+use dioxus::html::GlobalAttributesExtension;
+use dioxus::prelude::*;
 pub use dioxus_primitives::dropdown_menu::DropdownMenuTrigger as DropdownTrigger;
 use dioxus_primitives::dropdown_menu::{DropdownMenu, DropdownMenuContent, DropdownMenuItem};
 use lucide_dioxus::Check;
 
 // Define a context struct for radio groups
 #[derive(Clone, PartialEq)]
-struct RadioGroupContext {
-    value: Signal<String>,
-    on_change: EventHandler<String>,
+struct RadioGroupContext<T: Clone + PartialEq + 'static> {
+    value: Signal<T>,
+    on_change: Callback<T>,
 }
 
 /// Dropdown size options
@@ -98,10 +98,9 @@ pub struct DropdownContentProps {
 
 // Dropdown Item Props
 #[derive(Props, Clone, PartialEq)]
-pub struct DropdownItemProps {
+pub struct DropdownItemProps<T: Clone + PartialEq + 'static> {
     /// The value of the item
-    #[props(default)]
-    value: String,
+    value: ReadOnlySignal<T>,
 
     /// The index of the item
     #[props(default)]
@@ -123,9 +122,9 @@ pub struct DropdownItemProps {
     #[props(default)]
     id: Option<String>,
 
-    /// Callback when the item is selected
+    /// The callback function that will be called when the item is selected. The value of the item will be passed as an argument.
     #[props(default)]
-    on_select: Option<EventHandler<String>>,
+    pub on_select: Callback<T>,
 
     #[props(extends = GlobalAttributes)]
     attributes: Vec<Attribute>,
@@ -279,13 +278,9 @@ pub fn DropdownSeparator(props: DropdownSeparatorProps) -> Element {
 // Dropdown Checkbox Item Props
 #[derive(Props, Clone, PartialEq)]
 pub struct DropdownCheckboxItemProps {
-    /// The value of the item
-    #[props(default)]
-    value: String,
-
     /// The index of the item
     #[props(default)]
-    index: usize,
+    index: ReadOnlySignal<usize>,
 
     /// Whether the checkbox is checked
     #[props(default)]
@@ -301,7 +296,7 @@ pub struct DropdownCheckboxItemProps {
 
     /// Callback when the item is selected
     #[props(default)]
-    on_change: Option<EventHandler<bool>>,
+    on_change: Option<Callback<bool>>,
 
     #[props(extends = GlobalAttributes)]
     attributes: Vec<Attribute>,
@@ -318,7 +313,7 @@ pub fn DropdownCheckboxItem(props: DropdownCheckboxItemProps) -> Element {
     let id_value = use_id_or(item_id, props_id.into());
 
     // Handle change event
-    let handle_change = move || {
+    let handle_change = move |_: bool| {
         if let Some(handler) = &props.on_change {
             handler.call(!props.checked);
         }
@@ -342,18 +337,14 @@ pub fn DropdownCheckboxItem(props: DropdownCheckboxItemProps) -> Element {
     .collect::<Vec<_>>()
     .join(" ");
 
-    let value_str = props.value;
-    let index_val = props.index;
-    let disabled_val = props.disabled;
-
     rsx! {
-        DropdownMenuItem {
+        DropdownMenuItem::<bool> {
             class: item_classes,
             id: id_value,
-            value: ReadOnlySignal::<String>::new(Signal::new(value_str)),
-            index: ReadOnlySignal::<usize>::new(Signal::new(index_val)),
-            disabled: disabled_val,
-            on_select: move |_: String| handle_change(),
+            value: props.checked,
+            index: props.index,
+            disabled: props.disabled,
+            on_select: handle_change,
 
             // Checkbox indicator
             span {
@@ -422,10 +413,9 @@ pub fn DropdownRadioGroup(props: DropdownRadioGroupProps) -> Element {
 
 // Dropdown Radio Item Props
 #[derive(Props, Clone, PartialEq)]
-pub struct DropdownRadioItemProps {
+pub struct DropdownRadioItemProps<T: Clone + PartialEq + 'static> {
     /// The value of the radio item
-    #[props(default)]
-    value: String,
+    value: T,
 
     /// The index of the item
     #[props(default)]
@@ -447,14 +437,16 @@ pub struct DropdownRadioItemProps {
 }
 
 #[component]
-pub fn DropdownRadioItem(props: DropdownRadioItemProps) -> Element {
+pub fn DropdownRadioItem<T: Clone + PartialEq + 'static>(
+    props: DropdownRadioItemProps<T>,
+) -> Element {
     // Generate unique ID if not provided
     let item_id = use_unique_id();
     let props_id = use_signal(|| props.id);
     let id_value = use_id_or(item_id, props_id.into());
 
     // Get the radio group context if available
-    let context = use_context::<RadioGroupContext>();
+    let context = use_context::<RadioGroupContext<T>>();
 
     // Check if this item is selected based on context
     let is_selected: bool = *context.value.read() == props.value;
@@ -477,24 +469,18 @@ pub fn DropdownRadioItem(props: DropdownRadioItemProps) -> Element {
     .collect::<Vec<_>>()
     .join(" ");
 
-    let value_str = props.value;
-    let index_val = props.index;
-    let disabled_val = props.disabled;
-
-    // When selected, call the group's value change handler
-    let value_for_handler = value_str.clone();
-    let context_clone = context.clone();
+    let handle_select = move |value: T| {
+        context.on_change.call(value);
+    };
 
     rsx! {
-        DropdownMenuItem {
+        DropdownMenuItem::<T> {
             class: item_classes,
             id: id_value,
-            value: ReadOnlySignal::<String>::new(Signal::new(value_str.clone())),
-            index: ReadOnlySignal::<usize>::new(Signal::new(index_val)),
-            disabled: disabled_val,
-            on_select: move |_: String| {
-                context_clone.on_change.call(value_for_handler.clone());
-            },
+            value: ReadOnlySignal::new(Signal::new(props.value)),
+            index: ReadOnlySignal::new(Signal::new(props.index)),
+            disabled: props.disabled,
+            on_select: handle_select,
 
             // Radio indicator
             span {
@@ -514,7 +500,7 @@ pub fn DropdownRadioItem(props: DropdownRadioItemProps) -> Element {
 }
 
 #[component]
-pub fn DropdownItem(props: DropdownItemProps) -> Element {
+pub fn DropdownItem<T: Clone + PartialEq + 'static>(props: DropdownItemProps<T>) -> Element {
     // Generate unique ID if not provided
     let item_id = use_unique_id();
     let props_id = use_signal(|| props.id);
@@ -536,36 +522,31 @@ pub fn DropdownItem(props: DropdownItemProps) -> Element {
     .collect::<Vec<_>>()
     .join(" ");
 
-    let value_str = props.value;
     let index_val = props.index;
     let disabled_val = props.disabled;
 
-    // Handle select event - clone value early to avoid move issues
-    let value_for_handler = value_str.clone();
-    let handler_clone = props.on_select.clone();
-    let handle_select = move |_: String| {
-        if let Some(handler) = &handler_clone {
-            handler.call(value_for_handler.clone());
+    let icon_element = if let Some(icon) = &props.icon {
+        rsx! {
+            span {
+                class: "mr-2",
+                aria_hidden: "true",
+                {icon.clone()}
+            }
         }
+    } else {
+        rsx! {}
     };
 
     rsx! {
-        DropdownMenuItem {
+        DropdownMenuItem::<T> {
             class: item_classes,
             id: id_value,
-            value: ReadOnlySignal::<String>::new(Signal::new(value_str)),
+            value: props.value,
             index: ReadOnlySignal::<usize>::new(Signal::new(index_val)),
             disabled: disabled_val,
-            on_select: handle_select,
+            on_select: props.on_select,
 
-            // Icon if provided
-            if let Some(icon) = &props.icon {
-                span {
-                    class: "mr-2",
-                    aria_hidden: "true",
-                    {icon.clone()}
-                }
-            }
+            {icon_element}
 
             {props.children}
         }

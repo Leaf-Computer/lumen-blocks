@@ -1,4 +1,4 @@
-use dioxus_lib::prelude::*;
+use dioxus::prelude::*;
 
 // Re-export log crate for use in components
 pub use log;

@@ -1,6 +1,6 @@
 use crate::use_unique_id;
-use dioxus_lib::html::GlobalAttributesExtension;
-use dioxus_lib::prelude::*;
+use dioxus::html::GlobalAttributesExtension;
+use dioxus::prelude::*;
 use dioxus_primitives::avatar::{
     Avatar as PrimitiveAvatar, AvatarFallback as PrimitiveAvatarFallback,
     AvatarImage as PrimitiveAvatarImage, AvatarState,
