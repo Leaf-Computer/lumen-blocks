@@ -1,6 +1,6 @@
 use crate::{use_id_or, use_unique_id};
-use dioxus_lib::html::GlobalAttributesExtension;
-use dioxus_lib::prelude::*;
+use dioxus::html::GlobalAttributesExtension;
+use dioxus::prelude::*;
 use dioxus_primitives::switch::{Switch as PrimitiveSwitch, SwitchThumb};
 
 /// Switch size options

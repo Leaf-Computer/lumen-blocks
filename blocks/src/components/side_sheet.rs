@@ -1,4 +1,4 @@
-use dioxus_lib::prelude::*;
+use dioxus::prelude::*;
 use lucide_dioxus::X;
 
 // Side from which the sheet appears

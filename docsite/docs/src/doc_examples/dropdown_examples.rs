@@ -146,7 +146,7 @@ pub mod states {
                     }
 
                     DropdownContent {
-                        DropdownItem {
+                        DropdownItem::<String> {
                             value: "item1".to_string(),
                             index: 0,
                             "Item 1"
@@ -164,20 +164,20 @@ pub mod states {
                     }
 
                     DropdownContent {
-                        DropdownItem {
+                        DropdownItem::<String> {
                             value: "item1".to_string(),
                             index: 0,
                             "Normal Item"
                         }
 
-                        DropdownItem {
+                        DropdownItem::<String> {
                             value: "item2".to_string(),
                             index: 1,
                             disabled: true,
                             "Disabled Item"
                         }
 
-                        DropdownItem {
+                        DropdownItem::<String> {
                             value: "item3".to_string(),
                             index: 2,
                             "Normal Item"
@@ -195,13 +195,13 @@ pub mod states {
                     }
 
                     DropdownContent {
-                        DropdownItem {
+                        DropdownItem::<String> {
                             value: "item1".to_string(),
                             index: 0,
                             "Normal Item"
                         }
 
-                        DropdownItem {
+                        DropdownItem::<String> {
                             value: "item2".to_string(),
                             index: 1,
                             destructive: true,
@@ -482,8 +482,7 @@ pub mod checkbox_radio {
                             {
                                 rsx! {
                                     DropdownCheckboxItem {
-                                        value: "dark_mode".to_string(),
-                                        index: 0,
+                                        index: 0_usize,
                                         checked: dark_mode(),
                                         on_change: move |checked| {
                                             dark_mode.set(checked);
@@ -492,8 +491,7 @@ pub mod checkbox_radio {
                                     }
 
                                     DropdownCheckboxItem {
-                                        value: "compact_mode".to_string(),
-                                        index: 1,
+                                        index: 1_usize,
                                         checked: compact_mode(),
                                         on_change: move |checked| {
                                             compact_mode.set(checked);

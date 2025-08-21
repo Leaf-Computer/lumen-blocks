@@ -1,5 +1,5 @@
 use crate::use_unique_id;
-use dioxus_lib::prelude::*;
+use dioxus::prelude::*;
 use lucide_dioxus::Check;
 
 /// Checkbox size options

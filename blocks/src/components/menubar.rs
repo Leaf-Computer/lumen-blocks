@@ -1,5 +1,5 @@
-use dioxus_lib::html::GlobalAttributesExtension;
-use dioxus_lib::prelude::*;
+use dioxus::html::GlobalAttributesExtension;
+use dioxus::prelude::*;
 use dioxus_primitives::menubar::{
     Menubar as PrimitiveMenubar, MenubarContent as PrimitiveMenubarContent,
     MenubarItem as PrimitiveMenubarItem, MenubarMenu as PrimitiveMenubarMenu,
