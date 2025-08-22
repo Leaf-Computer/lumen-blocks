@@ -14,7 +14,7 @@ Lumen is an ARIA-accessible, styled, opinionated component library for Dioxus in
 
 ## Getting started
 
-For installation instructions and getting started with your project, please visit our documentation: [Installation Guide](https://lumenblocks.dev/docs/0.1/installation/)
+For installation instructions and getting started with your project, please visit our documentation: [Installation Guide](https://lumenblocks.dev/docs/installation/)
 
 ## Development
 
