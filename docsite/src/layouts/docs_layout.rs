@@ -254,6 +254,7 @@ fn DocsContent() -> Element {
 
                 /* Lists */
                 [&_ul]:list-disc [&_ul]:ml-6
+                [&_ol]:list-decimal [&_ol]:ml-6
                 [&_li]:my-2
 
                 /* Links */
