@@ -5,17 +5,16 @@ fn main() {
     // re-run only if the "example-book" directory changes
     println!("cargo:rerun-if-changed=./docs-src/");
 
-    make_docs("0.1");
+    make_docs();
 }
 
-fn make_docs(version: &str) {
-    let mdbook_dir = PathBuf::from("./docs-src").join(version);
+fn make_docs() {
+    let mdbook_dir = PathBuf::from("./docs-src");
     let out_dir = current_dir().unwrap().join("src/docs");
     let mut out = generate_router_build_script(mdbook_dir);
     out.push_str("\nuse super::*;\n");
 
-    let version_flattened = version.replace(".", "");
-    let filename = format!("router_{version_flattened}.rs");
+    let filename = format!("router.rs");
 
     std::fs::write(out_dir.join(filename), out).unwrap();
 }

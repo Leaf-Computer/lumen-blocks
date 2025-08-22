@@ -10,7 +10,7 @@ pub fn MainLayout() -> Element {
     let route = use_route::<Route>();
     let title = match route {
         Route::Home { .. } => "Lumen Blocks - Home",
-        Route::Docs01 { .. } => "Lumen Blocks - Documentation",
+        Route::Docs { .. } => "Lumen Blocks - Documentation",
         Route::Err404 { .. } => "Lumen Blocks - Page Not Found",
     };
 

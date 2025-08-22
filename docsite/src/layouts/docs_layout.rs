@@ -2,7 +2,7 @@ use crate::Route;
 use dioxus::document;
 use dioxus::prelude::*;
 use dioxus_router::{use_route, Link, Outlet};
-use docs::docs::router_01::{BookRoute, LAZY_BOOK};
+use docs::docs::router::{BookRoute, LAZY_BOOK};
 use mdbook_shared::SummaryItem;
 
 // Signal to control mobile sidebar visibility
@@ -14,7 +14,7 @@ pub fn DocsLayout() -> Element {
 
     // Extract the current BookRoute from the Route enum
     let current_book_route = match route {
-        Route::Docs01 { child } => Some(child),
+        Route::Docs { child } => Some(child),
         _ => None,
     };
 
@@ -81,7 +81,7 @@ fn DocsLeftNav() -> Element {
 
     // Extract the current BookRoute from the Route enum
     let current_book_route = match route {
-        Route::Docs01 { child } => Some(child),
+        Route::Docs { child } => Some(child),
         _ => None,
     };
     let is_sidebar_visible = *SHOW_SIDEBAR.read();
@@ -145,7 +145,7 @@ fn SidebarSection(
         div { class: "full-chapter",
             if let Some(url) = &link.location {
                 Link {
-                    to: Route::Docs01 { child: *url },
+                    to: Route::Docs { child: *url },
                     class: "font-semibold text-foreground hover:text-primary transition-colors",
                     active_class: "text-primary",
                     div { class: "flex items-center justify-between pb-2",
@@ -205,7 +205,7 @@ fn SidebarChapter(
         li { class: "rounded-md",
             if let Some(url) = &link.location {
                 Link {
-                    to: Route::Docs01 { child: *url },
+                    to: Route::Docs { child: *url },
                     onclick: move |_| {
                         if has_children {
                             expanded.toggle();
@@ -275,7 +275,7 @@ fn DocsRightNav() -> Element {
 
     // Extract the current BookRoute from the Route enum
     let current_book_route = match route {
-        Route::Docs01 { child } => Some(child),
+        Route::Docs { child } => Some(child),
         _ => None,
     };
 

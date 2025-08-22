@@ -22,9 +22,9 @@ enum Route {
 
     #[layout(DocsLayout)]
     #[nest("/docs")]
-    #[redirect("/", || Route::Docs01 { child: docs::router_01::BookRoute::Index { section: Default::default() } })]
-    #[child("/0.1")]
-    Docs01 { child: docs::router_01::BookRoute },
+    #[redirect("/", || Route::Docs { child: docs::router::BookRoute::Index { section: Default::default() } })]
+    #[child("/")]
+    Docs { child: docs::router::BookRoute },
     #[end_nest]
     #[end_layout]
     #[end_layout]

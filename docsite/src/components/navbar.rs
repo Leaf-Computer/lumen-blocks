@@ -1,6 +1,6 @@
 use crate::Route;
 use crate::LUMEN_LOGO_SMALL;
-use ::docs::docs::router_01::{BookRoute, LAZY_BOOK};
+use ::docs::docs::router::{BookRoute, LAZY_BOOK};
 use dioxus::prelude::*;
 use docs::docs;
 use lucide_dioxus::Menu;
@@ -14,7 +14,7 @@ pub fn Navbar() -> Element {
 
     // Extract the current BookRoute from the Route enum
     let current_book_route = match route {
-        Route::Docs01 { child } => Some(child),
+        Route::Docs { child } => Some(child),
         _ => None,
     };
 
@@ -52,7 +52,7 @@ pub fn Navbar() -> Element {
                         "Home"
                     }
                     Link {
-                        to: Route::Docs01 { child: docs::router_01::BookRoute::Index { section: Default::default() } },
+                        to: Route::Docs { child: docs::router::BookRoute::Index { section: Default::default() } },
                         class: "text-foreground hover:text-primary transition-colors",
                         "Docs"
                     }
@@ -90,7 +90,7 @@ pub fn Navbar() -> Element {
                         "Home"
                     }
                     Link {
-                        to: Route::Docs01 { child: docs::router_01::BookRoute::Index { section: Default::default() } },
+                        to: Route::Docs { child: docs::router::BookRoute::Index { section: Default::default() } },
                         class: "text-foreground hover:text-primary transition-colors",
                         "Docs"
                     }
@@ -145,7 +145,7 @@ fn SidebarSection(
         div { class: "full-chapter",
             if let Some(url) = &link.location {
                 Link {
-                    to: Route::Docs01 { child: *url },
+                    to: Route::Docs { child: *url },
                     class: "font-semibold text-foreground hover:text-primary transition-colors",
                     active_class: "text-primary",
                     div { class: "flex items-center justify-between pb-2",
@@ -203,7 +203,7 @@ fn SidebarChapter(
         li { class: "rounded-md",
             if let Some(url) = &link.location {
                 Link {
-                    to: Route::Docs01 { child: *url },
+                    to: Route::Docs { child: *url },
                     onclick: move |_| {
                         if has_children {
                             expanded.toggle();
