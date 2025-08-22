@@ -40,7 +40,7 @@ pub fn Home() -> Element {
                     }
 
                     div { class: "flex justify-center gap-4",
-                        Link { to: Route::Docs01 { child: docs::router_01::BookRoute::Index { section: Default::default() } },
+                        Link { to: Route::Docs { child: docs::router::BookRoute::Index { section: Default::default() } },
                             Button {
                                 variant: ButtonVariant::Primary,
                                 size: ButtonSize::Large,
@@ -78,7 +78,7 @@ pub fn Home() -> Element {
                             // Buttons
                             ComponentCard {
                                 title: "Button".to_string(),
-                                doc_route: Route::Docs01 { child: docs::router_01::BookRoute::ButtonIndex { section: Default::default() } },
+                                doc_route: Route::Docs { child: docs::router::BookRoute::ButtonIndex { section: Default::default() } },
                                 col_span: Some("md:col-span-2".to_string()),
                                 ButtonVariantsExample {  }
                             }
@@ -86,7 +86,7 @@ pub fn Home() -> Element {
                             // Hover Card
                             ComponentCard {
                                 title: "Hover Card".to_string(),
-                                doc_route: Route::Docs01 { child: docs::router_01::BookRoute::HoverCardIndex { section: Default::default() } },
+                                doc_route: Route::Docs { child: docs::router::BookRoute::HoverCardIndex { section: Default::default() } },
                                 content_class: Some("px-4".to_string()),
                                 HoverCardProfileExample {}
                             }
@@ -94,7 +94,7 @@ pub fn Home() -> Element {
                             // Complete form example
                             ComponentCard {
                                 title: "Form components".to_string(),
-                                doc_route: Route::Docs01 { child: docs::router_01::BookRoute::FormIndex { section: Default::default() } },
+                                doc_route: Route::Docs { child: docs::router::BookRoute::FormIndex { section: Default::default() } },
                                 col_span: Some("md:col-span-1".to_string()),
                                 row_span: Some("md:row-span-2".to_string()),
                                 CompleteFormExample {}
@@ -103,7 +103,7 @@ pub fn Home() -> Element {
                             // Switch (small screen)
                             ComponentCard {
                                 title: "Switch".to_string(),
-                                doc_route: Route::Docs01 { child: docs::router_01::BookRoute::SwitchIndex { section: Default::default() } },
+                                doc_route: Route::Docs { child: docs::router::BookRoute::SwitchIndex { section: Default::default() } },
                                 col_span: Some("col-span-1 block lg:hidden".to_string()),
                                 SwitchWithTextExample {}
                             }
@@ -111,7 +111,7 @@ pub fn Home() -> Element {
                             // Accordion
                             ComponentCard {
                                 title: "Accordion".to_string(),
-                                doc_route: Route::Docs01 { child: docs::router_01::BookRoute::AccordionIndex { section: Default::default() } },
+                                doc_route: Route::Docs { child: docs::router::BookRoute::AccordionIndex { section: Default::default() } },
                                 col_span: Some("md:col-span-2".to_string()),
                                 BasicAccordionExample {}
                             }
@@ -119,7 +119,7 @@ pub fn Home() -> Element {
                             // Switch (large screen)
                             ComponentCard {
                                 title: "Switch".to_string(),
-                                doc_route: Route::Docs01 { child: docs::router_01::BookRoute::SwitchIndex { section: Default::default() } },
+                                doc_route: Route::Docs { child: docs::router::BookRoute::SwitchIndex { section: Default::default() } },
                                 col_span: Some("col-span-1 hidden lg:block".to_string()),
                                 SwitchWithTextExample {}
                             }
@@ -127,7 +127,7 @@ pub fn Home() -> Element {
                             // Side Sheet
                             ComponentCard {
                                 title: "Side Sheet".to_string(),
-                                doc_route: Route::Docs01 { child: docs::router_01::BookRoute::SideSheetIndex { section: Default::default() } },
+                                doc_route: Route::Docs { child: docs::router::BookRoute::SideSheetIndex { section: Default::default() } },
                                 col_span: Some("md:col-span-1".to_string()),
                                 BasicSideSheetExample {}
                             }
@@ -135,14 +135,14 @@ pub fn Home() -> Element {
                             // Toast
                             ComponentCard {
                                 title: "Toast".to_string(),
-                                doc_route: Route::Docs01 { child: docs::router_01::BookRoute::ToastIndex { section: Default::default() } },
+                                doc_route: Route::Docs { child: docs::router::BookRoute::ToastIndex { section: Default::default() } },
                                 ToastWithDescriptionsExample {}
                             }
 
                             // Menu bar
                             ComponentCard {
                                 title: "Menubar".to_string(),
-                                doc_route: Route::Docs01 { child: docs::router_01::BookRoute::MenubarIndex { section: Default::default() } },
+                                doc_route: Route::Docs { child: docs::router::BookRoute::MenubarIndex { section: Default::default() } },
                                 col_span: Some("md:col-span-2".to_string()),
                                 MenubarWithIconsExample {  }
                             }
@@ -150,14 +150,14 @@ pub fn Home() -> Element {
                             // Dropdown
                             ComponentCard {
                                 title: "Dropdown".to_string(),
-                                doc_route: Route::Docs01 { child: docs::router_01::BookRoute::DropdownIndex { section: Default::default() } },
+                                doc_route: Route::Docs { child: docs::router::BookRoute::DropdownIndex { section: Default::default() } },
                                 ComplexDropdownExample {  }
                             }
 
                             // Progress
                             ComponentCard {
                                 title: "Progress".to_string(),
-                                doc_route: Route::Docs01 { child: docs::router_01::BookRoute::ProgressIndex { section: Default::default() } },
+                                doc_route: Route::Docs { child: docs::router::BookRoute::ProgressIndex { section: Default::default() } },
                                 col_span: Some("md:col-span-1".to_string()),
                                 InteractiveProgressExample {  }
                             }
@@ -165,7 +165,7 @@ pub fn Home() -> Element {
                             // Avatar
                             ComponentCard {
                                 title: "Avatar".to_string(),
-                                doc_route: Route::Docs01 { child: docs::router_01::BookRoute::AvatarIndex { section: Default::default() } },
+                                doc_route: Route::Docs { child: docs::router::BookRoute::AvatarIndex { section: Default::default() } },
                                 col_span: Some("col-span-1 md:col-span-2 lg:col-span-1".to_string()),
                                 AvatarGroupExample {  }
                             }

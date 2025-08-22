@@ -4,7 +4,7 @@ use lucide_dioxus::{Check, Copy};
 use lumen_blocks::components::button::{Button, ButtonSize, ButtonVariant};
 use std::hash::Hash;
 
-pub mod router_01;
+pub mod router;
 
 #[component]
 fn SandBoxFrame(url: String) -> Element {
