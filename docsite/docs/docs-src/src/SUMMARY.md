@@ -2,6 +2,7 @@
 
 - [Introduction](index.md)
 - [Installation](installation/index.md)
+- [Migration notes](migration-notes/index.md)
 - [Button](button/index.md)
 - [Accordion](accordion/index.md)
 - [Aspect Ratio](aspect-ratio/index.md)
@@ -17,11 +18,3 @@
 - [Side Sheet](side-sheet/index.md)
 - [Switch](switch/index.md)
 - [Toast](toast/index.md)
-
-
-
-
-
-
-
-
