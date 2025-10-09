@@ -4,7 +4,7 @@ members = ["blocks", "docsite"]
 
 [workspace.dependencies]
 lumen-blocks = { path = "blocks" }
-dioxus = "=0.7.0-rc.0"
+dioxus = "=0.7.0-rc.1"
 use-mdbook = { git = "https://github.com/DioxusLabs/docsite.git", rev = "029a529a02f3fe3d0b24c143bc7722850986dbfa" }
 mdbook-shared = { git = "https://github.com/DioxusLabs/docsite.git", rev = "029a529a02f3fe3d0b24c143bc7722850986dbfa" }
 mdbook-gen = { git = "https://github.com/DioxusLabs/docsite.git", rev = "029a529a02f3fe3d0b24c143bc7722850986dbfa" }
@@ -13,7 +13,7 @@ tracing = { version = "0.1", features = ["std"] }
 docs = { path = "./docsite/docs" }
 dioxus-time = "=0.7.0-rc.0"
 # Custom Lucide version with support for Dioxus 0.7 RC 0
-lucide-dioxus = { git = "https://github.com/Leaf-Computer/lucide.git", rev = "4944f9214f0d36baeaed2ea7d53f1d46f2da4fe5" }
+lucide-dioxus = { git = "https://github.com/Leaf-Computer/lucide.git", rev = "d913052a05cdb593a2e98cdf3ec155cd6c4d4ba4" }
 
 [patch.crates-io]
 dioxus-geolocation = { git = "https://github.com/ealmloff/dioxus-std", rev = "5abb45906c47b4c864e1c06a3e6aebb1b5cae03c" }
