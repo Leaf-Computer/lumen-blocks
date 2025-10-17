@@ -4150,38 +4150,3 @@ dependencies = [
  "quote",
  "syn 2.0.106",
 ]
-
-[[patch.unused]]
-name = "dioxus-geolocation"
-version = "0.7.0-rc.0"
-source = "git+https://github.com/ealmloff/dioxus-std?rev=5abb45906c47b4c864e1c06a3e6aebb1b5cae03c#5abb45906c47b4c864e1c06a3e6aebb1b5cae03c"
-
-[[patch.unused]]
-name = "dioxus-notification"
-version = "0.7.0-rc.0"
-source = "git+https://github.com/ealmloff/dioxus-std?rev=5abb45906c47b4c864e1c06a3e6aebb1b5cae03c#5abb45906c47b4c864e1c06a3e6aebb1b5cae03c"
-
-[[patch.unused]]
-name = "dioxus-sdk"
-version = "0.7.0-rc.0"
-source = "git+https://github.com/ealmloff/dioxus-std?rev=5abb45906c47b4c864e1c06a3e6aebb1b5cae03c#5abb45906c47b4c864e1c06a3e6aebb1b5cae03c"
-
-[[patch.unused]]
-name = "dioxus-sync"
-version = "0.7.0-rc.0"
-source = "git+https://github.com/ealmloff/dioxus-std?rev=5abb45906c47b4c864e1c06a3e6aebb1b5cae03c#5abb45906c47b4c864e1c06a3e6aebb1b5cae03c"
-
-[[patch.unused]]
-name = "dioxus-util"
-version = "0.7.0-rc.0"
-source = "git+https://github.com/ealmloff/dioxus-std?rev=5abb45906c47b4c864e1c06a3e6aebb1b5cae03c#5abb45906c47b4c864e1c06a3e6aebb1b5cae03c"
-
-[[patch.unused]]
-name = "dioxus-window"
-version = "0.7.0-rc.0"
-source = "git+https://github.com/ealmloff/dioxus-std?rev=5abb45906c47b4c864e1c06a3e6aebb1b5cae03c#5abb45906c47b4c864e1c06a3e6aebb1b5cae03c"
-
-[[patch.unused]]
-name = "dioxus_storage"
-version = "0.7.0-rc.0"
-source = "git+https://github.com/ealmloff/dioxus-std?rev=5abb45906c47b4c864e1c06a3e6aebb1b5cae03c#5abb45906c47b4c864e1c06a3e6aebb1b5cae03c"

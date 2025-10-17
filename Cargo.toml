@@ -11,19 +11,9 @@ mdbook-gen = { git = "https://github.com/DioxusLabs/docsite.git", rev = "029a529
 syn = "2.0.98"
 tracing = { version = "0.1", features = ["std"] }
 docs = { path = "./docsite/docs" }
-dioxus-time = "=0.7.0-rc.0"
+dioxus-time = { git = "https://github.com/ealmloff/dioxus-std", rev = "5abb45906c47b4c864e1c06a3e6aebb1b5cae03c" }
 # Custom Lucide version with support for Dioxus 0.7 RC 0
 lucide-dioxus = { git = "https://github.com/Leaf-Computer/lucide.git", rev = "d913052a05cdb593a2e98cdf3ec155cd6c4d4ba4" }
-
-[patch.crates-io]
-dioxus-geolocation = { git = "https://github.com/ealmloff/dioxus-std", rev = "5abb45906c47b4c864e1c06a3e6aebb1b5cae03c" }
-dioxus-notification = { git = "https://github.com/ealmloff/dioxus-std", rev = "5abb45906c47b4c864e1c06a3e6aebb1b5cae03c" }
-dioxus-sdk = { git = "https://github.com/ealmloff/dioxus-std", rev = "5abb45906c47b4c864e1c06a3e6aebb1b5cae03c" }
-dioxus_storage = { git = "https://github.com/ealmloff/dioxus-std", rev = "5abb45906c47b4c864e1c06a3e6aebb1b5cae03c" }
-dioxus-sync = { git = "https://github.com/ealmloff/dioxus-std", rev = "5abb45906c47b4c864e1c06a3e6aebb1b5cae03c" }
-dioxus-time = { git = "https://github.com/ealmloff/dioxus-std", rev = "5abb45906c47b4c864e1c06a3e6aebb1b5cae03c" }
-dioxus-util = { git = "https://github.com/ealmloff/dioxus-std", rev = "5abb45906c47b4c864e1c06a3e6aebb1b5cae03c" }
-dioxus-window = { git = "https://github.com/ealmloff/dioxus-std", rev = "5abb45906c47b4c864e1c06a3e6aebb1b5cae03c" }
 
 [profile]
 
