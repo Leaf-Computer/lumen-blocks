@@ -4,16 +4,16 @@ members = ["blocks", "docsite"]
 
 [workspace.dependencies]
 lumen-blocks = { path = "blocks" }
-dioxus = "=0.7.0-rc.1"
+dioxus = "=0.7.0-rc.3"
 use-mdbook = { git = "https://github.com/DioxusLabs/docsite.git", rev = "029a529a02f3fe3d0b24c143bc7722850986dbfa" }
 mdbook-shared = { git = "https://github.com/DioxusLabs/docsite.git", rev = "029a529a02f3fe3d0b24c143bc7722850986dbfa" }
 mdbook-gen = { git = "https://github.com/DioxusLabs/docsite.git", rev = "029a529a02f3fe3d0b24c143bc7722850986dbfa" }
 syn = "2.0.98"
 tracing = { version = "0.1", features = ["std"] }
 docs = { path = "./docsite/docs" }
-dioxus-time = { git = "https://github.com/ealmloff/dioxus-std", rev = "5abb45906c47b4c864e1c06a3e6aebb1b5cae03c" }
-# Custom Lucide version with support for Dioxus 0.7 RC 0
-lucide-dioxus = { git = "https://github.com/Leaf-Computer/lucide.git", rev = "d913052a05cdb593a2e98cdf3ec155cd6c4d4ba4" }
+dioxus-time = { git = "https://github.com/ealmloff/dioxus-std", rev = "4b21134c3950d219a6e42ba33b6ba4bda97c062b" }
+# Custom Lucide version with support for Dioxus 0.7 RC 3
+lucide-dioxus = { git = "https://github.com/Leaf-Computer/lucide.git", rev = "b122a2420e02806472e167b859c70a0e24ac0cf8" }
 
 [profile]
 
