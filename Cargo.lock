@@ -1967,7 +1967,7 @@ dependencies = [
 
 [[package]]
 name = "lumen-blocks"
-version = "0.2.0-wip"
+version = "0.2.0"
 dependencies = [
  "dioxus",
  "dioxus-primitives",

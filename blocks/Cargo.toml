@@ -1,6 +1,6 @@
 [package]
 name = "lumen-blocks"
-version = "0.2.0-wip"
+version = "0.2.0"
 edition = "2024"
 description = "Accessible, styled, opinionated components for Dioxus inspired by the shadcn UI and built on Dioxus Primitives"
 readme = "../README.md"
