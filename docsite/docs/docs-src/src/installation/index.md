@@ -19,7 +19,7 @@ git clone https://github.com/Leaf-Computer/lumen-blocks-starter.git my-lumen-app
 Navigate to the newly created project directory and ensure you are on a compatible revision:
 ```bash
 cd my-lumen-app
-git checkout 297c95aa09145e5a640cdae4cd4501a546963f52
+git checkout v0.2.0
 ```
 
 Start the development server:
@@ -32,7 +32,7 @@ Open your browser and visit `http://localhost:8080` to see your new Lumen Blocks
 
 ## Installing Lumen Blocks on an existing project
 
-These options assume you have an existing Dioxus 0.7 project setup with Tailwind, similar to the one in the [Dioxus Tailwind guide](https://dioxuslabs.com/learn/0.7/cookbook/tailwind).
+These options assume you have an existing Dioxus 0.7 project setup with Tailwind. See _[Creating a new project](https://dioxuslabs.com/learn/0.7/tutorial/new_app)_.
 
 For an existing project, you have two options for installing Lumen Blocks:
 
@@ -41,7 +41,7 @@ For an existing project, you have two options for installing Lumen Blocks:
 Add Lumen Blocks to your `Cargo.toml`:
 ```toml
 # Change revision as needed
-lumen-blocks = { git = "https://github.com/Leaf-Computer/lumen-blocks.git", rev = "654c76c169f8c2ee8bfc1a6406f26cd3d1c0799c" }
+lumen-blocks = { git = "https://github.com/Leaf-Computer/lumen-blocks.git", tag = "v0.2.0" }
 ```
 
 Create or update a `tailwind.css` file in your project's root directory, with the following content:
@@ -200,8 +200,8 @@ module.exports = {
   content: [
     "./src/**/*.{rs,html,css}",
     // Include Lumen Blocks components
-    // Note: The `654c76c` on the path is there to match the Lumen Blocks version in `Cargo.toml`. If you update Lumen Blocks on your project, you should update this path as well with the first 7 digits of the commit hash.
-    `${process.env.HOME}/.cargo/git/checkouts/lumen-blocks-*/654c76c/blocks/src/**/*.rs`
+    // Note: The `2675507` on the path is there to match the Lumen Blocks version in `Cargo.toml`. If you update Lumen Blocks on your project, you should update this path as well with the first 7 digits of the commit hash.
+    `${process.env.HOME}/.cargo/git/checkouts/lumen-blocks-*/2675507/blocks/src/**/*.rs`
   ],
   theme: {
     extend: {},
