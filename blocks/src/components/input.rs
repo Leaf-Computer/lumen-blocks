@@ -111,6 +111,7 @@ pub struct InputProps {
     class: Option<String>,
 
     #[props(extends = GlobalAttributes)]
+    #[props(extends = input)]
     attributes: Vec<Attribute>,
 }
 
