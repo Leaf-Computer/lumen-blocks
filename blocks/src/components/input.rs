@@ -34,6 +34,10 @@ pub struct InputProps {
     #[props(default = String::from("text"))]
     input_type: String,
 
+    /// Whether to autofocus
+    #[props(default)]
+    autofocus: bool,
+
     /// The variant of the input
     #[props(default)]
     variant: InputVariant,
@@ -77,6 +81,10 @@ pub struct InputProps {
     /// Callback when the input value changes
     #[props(default)]
     on_change: Option<Callback<FormEvent>>,
+
+    /// Callback when the input value changes
+    #[props(default)]
+    on_input: Option<Callback<FormEvent>>,
 
     /// Callback when the input is focused
     #[props(default)]
@@ -190,9 +198,16 @@ pub fn Input(props: InputProps) -> Element {
     .collect::<Vec<_>>()
     .join(" ");
 
-    // Handle input change event
+    // Handle change event
     let handle_change = move |event: FormEvent| {
         if let Some(callback) = &props.on_change {
+            callback.call(event);
+        }
+    };
+
+    // Handle input event
+    let handle_input = move |event: FormEvent| {
+        if let Some(callback) = &props.on_input {
             callback.call(event);
         }
     };
@@ -228,6 +243,7 @@ pub fn Input(props: InputProps) -> Element {
                 // Standard HTML attributes
                 id: id_value,
                 type: props.input_type.clone(),
+                autofocus: props.autofocus,
                 name: props.name,
                 placeholder: props.placeholder,
                 value: props.value,
@@ -238,6 +254,7 @@ pub fn Input(props: InputProps) -> Element {
 
                 // Event handlers
                 onchange: handle_change,
+                oninput: handle_input,
                 onfocus: handle_focus,
                 onblur: handle_blur,
 
