@@ -106,7 +106,7 @@ pub struct DialogTitleProps {
 #[component]
 pub fn DialogTitle(props: DialogTitleProps) -> Element {
     let class = [
-        "text-lg font-semibold leading-none tracking-tight text-center",
+        "text-lg font-semibold leading-none tracking-tight",
         props.class.as_deref().unwrap_or(""),
     ]
     .into_iter()
