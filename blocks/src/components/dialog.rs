@@ -76,7 +76,7 @@ pub struct DialogContentProps {
 #[component]
 pub fn DialogContent(props: DialogContentProps) -> Element {
     let class = [
-        "flex flex-col border-border border-1 rounded bg-background",
+        "flex flex-col border-border border-1 rounded-xl p-6 bg-background",
         props.class.as_deref().unwrap_or(""),
     ]
     .into_iter()
