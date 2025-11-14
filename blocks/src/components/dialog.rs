@@ -136,7 +136,7 @@ pub struct DialogDescriptionProps {
 #[component]
 pub fn DialogDescription(props: DialogDescriptionProps) -> Element {
     let class = [
-        "text-sm text-muted-foreground text-center",
+        "text-sm text-muted-foreground",
         props.class.as_deref().unwrap_or(""),
     ]
     .into_iter()
