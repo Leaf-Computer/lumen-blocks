@@ -5,6 +5,7 @@ pub mod button;
 pub mod checkbox;
 pub mod collapsible;
 pub mod context_menu;
+pub mod dialog;
 pub mod dropdown;
 pub mod hover_card;
 pub mod input;
