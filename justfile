@@ -1,5 +1,5 @@
 dev-docsite:
-    dx serve -p docsite --web --port 8081
+    dx serve -p docsite --web
     
 build-docs:
     cd docsite/docs && cargo build
