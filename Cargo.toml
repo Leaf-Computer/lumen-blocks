@@ -12,8 +12,7 @@ syn = "2.0.98"
 tracing = { version = "0.1", features = ["std"] }
 docs = { path = "./docsite/docs" }
 dioxus-time = { git = "https://github.com/ealmloff/dioxus-std", rev = "7e0c41ef8c5514e46e8ac657227568660cf38987" }
-# Custom Lucide version with support for Dioxus 0.7.0 while https://github.com/RustForWeb/lucide/pull/192 is not merged
-lucide-dioxus = { git = "https://github.com/Leaf-Computer/lucide.git", rev = "e3e509d5855324e893aef838747cccb2d115dc15" }
+lucide-dioxus = "2.45.0"
 
 [profile]
 
