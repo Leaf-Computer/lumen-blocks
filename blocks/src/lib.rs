@@ -23,7 +23,7 @@ fn use_unique_id() -> Signal<String> {
 // Elements can only have one id so if the user provides their own, we must use it as the aria id.
 fn use_id_or(
     mut gen_id: Signal<String>,
-    user_id: ReadOnlySignal<Option<String>>,
+    user_id: ReadSignal<Option<String>>,
 ) -> Memo<Option<String>> {
     // If we have a user ID, update the gen_id in an effect
     use_effect(move || {

@@ -13,17 +13,12 @@ struct RadioGroupContext<T: Clone + PartialEq + 'static> {
 }
 
 /// Dropdown size options
-#[derive(Clone, Copy, PartialEq, Eq, Debug)]
+#[derive(Clone, Copy, PartialEq, Eq, Debug, Default)]
 pub enum DropdownSize {
     Small,
+    #[default]
     Medium,
     Large,
-}
-
-impl Default for DropdownSize {
-    fn default() -> Self {
-        Self::Medium
-    }
 }
 
 // Note: DropdownSize is kept for backward compatibility but no longer used internally
@@ -100,7 +95,7 @@ pub struct DropdownContentProps {
 #[derive(Props, Clone, PartialEq)]
 pub struct DropdownItemProps<T: Clone + PartialEq + 'static> {
     /// The value of the item
-    value: ReadOnlySignal<T>,
+    value: ReadSignal<T>,
 
     /// The index of the item
     #[props(default)]
@@ -190,7 +185,7 @@ pub fn DropdownContent(props: DropdownContentProps) -> Element {
     };
 
     // Content classes
-    let content_classes = vec![
+    let content_classes = [
         "absolute mt-2 rounded bg-popover shadow-md",
         "border border-border p-1 text-popover-foreground",
         "animate-in fade-in-80 data-[side=bottom]:slide-in-from-top-2",
@@ -216,7 +211,7 @@ pub fn DropdownContent(props: DropdownContentProps) -> Element {
 pub struct DropdownLabelProps {
     /// Optional ID for the label
     #[props(default)]
-    id: ReadOnlySignal<Option<String>>,
+    id: ReadSignal<Option<String>>,
 
     #[props(extends = GlobalAttributes)]
     attributes: Vec<Attribute>,
@@ -249,7 +244,7 @@ pub fn DropdownLabel(props: DropdownLabelProps) -> Element {
 pub struct DropdownSeparatorProps {
     /// Optional ID for the separator
     #[props(default)]
-    id: ReadOnlySignal<Option<String>>,
+    id: ReadSignal<Option<String>>,
 
     #[props(extends = GlobalAttributes)]
     attributes: Vec<Attribute>,
@@ -280,7 +275,7 @@ pub fn DropdownSeparator(props: DropdownSeparatorProps) -> Element {
 pub struct DropdownCheckboxItemProps {
     /// The index of the item
     #[props(default)]
-    index: ReadOnlySignal<usize>,
+    index: ReadSignal<usize>,
 
     /// Whether the checkbox is checked
     #[props(default)]
@@ -372,7 +367,7 @@ pub struct DropdownRadioGroupProps {
 
     /// Optional ID for the radio group
     #[props(default)]
-    id: ReadOnlySignal<Option<String>>,
+    id: ReadSignal<Option<String>>,
 
     /// Callback when the selection changes
     #[props(default)]
@@ -395,7 +390,7 @@ pub fn DropdownRadioGroup(props: DropdownRadioGroupProps) -> Element {
     if let Some(handler) = &props.on_value_change {
         let context = RadioGroupContext {
             value: props.value,
-            on_change: handler.clone(),
+            on_change: *handler,
         };
         provide_context(context);
     }
@@ -477,8 +472,8 @@ pub fn DropdownRadioItem<T: Clone + PartialEq + 'static>(
         DropdownMenuItem::<T> {
             class: item_classes,
             id: id_value,
-            value: ReadOnlySignal::new(Signal::new(props.value)),
-            index: ReadOnlySignal::new(Signal::new(props.index)),
+            value: ReadSignal::new(Signal::new(props.value)),
+            index: ReadSignal::new(Signal::new(props.index)),
             disabled: props.disabled,
             on_select: handle_select,
 
@@ -542,7 +537,7 @@ pub fn DropdownItem<T: Clone + PartialEq + 'static>(props: DropdownItemProps<T>)
             class: item_classes,
             id: id_value,
             value: props.value,
-            index: ReadOnlySignal::<usize>::new(Signal::new(index_val)),
+            index: ReadSignal::<usize>::new(Signal::new(index_val)),
             disabled: disabled_val,
             on_select: props.on_select,
 

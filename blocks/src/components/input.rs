@@ -2,30 +2,20 @@ use crate::{use_id_or, use_unique_id};
 use dioxus::prelude::*;
 
 /// Input size options
-#[derive(Clone, Copy, PartialEq, Eq, Debug)]
+#[derive(Clone, Copy, PartialEq, Eq, Debug, Default)]
 pub enum InputSize {
     Small,
+    #[default]
     Medium,
     Large,
 }
 
-impl Default for InputSize {
-    fn default() -> Self {
-        Self::Medium
-    }
-}
-
 /// Input variant types
-#[derive(Clone, Copy, PartialEq, Eq, Debug)]
+#[derive(Clone, Copy, PartialEq, Eq, Debug, Default)]
 pub enum InputVariant {
+    #[default]
     Default,
     Error,
-}
-
-impl Default for InputVariant {
-    fn default() -> Self {
-        Self::Default
-    }
 }
 
 #[derive(Props, Clone, PartialEq)]

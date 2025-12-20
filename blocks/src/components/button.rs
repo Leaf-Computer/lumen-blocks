@@ -3,8 +3,9 @@ use dioxus::prelude::*;
 use lucide_dioxus::LoaderCircle;
 
 /// Button variant types
-#[derive(Clone, Copy, PartialEq, Eq, Debug)]
+#[derive(Clone, Copy, PartialEq, Eq, Debug, Default)]
 pub enum ButtonVariant {
+    #[default]
     Primary,
     Secondary,
     Outline,
@@ -13,24 +14,13 @@ pub enum ButtonVariant {
     Destructive,
 }
 
-impl Default for ButtonVariant {
-    fn default() -> Self {
-        Self::Primary
-    }
-}
-
 /// Button size options
-#[derive(Clone, Copy, PartialEq, Eq, Debug)]
+#[derive(Clone, Copy, PartialEq, Eq, Debug, Default)]
 pub enum ButtonSize {
     Small,
+    #[default]
     Medium,
     Large,
-}
-
-impl Default for ButtonSize {
-    fn default() -> Self {
-        Self::Medium
-    }
 }
 
 #[derive(Props, Clone, PartialEq)]

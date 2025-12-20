@@ -105,7 +105,7 @@ pub mod states {
         let checked_disabled = use_signal(|| true);
         let unchecked_disabled = use_signal(|| false);
 
-        let disabled = ReadOnlySignal::new(Signal::new(true));
+        let disabled = ReadSignal::new(Signal::new(true));
 
         rsx! {
             div { class: "space-y-4",

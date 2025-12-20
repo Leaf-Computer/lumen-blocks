@@ -44,14 +44,12 @@ pub fn Avatar(props: AvatarProps) -> Element {
     .collect::<Vec<_>>()
     .join(" ");
 
-    let on_state_change = props.on_state_change.clone();
-
     rsx! {
         PrimitiveAvatar {
             id: id_value.peek().clone(),
             class: avatar_classes,
             on_state_change: move |state| {
-                if let Some(handler) = &on_state_change {
+                if let Some(handler) = &props.on_state_change {
                     handler.call(state);
                 }
             },

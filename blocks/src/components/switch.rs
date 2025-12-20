@@ -4,17 +4,12 @@ use dioxus::prelude::*;
 use dioxus_primitives::switch::{Switch as PrimitiveSwitch, SwitchThumb};
 
 /// Switch size options
-#[derive(Clone, Copy, PartialEq, Eq, Debug)]
+#[derive(Clone, Copy, PartialEq, Eq, Debug, Default)]
 pub enum SwitchSize {
     Small,
+    #[default]
     Medium,
     Large,
-}
-
-impl Default for SwitchSize {
-    fn default() -> Self {
-        Self::Medium
-    }
 }
 
 /// Props for the Switch component
@@ -30,7 +25,7 @@ pub struct SwitchProps {
 
     /// Whether the switch is disabled
     #[props(default)]
-    pub disabled: ReadOnlySignal<bool>,
+    pub disabled: ReadSignal<bool>,
 
     /// Size of the switch
     #[props(default)]
@@ -38,7 +33,7 @@ pub struct SwitchProps {
 
     /// Optional ID for the switch
     #[props(default)]
-    pub id: ReadOnlySignal<Option<String>>,
+    pub id: ReadSignal<Option<String>>,
 
     /// Accessible label for the switch
     #[props(default)]
@@ -93,7 +88,7 @@ pub fn Switch(props: SwitchProps) -> Element {
 
     // Build thumb classes with dynamic position based on checked state
     let full_thumb_classes = move || {
-        vec![
+        [
             // Base classes
             "pointer-events-none inline-block transform rounded-full bg-background shadow ring-0",
             // Improved transition for smoother animation
