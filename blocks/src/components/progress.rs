@@ -3,39 +3,29 @@ use dioxus::prelude::*;
 use dioxus_primitives::progress::Progress as ProgressPrimitive;
 
 /// Progress size variants
-#[derive(Clone, Copy, PartialEq, Eq, Debug)]
+#[derive(Clone, Copy, PartialEq, Eq, Debug, Default)]
 pub enum ProgressSize {
     Small,
+    #[default]
     Medium,
     Large,
 }
 
-impl Default for ProgressSize {
-    fn default() -> Self {
-        Self::Medium
-    }
-}
-
 /// Progress color variants
-#[derive(Clone, Copy, PartialEq, Eq, Debug)]
+#[derive(Clone, Copy, PartialEq, Eq, Debug, Default)]
 pub enum ProgressVariant {
+    #[default]
     Default,
     Destructive,
     Success,
     Warning,
 }
 
-impl Default for ProgressVariant {
-    fn default() -> Self {
-        Self::Default
-    }
-}
-
 /// Props for the Progress component
 #[derive(Props, Clone, PartialEq)]
 pub struct ProgressProps {
     /// The current progress value, between 0 and max
-    value: ReadOnlySignal<f64>,
+    value: ReadSignal<f64>,
 
     /// The maximum value. Defaults to 100
     #[props(default = 100.0)]
@@ -72,7 +62,7 @@ pub fn Progress(props: ProgressProps) -> Element {
     // Calculate percentage
     let current: f64 = (props.value)();
     let max_value = props.max;
-    let percentage = (current / max_value * 100.0).min(100.0).max(0.0);
+    let percentage = (current / max_value * 100.0).clamp(0.0, 100.0);
     // An adapter to convert signal type from `f64` to `Option<f64>`
     let value_optional = use_memo(move || Some((props.value)()));
 

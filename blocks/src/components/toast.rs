@@ -51,7 +51,7 @@ pub struct ToastItem {
 }
 
 // Global signal for toast management
-static TOASTS: GlobalSignal<Vec<ToastItem>> = Signal::global(|| Vec::new());
+static TOASTS: GlobalSignal<Vec<ToastItem>> = Signal::global(Vec::new);
 static NEXT_ID: GlobalSignal<usize> = Signal::global(|| 0);
 
 // Toast provider props
@@ -120,16 +120,13 @@ pub fn Toast(props: ToastProps) -> Element {
     // Set up auto-dismiss timer if not permanent
     if !toast.permanent {
         let duration = toast.duration.unwrap_or(props.default_duration);
-        let mut visible_state = visible.clone();
 
         // Simple timeout effect
         use_effect(move || {
             let timer = use_timeout(duration, move |()| {
-                visible_state.with_mut(|val| *val = false);
+                visible.with_mut(|val| *val = false);
             });
             timer.action(());
-            // Explicitly return unit type
-            ()
         });
     }
 

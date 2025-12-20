@@ -3,17 +3,12 @@ use dioxus::prelude::*;
 use lucide_dioxus::Check;
 
 /// Checkbox size options
-#[derive(Clone, Copy, PartialEq, Eq, Debug)]
+#[derive(Clone, Copy, PartialEq, Eq, Debug, Default)]
 pub enum CheckboxSize {
     Small,
+    #[default]
     Medium,
     Large,
-}
-
-impl Default for CheckboxSize {
-    fn default() -> Self {
-        Self::Medium
-    }
 }
 
 /// Props for the Checkbox component
@@ -60,7 +55,7 @@ pub struct CheckboxProps {
 pub fn Checkbox(props: CheckboxProps) -> Element {
     // Generate unique ID if not provided
     let checkbox_id = use_unique_id();
-    let id = props.id.clone().unwrap_or_else(|| checkbox_id());
+    let id = props.id.clone().unwrap_or(checkbox_id());
 
     // Determine size-specific classes
     let (size_class, icon_size) = match props.size {
@@ -86,14 +81,14 @@ pub fn Checkbox(props: CheckboxProps) -> Element {
     );
 
     // Handle checkbox change
-    let mut checked = props.checked.clone();
+    let mut checked = props.checked;
     let on_change = move |_| {
-        if !props.disabled {
-            if let Some(handler) = &props.on_checked_change {
-                let new_state = !checked();
-                checked.set(new_state);
-                handler.call(new_state);
-            }
+        if !props.disabled
+            && let Some(handler) = &props.on_checked_change
+        {
+            let new_state = !checked();
+            checked.set(new_state);
+            handler.call(new_state);
         }
     };
 
@@ -108,19 +103,16 @@ pub fn Checkbox(props: CheckboxProps) -> Element {
 
             // Render indicator when checked
             if (props.checked)() {
-                div {
-                    class: format!("flex items-center justify-center {}", icon_size),
+                div { class: format!("flex items-center justify-center {}", icon_size),
 
-                    Check {
-                        class: "text-primary-foreground"
-                    }
+                    Check { class: "text-primary-foreground" }
                 }
             }
 
             // Hidden input for form submission
             if let Some(name) = &props.name {
                 input {
-                    type: "checkbox",
+                    r#type: "checkbox",
                     id: format!("{}-input", id),
                     name: name.clone(),
                     checked: (props.checked)(),

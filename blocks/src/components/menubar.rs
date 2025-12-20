@@ -37,7 +37,7 @@ pub fn Menubar(props: MenubarProps) -> Element {
 pub struct MenubarMenuProps {
     #[props(default)]
     pub class: Option<String>,
-    pub index: ReadOnlySignal<usize>,
+    pub index: ReadSignal<usize>,
     pub children: Element,
 }
 
@@ -113,7 +113,7 @@ pub fn MenubarContent(props: MenubarContentProps) -> Element {
 #[derive(Props, Clone, PartialEq)]
 pub struct MenubarItemProps {
     /// The index of this item within the [`MenubarContent`]. This is used to define the focus order for keyboard navigation.
-    pub index: ReadOnlySignal<usize>,
+    pub index: ReadSignal<usize>,
     #[props(default)]
     pub class: Option<String>,
     pub value: String,
@@ -136,7 +136,7 @@ pub fn MenubarItem(props: MenubarItemProps) -> Element {
             index: props.index,
             class: class,
             value: props.value.clone(),
-            on_select: props.on_select.clone(),
+            on_select: props.on_select,
             {props.children}
         }
     }

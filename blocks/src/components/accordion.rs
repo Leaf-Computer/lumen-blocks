@@ -95,21 +95,18 @@ pub fn AccordionItem(props: AccordionItemProps) -> Element {
     .collect::<Vec<_>>()
     .join(" ");
 
-    let on_change = props.on_change.clone();
-    let on_trigger_click = props.on_trigger_click.clone();
-
     rsx! {
         PrimitiveAccordionItem {
             id: id_value.peek().clone(),
             class: item_classes,
             index: props.index,
             on_change: move |open| {
-                if let Some(handler) = &on_change {
+                if let Some(handler) = &props.on_change {
                     handler.call(open);
                 }
             },
             on_trigger_click: move || {
-                if let Some(handler) = &on_trigger_click {
+                if let Some(handler) = &props.on_trigger_click {
                     handler.call(());
                 }
             },

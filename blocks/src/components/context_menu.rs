@@ -147,7 +147,7 @@ pub fn ContextMenuContent(props: ContextMenuContentProps) -> Element {
     };
 
     // Content classes
-    let content_classes = vec![
+    let content_classes = [
         "absolute mt-1 rounded-md bg-popover shadow-lg",
         "border border-border p-1 text-popover-foreground",
         "animate-in fade-in-80 data-[side=bottom]:slide-in-from-top-2",
@@ -307,8 +307,8 @@ pub fn ContextMenuCheckboxItem(props: ContextMenuCheckboxItemProps) -> Element {
         PrimitiveContextMenuItem {
             class: item_classes,
             id: id_value,
-            value: ReadOnlySignal::new(Signal::new(value_str)),
-            index: ReadOnlySignal::new(Signal::new(index_val)),
+            value: ReadSignal::new(Signal::new(value_str)),
+            index: ReadSignal::new(Signal::new(index_val)),
             on_select: move |_| handle_change(),
 
             // Checkbox indicator
@@ -361,7 +361,7 @@ pub fn ContextMenuRadioGroup(props: ContextMenuRadioGroupProps) -> Element {
     if let Some(handler) = &props.on_value_change {
         let context = RadioGroupContext {
             value: props.value,
-            on_change: handler.clone(),
+            on_change: *handler,
         };
         provide_context(context);
     }
@@ -497,9 +497,8 @@ pub fn ContextMenuItem(props: ContextMenuItemProps) -> Element {
 
     // Handle select event - clone value early to avoid move issues
     let value_for_handler = value_str.clone();
-    let handler_clone = props.on_select.clone();
     let handle_select = move |_| {
-        if let Some(handler) = &handler_clone {
+        if let Some(handler) = &props.on_select {
             handler.call(value_for_handler.clone());
         }
     };

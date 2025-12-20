@@ -2,36 +2,31 @@ use crate::{use_id_or, use_unique_id};
 use dioxus::prelude::*;
 
 /// Label size options
-#[derive(Clone, Copy, PartialEq, Eq, Debug)]
+#[derive(Clone, Copy, PartialEq, Eq, Debug, Default)]
 pub enum LabelSize {
     Small,
+    #[default]
     Medium,
     Large,
-}
-
-impl Default for LabelSize {
-    fn default() -> Self {
-        Self::Medium
-    }
 }
 
 #[derive(Props, Clone, PartialEq)]
 pub struct LabelProps {
     /// The HTML for attribute that associates the label with a form control
     #[props(default)]
-    for_id: ReadOnlySignal<Option<String>>,
+    for_id: ReadSignal<Option<String>>,
 
     /// The size of the label
     #[props(default)]
-    size: ReadOnlySignal<LabelSize>,
+    size: ReadSignal<LabelSize>,
 
     /// Whether the label is for a required field
     #[props(default)]
-    required: ReadOnlySignal<bool>,
+    required: ReadSignal<bool>,
 
     /// Optional ID for the label element
     #[props(default)]
-    id: ReadOnlySignal<Option<String>>,
+    id: ReadSignal<Option<String>>,
 
     /// Optional additional classes for the label
     #[props(default)]
@@ -39,7 +34,7 @@ pub struct LabelProps {
 
     /// Whether to display the label as disabled
     #[props(default)]
-    disabled: ReadOnlySignal<bool>,
+    disabled: ReadSignal<bool>,
 
     #[props(extends = GlobalAttributes)]
     attributes: Vec<Attribute>,
