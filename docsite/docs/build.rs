@@ -16,5 +16,9 @@ fn make_docs() {
 
     let filename = format!("router.rs");
 
+    // Don't try to trap this error - if the directory already exists, we don't care.
+    // If the directory can't be created, then the `write` call afterwards will fail, and we'll
+    // still see the error.
+    let _ = std::fs::create_dir(&out_dir);
     std::fs::write(out_dir.join(filename), out).unwrap();
 }
