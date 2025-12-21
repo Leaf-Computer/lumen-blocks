@@ -10,7 +10,7 @@ edition = "2021"
 dioxus = { workspace = true, features = ["router"] }
 lumen-blocks.workspace = true
 lucide-dioxus = { workspace = true, features = ["all-icons"] }
-dioxus-time.workspace = true
+dioxus-sdk-time.workspace = true
 docs.workspace = true
 mdbook-shared.workspace = true
 
