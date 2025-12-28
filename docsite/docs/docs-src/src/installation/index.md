@@ -212,6 +212,11 @@ module.exports = {
 
 **Note:** We intentionally use the legacy JS configuration format to be able to use environment variables on the content paths, and we also intentionally use the name `tailwind-config.js` and not the standard `tailwind.config.js` because otherwise the Dioxus CLI does not know whether to use Tailwind v3 or v4 and fails to generate the output Tailwind configuration.
 
+**On Windows:** The `HOME` environment variable is not set by default on Windows, which will cause the path in `tailwind-config.js` (e.g., `${process.env.HOME}/.cargo/git/checkouts/...`) to fail. Workarounds:
+- Set `HOME` temporarily in your terminal session or permanently in your system environment variables.
+- Replace `${process.env.HOME}` with `${process.env.USERPROFILE}` (Windows-specific).
+- Use an absolute path to your `.cargo` directory.
+
 ### Option 2: Other configurations
 
 You can also choose to import the project files directly on your project tree manually, via git submodules, or some other mechanism. This may be useful in scenarios where you would like to tweak the base components themselves.
@@ -233,6 +238,10 @@ If Tailwind CSS classes aren't being applied:
 - Make sure Dioxus CLI is automatically generating the Tailwind CSS output file.
 - Make sure you are importing your **output** `tailwind.css` in your application.
 - Check for any path errors in the `content` array of your Tailwind configuration.
+- **On Windows:** Check that the `HOME` environment variable is set. Windows does not set this by default, which will cause the path in `tailwind-config.js` (e.g., `${process.env.HOME}/.cargo/git/checkouts/...`) to fail. Workarounds:
+  - Set `HOME` temporarily in your terminal session or permanently in your system environment variables.
+  - Replace `${process.env.HOME}` with `${process.env.USERPROFILE}` (Windows-specific).
+  - Use an absolute path to your `.cargo` directory.
 
 If components aren't rendering correctly:
 
