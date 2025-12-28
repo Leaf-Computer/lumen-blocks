@@ -233,6 +233,7 @@ If Tailwind CSS classes aren't being applied:
 - Make sure Dioxus CLI is automatically generating the Tailwind CSS output file.
 - Make sure you are importing your **output** `tailwind.css` in your application.
 - Check for any path errors in the `content` array of your Tailwind configuration.
+- **On Windows:** Check that the `HOME` environment variable is set. Windows does not set this by default, which will cause the path in `tailwind-config.js` (e.g., `${process.env.HOME}/.cargo/git/checkouts/...`) to fail. You can set it temporarily in your terminal session or permanently in your system environment variables. Alternatively, you can replace `${process.env.HOME}` with `${process.env.USERPROFILE}` (Windows-specific) or use an absolute path to your `.cargo` directory.
 
 If components aren't rendering correctly:
 
