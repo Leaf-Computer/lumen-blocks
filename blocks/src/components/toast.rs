@@ -1,7 +1,7 @@
 use crate::components::button::{Button, ButtonVariant};
 use dioxus::html::GlobalAttributesExtension;
 use dioxus::prelude::*;
-use dioxus_time::use_timeout;
+use dioxus_sdk_time::use_timeout;
 use lucide_dioxus::{Check, Info, TriangleAlert, X};
 use std::time::Duration;
 
